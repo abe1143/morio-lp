@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --gold: #b09060; --white: #f5f2ee; --muted: rgba(245,242,238,.5); --line: rgba(176,144,96,.2); }
+html, body { background: #080808; color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100%; }
+
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 32px 48px; background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%); }
+.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 13px; letter-spacing: .45em; color: var(--white); text-decoration: none; opacity: .85; }
+.nav-back { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; border-bottom: 1px solid rgba(176,144,96,.3); padding-bottom: 2px; }
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero { width: 100%; min-height: 44vh; display: flex; align-items: flex-end; padding: 0 48px 72px; position: relative; border-bottom: 1px solid var(--line); }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, #0d0b09 0%, #161210 60%, #080808 100%); z-index: 0; }
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; width: 100%; margin: 0 auto; }
+.hero-eyebrow { font-size: 9px; letter-spacing: .45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(42px, 6vw, 80px); line-height: 1.05; letter-spacing: -.01em; color: var(--white); }
+.hero-title em { font-style: italic; }
+.hero-sub { margin-top: 20px; font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+
+.content { max-width: 1100px; margin: 0 auto; padding: 80px 48px 120px; }
+
+/* LEAD */
+.lead-block { margin-bottom: 100px; }
+.lead-text { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 3vw, 36px); line-height: 1.7; letter-spacing: .02em; color: var(--white); margin-bottom: 48px; }
+.lead-text em { font-style: italic; color: var(--gold); }
+.lead-body { font-size: 12px; line-height: 2.4; color: var(--muted); max-width: 740px; }
+
+/* SECTION */
+.section-block { margin-bottom: 80px; }
+.section-label { font-size: 8.5px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+
+.body-text { font-size: 12px; line-height: 2.4; color: var(--muted); max-width: 740px; margin-bottom: 32px; }
+
+/* PULL QUOTE */
+.pull-quote { margin: 80px 0; padding: 48px 0 48px 48px; border-left: 1px solid var(--gold); }
+.pull-quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.5vw, 30px); line-height: 1.8; color: var(--white); margin-bottom: 24px; }
+.pull-quote-attr { font-size: 9px; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+
+/* SIGNATURE */
+.signature-block { margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line); display: flex; align-items: flex-start; gap: 48px; }
+.sig-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--white); line-height: 1.5; }
+.sig-name span { display: block; font-family: 'Montserrat', sans-serif; font-style: normal; font-size: 8.5px; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
+.sig-line { flex: 1; height: 1px; background: var(--line); margin-top: 16px; }
+
+.gold-divider { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); margin: 0 auto 80px; opacity: .4; }
+
+.site-footer { border-top: 1px solid var(--line); padding: 40px 48px 56px; max-width: 1100px; margin: 0 auto; }
+.site-footer p { font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px; }
+.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
+.footer-page-nav a:hover { color: var(--gold); }
+.footer-page-nav a.current { color: var(--gold); pointer-events: none; }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 24px; }
+  .hero { padding: 0 24px 56px; }
+  .content { padding: 60px 24px 80px; }
+  .pull-quote { padding: 32px 0 32px 32px; }
+  .signature-block { flex-direction: column; gap: 24px; }
+  .sig-line { display: none; }
+  .site-footer { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MORIO</a>
+  <a href="index.html" class="nav-back">← Back to Site</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Vision</p>
+    <h1 class="hero-title">Creating<br><em>Timeless</em><br>Masterpieces.</h1>
+    <p class="hero-sub">Japan's undiscovered luxury — a blue ocean for the world's discerning few</p>
+  </div>
+</section>
+
+<main class="content">
+
+  <!-- LEAD -->
+  <div class="lead-block">
+    <p class="lead-text">日本の職人の技術と美意識を、<br>世界最高峰の舞台へ。<br><em>Timeless</em> masterpieces — 時を超える不動産の創造。</p>
+    <p class="lead-body">世界の富は、これまで経験したことのないスピードで集積され続けています。その最上位層——世界の超富裕層——は、圧倒的に高い審美眼と、本物を見極める目を持ち、本当の価値があるものにしかお金を使いません。彼らが求めるのは、量産品では決して満たされない「本物」。ラグジュアリーホテルさえも凌駕する、真に唯一無二の体験と空間です。</p>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- VISION: BLUE OCEAN -->
+  <div class="section-block">
+    <p class="section-label">Blue Ocean — 日本のブルーオーシャン</p>
+    <p class="body-text">世界の富裕層が日本を訪れるとき、彼らは何を感じるでしょうか。東京・京都・大阪——日本の都市は、食・文化・安全性において世界でも最高水準を誇ります。しかし「住む」という体験においては、世界の超富裕層が本当に納得できるラグジュアリー不動産がほとんど存在しません。</p>
+    <p class="body-text">欧米のラグジュアリー市場は既にレッドオーシャン。ニューヨーク・ロンドン・パリでは、富裕層向け不動産市場は成熟し、価格は限界に近づいています。それに対し日本は、世界水準で見れば圧倒的に価格が割安でありながら、都市としての魅力・文化的深度・安全性において世界トップクラス。これは、先見性のある投資家・オーナーにとって、歴史的なブルーオーシャンです。</p>
+    <p class="body-text">MORIOは、この機会を見据えて設立された不動産プロデュース会社です。日本の超富裕層マーケットにおいて、世界に誇れる真のラグジュアリー不動産を創り出す——それが私たちのビジョンであり、使命です。</p>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <p class="pull-quote-text">"時を超える究極のマスターピース創造に向けて、励み続ける。<br>日本の職人技術を世界の舞台へ——それがMORIOの使命だ。"</p>
+    <p class="pull-quote-attr">Natsuhiko Morita — Founder &amp; CEO</p>
+  </div>
+
+  <!-- CEO MESSAGE -->
+  <div class="section-block">
+    <p class="section-label">CEO Message — 代表メッセージ</p>
+    <p class="body-text">私が不動産の世界に入ったとき、強く感じた違和感がありました。日本の不動産市場では、建物は「消耗品」として扱われている。築20〜30年も経てば価値がゼロになり、解体されて新しいものが建てられる——いわゆる「スクラップ＆ビルド」の文化です。</p>
+    <p class="body-text">しかしヨーロッパの都市を見てください。パリ、ロンドン、フィレンツェ——100年以上前に建てられた建築物が、今もなお最高の価値を誇り、時に新築を上回る価格で取引されています。それらには、単なる「機能」を超えた「美しさ」「歴史」「職人の魂」が宿っているからです。</p>
+    <p class="body-text">日本には、世界屈指の職人技術があります。素材への理解、細部への執着、無言のこだわり——日本の職人が持つクラフトマンシップは、世界のどこにも負けません。しかしその技術は、正しく評価されていない。MORIOは、この日本の宝を、世界が認める価値へと変換することを目指します。</p>
+    <p class="body-text">単に「高価な素材を使う」ことではありません。タイムレスなデザイン、本物の素材、そして卓越したクラフトマンシップ——この三位一体によって初めて、時を超えて価値を持ち続けるマスターピースが生まれます。私はそれを愚直に、情熱を持って、追い求め続けます。</p>
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="signature-block">
+    <div>
+      <p class="sig-name">Natsuhiko Morita<span>Founder &amp; CEO — 株式会社MORIO</span></p>
+    </div>
+    <div class="sig-line"></div>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-page-nav">
+      <a href="index.html">Home</a>
+      <a href="vision.html" class="current">Vision</a>
+      <a href="business.html">Business</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html">Company</a>
+    </nav>
+    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  </footer>
+
+</main>
+</body>
+</html>

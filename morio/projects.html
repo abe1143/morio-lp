@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --gold: #b09060; --white: #f5f2ee; --muted: rgba(245,242,238,.5); --line: rgba(176,144,96,.2); }
+html, body { background: #080808; color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100%; }
+
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 32px 48px; background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%); }
+.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 13px; letter-spacing: .45em; color: var(--white); text-decoration: none; opacity: .85; }
+.nav-back { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; border-bottom: 1px solid rgba(176,144,96,.3); padding-bottom: 2px; }
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero { width: 100%; min-height: 44vh; display: flex; align-items: flex-end; padding: 0 48px 72px; position: relative; border-bottom: 1px solid var(--line); }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, #0a0e0c 0%, #131a16 60%, #080808 100%); z-index: 0; }
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; width: 100%; margin: 0 auto; }
+.hero-eyebrow { font-size: 9px; letter-spacing: .45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(42px, 6vw, 80px); line-height: 1.05; letter-spacing: -.01em; color: var(--white); }
+.hero-title em { font-style: italic; }
+.hero-sub { margin-top: 20px; font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+
+.content { max-width: 1100px; margin: 0 auto; padding: 80px 48px 120px; }
+
+/* COMING SOON BLOCK */
+.coming-block { text-align: center; padding: 120px 0 80px; }
+.coming-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(100px, 18vw, 200px); font-weight: 300; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(176,144,96,.18); display: block; margin-bottom: 48px; }
+.coming-label { font-size: 9px; letter-spacing: .55em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.coming-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 4vw, 52px); color: var(--white); line-height: 1.3; margin-bottom: 32px; }
+.coming-title em { font-style: italic; }
+.coming-body { font-size: 12px; line-height: 2.3; color: var(--muted); max-width: 560px; margin: 0 auto 56px; }
+.coming-line { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto; opacity: .4; }
+
+/* AREA LIST */
+.chapter { margin-top: 80px; }
+.chapter-label { font-size: 8.5px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.area-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.area-item { background: #080808; padding: 32px 24px; transition: background .3s; }
+.area-item:hover { background: #0f0f0f; }
+.area-num { font-size: 8px; letter-spacing: .4em; color: var(--gold); margin-bottom: 12px; }
+.area-name { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,242,238,.5); line-height: 1.8; }
+.area-status { margin-top: 24px; font-size: 8px; letter-spacing: .3em; text-transform: uppercase; color: rgba(245,242,238,.2); border: 1px solid rgba(245,242,238,.1); display: inline-block; padding: 4px 10px; }
+
+.site-footer { border-top: 1px solid var(--line); padding: 40px 48px 56px; max-width: 1100px; margin: 0 auto; }
+.site-footer p { font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px; }
+.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
+.footer-page-nav a:hover { color: var(--gold); }
+.footer-page-nav a.current { color: var(--gold); pointer-events: none; }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 24px; }
+  .hero { padding: 0 24px 56px; }
+  .content { padding: 60px 24px 80px; }
+  .area-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer { padding: 32px 24px 48px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MORIO</a>
+  <a href="index.html" class="nav-back">← Back to Site</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Selected Works</p>
+    <h1 class="hero-title">Properties<br>that <em>Define</em><br>Their City.</h1>
+    <p class="hero-sub">Minami-Aoyama · Shirokanedai · Okamoto · Daikanyama · Roppongi</p>
+  </div>
+</section>
+
+<main class="content">
+
+  <!-- COMING SOON -->
+  <div class="coming-block">
+    <span class="coming-num">—</span>
+    <p class="coming-label">Projects — Coming Soon</p>
+    <h2 class="coming-title">厳選された物件を<br><em>近日公開予定。</em></h2>
+    <p class="coming-body">東京都心の希少立地において、MORIOがプロデュースする物件情報を順次公開いたします。各プロジェクトは、タイムレスなデザイン・本物の素材・卓越したクラフトマンシップの三位一体によって生み出されます。</p>
+    <div class="coming-line"></div>
+  </div>
+
+  <!-- FOCUS AREAS -->
+  <div class="chapter">
+    <p class="chapter-label">Focus Areas — 主要エリア</p>
+    <div class="area-grid">
+      <div class="area-item">
+        <p class="area-num">01</p>
+        <p class="area-name">Minami-<br>Aoyama<br>南青山</p>
+        <span class="area-status">Upcoming</span>
+      </div>
+      <div class="area-item">
+        <p class="area-num">02</p>
+        <p class="area-name">Shiro-<br>kanedai<br>白金台</p>
+        <span class="area-status">Upcoming</span>
+      </div>
+      <div class="area-item">
+        <p class="area-num">03</p>
+        <p class="area-name">Okamoto<br>岡本</p>
+        <span class="area-status">Upcoming</span>
+      </div>
+      <div class="area-item">
+        <p class="area-num">04</p>
+        <p class="area-name">Daikan-<br>yama<br>代官山</p>
+        <span class="area-status">Upcoming</span>
+      </div>
+      <div class="area-item">
+        <p class="area-num">05</p>
+        <p class="area-name">Roppongi<br>六本木</p>
+        <span class="area-status">Upcoming</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-page-nav">
+      <a href="index.html">Home</a>
+      <a href="vision.html">Vision</a>
+      <a href="business.html">Business</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html" class="current">Projects</a>
+      <a href="company.html">Company</a>
+    </nav>
+    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  </footer>
+
+</main>
+</body>
+</html>

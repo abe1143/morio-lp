@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Profile — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:  #b09060;
+  --white: #f5f2ee;
+  --muted: rgba(245,242,238,.5);
+  --line:  rgba(176,144,96,.2);
+}
+
+html, body {
+  background: #080808;
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  min-height: 100%;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 32px 48px;
+  background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%);
+}
+.nav-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; font-size: 13px; letter-spacing: .45em;
+  color: var(--white); text-decoration: none;
+  opacity: .85;
+}
+.nav-back {
+  font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color .3s;
+  border-bottom: 1px solid rgba(176,144,96,.3);
+  padding-bottom: 2px;
+}
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  width: 100%;
+  min-height: 44vh;
+  display: flex; align-items: flex-end;
+  padding: 0 48px 72px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #0d0b09 0%, #161210 60%, #080808 100%);
+  z-index: 0;
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1100px; width: 100%;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: .45em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-size: clamp(42px, 6vw, 80px);
+  line-height: 1.05; letter-spacing: -.01em;
+  color: var(--white);
+}
+.hero-title em { font-style: italic; }
+.hero-sub {
+  margin-top: 20px;
+  font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── MAIN CONTENT ── */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+}
+
+/* ── SECTION BLOCK ── */
+.section-block {
+  margin-bottom: 80px;
+}
+.section-label {
+  font-size: 8.5px; letter-spacing: .5em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── COMPANY TABLE ── */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.company-table tr {
+  border-bottom: 1px solid var(--line);
+}
+.company-table tr:first-child {
+  border-top: none;
+}
+.company-table th {
+  font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 300;
+  text-align: left;
+  padding: 22px 0 22px 0;
+  width: 220px;
+  vertical-align: top;
+}
+.company-table td {
+  font-size: 12px; letter-spacing: .08em; line-height: 2;
+  color: var(--white);
+  padding: 22px 0;
+  vertical-align: top;
+}
+.company-table td.muted {
+  color: var(--muted); font-size: 11px;
+}
+
+/* ── ADDRESS BLOCK ── */
+.address-block {
+  margin-bottom: 8px;
+}
+.address-block .addr-label {
+  font-size: 8.5px; letter-spacing: .3em; color: var(--gold);
+  text-transform: uppercase; display: block; margin-bottom: 4px;
+}
+.address-block p {
+  font-size: 12px; letter-spacing: .06em; line-height: 1.8; color: var(--white);
+}
+
+/* ── BANK LIST ── */
+.bank-list {
+  list-style: none;
+  display: flex; flex-wrap: wrap; gap: 8px 0;
+  flex-direction: column;
+}
+.bank-list li {
+  font-size: 12px; letter-spacing: .08em; line-height: 2;
+  color: var(--white);
+}
+.bank-list li::before {
+  content: '— ';
+  color: var(--gold);
+  margin-right: 4px;
+}
+
+/* ── BUSINESS LIST ── */
+.biz-list {
+  list-style: none;
+}
+.biz-list li {
+  font-size: 12px; letter-spacing: .08em; line-height: 2.4; color: var(--white);
+}
+
+/* ── DIVIDER ── */
+.gold-line {
+  width: 60px; height: 1px;
+  background: var(--gold); margin: 0 0 80px;
+  opacity: .5;
+}
+
+/* ── CONTACT BLOCK ── */
+.contact-block {
+  background: rgba(176,144,96,.06);
+  border: 1px solid var(--line);
+  padding: 48px;
+  margin-bottom: 80px;
+}
+.contact-block .contact-item {
+  display: flex; align-items: baseline; gap: 32px;
+  margin-bottom: 20px;
+}
+.contact-block .contact-item:last-child { margin-bottom: 0; }
+.contact-block .c-label {
+  font-size: 8.5px; letter-spacing: .4em; text-transform: uppercase;
+  color: var(--gold); min-width: 80px;
+}
+.contact-block .c-val {
+  font-size: 12px; letter-spacing: .1em; color: var(--white);
+}
+.contact-block .c-val a {
+  color: var(--white); text-decoration: none; transition: color .3s;
+}
+.contact-block .c-val a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 48px 56px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.site-footer p {
+  font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px;
+}
+.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(245,242,238,.4); text-decoration: none; transition: color .3s; }
+.footer-page-nav a:hover { color: #b09060; }
+.footer-page-nav a.current { color: #b09060; pointer-events: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 24px; }
+  .hero { padding: 0 24px 56px; }
+  .content { padding: 60px 24px 80px; }
+  .company-table th { width: 120px; font-size: 8px; }
+  .company-table td { font-size: 11px; }
+  .contact-block { padding: 32px 24px; }
+  .contact-block .contact-item { flex-direction: column; gap: 4px; }
+  .site-footer { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MORIO</a>
+  <a href="index.html" class="nav-back">← Back to Site</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Corporate Information</p>
+    <h1 class="hero-title">Company<br><em>Profile</em></h1>
+    <p class="hero-sub">株式会社MORIO — Morio Co., Ltd.</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- CONTACT / ACCESS -->
+  <div class="contact-block">
+    <div class="contact-item">
+      <span class="c-label">Tel</span>
+      <span class="c-val"><a href="tel:0364279185">03-6427-9185</a>&ensp;／&ensp;平日 10:30–18:00（土日祝定休）</span>
+    </div>
+    <div class="contact-item">
+      <span class="c-label">Email</span>
+      <span class="c-val"><a href="mailto:info@morio-realestate.com">info@morio-realestate.com</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="c-label">Web</span>
+      <span class="c-val"><a href="https://www.morio-realestate.com/" target="_blank">www.morio-realestate.com</a></span>
+    </div>
+  </div>
+
+  <!-- OUTLINE -->
+  <div class="section-block">
+    <p class="section-label">Outline — 会社概要</p>
+    <table class="company-table">
+      <tr>
+        <th>名称</th>
+        <td>株式会社MORIO<br><span style="font-size:10px;color:var(--muted);letter-spacing:.1em;">Morio Co., Ltd.</span></td>
+      </tr>
+      <tr>
+        <th>代表者</th>
+        <td>森田 夏光<br><span style="font-size:10px;color:var(--muted);">Natsuhiko Morita — Founder &amp; CEO</span></td>
+      </tr>
+      <tr>
+        <th>設立</th>
+        <td>2011年 1月</td>
+      </tr>
+      <tr>
+        <th>資本金</th>
+        <td>5,000万円</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>
+          <div class="address-block">
+            <span class="addr-label">Administrative Headquarters（総合オフィス）</span>
+            <p>〒107-0062　東京都港区南青山 5-11-23</p>
+          </div>
+          <div class="address-block" style="margin-top:16px;">
+            <span class="addr-label">Registered Headquarters（本社）</span>
+            <p>〒107-0062　東京都港区南青山 6-8-6<br>テロワール南青山 103</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>事業内容</th>
+        <td>
+          <ul class="biz-list">
+            <li>不動産開発事業</li>
+            <li>コントラクト事業</li>
+            <li>デザイン設計事業</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>取引銀行</th>
+        <td>
+          <ul class="bank-list">
+            <li>りそな銀行</li>
+            <li>三井住友銀行</li>
+            <li>みずほ銀行</li>
+            <li>三菱UFJ銀行</li>
+            <li>北陸銀行</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>顧問弁護士</th>
+        <td>沼井綜合法律事務所<br><span style="font-size:11px;color:var(--muted);">沼井 英明 先生</span></td>
+      </tr>
+      <tr>
+        <th>不動産免許番号</th>
+        <td>宅地建物取引業 免許番号<br><span style="letter-spacing:.05em;">東京都知事 (3) 第93117号</span></td>
+      </tr>
+      <tr>
+        <th>所属団体</th>
+        <td>(公社) 全日本不動産協会</td>
+      </tr>
+      <tr>
+        <th>保証協会</th>
+        <td>(公社) 不動産保証協会</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <nav class="footer-page-nav">
+      <a href="index.html">Home</a>
+      <a href="vision.html">Vision</a>
+      <a href="business.html">Business</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html" class="current">Company</a>
+    </nav>
+    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  </footer>
+
+</main>
+
+</body>
+</html>

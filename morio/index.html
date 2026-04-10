@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MORIO — Real Estate Producing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=16">
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div id="intro-bg"></div>
+  <div id="intro-content">
+    <div id="intro-logo">
+      <span class="intro-char" style="--i:0">M</span>
+      <span class="intro-char" style="--i:1">O</span>
+      <span class="intro-char" style="--i:2">R</span>
+      <span class="intro-char" style="--i:3">I</span>
+      <span class="intro-char" style="--i:4">O</span>
+    </div>
+    <p id="intro-sub">Real Estate Producing — Tokyo</p>
+    <div id="intro-line"></div>
+  </div>
+  <button id="intro-skip">skip</button>
+</div>
+
+<!-- BGM -->
+<audio id="bgm" src="audio/bgm.mp3" loop preload="none"></audio>
+
+<!-- SOUND TOGGLE -->
+<button id="sound-btn" aria-label="Toggle sound">
+  <svg id="icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  <svg id="icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo-mark"><a href="#" data-goto="0">MORIO</a></div>
+  <ul class="nav-links">
+    <li><a href="#" data-goto="1">vision</a></li>
+    <li><a href="#" data-goto="2">business</a></li>
+    <li><a href="#" data-goto="3">projects</a></li>
+    <li><a href="#" data-goto="4">producer</a></li>
+    <li><a href="#" data-goto="5">contact</a></li>
+  </ul>
+</nav>
+
+<!-- PROGRESS DOTS -->
+<div class="progress" id="progress"></div>
+
+<!-- ① HERO -->
+<div class="slide s1" id="hero" data-index="0">
+  <div class="slide-bg"><img src="images/01_hero.jpg" alt="" aria-hidden="true"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-grain"></div>
+  <div class="slide-vignette"></div>
+  <div class="slide-content">
+    <div class="hero-logo">MORIO</div>
+    <p class="slide-sub">Real Estate Producing — Tokyo</p>
+    <p class="slide-eyebrow" style="margin-top:28px;">Timeless Real Estate</p>
+  </div>
+</div>
+
+<!-- ② VISION -->
+<div class="slide s2" id="philosophy" data-index="1">
+  <div class="slide-bg"><img src="images/02_philosophy.jpg" alt="" aria-hidden="true"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-grain"></div>
+  <div class="slide-vignette"></div>
+  <div class="slide-content">
+    <p class="slide-eyebrow">Vision</p>
+    <h2 class="slide-title">Creating<br><em>Timeless</em><br>Masterpieces.</h2>
+    <p class="slide-sub">Japan's undiscovered luxury — a blue ocean for the world's discerning few</p>
+    <a href="vision.html" class="slide-cta">discover</a>
+  </div>
+</div>
+
+<!-- ③ BUSINESS -->
+<div class="slide s3" id="services" data-index="2">
+  <div class="slide-bg"><img src="images/03_services.jpg" alt="" aria-hidden="true"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-grain"></div>
+  <div class="slide-vignette"></div>
+  <div class="slide-content">
+    <p class="slide-eyebrow">Business</p>
+    <h2 class="slide-title">Real Estate<br><em>Innovation</em><br>& Producing</h2>
+    <p class="slide-sub">Development · Renovation · Art & Craft · Contract</p>
+    <a href="business.html" class="slide-cta">discover</a>
+  </div>
+</div>
+
+<!-- ④ PROJECTS -->
+<div class="slide s4" id="projects" data-index="3">
+  <div class="slide-bg"><img src="images/04_projects.jpg" alt="" aria-hidden="true"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-grain"></div>
+  <div class="slide-vignette"></div>
+  <div class="slide-content">
+    <p class="slide-eyebrow">Selected Works</p>
+    <h2 class="slide-title">Properties<br>that <em>Define</em><br>Their City.</h2>
+    <p class="slide-sub">Minami-Aoyama · Shirokanedai · Okamoto · Daikanyama · Roppongi</p>
+    <a href="projects.html" class="slide-cta">discover</a>
+  </div>
+</div>
+
+<!-- ⑤ PRODUCER -->
+<div class="slide s5" id="producer" data-index="4">
+  <div class="slide-bg"><img src="images/05_producer.jpg" alt="" aria-hidden="true"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-grain"></div>
+  <div class="slide-vignette"></div>
+  <div class="producer-layout">
+    <div class="prod-left slide-content" style="text-align:left; padding:0;">
+      <p class="slide-eyebrow">The Producer</p>
+      <h2 class="slide-title">Natsuhiko<br><em>Morita</em></h2>
+    </div>
+    <div class="prod-right">
+      <p class="prod-name-jp">森田 夏光　／　Founder &amp; CEO</p>
+      <p class="prod-bio">代表取締役／森田夏光。不動産イノベーションを実現し、日本を真に豊かにすることを使命とする。日本の職人の技術と独自の美意識を世界最高峰の舞台へ——タイムレスなマスターピースの創造を通じ、日本不動産のパラダイムシフトを牽引する。<br><br>We strive relentlessly toward the creation of ultimate masterpieces that transcend time, bringing Japan's singular craftsmanship to the global luxury stage.</p>
+      <p class="prod-quote">"時を超える究極のマスターピース創造に向けて、励み続ける。"</p>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ CONTACT -->
+<div class="slide footer-slide s6" id="contact" data-index="5">
+  <div class="slide-giant-bg" aria-hidden="true">
+    <span class="giant-letter gl-l">M</span>
+    <span class="giant-letter gl-r">O</span>
+  </div>
+  <div class="slide-grain" style="opacity:.15;"></div>
+  <div class="slide-content">
+    <p class="slide-eyebrow">Begin a Conversation</p>
+    <h2 class="slide-title" style="font-size:clamp(52px,9vw,120px);">Let's<br><em>Talk.</em></h2>
+    <a href="mailto:info@morio.jp" class="slide-cta" style="font-size:11px; letter-spacing:.4em;">enquire now</a>
+    <div class="contact-address">
+      <p>5-11-23 Minami-Aoyama, Minato-ku, Tokyo 107-0062</p>
+      <p>Tel: 03-6427-9185　&nbsp;|&nbsp;　平日 10:30–18:00</p>
+    </div>
+  </div>
+  <div class="footer-links-row">
+    <a href="company.html">company</a>
+    <a href="vision.html">vision</a>
+    <a href="business.html">business</a>
+    <a href="services.html">services</a>
+    <a href="projects.html">projects</a>
+    <a href="#">instagram</a>
+    <a href="mailto:info@morio.jp">info@morio.jp</a>
+  </div>
+  <p class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+</div>
+
+<script src="js/main.js?v=16"></script>
+</body>
+</html>

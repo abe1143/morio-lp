@@ -1,0 +1,37 @@
+[
+  {
+    "id": "nampeidai",
+    "location": "Nampeidai, Shibuya",
+    "name": "The Super Emotions House",
+    "tag": "Ultra-luxury Residence",
+    "image": "images/projects/nampeidai.jpg"
+  },
+  {
+    "id": "shirokanedai",
+    "location": "Shirokanedai, Minato",
+    "name": "The Graystone House",
+    "tag": "Private Residence",
+    "image": "images/projects/shirokanedai.jpg"
+  },
+  {
+    "id": "okamoto",
+    "location": "Okamoto, Kobe",
+    "name": "Okamoto House",
+    "tag": "Private Residence",
+    "image": "images/projects/okamoto.jpg"
+  },
+  {
+    "id": "aoyama",
+    "location": "Minami-Aoyama, Minato",
+    "name": "Aoyama Building",
+    "tag": "Mixed-Use / Boutique",
+    "image": "images/projects/aoyama.jpg"
+  },
+  {
+    "id": "roppongi",
+    "location": "Roppongi, Minato",
+    "name": "Roppongi Residence",
+    "tag": "Service Apartment",
+    "image": "images/projects/roppongi.jpg"
+  }
+]

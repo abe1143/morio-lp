@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --gold: #b09060; --white: #f5f2ee; --muted: rgba(245,242,238,.5); --line: rgba(176,144,96,.2); }
+html, body { background: #080808; color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100%; }
+
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 32px 48px; background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%); }
+.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 13px; letter-spacing: .45em; color: var(--white); text-decoration: none; opacity: .85; }
+.nav-back { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; border-bottom: 1px solid rgba(176,144,96,.3); padding-bottom: 2px; }
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero { width: 100%; min-height: 44vh; display: flex; align-items: flex-end; padding: 0 48px 72px; position: relative; border-bottom: 1px solid var(--line); }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, #0d0b09 0%, #161210 60%, #080808 100%); z-index: 0; }
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; width: 100%; margin: 0 auto; }
+.hero-eyebrow { font-size: 9px; letter-spacing: .45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(42px, 6vw, 80px); line-height: 1.05; letter-spacing: -.01em; color: var(--white); }
+.hero-title em { font-style: italic; }
+.hero-sub { margin-top: 20px; font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+
+.content { max-width: 1100px; margin: 0 auto; padding: 80px 48px 120px; }
+
+.chapter { margin-bottom: 100px; }
+.chapter-label { font-size: 8.5px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 24px; }
+.chapter-label span { color: rgba(176,144,96,.35); font-size: 11px; }
+
+.item { display: grid; grid-template-columns: 260px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+.item:first-of-type { border-top: 1px solid var(--line); }
+.item-left {}
+.item-num { font-size: 9px; letter-spacing: .4em; color: var(--gold); margin-bottom: 12px; }
+.item-title { font-size: 11px; letter-spacing: .25em; text-transform: uppercase; color: var(--white); line-height: 1.6; margin-bottom: 8px; }
+.item-title-jp { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--muted); }
+.item-body { font-size: 12px; line-height: 2.3; color: var(--muted); }
+
+.gold-divider { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); margin: 0 auto 80px; opacity: .4; }
+
+.site-footer { border-top: 1px solid var(--line); padding: 40px 48px 56px; max-width: 1100px; margin: 0 auto; }
+.site-footer p { font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px; }
+.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .3s; }
+.footer-page-nav a:hover { color: var(--gold); }
+.footer-page-nav a.current { color: var(--gold); pointer-events: none; }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 24px; }
+  .hero { padding: 0 24px 56px; }
+  .content { padding: 60px 24px 80px; }
+  .item { grid-template-columns: 1fr; gap: 20px; }
+  .site-footer { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MORIO</a>
+  <a href="index.html" class="nav-back">← Back to Site</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Services</p>
+    <h1 class="hero-title">Maximizing<br><em>Potential</em></h1>
+    <p class="hero-sub">不動産価値の最大化 — Real Estate Value</p>
+  </div>
+</section>
+
+<main class="content">
+
+  <!-- HARDWARE -->
+  <div class="chapter">
+    <p class="chapter-label">Hardware <span>— 本物の素材・タイムレスデザイン・クラフトマンシップ</span></p>
+
+    <div class="item">
+      <div class="item-left">
+        <p class="item-num">01</p>
+        <p class="item-title">Real Material</p>
+        <p class="item-title-jp">本物の素材</p>
+      </div>
+      <p class="item-body">本物の素材とは、汚れ、退色、風化、傷・・・一般的に劣化を意味する要素が、逆に"味わい、風合い"という魅力に変わる素材の事です。いわゆるヴィンテージと呼ばれ高い評価を得るプロダクトは、言うまでも無く本物の素材で造られています。MORIOのプロダクトは、ヴィンテージとして魅力が増すことを前提としたものづくりをしています。</p>
+    </div>
+
+    <div class="item">
+      <div class="item-left">
+        <p class="item-num">02</p>
+        <p class="item-title">Timeless Design</p>
+        <p class="item-title-jp">タイムレスデザイン</p>
+      </div>
+      <p class="item-body">住宅に限らずどんなに最新の機能や設備を持つものでも、１０年も経てばそれは使いづらいものとなり、価値を失います。対照的に、悠久の時を経てなお高い価値を維持しているプロダクトには、機能・性能を超越した"普遍的美しさ"が存在しています。MORIOはそのタイムレスに人の心を惹きつけるデザインとは何かを探求し続けます。</p>
+    </div>
+
+    <div class="item">
+      <div class="item-left">
+        <p class="item-num">03</p>
+        <p class="item-title">Craftsmanship</p>
+        <p class="item-title-jp">クラフトマンシップ</p>
+      </div>
+      <p class="item-body">欧米では、１００年以上築年を経過した建築物が多く存在し、現在も時に新築を凌駕するほどの価値を生み出しています。それらは造り込み、アートディレクション、建築技術、全てにおいて尋常では無いほどのクラフトマンシップが表現されています。MORIOのプロダクトも表面的な合理性や採算性に捉われることなく、本当の価値とは何か、ひたすらに情熱を燃やし、探求し続けています。</p>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- SOFTWARE -->
+  <div class="chapter">
+    <p class="chapter-label">Software <span>— サービスアパートメント</span></p>
+
+    <div class="item">
+      <div class="item-left">
+        <p class="item-num">01</p>
+        <p class="item-title">Service &amp; Interior</p>
+        <p class="item-title-jp">サービスと内装</p>
+      </div>
+      <p class="item-body">ラグジュアリーホテルのように寛げる空間で、定期的な清掃やコンシェルジュなども常駐し、ホテルライクなサービスを受けることができる上、家具家電、食器など生活に必要なものは備え付けられているので、暮らすような感覚でリラックスして滞在することができます。MORIOの強みを生かした内装は、本物の素材・タイムレスなデザインに、感度の高いインテリアで、海外エグゼクティブも納得させるよう細部にまでこだわった創りこみで仕上げます。</p>
+    </div>
+
+    <div class="item">
+      <div class="item-left">
+        <p class="item-num">02</p>
+        <p class="item-title">Higher Profitability</p>
+        <p class="item-title-jp">高収益モデル</p>
+      </div>
+      <p class="item-body">サービスアパートメントのメインターゲットは上位1%の富裕層、つまり外国人ビジネスエグゼクティブや日本人エグゼクティブです。例えば都心にビジネスで2週間以上滞在することになった場合、ウィークリーマンションやビジネスホテルではエグゼクティブクラスにとっては狭すぎるため、コンペティターはラグジュアリーホテルになります。そのため同じような間取り・エリアの賃貸住宅の相場より、2～5倍の賃料を得ることができます。</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-page-nav">
+      <a href="index.html">Home</a>
+      <a href="vision.html">Vision</a>
+      <a href="business.html">Business</a>
+      <a href="services.html" class="current">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html">Company</a>
+    </nav>
+    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  </footer>
+
+</main>
+</body>
+</html>
