@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Producing — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --gold: #b09060; --white: #f5f2ee; --muted: rgba(245,242,238,.5); --line: rgba(176,144,96,.2); --bg: #080808; --bg2: #0f0f0f; }
+html, body { background: var(--bg); color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100%; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 32px 48px; background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%); }
+.nav-logo { font-size: 13px; letter-spacing: .45em; color: var(--white); opacity: .85; transition: opacity .3s; }
+.nav-logo:hover { opacity: 1; }
+.nav-back { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); transition: color .3s; border-bottom: 1px solid rgba(176,144,96,.3); padding-bottom: 2px; }
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+/* HERO */
+.hero { width: 100%; min-height: 50vh; display: flex; align-items: flex-end; padding: 0 48px 72px; position: relative; border-bottom: 1px solid var(--line); }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, #0d0b09 0%, #161210 60%, #080808 100%); z-index: 0; }
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; width: 100%; margin: 0 auto; }
+.hero-eyebrow { font-size: 9px; letter-spacing: .45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(42px, 6vw, 80px); line-height: 1.05; color: var(--white); }
+.hero-title em { font-style: italic; }
+.hero-sub { margin-top: 20px; font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+
+/* LAYOUT */
+.content { max-width: 1100px; margin: 0 auto; padding: 0 48px 120px; }
+.section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+.section:last-of-type { border-bottom: none; }
+.section-label { font-size: 9px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+.section-label::after { content: ''; width: 40px; height: 1px; background: var(--line); }
+.section-heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(26px, 3.5vw, 48px); line-height: 1.25; color: var(--white); margin-bottom: 40px; }
+.section-heading em { font-style: italic; }
+.prose { max-width: 720px; }
+.prose p { font-size: 13px; font-weight: 300; line-height: 2.4; letter-spacing: .03em; color: var(--muted); margin-bottom: 24px; }
+.prose p:last-child { margin-bottom: 0; }
+.en-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05em; color: var(--gold); }
+
+/* LEAD */
+.lead { padding: 80px 0 60px; }
+.lead .prose p { font-size: 14px; line-height: 2.5; color: rgba(245,242,238,.7); }
+
+/* DIAGRAM */
+.diagram { display: flex; align-items: center; justify-content: flex-start; gap: 12px; margin: 48px 0 24px; flex-wrap: wrap; }
+.diagram-node { width: 120px; height: 120px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 1px solid var(--line); background: var(--bg2); }
+.diagram-node:last-child { border-color: var(--gold); background: rgba(176,144,96,.06); box-shadow: 0 0 40px rgba(176,144,96,.06); }
+.d-en { font-family: 'Cormorant Garamond', serif; font-size: 11px; font-style: italic; letter-spacing: .06em; color: var(--gold); }
+.d-jp { font-size: 9px; font-weight: 300; color: var(--muted); margin-top: 4px; }
+.diagram-arrow { font-size: 14px; color: rgba(245,242,238,.2); }
+
+/* BENCHMARK CARDS */
+.bm-card { display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--line); margin-bottom: 2px; transition: background .4s; }
+.bm-card:hover { background: var(--bg2); }
+.bm-meta { padding: 36px 32px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+.bm-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--gold); margin-bottom: 4px; }
+.bm-name-jp { font-size: 10px; font-weight: 300; color: rgba(245,242,238,.3); letter-spacing: .1em; margin-bottom: 20px; }
+.bm-stat { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--white); line-height: 1; }
+.bm-stat-label { font-size: 8px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.bm-body { padding: 36px 32px; }
+.bm-body p { font-size: 12px; font-weight: 300; line-height: 2.2; color: var(--muted); margin-bottom: 16px; }
+.bm-body p:last-child { margin-bottom: 0; }
+.bm-metrics { display: flex; gap: 32px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.bm-metric-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--white); }
+.bm-metric-label { font-size: 8px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+/* QUOTE */
+.quote-block { padding: 100px 0; text-align: center; position: relative; }
+.quote-block::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 300; color: rgba(176,144,96,.06); position: absolute; top: 20px; left: 50%; transform: translateX(-50%); line-height: 1; }
+.quote-body { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.5vw, 28px); font-weight: 300; line-height: 2; letter-spacing: .06em; color: var(--white); max-width: 640px; margin: 0 auto 28px; }
+.quote-credit { font-size: 9px; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); }
+
+/* DEFINITION BOX */
+.def-box { max-width: 800px; margin: 0 auto; border: 1px solid var(--gold); padding: 56px; background: rgba(176,144,96,.02); text-align: center; }
+.def-label { font-size: 8.5px; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.def-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.5vw, 28px); font-weight: 300; line-height: 2; letter-spacing: .06em; color: var(--white); }
+.def-text em { font-style: italic; color: var(--gold); }
+
+/* PILLARS */
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); margin-top: 48px; }
+.pillar-card { background: var(--bg); padding: 40px 32px; transition: background .4s; }
+.pillar-card:hover { background: var(--bg2); }
+.pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(176,144,96,.1); line-height: 1; margin-bottom: 24px; }
+.pillar-en { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--gold); margin-bottom: 4px; }
+.pillar-jp { font-size: 9px; font-weight: 300; color: var(--muted); letter-spacing: .1em; margin-bottom: 20px; }
+.pillar-desc { font-size: 12px; font-weight: 300; line-height: 2.1; color: var(--muted); }
+
+/* COMPARISON */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 48px; border: 1px solid var(--line); }
+.compare-col { padding: 40px 36px; }
+.compare-col:first-child { border-right: 1px solid var(--line); }
+.compare-col:last-child { background: rgba(176,144,96,.02); }
+.compare-label { font-size: 11px; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
+.compare-col:first-child .compare-label { color: var(--muted); }
+.compare-col:last-child .compare-label { color: var(--gold); }
+.compare-row { margin-bottom: 20px; }
+.compare-key { font-size: 8px; letter-spacing: .25em; text-transform: uppercase; color: rgba(245,242,238,.3); margin-bottom: 4px; }
+.compare-val { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--muted); }
+.compare-col:last-child .compare-val { color: rgba(245,242,238,.8); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* FOOTER */
+.site-footer { border-top: 1px solid var(--line); padding: 40px 48px 56px; max-width: 1100px; margin: 0 auto; }
+.site-footer p { font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px; }
+.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); transition: color .3s; }
+.footer-page-nav a:hover { color: var(--gold); }
+.footer-page-nav a.current { color: var(--gold); pointer-events: none; }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 24px; }
+  .hero { padding: 0 24px 56px; min-height: 40vh; }
+  .content { padding: 0 24px 80px; }
+  .bm-card { grid-template-columns: 1fr; }
+  .bm-meta { border-right: none; border-bottom: 1px solid var(--line); }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-col:first-child { border-right: none; border-bottom: 1px solid var(--line); }
+  .def-box { padding: 40px 24px; }
+  .diagram-node { width: 96px; height: 96px; }
+  .site-footer { padding: 32px 24px 48px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MORIO</a>
+  <a href="index.html" class="nav-back">← Back to Site</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Producing</p>
+    <h1 class="hero-title">Real Estate<br><em>Producing</em></h1>
+    <p class="hero-sub">不動産プロデュースとは何か — The Art of Crystallizing Value</p>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- LEAD -->
+  <div class="lead reveal">
+    <div class="prose">
+      <p>不動産プロデュースとは何か。それは、あらゆるカオスを収斂させ、時を超える価値を結晶化させる技術である。</p>
+      <p>土地の形状、法規制、構造、コスト、マーケット、テナント、金融、デザイン、施工、運用——不動産開発には無数の変数が存在する。それらは本質的にカオスであり、放置すればエントロピーは増大し続ける。プロデューサーの仕事は、このカオスに<span class="en-italic">negative entropy</span>——負のエントロピーを作用させ、あらゆる要素をひとつの結晶へと収斂させることにある。</p>
+    </div>
+  </div>
+
+  <!-- 01 PROCESS -->
+  <div class="section reveal">
+    <p class="section-label">01 — Process</p>
+    <h2 class="section-heading">エントロピーの<em>収斂</em></h2>
+    <div class="prose">
+      <p>あらゆる不動産プロジェクトは、混沌から始まる。プロデューサーの仕事は、その混沌を読み解き、要素を選別し、不可逆的な価値の結晶体へと変換することである。</p>
+    </div>
+    <div class="diagram">
+      <div class="diagram-node"><span class="d-en">Chaos</span><span class="d-jp">混沌</span></div>
+      <span class="diagram-arrow">→</span>
+      <div class="diagram-node"><span class="d-en">Convergence</span><span class="d-jp">収斂</span></div>
+      <span class="diagram-arrow">→</span>
+      <div class="diagram-node"><span class="d-en">Refinement</span><span class="d-jp">精製</span></div>
+      <span class="diagram-arrow">→</span>
+      <div class="diagram-node"><span class="d-en">Crystallize</span><span class="d-jp">結晶化</span></div>
+    </div>
+  </div>
+
+  <!-- 02 BENCHMARK -->
+  <div class="section reveal">
+    <p class="section-label">02 — Benchmark</p>
+    <h2 class="section-heading">究極のエントロピー収斂——<br><em>千年のLTV</em>を検証する</h2>
+    <div class="prose">
+      <p>不動産プロデュースの究極のベンチマークは、何百年・何千年にわたって価値を創出し続ける建築物である。ピラミッド、ノートルダム大聖堂、清水寺——これらは単なる「古い建物」ではない。究極のエントロピー収斂を果たした結晶体であり、人類史上最も高いLTVを叩き出し続けている「不動産プロダクト」である。</p>
+      <p>その共通項は明確だ。素材に一切の妥協がなく、コンセプトが時代を超えて普遍であり、当時の最高峰のクラフトマンシップで仕上げられている。短期の採算性ではなく、永続的な価値を志向した——まさにプロデューサー的思考の結晶である。</p>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="bm-card">
+        <div class="bm-meta">
+          <div class="bm-name">Great Pyramid</div>
+          <div class="bm-name-jp">ギザの大ピラミッド</div>
+          <div class="bm-stat">4,585</div>
+          <div class="bm-stat-label">Years of Value Creation</div>
+        </div>
+        <div class="bm-body">
+          <p>紀元前2560年に建造された大ピラミッドは、4,585年を経た今なお、エジプト経済の根幹を支え続けている。一つの建築物が国家の産業そのものになった、人類史上最も極端なLTVの事例である。</p>
+          <p>2024年のエジプトの観光収入は$153億——GDPの約12%を占め、その中核的な吸引力はピラミッドである。仮に近代観光業が本格化した1975年以降の50年間だけで累積しても、ピラミッドが生んだ経済価値は数千億ドル規模に達する。</p>
+          <div class="bm-metrics">
+            <div class="bm-metric"><div class="bm-metric-value">$153億</div><div class="bm-metric-label">年間観光収入 (2024)</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">1,580万人</div><div class="bm-metric-label">年間来訪者数</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">12%</div><div class="bm-metric-label">GDP構成比</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bm-meta">
+          <div class="bm-name">Notre-Dame</div>
+          <div class="bm-name-jp">ノートルダム大聖堂</div>
+          <div class="bm-stat">862</div>
+          <div class="bm-stat-label">Years of Value Creation</div>
+        </div>
+        <div class="bm-body">
+          <p>1163年着工、1345年竣工。862年間にわたりパリのアイデンティティそのものであり続けたノートルダム大聖堂は、2019年の大火災で世界を衝撃させた——しかしその後に起こったことこそが、このプロダクトのLTVを証明している。</p>
+          <p>火災後、72時間以内に10億ユーロ超の修復寄付が世界中から集まった。修復費用は約8.5億ユーロ。そして2024年12月の再開後、わずか7ヶ月で700万人が来訪。現在は年間1,100万人を超え、パリ最大の観光資産として牽引し続けている。</p>
+          <div class="bm-metrics">
+            <div class="bm-metric"><div class="bm-metric-value">1,100万人</div><div class="bm-metric-label">再開後 年間来訪者数</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">€8.5億</div><div class="bm-metric-label">修復費用</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">€10億+</div><div class="bm-metric-label">72h以内の世界寄付額</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bm-meta">
+          <div class="bm-name">Kiyomizu-dera</div>
+          <div class="bm-name-jp">清水寺</div>
+          <div class="bm-stat">1,248</div>
+          <div class="bm-stat-label">Years of Value Creation</div>
+        </div>
+        <div class="bm-body">
+          <p>778年開創。1,248年間にわたり、清水寺は京都の——そして日本の——文化的重心であり続けている。年間500万人超の参拝者を集め、京都市の観光客訪問先ランキングでは20年以上連続で第1位。</p>
+          <p>京都市全体の年間観光消費額は約1.4兆円。清水寺はその最大の核である。幾度もの火災による焼失と再建を繰り返しながら、そのコンセプトは1,248年間一度も変わっていない。コンセプトの不変性こそが、究極のLTVを生む。</p>
+          <div class="bm-metrics">
+            <div class="bm-metric"><div class="bm-metric-value">500万人+</div><div class="bm-metric-label">年間参拝者数</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">20年+</div><div class="bm-metric-label">京都訪問先 連続1位</div></div>
+            <div class="bm-metric"><div class="bm-metric-value">1.4兆円</div><div class="bm-metric-label">京都市 年間観光消費額</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE 1 -->
+  <div class="quote-block reveal">
+    <p class="quote-body">削ぎ落として、倍にする。<br>それがプロデュースの本質だ。</p>
+    <span class="quote-credit">Natsuhiko Morita — Founder &amp; CEO</span>
+  </div>
+
+  <!-- 03 DEFINITION -->
+  <div class="section reveal">
+    <p class="section-label">03 — Definition</p>
+    <h2 class="section-heading">不動産プロデュースの<em>定義</em></h2>
+    <div class="prose">
+      <p>ピラミッド、ノートルダム、清水寺——これらの事例が教えるのは、極めてシンプルな真理である。素材・コンセプト・クラフトマンシップの三位一体が高次元で統合されたプロダクトは、時間の経過とともに価値が増大する。そしてその累積LTVは、短期利益を追った開発の何千倍・何万倍にもなる。</p>
+      <p>プロデューサーの仕事は、あらゆる不動産が本来持っている潜在的な価値——立地、空間、歴史、文脈——を最大化することにある。その土地に何を建てるか。どう設計し、どんな素材を使い、どう運用するか。すべての意思決定を一つのビジョンの下に統合し、その不動産が持ちうる最高の姿を引き出す。</p>
+    </div>
+    <div style="margin-top:64px;">
+      <div class="def-box">
+        <div class="def-label">MORIO — Real Estate Producing</div>
+        <div class="def-text">不動産プロデュース＝<br><em>不動産潜在価値の最大化</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 SIX PILLARS -->
+  <div class="section reveal">
+    <p class="section-label">04 — Six Pillars</p>
+    <h2 class="section-heading">プロデュースを構成する<em>6つの柱</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-en">Concept Design</div>
+        <div class="pillar-jp">企画・コンセプト設計</div>
+        <p class="pillar-desc">立地のポテンシャルを最大化するアセットタイプの選定から始まる。レジデンス、ホテル、商業、複合——何を建てるかではなく、「何を建てるべきか」を見極める。マーケットの構造を読み、時代を超える需要を捉え、最も美しい解を設計する。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-en">Financial Architecture</div>
+        <div class="pillar-jp">ファイナンシャル・アーキテクチャ</div>
+        <p class="pillar-desc">収益モデルは、建築と同じく「構造体」である。開発利益の極大化だけでなく、運用期間全体を通じた価値のストラクチャーを設計する。IRR、NOI、LTV——数字の美学が、プロジェクトの骨格を決定する。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-en">Spatial Design</div>
+        <div class="pillar-jp">空間デザイン</div>
+        <p class="pillar-desc">プロデューサーは、設計者に「何を実現すべきか」を伝える存在である。天井高、開口、動線、素材、光の入り方——空間の情報量を最大化しながら、削ぎ落とすべきものを見極める。結果として生まれるのは、静謐で、しかし圧倒的な空間体験である。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-en">Asset Strategy</div>
+        <div class="pillar-jp">アセット戦略・運用設計</div>
+        <p class="pillar-desc">建てて終わりではない。竣工後の運用こそが、LTVを決定する。賃貸、売却、ホテル運用、サービスアパートメント——出口戦略の設計と、運用期間における価値の維持・向上を、開発段階から織り込む。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <div class="pillar-en">Craftsmanship</div>
+        <div class="pillar-jp">クラフトマンシップ</div>
+        <p class="pillar-desc">日本の職人技術は、世界最高峰である。左官、木工、石工、鉄工——量産品では到達できない深度を、建築とインテリアに実装する。素材とディテールへの執着が、時間の経過とともに価値を増す物件を生む。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">06</div>
+        <div class="pillar-en">Orchestration</div>
+        <div class="pillar-jp">オーケストレーション</div>
+        <p class="pillar-desc">プロデューサーの真の能力は、すべてを統合する力にある。設計・施工・法務・金融・マーケティング——異なる専門領域をひとつのビジョンの下に統合し、プロジェクト全体を一つの作品として完成させる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 DISTINCTION -->
+  <div class="section reveal">
+    <p class="section-label">05 — Distinction</p>
+    <h2 class="section-heading">従来の不動産開発と<br><em>プロデュース</em>の違い</h2>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-label">Conventional</div>
+        <div class="compare-row"><div class="compare-key">Goal</div><div class="compare-val">開発利益の最大化</div></div>
+        <div class="compare-row"><div class="compare-key">Time Horizon</div><div class="compare-val">竣工・売却まで</div></div>
+        <div class="compare-row"><div class="compare-key">Design</div><div class="compare-val">コストと規制の最適化</div></div>
+        <div class="compare-row"><div class="compare-key">Value Driver</div><div class="compare-val">立地・面積・築年数</div></div>
+        <div class="compare-row"><div class="compare-key">Approach</div><div class="compare-val">分業型・工程管理</div></div>
+        <div class="compare-row"><div class="compare-key">Outcome</div><div class="compare-val">建物の供給</div></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-label">Producing</div>
+        <div class="compare-row"><div class="compare-key">Goal</div><div class="compare-val">LTV（生涯価値）の最大化</div></div>
+        <div class="compare-row"><div class="compare-key">Time Horizon</div><div class="compare-val">10年、30年、50年先まで</div></div>
+        <div class="compare-row"><div class="compare-key">Design</div><div class="compare-val">タイムレスな美の追求</div></div>
+        <div class="compare-row"><div class="compare-key">Value Driver</div><div class="compare-val">体験・素材・思想・不可逆性</div></div>
+        <div class="compare-row"><div class="compare-key">Approach</div><div class="compare-val">プロデューサー統合型</div></div>
+        <div class="compare-row"><div class="compare-key">Outcome</div><div class="compare-val">マスターピースの創造</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 PHILOSOPHY -->
+  <div class="section reveal">
+    <p class="section-label">06 — Philosophy</p>
+    <h2 class="section-heading">最も美しい不動産開発は、<br><em>最も持続的</em>である。</h2>
+    <div class="prose">
+      <p>短期利益を追えば、建物は消耗品になる。しかし、真に美しい不動産——素材・空間・コンセプト・運用のすべてが高次元で統合された不動産は、時間の経過とともに価値が増す。パリのオスマン建築がそうであるように、ロンドンのジョージアン・テラスがそうであるように。</p>
+      <p>美しさとは、装飾のことではない。すべての要素が必然性を持って配置され、余計なものが一切存在しない状態——それが我々の考える美であり、それは同時に、最もエントロピーが低い、最も持続的な価値構造を意味する。</p>
+      <p>MORIOの不動産プロデュースとは、この信念の実装である。カオスを結晶に変え、時間を味方につけ、日本の不動産に新しいパラダイムを築く。</p>
+    </div>
+  </div>
+
+  <!-- CLOSING QUOTE -->
+  <div class="quote-block reveal">
+    <p class="quote-body">時を超える究極のマスターピース創造に向けて、励み続ける。</p>
+    <span class="quote-credit">Natsuhiko Morita — Founder &amp; CEO</span>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-page-nav">
+      <a href="index.html">Home</a>
+      <a href="vision.html">Vision</a>
+      <a href="business.html">Business</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="producing.html" class="current">Producing</a>
+      <a href="company.html">Company</a>
+    </nav>
+    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

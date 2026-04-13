@@ -112,7 +112,7 @@ nav * { pointer-events: all; }
   list-style: none;
 }
 .nav-links a {
-  font-size: 10px; letter-spacing: .22em;
+  font-size: 13px; letter-spacing: .22em;
   color: var(--white); text-decoration: none; opacity: .5;
   transition: opacity .3s;
 }
@@ -153,32 +153,32 @@ nav * { pointer-events: all; }
 /* per-slide colour palettes */
 .s1 .slide-bg {
   background: linear-gradient(160deg, #0d0b09 0%, #1a1510 50%, #0a0807 100%);
-  background-image: url('../images/01_hero.jpg');
+  background-image: url('../images/slides/hero.jpg');
   background-size: cover; background-position: center;
 }
 .s2 .slide-bg {
   background: linear-gradient(170deg, #080c10 0%, #111820 55%, #060a0d 100%);
-  background-image: url('../images/02_philosophy.jpg');
+  background-image: url('../images/slides/vision.jpg');
   background-size: cover; background-position: center;
 }
 .s3 .slide-bg {
   background: linear-gradient(150deg, #0e0d0b 0%, #1c1a15 55%, #090807 100%);
-  background-image: url('../images/03_services.jpg');
+  background-image: url('../images/slides/business.jpg');
   background-size: cover; background-position: center;
 }
 .s4 .slide-bg {
   background: linear-gradient(165deg, #0a0e0c 0%, #131a16 55%, #070b09 100%);
-  background-image: url('../images/04_projects.jpg');
+  background-image: url('../images/slides/projects.jpg');
   background-size: cover; background-position: center;
 }
 .s5 .slide-bg {
   background: linear-gradient(155deg, #0d0b10 0%, #1a1520 55%, #090710 100%);
-  background-image: url('../images/05_producer.jpg');
+  background-image: url('../images/slides/producer.jpg');
   background-size: cover; background-position: center;
 }
 .s6 .slide-bg {
   background: linear-gradient(160deg, #100e0a 0%, #201c14 55%, #0b0908 100%);
-  background-image: url('../images/06_contact.jpg');
+  background-image: url('../images/slides/contact.jpg');
   background-size: cover; background-position: center;
 }
 
@@ -245,14 +245,14 @@ nav * { pointer-events: all; }
 }
 .slide-title em { font-style: italic; color: var(--white); }
 .slide-sub {
-  font-size: 10px; letter-spacing: .32em; text-transform: uppercase;
+  font-size: 14px; letter-spacing: .28em; text-transform: uppercase;
   color: var(--muted); margin-top: 24px;
   opacity: 0; transform: translateY(14px);
   transition: opacity .9s ease .2s, transform .9s ease .2s;
 }
 .slide-cta {
   display: inline-block; margin-top: 40px;
-  font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: .3em; text-transform: uppercase;
   color: var(--white); text-decoration: none;
   border: 1px solid rgba(245,242,238,.4);
   padding: 13px 32px;
@@ -344,7 +344,7 @@ nav * { pointer-events: all; }
 }
 .slide.active .footer-links-row { opacity: 1; transform: translateY(0); }
 .footer-links-row a {
-  font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
   color: rgba(245,242,238,.4); text-decoration: none; transition: color .3s;
 }
 .footer-links-row a:hover { color: var(--gold); }
@@ -355,12 +355,12 @@ nav * { pointer-events: all; }
 }
 .slide.active .contact-address { opacity: 1; transform: translateY(0); }
 .contact-address p {
-  font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--muted); line-height: 2.2;
 }
 
 .footer-copy {
-  margin-top: 80px; font-size: 9px; letter-spacing: .2em;
+  margin-top: 80px; font-size: 11px; letter-spacing: .2em;
   color: rgba(245,242,238,.2);
   opacity: 0; transition: opacity .9s ease .5s;
 }
