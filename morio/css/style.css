@@ -42,6 +42,12 @@
 @keyframes introCharIn {
   to { opacity: 1; transform: translateY(0); }
 }
+#intro-sub {
+  font-size: 18px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--muted); margin-top: 22px;
+  opacity: 0;
+  animation: introFadeIn 1s ease 2.4s both;
+}
 #intro-line {
   width: 0; height: 1px;
   background: var(--gold);
@@ -207,17 +213,18 @@ nav * { pointer-events: all; }
 
 .slide-eyebrow {
   font-size: 16px; letter-spacing: .45em; text-transform: uppercase;
+  font-weight: 400;
   color: var(--gold); margin-bottom: 32px;
   opacity: 0; transform: translateY(14px);
   transition: opacity .9s ease, transform .9s ease;
   position: relative; display: inline-block;
 }
-.slide-eyebrow::before {
+.slide-eyebrow::after {
   content: '';
   display: block;
   width: 28px; height: 1px;
   background: var(--gold);
-  margin-bottom: 16px;
+  margin-top: 14px;
   opacity: .7;
 }
 .slide-title {

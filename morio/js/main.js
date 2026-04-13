@@ -28,7 +28,7 @@
   });
 })();
 
-// ── HERO LOGO SYNC: イントロとヒーローのMORIO位置を実測して一致させる ──
+// ── HERO SYNC: イントロとヒーローのMORIO・サブテキスト位置を実測して一致させる ──
 function syncHeroLogo() {
   const introLogo = document.getElementById('intro-logo');
   const heroLogo  = document.querySelector('.hero-logo');
@@ -41,8 +41,22 @@ function syncHeroLogo() {
     heroLogo.style.transform = `translateY(${diff}px)`;
   }
 }
-document.fonts.ready.then(syncHeroLogo);
-window.addEventListener('resize', syncHeroLogo);
+
+function syncHeroSub() {
+  const introSub = document.getElementById('intro-sub');
+  const heroSub  = document.querySelector('.s1 .slide-sub');
+  if (!introSub || !heroSub) return;
+
+  heroSub.style.transform = '';
+  const diff = introSub.getBoundingClientRect().top
+             - heroSub.getBoundingClientRect().top;
+  if (Math.abs(diff) > 0.5) {
+    heroSub.style.transform = `translateY(${diff}px)`;
+  }
+}
+
+document.fonts.ready.then(() => { syncHeroLogo(); syncHeroSub(); });
+window.addEventListener('resize', () => { syncHeroLogo(); syncHeroSub(); });
 
 // ── SLIDE SYSTEM ──
 const slides     = Array.from(document.querySelectorAll('.slide'));
