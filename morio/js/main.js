@@ -3,11 +3,17 @@
   const intro   = document.getElementById('intro');
   const skipBtn = document.getElementById('intro-skip');
 
+  // サブページから戻ったときはイントロをスキップ
+  if (sessionStorage.getItem('introSeen')) {
+    intro.remove();
+    return;
+  }
+  sessionStorage.setItem('introSeen', '1');
+
   document.documentElement.style.overflow = 'hidden';
 
   function exitIntro() {
     intro.classList.add('hide');
-    // bg: 1.6s, content: delay 1s + 0.6s = 1.6s → remove at 2s
     setTimeout(() => {
       document.documentElement.style.overflow = '';
       intro.remove();
@@ -28,14 +34,13 @@ function syncHeroLogo() {
   const heroLogo  = document.querySelector('.hero-logo');
   if (!introLogo || !heroLogo) return;
 
-  heroLogo.style.transform = ''; // リセット
+  heroLogo.style.transform = '';
   const diff = introLogo.getBoundingClientRect().top
              - heroLogo.getBoundingClientRect().top;
   if (Math.abs(diff) > 0.5) {
     heroLogo.style.transform = `translateY(${diff}px)`;
   }
 }
-// フォント読み込み完了後に実測（フォントで高さが変わるため）
 document.fonts.ready.then(syncHeroLogo);
 window.addEventListener('resize', syncHeroLogo);
 
@@ -92,10 +97,8 @@ function goTo(idx) {
   isMoving = true;
   const duration = 1500;
 
-  // 現在のコンテンツをフェードアウト
   slides[currentIdx].classList.remove('active');
 
-  // スクロール中間でコンテンツをフェードイン
   setTimeout(() => {
     resetKenBurns(slides[idx]);
     slides[idx].classList.add('active');
@@ -103,7 +106,6 @@ function goTo(idx) {
     currentIdx = idx;
   }, duration * 0.55);
 
-  // スムーススクロール実行
   animateScroll(slides[idx].offsetTop, duration, () => {
     isMoving = false;
   });
@@ -146,50 +148,3 @@ window.addEventListener('touchend', e => {
   const diff = touchY - e.changedTouches[0].clientY;
   if (Math.abs(diff) > 50) goTo(currentIdx + (diff > 0 ? 1 : -1));
 });
-
-// ── BGM ──
-const bgm     = document.getElementById('bgm');
-const btn     = document.getElementById('sound-btn');
-const iconOn  = document.getElementById('icon-on');
-const iconOff = document.getElementById('icon-off');
-let playing   = false;
-
-function startBgm() {
-  bgm.volume = 0;
-  bgm.play().then(() => {
-    playing = true;
-    fadeVolume(0, 0.18, 3000);
-  }).catch(() => {});
-}
-
-function fadeVolume(from, to, duration) {
-  const steps = 60;
-  const interval = duration / steps;
-  const delta = (to - from) / steps;
-  let v = from;
-  const t = setInterval(() => {
-    v = Math.min(Math.max(v + delta, 0), 1);
-    bgm.volume = v;
-    if ((delta > 0 && v >= to) || (delta < 0 && v <= to)) clearInterval(t);
-  }, interval);
-}
-
-btn.addEventListener('click', () => {
-  if (!playing) {
-    startBgm();
-  } else if (bgm.paused) {
-    bgm.play();
-    fadeVolume(0, 0.18, 1000);
-  } else {
-    fadeVolume(bgm.volume, 0, 1000);
-    setTimeout(() => bgm.pause(), 1100);
-  }
-  const muted = !bgm.paused && bgm.volume > 0;
-  iconOn.style.display  = muted ? 'none' : '';
-  iconOff.style.display = muted ? '' : 'none';
-});
-
-document.addEventListener('click', function autoplay() {
-  if (!playing) startBgm();
-  document.removeEventListener('click', autoplay);
-}, { once: true });
