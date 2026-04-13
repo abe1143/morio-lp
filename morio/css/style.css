@@ -269,8 +269,17 @@ nav * { pointer-events: all; }
   padding-left: .5em;
   margin-bottom: 0;
 }
-/* s1: sub spacing + gold line below */
-.s1 .slide-sub { margin-top: 22px; }
+/* s1 (hero): subtextはtransformなし、opacityのみアニメーション
+   translateY(14px)初期値 + activeクラスのtransitionがsyncと干渉するのを防ぐ */
+.s1 .slide-sub {
+  margin-top: 22px;
+  transform: none;
+  transition: opacity .9s ease .3s; /* transformを外す */
+}
+.s1.slide.active .slide-sub {
+  opacity: 1;
+  transform: none; /* .slide.active .slide-subのtranslateY(0)を上書き */
+}
 .hero-line {
   width: 0; height: 1px;
   background: var(--gold);
@@ -408,23 +417,50 @@ nav * { pointer-events: all; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  nav { padding: 20px 20px; }
+  nav { padding: 20px 24px; }
   .nav-links { display: none; }
   .nav-logo-mark { width: 100%; text-align: left; }
-  .slide-content { padding: 0 24px; max-width: 100%; }
-  .slide-sub { font-size: 14px; letter-spacing: .15em; }
-  .producer-layout {
-    grid-template-columns: 1fr;
+
+  /* introのサブテキストをheroのサブテキストと同サイズに（サイズ差によるズレ防止） */
+  #intro-sub { font-size: 14px; letter-spacing: .15em; }
+
+  /* スライドコンテンツが固定navに隠れないよう上パディング */
+  .slide-content { padding: 72px 24px 48px; max-width: 100%; }
+  /* ヒーローは中央寄せをキープしつつnavよりは下に */
+  .s1 .slide-content { padding-top: 0; }
+
+  .slide-eyebrow { font-size: 12px; letter-spacing: .35em; margin-bottom: 20px; }
+  .slide-sub { font-size: 13px; letter-spacing: .12em; }
+  .slide-cta { font-size: 13px; letter-spacing: .25em; padding: 11px 28px; }
+
+  /* プロデューサースライド: 上下分割 */
+  .producer-layout { grid-template-columns: 1fr; }
+  .prod-photo { height: 52vh; }
+  .prod-right {
+    padding: 28px 24px 80px; /* 下にsound btnとのスペース確保 */
+    justify-content: flex-start;
   }
-  .prod-photo { height: 50vh; }
-  .prod-right { padding: 32px 24px; }
   .prod-bio { display: none; }
-  .footer-links-row { flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
-  .progress { right: 16px; }
+  .prod-title { font-size: clamp(28px, 7vw, 52px) !important; }
+  .prod-name-jp { font-size: 16px; letter-spacing: .2em; margin-bottom: 16px; }
+  .prod-quote { font-size: 14px; }
+
+  /* コンタクトスライドのフッターリンク */
+  .footer-links-row {
+    flex-wrap: wrap; justify-content: center;
+    gap: 16px 28px; margin-top: 32px;
+  }
+  .footer-links-row a { font-size: 12px; letter-spacing: .22em; }
+  .contact-address p { font-size: 13px; letter-spacing: .1em; line-height: 2; }
+  .footer-copy { font-size: 11px; margin-top: 48px; }
+
+  .progress { right: 12px; }
+  #sound-btn { bottom: 24px; left: 24px; }
 }
 
-@media (max-width: 375px) {
-  .hero-logo { letter-spacing: .3em; }
-  .slide-title { font-size: clamp(30px, 9vw, 60px); }
-  .prod-left .slide-title { font-size: clamp(28px, 8vw, 56px); }
+@media (max-width: 390px) {
+  .hero-logo { letter-spacing: .35em; font-size: clamp(40px, 11vw, 80px); }
+  .slide-title { font-size: clamp(28px, 9vw, 56px); }
+  .slide-sub { font-size: 11px; letter-spacing: .1em; }
+  #intro-sub { font-size: 11px; letter-spacing: .1em; }
 }

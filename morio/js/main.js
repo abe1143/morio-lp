@@ -1,3 +1,7 @@
+// スクロール位置の自動復元を無効化（リロード時に必ず先頭から始まるように）
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // ── INTRO ──
 (function () {
   const intro   = document.getElementById('intro');
