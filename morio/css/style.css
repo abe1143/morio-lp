@@ -112,7 +112,9 @@ nav * { pointer-events: all; }
   list-style: none;
 }
 .nav-links a {
-  font-size: 20px; letter-spacing: .22em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 400; letter-spacing: .45em;
+  text-transform: uppercase;
   color: var(--white); text-decoration: none; opacity: .5;
   transition: opacity .3s;
 }
@@ -269,15 +271,19 @@ nav * { pointer-events: all; }
   padding-left: .5em;
   margin-bottom: 0;
 }
-/* s1 (hero): subtextはtransformなし、opacityのみアニメーション
-   translateY(14px)初期値 + activeクラスのtransitionがsyncと干渉するのを防ぐ */
+/* s1 (hero): introが表示中は非表示、intro退場後に.revealで表示
+   intro-subとの二重描画（太さ変化に見える）を防ぐ */
 .s1 .slide-sub {
   margin-top: 22px;
   transform: none;
-  transition: opacity .9s ease .3s; /* transformを外す */
+  opacity: 0;
+  transition: none;
+}
+.s1 .slide-sub.reveal {
+  opacity: 1;
+  transition: opacity .6s ease;
 }
 .s1.slide.active .slide-sub {
-  opacity: 1;
   transform: none; /* .slide.active .slide-subのtranslateY(0)を上書き */
 }
 .hero-line {

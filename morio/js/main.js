@@ -10,6 +10,9 @@ window.scrollTo(0, 0);
   // サブページから戻ったときはイントロをスキップ
   if (sessionStorage.getItem('introSeen')) {
     intro.remove();
+    requestAnimationFrame(() => {
+      document.querySelector('.s1 .slide-sub')?.classList.add('reveal');
+    });
     return;
   }
   sessionStorage.setItem('introSeen', '1');
@@ -21,6 +24,7 @@ window.scrollTo(0, 0);
     setTimeout(() => {
       document.documentElement.style.overflow = '';
       intro.remove();
+      document.querySelector('.s1 .slide-sub')?.classList.add('reveal');
     }, 2000);
   }
 
@@ -78,9 +82,9 @@ function resetKenBurns(slide) {
   img.style.animation = '';
 }
 
-// イージング
+// イージング（easeOutCubic: 初動が速く、終わりが緩やか）
 function ease(t) {
-  return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+  return 1 - Math.pow(1 - t, 3);
 }
 
 // スムーススクロール
@@ -105,7 +109,7 @@ function goTo(idx) {
   if (idx < 0 || idx >= slides.length) return;
 
   isMoving = true;
-  const duration = 1500;
+  const duration = 1000;
 
   slides[currentIdx].classList.remove('active');
 
@@ -149,7 +153,7 @@ window.addEventListener('wheel', (e) => {
   e.preventDefault();
   if (wheelLock || isMoving) return;
   wheelLock = true;
-  setTimeout(() => { wheelLock = false; }, 400);
+  setTimeout(() => { wheelLock = false; }, 200);
 
   if (e.deltaY > 20)       goTo(currentIdx + 1);
   else if (e.deltaY < -20) goTo(currentIdx - 1);
