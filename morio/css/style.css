@@ -43,7 +43,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 #intro-sub {
-  font-size: 9.5px; letter-spacing: .4em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .28em; text-transform: uppercase;
   color: var(--muted); margin-top: 22px;
   opacity: 0;
   animation: introFadeIn 1s ease 2.4s both;
@@ -101,7 +101,7 @@ nav {
 nav * { pointer-events: all; }
 
 .nav-logo-mark a {
-  font-size: 11px; letter-spacing: .45em;
+  font-size: 22px; letter-spacing: .45em;
   color: var(--white); text-decoration: none; opacity: .75;
   transition: opacity .3s;
 }
@@ -112,7 +112,7 @@ nav * { pointer-events: all; }
   list-style: none;
 }
 .nav-links a {
-  font-size: 13px; letter-spacing: .22em;
+  font-size: 20px; letter-spacing: .22em;
   color: var(--white); text-decoration: none; opacity: .5;
   transition: opacity .3s;
 }
@@ -221,7 +221,7 @@ nav * { pointer-events: all; }
 }
 
 .slide-eyebrow {
-  font-size: 11px; letter-spacing: .55em; text-transform: uppercase;
+  font-size: 16px; letter-spacing: .45em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 32px;
   opacity: 0; transform: translateY(14px);
   transition: opacity .9s ease, transform .9s ease;
@@ -245,14 +245,14 @@ nav * { pointer-events: all; }
 }
 .slide-title em { font-style: italic; color: var(--white); }
 .slide-sub {
-  font-size: 14px; letter-spacing: .28em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .28em; text-transform: uppercase;
   color: var(--muted); margin-top: 24px;
   opacity: 0; transform: translateY(14px);
   transition: opacity .9s ease .2s, transform .9s ease .2s;
 }
 .slide-cta {
   display: inline-block; margin-top: 40px;
-  font-size: 12px; letter-spacing: .3em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .3em; text-transform: uppercase;
   color: var(--white); text-decoration: none;
   border: 1px solid rgba(245,242,238,.4);
   padding: 13px 32px;
@@ -295,11 +295,11 @@ nav * { pointer-events: all; }
 .slide.active .prod-right { opacity: 1; transform: translateY(0); }
 .prod-name-jp {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 14px; letter-spacing: .3em; color: var(--gold);
+  font-size: 22px; letter-spacing: .3em; color: var(--gold);
   margin-bottom: 28px;
 }
 .prod-bio {
-  font-size: 12px; line-height: 2; color: var(--muted); margin-bottom: 28px;
+  font-size: 18px; line-height: 2; color: var(--muted); margin-bottom: 28px;
 }
 .prod-quote {
   font-family: 'Cormorant Garamond', serif;
@@ -344,7 +344,7 @@ nav * { pointer-events: all; }
 }
 .slide.active .footer-links-row { opacity: 1; transform: translateY(0); }
 .footer-links-row a {
-  font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .3em; text-transform: uppercase;
   color: rgba(245,242,238,.4); text-decoration: none; transition: color .3s;
 }
 .footer-links-row a:hover { color: var(--gold); }
@@ -355,12 +355,12 @@ nav * { pointer-events: all; }
 }
 .slide.active .contact-address { opacity: 1; transform: translateY(0); }
 .contact-address p {
-  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .18em; text-transform: uppercase;
   color: var(--muted); line-height: 2.2;
 }
 
 .footer-copy {
-  margin-top: 80px; font-size: 11px; letter-spacing: .2em;
+  margin-top: 80px; font-size: 16px; letter-spacing: .2em;
   color: rgba(245,242,238,.2);
   opacity: 0; transition: opacity .9s ease .5s;
 }
@@ -399,7 +399,7 @@ nav * { pointer-events: all; }
   .nav-links { display: none; }
   .nav-logo-mark { width: 100%; text-align: left; }
   .slide-content { padding: 0 24px; max-width: 100%; }
-  .slide-sub { font-size: 9px; letter-spacing: .15em; }
+  .slide-sub { font-size: 14px; letter-spacing: .15em; }
   .producer-layout {
     grid-template-columns: 1fr; gap: 32px; padding: 0 24px;
   }
