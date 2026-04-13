@@ -28,35 +28,27 @@
   });
 })();
 
-// ── HERO SYNC: イントロとヒーローのMORIO・サブテキスト位置を実測して一致させる ──
-function syncHeroLogo() {
-  const introLogo = document.getElementById('intro-logo');
-  const heroLogo  = document.querySelector('.hero-logo');
-  if (!introLogo || !heroLogo) return;
+// ── HERO SYNC: イントロの各要素とヒーローの対応要素の位置を実測して一致させる ──
+// 必ずslides[0].classList.add('active') の直前に呼ぶこと
+// （active付与後だとCSSのtransform transitionが干渉するため）
+function syncPair(introId, heroSelector) {
+  const introEl = document.getElementById(introId);
+  const heroEl  = document.querySelector(heroSelector);
+  if (!introEl || !heroEl) return;
 
-  heroLogo.style.transform = '';
-  const diff = introLogo.getBoundingClientRect().top
-             - heroLogo.getBoundingClientRect().top;
+  heroEl.style.transform = '';
+  const diff = introEl.getBoundingClientRect().top
+             - heroEl.getBoundingClientRect().top;
   if (Math.abs(diff) > 0.5) {
-    heroLogo.style.transform = `translateY(${diff}px)`;
+    heroEl.style.transform = `translateY(${diff}px)`;
   }
 }
 
-function syncHeroSub() {
-  const introSub = document.getElementById('intro-sub');
-  const heroSub  = document.querySelector('.s1 .slide-sub');
-  if (!introSub || !heroSub) return;
-
-  heroSub.style.transform = '';
-  const diff = introSub.getBoundingClientRect().top
-             - heroSub.getBoundingClientRect().top;
-  if (Math.abs(diff) > 0.5) {
-    heroSub.style.transform = `translateY(${diff}px)`;
-  }
+function syncHero() {
+  syncPair('intro-logo', '.hero-logo');
+  syncPair('intro-sub',  '.s1 .slide-sub');
+  syncPair('intro-line', '.hero-line');
 }
-
-document.fonts.ready.then(() => { syncHeroLogo(); syncHeroSub(); });
-window.addEventListener('resize', () => { syncHeroLogo(); syncHeroSub(); });
 
 // ── SLIDE SYSTEM ──
 const slides     = Array.from(document.querySelectorAll('.slide'));
@@ -82,12 +74,12 @@ function resetKenBurns(slide) {
   img.style.animation = '';
 }
 
-// イージング関数（easeInOutCubic）
+// イージング
 function ease(t) {
   return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
 }
 
-// スムーススクロールアニメーション（duration ms）
+// スムーススクロール
 function animateScroll(targetY, duration, onDone) {
   const startY = window.scrollY;
   const dist   = targetY - startY;
@@ -125,9 +117,27 @@ function goTo(idx) {
   });
 }
 
-// 初期アクティブ
-slides[0].classList.add('active');
-resetKenBurns(slides[0]);
+// ── 初期アクティブ: フォント読み込み後にシンクしてからactiveを付与 ──
+// activeを付与する前にtransformをセットすることで、
+// CSSのtransform transitionが干渉せず正確な位置に固定される
+document.fonts.ready.then(() => {
+  syncHero();
+  slides[0].classList.add('active');
+  resetKenBurns(slides[0]);
+});
+
+window.addEventListener('resize', () => {
+  // リサイズ時: heroがactiveなら一旦リセットして再計測
+  if (currentIdx === 0) {
+    const heroLogo = document.querySelector('.hero-logo');
+    const heroSub  = document.querySelector('.s1 .slide-sub');
+    const heroLine = document.querySelector('.hero-line');
+    if (heroLogo) heroLogo.style.transform = '';
+    if (heroSub)  heroSub.style.transform  = '';
+    if (heroLine) heroLine.style.transform = '';
+  }
+  syncHero();
+});
 
 // ホイールハンドラ
 let wheelLock = false;
@@ -162,3 +172,50 @@ window.addEventListener('touchend', e => {
   const diff = touchY - e.changedTouches[0].clientY;
   if (Math.abs(diff) > 50) goTo(currentIdx + (diff > 0 ? 1 : -1));
 });
+
+// ── BGM ──
+const bgm     = document.getElementById('bgm');
+const btn     = document.getElementById('sound-btn');
+const iconOn  = document.getElementById('icon-on');
+const iconOff = document.getElementById('icon-off');
+let playing   = false;
+
+function startBgm() {
+  bgm.volume = 0;
+  bgm.play().then(() => {
+    playing = true;
+    fadeVolume(0, 0.18, 3000);
+  }).catch(() => {});
+}
+
+function fadeVolume(from, to, duration) {
+  const steps = 60;
+  const interval = duration / steps;
+  const delta = (to - from) / steps;
+  let v = from;
+  const t = setInterval(() => {
+    v = Math.min(Math.max(v + delta, 0), 1);
+    bgm.volume = v;
+    if ((delta > 0 && v >= to) || (delta < 0 && v <= to)) clearInterval(t);
+  }, interval);
+}
+
+btn.addEventListener('click', () => {
+  if (!playing) {
+    startBgm();
+  } else if (bgm.paused) {
+    bgm.play();
+    fadeVolume(0, 0.18, 1000);
+  } else {
+    fadeVolume(bgm.volume, 0, 1000);
+    setTimeout(() => bgm.pause(), 1100);
+  }
+  const muted = !bgm.paused && bgm.volume > 0;
+  iconOn.style.display  = muted ? 'none' : '';
+  iconOff.style.display = muted ? '' : 'none';
+});
+
+document.addEventListener('click', function autoplay() {
+  if (!playing) startBgm();
+  document.removeEventListener('click', autoplay);
+}, { once: true });

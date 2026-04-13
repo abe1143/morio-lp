@@ -10,6 +10,15 @@
 </head>
 <body>
 
+<!-- BGM -->
+<audio id="bgm" src="audio/bgm.mp3" loop preload="none"></audio>
+
+<!-- SOUND TOGGLE -->
+<button id="sound-btn" aria-label="Toggle sound">
+  <svg id="icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  <svg id="icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+</button>
+
 <!-- INTRO -->
 <div id="intro">
   <div id="intro-bg"></div>
@@ -31,10 +40,10 @@
 <nav>
   <div class="nav-logo-mark"><a href="index.html" data-goto="0">MORIO</a></div>
   <ul class="nav-links">
-    <li><a href="vision.html">vision</a></li>
-    <li><a href="business.html">business</a></li>
-    <li><a href="projects.html">projects</a></li>
-    <li><a href="producing.html">producer</a></li>
+    <li><a href="#" data-goto="1">vision</a></li>
+    <li><a href="#" data-goto="2">business</a></li>
+    <li><a href="#" data-goto="3">projects</a></li>
+    <li><a href="#" data-goto="4">producing</a></li>
     <li><a href="#" data-goto="5">contact</a></li>
   </ul>
 </nav>
@@ -134,9 +143,8 @@
   <div class="footer-links-row">
     <a href="vision.html">vision</a>
     <a href="business.html">business</a>
-    <a href="producing.html">producing</a>
-    <a href="services.html">services</a>
     <a href="projects.html">projects</a>
+    <a href="producing.html">producing</a>
     <a href="company.html">company</a>
     <a href="mailto:info@morio-realestate.com">info@morio-realestate.com</a>
   </div>

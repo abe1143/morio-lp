@@ -272,15 +272,13 @@ nav * { pointer-events: all; }
 /* s1: sub spacing + gold line below */
 .s1 .slide-sub { margin-top: 22px; }
 .hero-line {
-  width: 100px; height: 1px;
+  width: 0; height: 1px;
   background: var(--gold);
-  margin: 28px auto 0;
-  opacity: .7;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 1s ease .4s, opacity .4s ease .4s;
+  margin: 36px auto 0;
+  opacity: 0;
+  transition: width 1.2s ease .4s, opacity .6s ease .3s;
 }
-.slide.active .hero-line { transform: scaleX(1); }
+.slide.active .hero-line { width: 100px; opacity: .7; }
 
 /* ── PRODUCER SLIDE — photo + text split ── */
 .s5 { overflow: hidden; }
@@ -383,6 +381,17 @@ nav * { pointer-events: all; }
 }
 .slide.active .footer-copy { opacity: 1; }
 
+
+/* ── SOUND BUTTON ── */
+#sound-btn {
+  position: fixed; bottom: 36px; left: 48px; z-index: 300;
+  background: none; border: none; cursor: pointer;
+  color: var(--white); opacity: .45;
+  transition: opacity .3s;
+  padding: 8px;
+}
+#sound-btn:hover { opacity: 1; }
+@media (max-width: 768px) { #sound-btn { bottom: 24px; left: 24px; } }
 
 /* ── PROGRESS DOTS ── */
 .progress {
