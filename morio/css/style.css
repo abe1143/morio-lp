@@ -139,7 +139,7 @@ nav * { pointer-events: all; }
   object-fit: cover; object-position: center;
   display: block;
   transform-origin: center center;
-  transform: scale(1.08);
+  transform: scale(1.0);
   transition: none;
 }
 
