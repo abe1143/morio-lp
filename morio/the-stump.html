@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE STUMP — A Monument for Eternity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070707;--surface:#0e0e0e;--border:rgba(255,255,255,.05);--cream:#e5e1dc;--silver:#a8a8a8;--muted:#606060;--white:#f4f2ef;--gold:#c9a96e;--gold-dim:rgba(201,169,110,.1);--ff-d:'Cormorant Garamond',Georgia,serif;--ff-b:'Noto Serif JP',serif;--ff-s:'Outfit',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;font-size:17px}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 2.8rem;pointer-events:none;mix-blend-mode:difference}
+.nav a{pointer-events:auto}.nav-logo{font-family:var(--ff-d);font-size:1.3rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#fff;transition:opacity .4s}.nav-logo:hover{opacity:.6}
+.nav-back{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.6);transition:opacity .4s}.nav-back:hover{opacity:.5}
+
+/* HERO — Canvas + overlay text */
+.hero-canvas{position:relative;width:100%;height:100vh;background:#070707}
+.hero-canvas canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-after{position:absolute;bottom:0;left:0;right:0;height:30vh;background:linear-gradient(to bottom,transparent,var(--bg));z-index:2;pointer-events:none}
+
+/* Sections */
+.sec{padding:7rem 3rem;max-width:1000px;margin:0 auto}
+.sec-wide{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+.s-label{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.s-heading{font-family:var(--ff-d);font-size:clamp(1.9rem,3.6vw,3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:2.8rem}.s-heading em{font-style:italic;font-weight:400;color:var(--gold)}
+.prose{max-width:760px}.prose p{font-size:1.05rem;font-weight:300;line-height:2.2;letter-spacing:.03em;color:var(--cream);margin-bottom:2rem}.prose p:last-child{margin-bottom:0}
+.hl{display:inline-block;padding:0 .2em;background:linear-gradient(to top,rgba(201,169,110,.18) 45%,transparent 45%)}
+.ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
+.rule{max-width:1200px;margin:0 auto;padding:0 3rem}.rule-in{height:1px;background:var(--border)}
+
+/* Epigraph — large italic statement */
+.epigraph{padding:10rem 3rem;text-align:center;max-width:960px;margin:0 auto}
+.epi-text{font-family:var(--ff-d);font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--white)}
+.epi-text em{color:var(--gold);font-weight:400}
+
+/* Monument specs */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.spec{background:var(--bg);padding:3rem 2rem;text-align:center}
+.spec-val{font-family:var(--ff-d);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--white);line-height:1;margin-bottom:.4rem}
+.spec-unit{font-family:var(--ff-d);font-size:.95rem;font-style:italic;color:var(--gold);margin-bottom:1rem}
+.spec-desc{font-family:var(--ff-b);font-size:.82rem;font-weight:300;line-height:1.8;color:var(--silver)}
+
+/* Comparison table */
+.compare{margin-top:3rem;border:1px solid var(--border);overflow:hidden}
+.cmp-header{display:grid;grid-template-columns:1.5fr repeat(4,1fr);border-bottom:1px solid var(--border)}
+.cmp-header div{padding:1.5rem 1.2rem;font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cmp-header div:last-child{color:var(--gold);background:rgba(201,169,110,.03)}
+.cmp-row{display:grid;grid-template-columns:1.5fr repeat(4,1fr);border-bottom:1px solid var(--border)}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row div{padding:1.2rem;font-size:.88rem;font-weight:300;color:var(--silver);border-right:1px solid var(--border)}
+.cmp-row div:first-child{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center}
+.cmp-row div:last-child{border-right:none;color:var(--gold);font-weight:400;background:rgba(201,169,110,.02)}
+
+/* Visual break */
+.vb{width:100%;overflow:hidden;position:relative}.vb img{width:100%;height:70vh;min-height:380px;object-fit:cover;filter:brightness(.68) contrast(1.08) saturate(.85);transition:transform 15s cubic-bezier(.22,1,.36,1)}.vb:hover img{transform:scale(1.04)}.vb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.3) 0%,transparent 35%,rgba(7,7,7,.6) 100%);pointer-events:none}
+.vb figcaption{position:absolute;bottom:2.2rem;left:3rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;text-shadow:0 2px 15px rgba(0,0,0,.8)}
+.vb figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.62rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
+
+/* Patron section */
+.patron-frame{max-width:860px;margin:3rem auto 0;border:1px solid var(--gold);padding:4.5rem 3.5rem;background:rgba(201,169,110,.015);text-align:center}
+.patron-eye{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem}
+.patron-text{font-family:var(--ff-b);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;line-height:2;letter-spacing:.04em;color:var(--white)}
+.patron-text em{font-family:var(--ff-d);font-style:italic;color:var(--gold)}
+
+/* Roadmap */
+.roadmap{max-width:800px;margin:4rem auto 0;border-left:1px solid var(--gold-dim);padding-left:2.5rem}
+.rm{position:relative;padding:1.6rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:110px 1fr;gap:2rem;align-items:baseline}
+.rm:last-child{border-bottom:none}
+.rm::before{content:'';position:absolute;left:-2.85rem;top:2.2rem;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--gold-dim)}
+.rm-yr{font-family:var(--ff-d);font-size:1.5rem;font-weight:400;font-style:italic;color:var(--gold)}
+.rm-en{font-family:var(--ff-d);font-size:1.05rem;font-style:italic;color:var(--white);margin-bottom:.3rem}
+.rm-jp{font-size:.85rem;font-weight:300;color:var(--silver);line-height:1.7}
+
+/* Final */
+.final{padding:12rem 3rem 8rem;text-align:center;max-width:960px;margin:0 auto}
+.final-text{font-family:var(--ff-d);font-size:clamp(2rem,4.2vw,3.4rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--white);padding:3.5rem 2rem;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);margin-bottom:3.5rem}
+.final-text em{color:var(--gold);font-weight:400}
+.final-sub{font-family:var(--ff-b);font-size:1.05rem;font-weight:300;line-height:2.5;letter-spacing:.1em;color:var(--cream)}
+.final-sub strong{font-weight:400;color:var(--white)}
+
+/* CTA */
+.cta{padding:4rem 3rem 6rem;text-align:center}
+.cta-label{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.cta-btn{display:inline-block;font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);padding:1.2rem 4rem;border:1px solid rgba(201,169,110,.3);transition:all .5s}
+.cta-btn:hover{background:rgba(201,169,110,.06);border-color:var(--gold)}
+.cta-note{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.1em;color:var(--muted);margin-top:2.5rem}
+
+.footer{padding:3rem;max-width:1200px;margin:0 auto}.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}.footer-links{display:flex;gap:2rem}.footer-links a{font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.1em;color:var(--muted);transition:color .3s}.footer-links a:hover{color:var(--silver)}.footer-copy{font-family:var(--ff-s);font-size:.58rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}.rv.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.specs{grid-template-columns:repeat(2,1fr)}.cmp-header,.cmp-row{grid-template-columns:1fr 1fr}.cmp-header div:nth-child(2),.cmp-header div:nth-child(3),.cmp-row div:nth-child(2),.cmp-row div:nth-child(3){display:none}}
+@media(max-width:768px){html{font-size:16px}.nav{padding:1.2rem 1.5rem}.sec,.sec-wide,.epigraph,.final,.cta{padding-left:1.6rem;padding-right:1.6rem}.spec{padding:2rem 1.2rem}.patron-frame{padding:2.8rem 1.6rem}.rule{padding:0 1.6rem}.vb img{height:55vh;min-height:280px}.vb figcaption{left:1.6rem;bottom:1.6rem;font-size:.95rem}.roadmap{padding-left:2rem}.rm{grid-template-columns:1fr;gap:.4rem}.rm::before{left:-2.3rem}.final-text{padding:2.5rem 1rem}.specs{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><a href="index.html" class="nav-logo">MORIO</a><a href="index.html" class="nav-back">← Back</a></nav>
+
+<!-- ═══ HERO — Canvas Rendering ═══ -->
+<section class="hero-canvas">
+<canvas id="c"></canvas>
+<div class="hero-after"></div>
+</section>
+
+<!-- ═══ EPIGRAPH ═══ -->
+<section class="epigraph rv">
+  <p class="epi-text">
+    人類は5,000年間、<br>
+    <em>永遠に残るもの</em>を作り続けてきた。<br><br>
+    この50年間だけ、それを忘れている。
+  </p>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 01 — THE VOID ═══ -->
+<section class="sec rv">
+  <div class="s-label">01 — The Void</div>
+  <h2 class="s-heading">刹那的視座が、<br><em>人類から奪ったもの</em>。</h2>
+  <div class="prose">
+    <p>ファラオはピラミッドを建てた。カトリック教会はノートルダムを建てた。徳川幕府は日光東照宮を建てた。人類はあらゆる時代において、最も裕福で、最も権力を持つ人間に、同じ衝動を与えてきました。<span class="hl">自分の存在を、時間の彼方まで刻みたい</span>。</p>
+    <p>これは虚栄心ではありません。人間の意識が持つ根源的な構造——自分の有限性を知りながら、有限を超えたものを創ろうとする衝動。実存的な欲求そのものです。</p>
+    <p>しかし過去50年間、人類はこの欲求を満たす手段を失いました。世界のUHNWは、使いきれない富を持ちながら、それを永続的な形に変換する装置を持っていません。ヨット、ジェット、ラグジュアリーレジデンス——すべて10年で陳腐化する消耗品。数千億円の資産を持つ人間が、<span class="hl">1,000年残るものを一つも所有できない</span>。</p>
+  </div>
+</section>
+
+<figure class="vb rv"><img src="images/projects/ext-01.jpg" alt="Existing luxury — still ephemeral"><figcaption>The finest residences in the world today. Still ephemeral.<span class="vb-s">The ceiling of current luxury</span></figcaption></figure>
+
+<!-- ═══ 02 — THE ANSWER ═══ -->
+<section class="sec rv">
+  <div class="s-label">02 — The Answer</div>
+  <h2 class="s-heading">THE STUMPは、<br>その<em>飢餓への回答</em>。</h2>
+  <div class="prose">
+    <p>THE STUMPは、人類が5,000年間やり続けてきたのに、この50年間だけ途絶えてしまった行為——<span class="hl">「永遠を作る」という行為</span>——を、現代に復活させるプロジェクトです。</p>
+    <p>しかもそれを、宗教でも国家でもなく、個人の意志と資本で実現する。ファラオは国家権力で、カトリック教会は信仰の力でピラミッドとノートルダムを建てた。THE STUMPは、一人のUHNWが自らの意志で「千年の痕跡」を刻む装置として機能します。</p>
+    <p><span class="ei">ノートルダム大聖堂を所有すること</span>——THE STUMPが提供するのは、それと同義の体験です。</p>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 03 — THE MONUMENT ═══ -->
+<section class="sec-wide rv">
+  <div class="s-label">03 — The Monument</div>
+  <h2 class="s-heading">圧倒的な<em>荘厳</em>。</h2>
+  <div class="prose">
+    <p>階高10m。天井高9m。ノートルダム大聖堂の側廊と同じスケールの空間が、全30フロアにわたって積み重なる。1フロア2,000㎡。通常の超高級レジデンスの5倍の広さが、ワンフロア1住戸として構成される。</p>
+    <p>これは住居ではない。<span class="hl">空中のパラッツォ</span>——人間が居住できる、地球上で最も崇高な空間です。</p>
+  </div>
+
+  <div class="specs">
+    <div class="spec"><div class="spec-val">300</div><div class="spec-unit">meters</div><p class="spec-desc">全高300m。30階建て。<br>東京のスカイラインを定義する<br>モニュメント。</p></div>
+    <div class="spec"><div class="spec-val">10</div><div class="spec-unit">m / floor</div><p class="spec-desc">階高10m。天井高9m。<br>通常の住宅の約3倍。<br>ノートルダム側廊に匹敵。</p></div>
+    <div class="spec"><div class="spec-val">2,000</div><div class="spec-unit">㎡ / unit</div><p class="spec-desc">ワンフロア1住戸。<br>プール、ギャラリー、茶房を<br>すべて一つのフロアに。</p></div>
+    <div class="spec"><div class="spec-val">30</div><div class="spec-unit">residences</div><p class="spec-desc">地球上に30邸のみ。<br>各住戸が完全に独立した<br>空中のパラッツォ。</p></div>
+  </div>
+</section>
+
+<figure class="vb rv"><img src="images/projects/int-01.jpg" alt="Interior reference — spatial depth"><figcaption>This is 4.5m ceiling. THE STUMP is 9m — twice this height.<span class="vb-s">Reference Scale</span></figcaption></figure>
+
+<!-- ═══ 04 — BEYOND COMPARISON ═══ -->
+<section class="sec-wide rv">
+  <div class="s-label">04 — Beyond Comparison</div>
+  <h2 class="s-heading">世界最高級レジデンスとの<em>比較</em>。</h2>
+  <div class="prose"><p>THE STUMPは比較対象が存在しません。しかしあえて並べることで、その次元の違いが浮き彫りになります。</p></div>
+
+  <div class="compare">
+    <div class="cmp-header">
+      <div></div>
+      <div>Aman NY</div>
+      <div>One Hyde Park</div>
+      <div>Tour Odeon</div>
+      <div>THE STUMP</div>
+    </div>
+    <div class="cmp-row"><div>Ceiling Height</div><div>3.5m</div><div>3.2m</div><div>3.5m</div><div>9m</div></div>
+    <div class="cmp-row"><div>Unit Size</div><div>~400㎡</div><div>~600㎡</div><div>~800㎡</div><div>2,000㎡</div></div>
+    <div class="cmp-row"><div>Units / Floor</div><div>2–4</div><div>2–4</div><div>2–3</div><div>1</div></div>
+    <div class="cmp-row"><div>Arch Opening</div><div>—</div><div>—</div><div>—</div><div>8m Gothic</div></div>
+    <div class="cmp-row"><div>Design Lifespan</div><div>50 yrs</div><div>50 yrs</div><div>50 yrs</div><div>1,000 yrs</div></div>
+    <div class="cmp-row"><div>Construction / tsubo</div><div>~¥5M</div><div>~¥8M</div><div>~¥6M</div><div>¥100M</div></div>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 05 — THE ECONOMICS ═══ -->
+<section class="sec rv">
+  <div class="s-label">05 — The Economics</div>
+  <h2 class="s-heading">千年のLTVが示す、<br><em>天文学的リターン</em>。</h2>
+  <div class="prose">
+    <p>1邸2,000億円。坪単価3億円。建築費は坪1億——現存するあらゆる建築の最高水準の20倍の予算を投じて建てられます。</p>
+    <p>しかしこの数字を「コスト」として見るのは、短期的視座の罠です。ノートルダム大聖堂の修復に€8.5億（約1,400億円）の寄付が72時間で集まった事実が示しているのは、<span class="hl">千年建築の価値は、建築費を桁違いに超える</span>ということです。</p>
+    <p>THE STUMPは30年で壊される消耗品ではありません。坪1億の建築費は「コスト」ではなく、<span class="hl">1,000年のLTVを物理的に保証する保険</span>として機能します。千年後もそこに立ち、価値を生み続ける。そのとき、2,000億円は歴史上最も利回りの高い投資となります。</p>
+  </div>
+</section>
+
+<div class="img-pair rv" style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+  <figure style="overflow:hidden;position:relative;height:55vh;min-height:320px"><img src="images/projects/ext-05.jpg" alt="Architectural Identity" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.05)"></figure>
+  <figure style="overflow:hidden;position:relative;height:55vh;min-height:320px"><img src="images/projects/int-09.jpg" alt="Spatial Experience" style="width:100%;height:100%;object-fit:cover;filter:brightness(.72) contrast(1.05)"></figure>
+</div>
+
+<!-- ═══ 06 — THE PATRON ═══ -->
+<section class="sec rv">
+  <div class="s-label">06 — The Patron</div>
+  <h2 class="s-heading">オーナーではなく、<br><em>パトロン</em>。</h2>
+  <div class="prose">
+    <p>THE STUMPの住人は「購入者」ではありません。<span class="ei">Patron</span>——パトロンです。メディチ家がルネサンスを支えたように、THE STUMPのパトロンは人類の建築史に名を刻みます。</p>
+    <p>1,000年後、ピラミッドのファラオの名が語り継がれているように、THE STUMPのパトロンの名もまた、建築と共に永遠に残ります。</p>
+  </div>
+
+  <div class="patron-frame">
+    <div class="patron-eye">By Invitation Only</div>
+    <div class="patron-text">
+      THE STUMPは、<em>販売</em>されません。<br>
+      パトロンとして<em>選ばれた方</em>にのみ、<br>
+      ご案内いたします。
+    </div>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 07 — OPUS 1 ═══ -->
+<section class="sec rv">
+  <div class="s-label">07 — OPUS 1 : Tokyo</div>
+  <h2 class="s-heading">OPUS 1——<br><em>東京</em>から、世界へ。</h2>
+  <div class="prose">
+    <p>THE STUMP OPUS 1は東京に建ちます。世界で最も安全で、最も文化的深度を持ち、最も過小評価されている都市に。OPUS 1の実在そのものが証拠となり、ロンドン、ドバイ、シンガポール、ニューヨークへの展開は、こちらからではなく、各国のパトロンから依頼される形で実現していきます。</p>
+    <p>各都市のTHE STUMPは、古代のオベリスクのように——文明の証として、大地に立ちます。</p>
+  </div>
+</section>
+
+<figure class="vb rv"><img src="images/projects/ext-06.jpg" alt="Devils Tower — Origin of the Name"><figcaption>Devils Tower — the trace of a 3,000m ancient tree. The origin of our name.<span class="vb-s">THE STUMP</span></figcaption></figure>
+
+<!-- ═══ FINAL ═══ -->
+<section class="final rv">
+  <div class="final-text">
+    我々の創造は、<br>
+    魂の<em>万年単位の痕跡</em>となる。
+  </div>
+  <div class="final-sub">
+    <strong>刹那から、永遠へ。</strong><br>
+    刹那的視座の加速に、究極のカウンターパンチを喰らわせる。<br>
+    時を超越した視座に回帰することこそが、<br>
+    人類が本質的に求めているものである。
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta rv">
+  <div class="cta-label">Begin a Conversation</div>
+  <a href="mailto:info@morio-realestate.com" class="cta-btn">Private Enquiry</a>
+  <div class="cta-note">Morio the Mann Group ｜ Minami-Aoyama, Tokyo</div>
+</section>
+
+<footer class="footer"><div class="footer-in"><div class="footer-links"><a href="index.html">Home</a><a href="vision.html">Vision</a><a href="design-philosophy.html">Philosophy</a><a href="projects.html">Projects</a><a href="producing.html">Produce</a><a href="the-stump.html" style="color:var(--gold)">The Stump</a><a href="company.html">Company</a></div><div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
+
+<!-- ═══ CANVAS RENDERER ═══ -->
+<script>
+const CV=document.getElementById('c'),X=CV.getContext('2d');let W,H;
+function resize(){W=CV.width=window.innerWidth;H=CV.height=window.innerHeight;render()}
+function render(){
+const gY=H*.88,mPx=.55,sH=300/mPx,sW=sH*.32,sX=W/2,sT=gY-sH,nFH=3.3/mPx,hH=1.7/mPx;
+// Sky
+X.fillStyle='#070707';X.fillRect(0,0,W,H);
+const sk=X.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#080a0f');sk.addColorStop(.3,'#0d1320');sk.addColorStop(.55,'#141c28');sk.addColorStop(.75,'#121520');sk.addColorStop(1,'#0a0a0a');X.fillStyle=sk;X.fillRect(0,0,W,H);
+const gl=X.createRadialGradient(sX,sT+sH*.4,0,sX,sT+sH*.4,sH*.7);gl.addColorStop(0,'rgba(201,169,110,.06)');gl.addColorStop(.5,'rgba(201,169,110,.02)');gl.addColorStop(1,'transparent');X.fillStyle=gl;X.fillRect(0,0,W,H);
+// Normal buildings
+function nb(cx,fl,w,op){const bh=fl*nFH,bx=cx-w/2,by=gY-bh;X.fillStyle=`rgba(18,20,24,${op})`;X.fillRect(bx,by,w,bh);for(let f=0;f<fl;f++){const fy=gY-(f+1)*nFH;X.strokeStyle=`rgba(80,80,90,${op*.15})`;X.lineWidth=.5;X.beginPath();X.moveTo(bx,fy+nFH);X.lineTo(bx+w,fy+nFH);X.stroke();const wH=nFH*.65,wW=w*.12,wG=w*.06,wC=Math.floor((w-wG*2)/(wW+wG));for(let i=0;i<wC;i++){const wx=bx+wG+i*(wW+wG),wy=fy+(nFH-wH)*.6;if(Math.random()>.4){X.fillStyle=`rgba(180,170,140,${op*(.03+Math.random()*.04)})`;X.fillRect(wx,wy,wW,wH)}}}X.fillStyle=`rgba(25,28,32,${op})`;X.fillRect(bx-2,by-3,w+4,4)}
+nb(sX-sW*.65-sW*.2,12,sW*.35,.9);nb(sX-sW*.65-sW*.55,8,sW*.28,.75);nb(sX-sW*.65-sW*.85,15,sW*.32,.6);nb(sX-sW*.65-sW*1.2,6,sW*.25,.45);nb(sX-sW*.65-sW*1.45,10,sW*.3,.35);
+nb(sX+sW*.65+sW*.22,10,sW*.32,.9);nb(sX+sW*.65+sW*.55,14,sW*.35,.7);nb(sX+sW*.65+sW*.9,7,sW*.26,.55);nb(sX+sW*.65+sW*1.15,18,sW*.38,.4);nb(sX+sW*.65+sW*1.55,9,sW*.28,.3);
+// STUMP
+const tp=.035,oF=sH/30;X.beginPath();X.moveTo(sX-sW/2,gY);X.lineTo(sX-sW/2*(1-tp),sT+sH*.02);X.lineTo(sX-sW/2*(1-tp)-sW*.025,sT+sH*.01);X.lineTo(sX-sW/2*(1-tp)-sW*.025,sT-sH*.005);X.lineTo(sX+sW/2*(1-tp)+sW*.025,sT-sH*.005);X.lineTo(sX+sW/2*(1-tp)+sW*.025,sT+sH*.01);X.lineTo(sX+sW/2*(1-tp),sT+sH*.02);X.lineTo(sX+sW/2,gY);X.closePath();
+const sg=X.createLinearGradient(sX-sW/2,0,sX+sW/2,0);sg.addColorStop(0,'#10120f');sg.addColorStop(.15,'#1a1c18');sg.addColorStop(.35,'#1e201c');sg.addColorStop(.5,'#22241f');sg.addColorStop(.65,'#1e201c');sg.addColorStop(.85,'#1a1c18');sg.addColorStop(1,'#10120f');X.fillStyle=sg;X.fill();
+for(let p=0;p<=8;p++){const px=sX-sW/2+p*(sW/8);X.strokeStyle='rgba(100,95,80,.06)';X.lineWidth=1.5;X.beginPath();X.moveTo(px,gY);X.lineTo(px+(sW*tp/8*p/8-sW*tp/2),sT);X.stroke()}
+const aH=8/mPx,aW=sW*.24,aG=sW*.04;
+for(let f=0;f<30;f++){const fB=gY-f*oF,fT=1-tp*(f/30),fW=sW*fT,tAW=3*aW+2*aG,aSX=sX-tAW/2;
+for(let a=0;a<3;a++){const ax=aSX+a*(aW+aG)+aW/2,aB=fB-(oF-aH)*.55,aT_=aB-aH,aR=aW/2;
+X.save();X.beginPath();X.moveTo(ax-aR,aB);X.lineTo(ax-aR,aT_+aR);X.quadraticCurveTo(ax-aR,aT_,ax,aT_-aR*.18);X.quadraticCurveTo(ax+aR,aT_,ax+aR,aT_+aR);X.lineTo(ax+aR,aB);X.closePath();
+if(Math.random()>.2){const iG=X.createRadialGradient(ax,aB-aH*.45,0,ax,aB-aH*.45,aW*.9);const int=.08+Math.random()*.07;iG.addColorStop(0,`rgba(225,190,125,${int*1.3})`);iG.addColorStop(.5,`rgba(200,170,110,${int*.5})`);iG.addColorStop(1,'transparent');X.fillStyle=iG;X.fill()}
+X.strokeStyle=`rgba(140,130,110,${.04+Math.random()*.03})`;X.lineWidth=1;X.stroke();X.restore()}
+X.fillStyle='rgba(90,85,70,.04)';X.fillRect(sX-fW/2,fB,fW,2)}
+// Greenery
+X.fillStyle='#0e120e';const gW_=sW*(1-tp)*1.02;for(let i=0;i<50;i++){const gx=sX-gW_/2+(i/50)*gW_,gs=gW_/50*(.7+Math.random()*.6),gh=oF*(.25+Math.random()*.45);X.beginPath();X.ellipse(gx+gs/2,sT-2,gs/2,gh,0,Math.PI,0);X.fill()}
+// Ground
+X.fillStyle='#0a0a0a';X.fillRect(0,gY,W,H-gY);X.fillStyle='rgba(20,20,22,.8)';X.fillRect(0,gY,W,hH*1.5);
+// Humans
+function dH(hx){X.fillStyle='rgba(30,30,35,.9)';X.beginPath();X.arc(hx,gY-hH+hH*.08,hH*.08,0,Math.PI*2);X.fill();X.fillRect(hx-hH*.06,gY-hH+hH*.16,hH*.12,hH*.4);X.fillRect(hx-hH*.06,gY-hH*.44,hH*.05,hH*.44);X.fillRect(hx+.01*hH,gY-hH*.44,hH*.05,hH*.44)}
+dH(sX-sW/2-hH*1.5);dH(sX-sW/2-hH*3);dH(sX+sW/2+hH*2);
+// Scale annotations
+const aX=sX-sW/2-hH*6,aC='rgba(201,169,110,.35)',aT='rgba(201,169,110,.55)';
+X.strokeStyle=aC;X.lineWidth=.8;X.setLineDash([3,3]);X.beginPath();X.moveTo(aX+15,gY);X.lineTo(aX,gY);X.lineTo(aX,gY-oF);X.lineTo(aX+15,gY-oF);X.stroke();X.setLineDash([]);
+X.font=`italic 300 ${Math.max(11,W*.01)}px "Cormorant Garamond",serif`;X.fillStyle=aT;X.textAlign='right';X.fillText('10m',aX-5,(gY+gY-oF)/2+4);
+X.font=`300 ${Math.max(8,W*.006)}px Outfit,sans-serif`;X.fillStyle='rgba(176,176,176,.35)';X.fillText('1 Floor',aX-5,(gY+gY-oF)/2+18);
+// 300m
+const rX=sX+sW/2+hH*5;X.strokeStyle=aC;X.setLineDash([4,6]);X.lineWidth=.6;X.beginPath();X.moveTo(rX-15,gY);X.lineTo(rX,gY);X.lineTo(rX,sT);X.lineTo(rX-15,sT);X.stroke();X.setLineDash([]);
+X.font=`italic 400 ${Math.max(14,W*.013)}px "Cormorant Garamond",serif`;X.fillStyle=aT;X.textAlign='left';X.fillText('300m',rX+8,(gY+sT)/2+5);
+X.font=`300 ${Math.max(8,W*.006)}px Outfit,sans-serif`;X.fillStyle='rgba(176,176,176,.35)';X.fillText('30 Floors × 10m',rX+8,(gY+sT)/2+22);
+// Human label
+X.font=`300 ${Math.max(7,W*.005)}px Outfit,sans-serif`;X.fillStyle='rgba(160,160,170,.3)';X.textAlign='center';X.fillText('1.7m',sX-sW/2-hH*1.5,gY-hH-5);
+// Fog
+const fg=X.createLinearGradient(0,gY-sH*.12,0,gY+20);fg.addColorStop(0,'transparent');fg.addColorStop(.6,'rgba(10,12,16,.4)');fg.addColorStop(1,'rgba(7,7,7,.75)');X.fillStyle=fg;X.fillRect(0,gY-sH*.12,W,sH*.12+H*.15);
+const hz=X.createLinearGradient(0,sT-oF*2,0,sT+sH*.25);hz.addColorStop(0,'rgba(10,12,18,.5)');hz.addColorStop(.4,'rgba(10,12,18,.15)');hz.addColorStop(1,'transparent');X.fillStyle=hz;X.fillRect(0,sT-oF*2,W,sH*.35);
+// Text
+X.textAlign='center';
+X.font=`300 ${Math.max(9,W*.007)}px Outfit,sans-serif`;X.fillStyle='rgba(201,169,110,.45)';X.fillText('M O R I O  T H E  M A N N  G R O U P',W/2,H*.04);
+X.font=`300 ${Math.max(32,W*.042)}px "Cormorant Garamond",serif`;X.fillStyle='rgba(245,243,240,.88)';X.fillText('THE STUMP',W/2,H*.1);
+X.font=`italic 300 ${Math.max(13,W*.012)}px "Cormorant Garamond",serif`;X.fillStyle='rgba(201,169,110,.6)';X.fillText('A Monument for Eternity',W/2,H*.14);
+}
+window.addEventListener('resize',resize);resize();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+  },{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+});
+</script>
+</body>
+</html>
