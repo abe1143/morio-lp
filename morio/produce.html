@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produce — MORIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--surface:#111;--border:rgba(255,255,255,.06);--cream:#e8e4df;--silver:#b0b0b0;--muted:#686868;--white:#f5f3f0;--gold:#c9a96e;--gold-dim:rgba(201,169,110,.12);--ff-d:'Cormorant Garamond',Georgia,serif;--ff-b:'Noto Serif JP',serif;--ff-s:'Outfit',sans-serif}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth;font-size:17px}body{font-family:var(--ff-b);background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 2.8rem;pointer-events:none;mix-blend-mode:difference}.nav a{pointer-events:auto}.nav-logo{font-family:var(--ff-d);font-size:1.3rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#fff;transition:opacity .4s}.nav-logo:hover{opacity:.6}.nav-back{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.7);transition:opacity .4s}.nav-back:hover{opacity:.5}
+.hero{position:relative;height:100vh;overflow:hidden}.hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) contrast(1.1);transition:transform 20s cubic-bezier(.22,1,.36,1)}.hero:hover .hero-img{transform:scale(1.04)}.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.1) 0%,rgba(10,10,10,0) 30%,rgba(10,10,10,.25) 60%,rgba(10,10,10,.8) 100%)}.hero-content{position:absolute;bottom:6rem;left:3rem;right:3rem;z-index:2}.hero-tag{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fu .9s ease-out .5s forwards}.hero h1{font-family:var(--ff-d);font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.12;color:#fff;opacity:0;animation:fu 1.1s ease-out .7s forwards}.hero h1 em{font-style:italic;font-weight:400;color:var(--gold)}.hero-sub{font-family:var(--ff-b);font-size:clamp(.88rem,1.2vw,1.05rem);font-weight:300;line-height:1.9;letter-spacing:.06em;color:rgba(255,255,255,.72);max-width:600px;margin-top:1.5rem;opacity:0;animation:fu 1s ease-out 1s forwards}@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.section{padding:7rem 3rem;max-width:1100px;margin:0 auto}.s-label{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1.2rem}.s-label::after{content:'';width:60px;height:1px;background:var(--gold-dim)}.s-heading{font-family:var(--ff-d);font-size:clamp(1.9rem,3.6vw,3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:2.8rem}.s-heading em{font-style:italic;font-weight:400;color:var(--gold)}.s-prose{max-width:780px}.s-prose p{font-size:1.02rem;font-weight:300;line-height:2.15;letter-spacing:.03em;color:var(--cream);margin-bottom:1.8rem}.s-prose p:last-child{margin-bottom:0}.hl{display:inline-block;padding:0 .2em;background:linear-gradient(to top,rgba(201,169,110,.18) 45%,transparent 45%)}.ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
+.rule{max-width:1200px;margin:0 auto;padding:0 3rem}.rule-in{height:1px;background:var(--border)}
+.vb{width:100%;overflow:hidden;position:relative}.vb img{width:100%;height:75vh;min-height:420px;object-fit:cover;filter:brightness(.72) contrast(1.06) saturate(.88);transition:transform 15s cubic-bezier(.22,1,.36,1)}.vb:hover img{transform:scale(1.04)}.vb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.2) 0%,transparent 40%,rgba(10,10,10,.55) 100%);pointer-events:none}.vb figcaption{position:absolute;bottom:2.2rem;left:3rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-shadow:0 2px 15px rgba(0,0,0,.8)}.vb figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.65rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
+.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px}.img-pair figure{overflow:hidden;position:relative;height:55vh;min-height:320px}.img-pair img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) contrast(1.05);transition:transform 12s cubic-bezier(.22,1,.36,1)}.img-pair figure:hover img{transform:scale(1.03)}
+/* Diagram */
+.diagram{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin:4rem 0 2rem;flex-wrap:wrap}.d-node{width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--border);background:var(--surface)}.d-node:last-child{border-color:var(--gold);background:rgba(201,169,110,.06);box-shadow:0 0 60px rgba(201,169,110,.08)}.d-en{font-family:var(--ff-d);font-size:.95rem;font-style:italic;color:var(--gold)}.d-jp{font-family:var(--ff-b);font-size:.82rem;font-weight:300;color:var(--silver);margin-top:.45rem}.d-arr{font-size:1.5rem;color:var(--muted);margin:0 .3rem}
+/* Formula */
+.formula{display:inline-flex;align-items:center;gap:1.8rem;font-family:var(--ff-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);padding:2.5rem 0;margin:3rem 0 2rem;border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);flex-wrap:wrap;justify-content:center;width:100%;text-align:center}.f-t{display:flex;flex-direction:column;align-items:center}.f-m{font-style:italic;color:var(--gold)}.f-s{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-top:.6rem}.f-op{color:var(--silver);font-size:.8em}
+/* Benchmarks */
+.bm{display:grid;grid-template-columns:45% 55%;border:1px solid var(--border);margin-bottom:2px;overflow:hidden;transition:background .5s}.bm:hover{background:var(--surface)}.bm-img{position:relative;overflow:hidden;min-height:440px;background:var(--surface)}.bm-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:brightness(.85) contrast(1.05);transition:transform 8s cubic-bezier(.22,1,.36,1)}.bm:hover .bm-img img{transform:scale(1.05)}.bm-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.3) 0%,rgba(10,10,10,.1) 50%,rgba(10,10,10,.55) 100%);pointer-events:none}.bm-img span{position:absolute;bottom:1.3rem;left:1.6rem;z-index:2;font-family:var(--ff-d);font-size:.92rem;font-style:italic;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}.bm-body{padding:3.2rem;display:flex;flex-direction:column}.bm-yrs{font-family:var(--ff-d);font-size:3.4rem;font-weight:300;color:var(--white);line-height:1;margin-bottom:.4rem}.bm-yrs i{font-family:var(--ff-d);font-size:1.2rem;font-style:italic;color:var(--gold);margin-left:.4rem}.bm-yrs-l{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem}.bm-n{font-family:var(--ff-d);font-size:1.5rem;font-weight:400;font-style:italic;color:var(--gold);margin-bottom:.3rem}.bm-nj{font-family:var(--ff-b);font-size:.92rem;font-weight:400;color:var(--white);margin-bottom:1.6rem}.bm-body p{font-size:.95rem;font-weight:300;line-height:2.05;color:var(--cream);margin-bottom:1rem}.bm-body p:last-child{margin-bottom:0}.bm-metrics{display:flex;gap:1.8rem;margin-top:auto;padding-top:1.8rem;border-top:1px solid var(--border);flex-wrap:wrap}.bm-mv{font-family:var(--ff-d);font-size:1.5rem;font-weight:400;color:var(--white)}.bm-ml{font-family:var(--ff-s);font-size:.7rem;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);margin-top:.3rem}
+/* Pillars */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.5rem;background:var(--border)}.tri-card{background:var(--bg);padding:3rem 2.4rem;transition:background .5s}.tri-card:hover{background:var(--surface)}.tri-num{font-family:var(--ff-d);font-size:2.5rem;font-weight:300;color:rgba(201,169,110,.12);font-style:italic;line-height:1;margin-bottom:1.5rem}.tri-en{font-family:var(--ff-d);font-size:1.35rem;font-weight:400;font-style:italic;color:var(--gold);margin-bottom:.35rem}.tri-jp{font-family:var(--ff-b);font-size:.9rem;font-weight:400;color:var(--white);margin-bottom:1.3rem}.tri-desc{font-size:.92rem;font-weight:300;line-height:2;color:var(--cream)}
+/* Compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;margin-top:3.5rem;border:1px solid var(--border)}.cmp-col{padding:3rem}.cmp-col:first-child{border-right:1px solid var(--border)}.cmp-col:last-child{background:rgba(201,169,110,.03)}.cmp-label{font-family:var(--ff-d);font-size:1.2rem;font-weight:400;font-style:italic;letter-spacing:.1em;padding-bottom:1.3rem;margin-bottom:2.2rem;border-bottom:1px solid var(--border)}.cmp-col:first-child .cmp-label{color:var(--silver)}.cmp-col:last-child .cmp-label{color:var(--gold)}.cmp-row{margin-bottom:1.6rem}.cmp-key{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}.cmp-val{font-size:1rem;font-weight:300;line-height:1.7;color:var(--silver)}.cmp-col:last-child .cmp-val{color:var(--cream)}
+/* Quote */
+.quote{padding:8rem 3rem;text-align:center;position:relative}.quote::before{content:'"';font-family:var(--ff-d);font-size:9rem;font-weight:300;color:rgba(201,169,110,.06);position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);line-height:1}.q-body{font-family:var(--ff-b);font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:300;line-height:2.15;letter-spacing:.06em;color:var(--cream);max-width:680px;margin:0 auto 2.5rem}.q-credit{font-family:var(--ff-d);font-size:.88rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+/* Final */
+.final{padding:10rem 3rem;text-align:center;max-width:900px;margin:0 auto}.final-text{font-family:var(--ff-d);font-size:clamp(1.8rem,3.8vw,3rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--white);padding:3rem 2rem;border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);margin-bottom:3rem}.final-text em{color:var(--gold);font-weight:400}.final-lines{font-family:var(--ff-b);font-size:1rem;font-weight:400;line-height:2.5;letter-spacing:.1em;color:var(--cream)}.final-lines strong{font-weight:500;color:var(--white)}
+.footer{padding:3rem;max-width:1200px;margin:0 auto}.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}.footer-links{display:flex;gap:2rem}.footer-links a{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.1em;color:var(--muted);transition:color .3s}.footer-links a:hover{color:var(--silver)}.footer-copy{font-family:var(--ff-s);font-size:.6rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}.rv.vis{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.tri,.cmp{grid-template-columns:1fr}.cmp-col:first-child{border-right:none;border-bottom:1px solid var(--border)}.bm{grid-template-columns:1fr}.bm-img{min-height:280px}.img-pair{grid-template-columns:1fr}.img-pair figure{height:45vh}}
+@media(max-width:768px){html{font-size:16px}.nav{padding:1.2rem 1.5rem}.hero-content{bottom:4rem;left:1.6rem;right:1.6rem}.section{padding:5rem 1.6rem}.vb img{height:55vh;min-height:300px}.vb figcaption{left:1.6rem;bottom:1.8rem}.tri-card,.cmp-col{padding:2.2rem 1.6rem}.bm-body{padding:2rem 1.6rem}.quote{padding:5rem 1.6rem}.rule{padding:0 1.6rem}.d-node{width:110px;height:110px}.d-en{font-size:.8rem}.d-jp{font-size:.7rem}.formula{gap:1rem;padding:1.8rem 0}.final{padding:6rem 1.6rem}.final-text{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="/" class="nav-logo">MORIO</a><a href="/" class="nav-back">← Back</a></nav>
+
+<section class="hero">
+  <img class="hero-img" src="living-panoramic.jpeg" alt="Produced Living — MORIO">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Morio the Mann — Produce</div>
+    <h1>カオスを、<br><em>結晶</em>に変える。</h1>
+    <p class="hero-sub">不動産プロデュースとは、価値の結晶化である。<br>LTVの最大化——不動産の潜在価値の、完全な解放。</p>
+  </div>
+</section>
+
+<!-- 01 Chaos -->
+<section class="section rv">
+  <div class="s-label">01 — Chaos</div>
+  <h2 class="s-heading">すべての不動産開発は、<br><em>混沌</em>から始まる。</h2>
+  <div class="s-prose">
+    <p>土地の形状、法規制、構造、コスト、マーケット、金融、デザイン、施工、運用——無数の変数が存在します。プロデューサーの仕事は、このカオスに<span class="ei">negative entropy</span>を作用させ、あらゆる要素をひとつの結晶へと収斂させることにあります。</p>
+  </div>
+  <div class="diagram">
+    <div class="d-node"><span class="d-en">Chaos</span><span class="d-jp">混沌</span></div><span class="d-arr">→</span>
+    <div class="d-node"><span class="d-en">Convergence</span><span class="d-jp">収斂</span></div><span class="d-arr">→</span>
+    <div class="d-node"><span class="d-en">Refinement</span><span class="d-jp">精製</span></div><span class="d-arr">→</span>
+    <div class="d-node"><span class="d-en">Crystallize</span><span class="d-jp">結晶化</span></div>
+  </div>
+</section>
+
+<div class="img-pair rv">
+  <figure><img src="facade-brick.jpeg" alt="Facade — Brick & Arch"></figure>
+  <figure><img src="tower-vertical.jpeg" alt="THE VERTICAL"></figure>
+</div>
+
+<!-- 02 Formula -->
+<section class="section rv">
+  <div class="s-label">02 — The Formula</div>
+  <h2 class="s-heading">プロデュースの本質——<br><em>LTV</em>の最大化。</h2>
+  <div class="formula">
+    <div class="f-t"><span class="f-m">LTV</span><span class="f-s">Lifetime Value</span></div><span class="f-op">=</span>
+    <div class="f-t"><span class="f-m">Revenue</span><span class="f-s">収益</span></div><span class="f-op">×</span>
+    <div class="f-t"><span class="f-m">Time</span><span class="f-s">時間</span></div>
+  </div>
+  <div class="s-prose">
+    <p>収益と時間——この二軸を同時に最大化することが、すべての判断基準です。現代のデベロッパーは「短期の収益」しか見ていません。MORIOのプロデュースは<span class="hl">時間軸を味方につけるOS</span>です。</p>
+  </div>
+</section>
+
+<figure class="vb rv"><img src="library-dining.png" alt="Library & Dining"><figcaption>Spatial depth — where time becomes an ally.<span class="vb-s">Material · Craft · Narrative</span></figcaption></figure>
+
+<!-- 03 Masterpieces -->
+<section class="section rv">
+  <div class="s-label">03 — Masterpieces</div>
+  <h2 class="s-heading">世界のマスターピースが生み出す、<br><em>天文学的収益</em>。</h2>
+  <div class="s-prose">
+    <p>ピラミッド、ノートルダム大聖堂、清水寺——これらは<span class="hl">国家が永遠に繁栄するための装置として設計された</span>不動産プロダクトであり、人類史上最も高いLTVを叩き出し続けています。</p>
+  </div>
+</section>
+
+<!-- Benchmark Cards -->
+<section class="section rv" style="padding-top:1rem">
+  <article class="bm"><div class="bm-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg" alt="Great Pyramid"><span>Great Pyramid — c. 2560 BC</span></div><div class="bm-body"><div class="bm-yrs">4,585<i>years</i></div><div class="bm-yrs-l">Years of Value Creation</div><div class="bm-n">The Great Pyramid</div><div class="bm-nj">ギザの大ピラミッド</div><p>4,585年を経た今もエジプト経済の根幹を支え続ける、人類史上最も極端なLTVの事例。</p><div class="bm-metrics"><div><div class="bm-mv">$153億</div><div class="bm-ml">年間観光収入</div></div><div><div class="bm-mv">1,580万人</div><div class="bm-ml">年間来訪者数</div></div><div><div class="bm-mv">12%</div><div class="bm-ml">GDP構成比</div></div></div></div></article>
+  <article class="bm"><div class="bm-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Notre-Dame_de_Paris_2013-07-24.jpg/1280px-Notre-Dame_de_Paris_2013-07-24.jpg" alt="Notre-Dame"><span>Notre-Dame — 1163 AD</span></div><div class="bm-body"><div class="bm-yrs">862<i>years</i></div><div class="bm-yrs-l">Years of Value Creation</div><div class="bm-n">Notre-Dame de Paris</div><div class="bm-nj">ノートルダム大聖堂</div><p>火災後わずか数日で€10億超の修復寄付。再開後年間1,100万人——パリ最大の観光資産。</p><div class="bm-metrics"><div><div class="bm-mv">1,100万人</div><div class="bm-ml">年間来訪者数</div></div><div><div class="bm-mv">€10億+</div><div class="bm-ml">寄付額</div></div><div><div class="bm-mv">No.1</div><div class="bm-ml">フランス最多</div></div></div></div></article>
+  <article class="bm"><div class="bm-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kiyomizu-dera_sakura02_2009.jpg/1280px-Kiyomizu-dera_sakura02_2009.jpg" alt="Kiyomizu-dera"><span>Kiyomizu-dera — 778 AD</span></div><div class="bm-body"><div class="bm-yrs">1,248<i>years</i></div><div class="bm-yrs-l">Years of Value Creation</div><div class="bm-n">Kiyomizu-dera</div><div class="bm-nj">清水寺</div><p>コンセプトの不変性が1,248年間の究極のLTVを生む。京都訪問先20年連続1位。</p><div class="bm-metrics"><div><div class="bm-mv">500万人+</div><div class="bm-ml">年間参拝者数</div></div><div><div class="bm-mv">20年+</div><div class="bm-ml">京都1位連続</div></div><div><div class="bm-mv">1.4兆円</div><div class="bm-ml">京都観光消費額</div></div></div></div></article>
+</section>
+
+<div class="quote rv"><p class="q-body">削ぎ落として、倍にする。<br>それがプロデュースの本質。</p><span class="q-credit">Morio the Mann — Producer</span></div>
+
+<!-- 04 Viewpoint -->
+<figure class="vb rv"><img src="living-mountain.png" alt="Living — Mountain View"><figcaption>A viewpoint designed for centuries, not quarters.<span class="vb-s">LTV Perspective</span></figcaption></figure>
+
+<section class="section rv">
+  <div class="s-label">04 — Viewpoint</div>
+  <h2 class="s-heading">高次元における、<br><em>視座の特異点</em>。</h2>
+  <div class="s-prose">
+    <p>現代のデベロッパーは竣工・売却で終わる視座。人類史に残るマスターピースを設計した人々は、<span class="hl">国家が永遠に繁栄するための装置</span>として建物を設計しました。MORIOの不動産プロデュースは、後者の系譜に連なります。</p>
+  </div>
+</section>
+
+<!-- 05 Pillars -->
+<section class="section rv">
+  <div class="s-label">05 — Six Pillars</div>
+  <h2 class="s-heading">プロデュースを構成する、<br><em>6つの柱</em>。</h2>
+  <div class="tri">
+    <div class="tri-card"><div class="tri-num">01</div><div class="tri-en">Concept Design</div><div class="tri-jp">企画・コンセプト設計</div><p class="tri-desc">「何を建てるべきか」を見極め、立地のポテンシャルを最大化するアセットタイプと需要構造を設計。</p></div>
+    <div class="tri-card"><div class="tri-num">02</div><div class="tri-en">Financial Architecture</div><div class="tri-jp">収益構造の設計</div><p class="tri-desc">運用期間全体を通じた価値のストラクチャー。IRR、NOI、LTV——数字の美学。</p></div>
+    <div class="tri-card"><div class="tri-num">03</div><div class="tri-en">Spatial Design</div><div class="tri-jp">空間デザイン</div><p class="tri-desc">天井高、開口、動線、素材、光——削ぎ落として、圧倒的な空間体験を実現。</p></div>
+    <div class="tri-card"><div class="tri-num">04</div><div class="tri-en">Asset Strategy</div><div class="tri-jp">アセット戦略</div><p class="tri-desc">賃貸、売却、ホテル、サービスアパートメント——出口戦略を開発段階から織り込む。</p></div>
+    <div class="tri-card"><div class="tri-num">05</div><div class="tri-en">Craftsmanship</div><div class="tri-jp">クラフトマンシップ</div><p class="tri-desc">左官、木工、石工、鉄工——量産品では到達できない深度を建築に実装。</p></div>
+    <div class="tri-card"><div class="tri-num">06</div><div class="tri-en">Orchestration</div><div class="tri-jp">全体統合</div><p class="tri-desc">設計・施工・法務・金融・マーケティング。すべてをひとつのビジョンの下に統合。</p></div>
+  </div>
+</section>
+
+<div class="img-pair rv">
+  <figure><img src="office-green.jpeg" alt="Executive Office"></figure>
+  <figure><img src="bedroom-cinema.jpeg" alt="Cinema Bedroom"></figure>
+</div>
+
+<!-- 06 Distinction -->
+<section class="section rv">
+  <div class="s-label">06 — Dimensional Shift</div>
+  <h2 class="s-heading">従来の不動産開発と、<br><em>プロデュース</em>の違い。</h2>
+  <div class="cmp">
+    <div class="cmp-col"><div class="cmp-label">Conventional</div><div class="cmp-row"><div class="cmp-key">Goal</div><div class="cmp-val">開発利益の最大化</div></div><div class="cmp-row"><div class="cmp-key">Time Horizon</div><div class="cmp-val">竣工・売却まで</div></div><div class="cmp-row"><div class="cmp-key">Design</div><div class="cmp-val">コストと規制の最適化</div></div><div class="cmp-row"><div class="cmp-key">Viewpoint</div><div class="cmp-val">短期 P/L</div></div><div class="cmp-row"><div class="cmp-key">Outcome</div><div class="cmp-val">建物の供給</div></div></div>
+    <div class="cmp-col"><div class="cmp-label">Producing</div><div class="cmp-row"><div class="cmp-key">Goal</div><div class="cmp-val">LTV（収益×時間）の最大化</div></div><div class="cmp-row"><div class="cmp-key">Time Horizon</div><div class="cmp-val">10年、100年、1000年先まで</div></div><div class="cmp-row"><div class="cmp-key">Design</div><div class="cmp-val">タイムレスな美の追求</div></div><div class="cmp-row"><div class="cmp-key">Viewpoint</div><div class="cmp-val">千年単位の累積価値</div></div><div class="cmp-row"><div class="cmp-key">Outcome</div><div class="cmp-val">マスターピースの創造</div></div></div>
+  </div>
+</section>
+
+<figure class="vb rv"><img src="facade-dark.jpeg" alt="Facade at dusk"><figcaption>Architecture designed not for decades, but for millennia.<span class="vb-s">MORIO Producing</span></figcaption></figure>
+
+<section class="final rv">
+  <div class="final-text">不動産プロデュースとは、<br><em>不動産潜在価値</em>の、<br>完全な解放である。</div>
+  <div class="final-lines"><strong>カオスを、結晶に。</strong><br>収益と時間の二軸を最大化し、<br>千年単位のLTVを叩き出す。</div>
+</section>
+
+<footer class="footer"><div class="footer-in"><div class="footer-links"><a href="/vision">Vision</a><a href="/producing">Produce</a><a href="/design-philosophy">Design</a><a href="/projects">Projects</a><a href="/company">Company</a></div><div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd.</div></div></footer>
+<script>document.addEventListener('DOMContentLoaded',()=>{const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.rv').forEach(el=>io.observe(el))})</script>
+</body>
+</html>

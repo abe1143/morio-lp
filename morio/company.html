@@ -5,54 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Company Profile — MORIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --gold:  #b09060;
-  --white: #f5f2ee;
-  --muted: rgba(245,242,238,.5);
-  --line:  rgba(176,144,96,.2);
+  --bg: #0a0a0a;
+  --surface: #111;
+  --border: rgba(255,255,255,0.06);
+  --cream: #e8e4df;
+  --silver: #b0b0b0;
+  --muted: #686868;
+  --white: #f5f3f0;
+  --gold: #c9a96e;
+  --gold-dim: rgba(201,169,110,0.12);
+  --line: rgba(201,169,110,0.2);
+  --ff-d: 'Cormorant Garamond', Georgia, serif;
+  --ff-b: 'Noto Serif JP', serif;
+  --ff-s: 'Outfit', sans-serif;
 }
 
-html, body {
-  background: #080808;
-  color: var(--white);
-  font-family: 'Montserrat', sans-serif;
+html {
+  background: var(--bg);
+  font-size: 17px;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--ff-b);
   font-weight: 300;
-  line-height: 1;
   min-height: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ── NAV ── */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: flex-start;
   padding: 32px 48px;
   background: linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%);
 }
 .nav-logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400; font-size: 13px; letter-spacing: .45em;
-  color: var(--white); text-decoration: none;
-  opacity: .85;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: #f5f2ee;
+  text-decoration: none;
+  transition: opacity .4s;
 }
-.nav-back {
-  font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none;
+.nav-logo:hover { opacity: .6; }
+.nav-links-sub {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 7px;
+}
+.nav-links-sub a {
+  font-family: 'Outfit', sans-serif;
+  font-size: .88rem; font-weight: 300; letter-spacing: .18em;
+  text-transform: lowercase;
+  color: rgba(255,255,255,.65); text-decoration: none; opacity: 1;
   transition: color .3s;
-  border-bottom: 1px solid rgba(176,144,96,.3);
-  padding-bottom: 2px;
 }
-.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+.nav-links-sub a:hover { color: #fff; }
+.nav-links-sub a.current { color: #c9a96e; pointer-events: none; }
 
 /* ── HERO ── */
 .hero {
   width: 100%;
   min-height: 44vh;
   display: flex; align-items: flex-end;
-  padding: 0 48px 72px;
+  padding: 160px 48px 72px;
   position: relative;
   border-bottom: 1px solid var(--line);
 }
@@ -68,7 +93,8 @@ html, body {
   margin: 0 auto;
 }
 .hero-eyebrow {
-  font-size: 9px; letter-spacing: .45em; text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: .78rem; letter-spacing: .45em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 24px;
 }
 .hero-title {
@@ -80,7 +106,8 @@ html, body {
 .hero-title em { font-style: italic; }
 .hero-sub {
   margin-top: 20px;
-  font-size: 9.5px; letter-spacing: .32em; text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: .78rem; letter-spacing: .32em; text-transform: uppercase;
   color: var(--muted);
 }
 
@@ -96,7 +123,8 @@ html, body {
   margin-bottom: 80px;
 }
 .section-label {
-  font-size: 8.5px; letter-spacing: .5em; text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: .78rem; letter-spacing: .5em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 40px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
@@ -114,7 +142,8 @@ html, body {
   border-top: none;
 }
 .company-table th {
-  font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem; letter-spacing: .25em; text-transform: uppercase;
   color: var(--gold); font-weight: 300;
   text-align: left;
   padding: 22px 0 22px 0;
@@ -122,13 +151,13 @@ html, body {
   vertical-align: top;
 }
 .company-table td {
-  font-size: 12px; letter-spacing: .08em; line-height: 2;
+  font-size: 18px; letter-spacing: .08em; line-height: 2;
   color: var(--white);
   padding: 22px 0;
   vertical-align: top;
 }
 .company-table td.muted {
-  color: var(--muted); font-size: 11px;
+  color: var(--muted); font-size: 16px;
 }
 
 /* ── ADDRESS BLOCK ── */
@@ -136,11 +165,12 @@ html, body {
   margin-bottom: 8px;
 }
 .address-block .addr-label {
-  font-size: 8.5px; letter-spacing: .3em; color: var(--gold);
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem; letter-spacing: .3em; color: var(--gold);
   text-transform: uppercase; display: block; margin-bottom: 4px;
 }
 .address-block p {
-  font-size: 12px; letter-spacing: .06em; line-height: 1.8; color: var(--white);
+  font-size: 18px; letter-spacing: .06em; line-height: 1.8; color: var(--white);
 }
 
 /* ── BANK LIST ── */
@@ -150,7 +180,7 @@ html, body {
   flex-direction: column;
 }
 .bank-list li {
-  font-size: 12px; letter-spacing: .08em; line-height: 2;
+  font-size: 18px; letter-spacing: .08em; line-height: 2;
   color: var(--white);
 }
 .bank-list li::before {
@@ -164,7 +194,7 @@ html, body {
   list-style: none;
 }
 .biz-list li {
-  font-size: 12px; letter-spacing: .08em; line-height: 2.4; color: var(--white);
+  font-size: 18px; letter-spacing: .08em; line-height: 2.4; color: var(--white);
 }
 
 /* ── DIVIDER ── */
@@ -176,7 +206,7 @@ html, body {
 
 /* ── CONTACT BLOCK ── */
 .contact-block {
-  background: rgba(176,144,96,.06);
+  background: rgba(201,169,110,.06);
   border: 1px solid var(--line);
   padding: 48px;
   margin-bottom: 80px;
@@ -187,11 +217,12 @@ html, body {
 }
 .contact-block .contact-item:last-child { margin-bottom: 0; }
 .contact-block .c-label {
-  font-size: 8.5px; letter-spacing: .4em; text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem; letter-spacing: .4em; text-transform: uppercase;
   color: var(--gold); min-width: 80px;
 }
 .contact-block .c-val {
-  font-size: 12px; letter-spacing: .1em; color: var(--white);
+  font-size: 18px; letter-spacing: .1em; color: var(--white);
 }
 .contact-block .c-val a {
   color: var(--white); text-decoration: none; transition: color .3s;
@@ -199,19 +230,13 @@ html, body {
 .contact-block .c-val a:hover { color: var(--gold); }
 
 /* ── FOOTER ── */
-.site-footer {
-  border-top: 1px solid var(--line);
-  padding: 40px 48px 56px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.site-footer p {
-  font-size: 8.5px; letter-spacing: .2em; color: rgba(245,242,238,.2); margin-top: 24px;
-}
-.footer-page-nav { display: flex; gap: 32px; flex-wrap: wrap; }
-.footer-page-nav a { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(245,242,238,.4); text-decoration: none; transition: color .3s; }
-.footer-page-nav a:hover { color: #b09060; }
-.footer-page-nav a.current { color: #b09060; pointer-events: none; }
+.footer{padding:3rem;max-width:1200px;margin:0 auto}
+.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-family:var(--ff-s);font-size:.82rem;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,242,238,.4);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:var(--silver)}
+.footer-links a.current{color:var(--gold);pointer-events:none}
+.footer-copy{font-family:var(--ff-s);font-size:.75rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
@@ -231,15 +256,23 @@ html, body {
 <!-- NAV -->
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">MORIO</a>
-  <a href="index.html" class="nav-back">← Back to Site</a>
+  <div class="nav-links-sub">
+    <a href="index.html">Home</a>
+    <a href="vision.html">Vision</a>
+    <a href="design-philosophy.html">Philosophy</a>
+    <a href="projects.html">Projects</a>
+    <a href="producing.html">Produce</a>
+    <a href="the-stump.html">The Stump</a>
+    <a href="company.html" class="current">company</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">Corporate Information</p>
-    <h1 class="hero-title">Company<br><em>Profile</em></h1>
-    <p class="hero-sub">株式会社MORIO — Morio Co., Ltd.</p>
+    <p class="hero-eyebrow" data-cms="hero_eyebrow">Corporate Information</p>
+    <h1 class="hero-title" data-cms="hero_title">Company<br><em>Profile</em></h1>
+    <p class="hero-sub" data-cms="hero_sub">株式会社MORIO — Morio Co., Ltd.</p>
   </div>
 </section>
 
@@ -250,15 +283,15 @@ html, body {
   <div class="contact-block">
     <div class="contact-item">
       <span class="c-label">Tel</span>
-      <span class="c-val"><a href="tel:0364279185">03-6427-9185</a>&ensp;／&ensp;平日 10:30–18:00（土日祝定休）</span>
+      <span class="c-val"><a href="tel:0364279185" data-cms="tel">03-6427-9185</a>&ensp;／&ensp;<span data-cms="tel_hours">平日 10:30–18:00（土日祝定休）</span></span>
     </div>
     <div class="contact-item">
       <span class="c-label">Email</span>
-      <span class="c-val"><a href="mailto:info@morio-realestate.com">info@morio-realestate.com</a></span>
+      <span class="c-val"><a href="mailto:info@morio-realestate.com" data-cms="email">info@morio-realestate.com</a></span>
     </div>
     <div class="contact-item">
       <span class="c-label">Web</span>
-      <span class="c-val"><a href="https://www.morio-realestate.com/" target="_blank">www.morio-realestate.com</a></span>
+      <span class="c-val"><a href="https://www.morio-realestate.com/" target="_blank" data-cms="web_url">www.morio-realestate.com</a></span>
     </div>
   </div>
 
@@ -268,30 +301,30 @@ html, body {
     <table class="company-table">
       <tr>
         <th>名称</th>
-        <td>株式会社MORIO<br><span style="font-size:10px;color:var(--muted);letter-spacing:.1em;">Morio Co., Ltd.</span></td>
+        <td><span data-cms="company_name_ja">株式会社MORIO</span><br><span style="font-size:10px;color:var(--muted);letter-spacing:.1em;" data-cms="company_name_en">Morio Co., Ltd.</span></td>
       </tr>
       <tr>
         <th>代表者</th>
-        <td>森田 夏光<br><span style="font-size:10px;color:var(--muted);">Natsuhiko Morita — Founder &amp; CEO</span></td>
+        <td><span data-cms="ceo_name_ja">森田 夏光</span><br><span style="font-size:10px;color:var(--muted);" data-cms="ceo_name_en">Natsuhiko Morita — Founder &amp; CEO</span></td>
       </tr>
       <tr>
         <th>設立</th>
-        <td>2011年 1月</td>
+        <td data-cms="established">2011年 1月</td>
       </tr>
       <tr>
         <th>資本金</th>
-        <td>5,000万円</td>
+        <td data-cms="capital">5,000万円</td>
       </tr>
       <tr>
         <th>所在地</th>
         <td>
           <div class="address-block">
-            <span class="addr-label">Administrative Headquarters（総合オフィス）</span>
-            <p>〒107-0062　東京都港区南青山 5-11-23</p>
+            <span class="addr-label" data-cms="addr1_label">Administrative Headquarters（総合オフィス）</span>
+            <p data-cms="addr1">〒107-0062　東京都港区南青山 5-11-23</p>
           </div>
           <div class="address-block" style="margin-top:16px;">
-            <span class="addr-label">Registered Headquarters（本社）</span>
-            <p>〒107-0062　東京都港区南青山 6-8-6<br>テロワール南青山 103</p>
+            <span class="addr-label" data-cms="addr2_label">Registered Headquarters（本社）</span>
+            <p data-cms="addr2">〒107-0062　東京都港区南青山 6-8-6<br>テロワール南青山 103</p>
           </div>
         </td>
       </tr>
@@ -299,9 +332,9 @@ html, body {
         <th>事業内容</th>
         <td>
           <ul class="biz-list">
-            <li>不動産開発事業</li>
-            <li>コントラクト事業</li>
-            <li>デザイン設計事業</li>
+            <li data-cms="biz1">不動産開発事業</li>
+            <li data-cms="biz2">コントラクト事業</li>
+            <li data-cms="biz3">デザイン設計事業</li>
           </ul>
         </td>
       </tr>
@@ -309,48 +342,59 @@ html, body {
         <th>取引銀行</th>
         <td>
           <ul class="bank-list">
-            <li>りそな銀行</li>
-            <li>三井住友銀行</li>
-            <li>みずほ銀行</li>
-            <li>三菱UFJ銀行</li>
-            <li>北陸銀行</li>
+            <li data-cms="bank1">りそな銀行</li>
+            <li data-cms="bank2">三井住友銀行</li>
+            <li data-cms="bank3">みずほ銀行</li>
+            <li data-cms="bank4">三菱UFJ銀行</li>
+            <li data-cms="bank5">北陸銀行</li>
           </ul>
         </td>
       </tr>
       <tr>
         <th>顧問弁護士</th>
-        <td>沼井綜合法律事務所<br><span style="font-size:11px;color:var(--muted);">沼井 英明 先生</span></td>
+        <td><span data-cms="lawyer_firm">沼井綜合法律事務所</span><br><span style="font-size:11px;color:var(--muted);" data-cms="lawyer_name">沼井 英明 先生</span></td>
       </tr>
       <tr>
         <th>不動産免許番号</th>
-        <td>宅地建物取引業 免許番号<br><span style="letter-spacing:.05em;">東京都知事 (3) 第93117号</span></td>
+        <td data-cms="license">宅地建物取引業 免許番号<br><span style="letter-spacing:.05em;">東京都知事 (3) 第93117号</span></td>
       </tr>
       <tr>
         <th>所属団体</th>
-        <td>(公社) 全日本不動産協会</td>
+        <td data-cms="association">(公社) 全日本不動産協会</td>
       </tr>
       <tr>
         <th>保証協会</th>
-        <td>(公社) 不動産保証協会</td>
+        <td data-cms="guarantee">(公社) 不動産保証協会</td>
       </tr>
     </table>
   </div>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <nav class="footer-page-nav">
-      <a href="index.html">Home</a>
-      <a href="vision.html">Vision</a>
-      <a href="design-philosophy.html">Philosophy</a>
-      <a href="projects.html">Projects</a>
-      <a href="producing.html">Produce</a>
-      <a href="the-stump.html">The Stump</a>
-      <a href="company.html" class="current">Company</a>
-    </nav>
-    <p>© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</p>
+  <footer class="footer">
+    <div class="footer-in">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="vision.html">Vision</a>
+        <a href="design-philosophy.html">Philosophy</a>
+        <a href="projects.html">Projects</a>
+        <a href="producing.html">Produce</a>
+        <a href="the-stump.html">The Stump</a>
+        <a href="company.html" class="current">Company</a>
+      </div>
+      <div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div>
+    </div>
   </footer>
 
 </main>
+
+<script>
+fetch('/data/company.json').then(r=>r.json()).then(d=>{
+  document.querySelectorAll('[data-cms]').forEach(el=>{
+    var key=el.getAttribute('data-cms');
+    if(d[key]!==undefined) el.innerHTML=d[key];
+  });
+}).catch(function(){});
+</script>
 
 </body>
 </html>

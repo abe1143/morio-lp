@@ -1,0 +1,317 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "morio/images/projects"
+public_folder: "images/projects"
+
+locale: ja
+
+collections:
+  - name: "pages"
+    label: "ページ管理"
+    files:
+
+      - name: "home"
+        label: "ホーム（トップページ）"
+        file: "morio/data/home.json"
+        format: json
+        fields:
+          - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
+          - { label: "ステートメント 本文（HTMLタグ含む）", name: "statement_text", widget: "text" }
+          - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
+          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
+          - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
+          - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
+          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
+          - { label: "ポジションフレーム アイラベル", name: "pos_eye", widget: "string" }
+          - { label: "ポジションフレーム 本文（HTMLタグ含む）", name: "pos_text", widget: "text" }
+          - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
+          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
+          - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
+          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "ケイパビリティ01 英語名", name: "cap1_en", widget: "string" }
+          - { label: "ケイパビリティ01 日本語名", name: "cap1_jp", widget: "string" }
+          - { label: "ケイパビリティ01 説明", name: "cap1_desc", widget: "text" }
+          - { label: "ケイパビリティ02 英語名", name: "cap2_en", widget: "string" }
+          - { label: "ケイパビリティ02 日本語名", name: "cap2_jp", widget: "string" }
+          - { label: "ケイパビリティ02 説明", name: "cap2_desc", widget: "text" }
+          - { label: "ケイパビリティ03 英語名", name: "cap3_en", widget: "string" }
+          - { label: "ケイパビリティ03 日本語名", name: "cap3_jp", widget: "string" }
+          - { label: "ケイパビリティ03 説明", name: "cap3_desc", widget: "text" }
+          - { label: "ケイパビリティ04 英語名", name: "cap4_en", widget: "string" }
+          - { label: "ケイパビリティ04 日本語名", name: "cap4_jp", widget: "string" }
+          - { label: "ケイパビリティ04 説明", name: "cap4_desc", widget: "text" }
+          - { label: "ケイパビリティ05 英語名", name: "cap5_en", widget: "string" }
+          - { label: "ケイパビリティ05 日本語名", name: "cap5_jp", widget: "string" }
+          - { label: "ケイパビリティ05 説明", name: "cap5_desc", widget: "text" }
+          - { label: "ケイパビリティ06 英語名", name: "cap6_en", widget: "string" }
+          - { label: "ケイパビリティ06 日本語名", name: "cap6_jp", widget: "string" }
+          - { label: "ケイパビリティ06 説明", name: "cap6_desc", widget: "text" }
+          - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
+          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "トラック実績1 ラベル（英語）", name: "track1_eye", widget: "string" }
+          - { label: "トラック実績1 タイトル", name: "track1_label", widget: "string" }
+          - { label: "トラック実績1 数値", name: "track1_val", widget: "string" }
+          - { label: "トラック実績1 補足", name: "track1_note", widget: "text" }
+          - { label: "トラック実績2 ラベル（英語）", name: "track2_eye", widget: "string" }
+          - { label: "トラック実績2 タイトル", name: "track2_label", widget: "string" }
+          - { label: "トラック実績2 数値", name: "track2_val", widget: "string" }
+          - { label: "トラック実績2 補足", name: "track2_note", widget: "text" }
+          - { label: "引用文 本文（HTMLタグ含む）", name: "quote_body", widget: "text" }
+          - { label: "引用文 クレジット", name: "quote_credit", widget: "string" }
+          - { label: "プロデューサー 英語名", name: "producer_name", widget: "string" }
+          - { label: "プロデューサー 肩書き", name: "producer_title", widget: "string" }
+          - { label: "プロデューサー 本文1", name: "producer_p1", widget: "text" }
+          - { label: "プロデューサー 本文2", name: "producer_p2", widget: "text" }
+          - { label: "プロデューサー 署名", name: "producer_sig", widget: "string" }
+          - { label: "CTA 見出し（HTMLタグ含む）", name: "cta_heading", widget: "text" }
+          - { label: "CTA サブテキスト", name: "cta_sub", widget: "string" }
+          - { label: "CTA ボタンテキスト", name: "cta_btn", widget: "string" }
+          - { label: "CTA 住所・連絡先", name: "cta_info", widget: "text" }
+
+      - name: "vision"
+        label: "Vision（ビジョン）"
+        file: "morio/data/vision.json"
+        format: json
+        fields:
+          - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
+          - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
+          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 本文", name: "s1_p1", widget: "text" }
+          - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
+          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
+          - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
+          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
+          - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
+          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
+          - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
+          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 本文", name: "s5_p1", widget: "text" }
+          - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
+          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 本文1", name: "s6_p1", widget: "text" }
+          - { label: "セクション06 本文2", name: "s6_p2", widget: "text" }
+          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
+          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_lines", widget: "text" }
+
+      - name: "philosophy"
+        label: "Design Philosophy（デザイン哲学）"
+        file: "morio/data/philosophy.json"
+        format: json
+        fields:
+          - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
+          - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
+          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
+          - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
+          - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
+          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
+          - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
+          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
+          - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
+          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "三要素01 英語名", name: "tri1_en", widget: "string" }
+          - { label: "三要素01 日本語名", name: "tri1_jp", widget: "string" }
+          - { label: "三要素01 説明", name: "tri1_desc", widget: "text" }
+          - { label: "三要素02 英語名", name: "tri2_en", widget: "string" }
+          - { label: "三要素02 日本語名", name: "tri2_jp", widget: "string" }
+          - { label: "三要素02 説明", name: "tri2_desc", widget: "text" }
+          - { label: "三要素03 英語名", name: "tri3_en", widget: "string" }
+          - { label: "三要素03 日本語名", name: "tri3_jp", widget: "string" }
+          - { label: "三要素03 説明", name: "tri3_desc", widget: "text" }
+          - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
+          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 本文", name: "s5_p1", widget: "text" }
+          - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
+          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 本文", name: "s6_p1", widget: "text" }
+          - { label: "定義フレーム アイラベル", name: "def_eye", widget: "string" }
+          - { label: "定義フレーム 本文（HTMLタグ含む）", name: "def_text", widget: "text" }
+          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
+
+      - name: "producing"
+        label: "Produce（不動産プロデュース）"
+        file: "morio/data/producing.json"
+        format: json
+        fields:
+          - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
+          - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
+          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 本文", name: "s1_p1", widget: "text" }
+          - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
+          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
+          - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
+          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
+          - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
+          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
+          - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
+          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "六本柱01 英語名", name: "pillar1_en", widget: "string" }
+          - { label: "六本柱01 日本語名", name: "pillar1_jp", widget: "string" }
+          - { label: "六本柱01 説明", name: "pillar1_desc", widget: "text" }
+          - { label: "六本柱02 英語名", name: "pillar2_en", widget: "string" }
+          - { label: "六本柱02 日本語名", name: "pillar2_jp", widget: "string" }
+          - { label: "六本柱02 説明", name: "pillar2_desc", widget: "text" }
+          - { label: "六本柱03 英語名", name: "pillar3_en", widget: "string" }
+          - { label: "六本柱03 日本語名", name: "pillar3_jp", widget: "string" }
+          - { label: "六本柱03 説明", name: "pillar3_desc", widget: "text" }
+          - { label: "六本柱04 英語名", name: "pillar4_en", widget: "string" }
+          - { label: "六本柱04 日本語名", name: "pillar4_jp", widget: "string" }
+          - { label: "六本柱04 説明", name: "pillar4_desc", widget: "text" }
+          - { label: "六本柱05 英語名", name: "pillar5_en", widget: "string" }
+          - { label: "六本柱05 日本語名", name: "pillar5_jp", widget: "string" }
+          - { label: "六本柱05 説明", name: "pillar5_desc", widget: "text" }
+          - { label: "六本柱06 英語名", name: "pillar6_en", widget: "string" }
+          - { label: "六本柱06 日本語名", name: "pillar6_jp", widget: "string" }
+          - { label: "六本柱06 説明", name: "pillar6_desc", widget: "text" }
+          - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
+          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "引用文 本文（HTMLタグ含む）", name: "quote_body", widget: "text" }
+          - { label: "引用文 クレジット", name: "quote_credit", widget: "string" }
+          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
+          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_lines", widget: "text" }
+
+      - name: "the-stump"
+        label: "THE STUMP"
+        file: "morio/data/the-stump.json"
+        format: json
+        fields:
+          - { label: "エピグラフ 本文（HTMLタグ含む）", name: "epi_text", widget: "text" }
+          - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
+          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
+          - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
+          - { label: "セクション01 本文3", name: "s1_p3", widget: "text" }
+          - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
+          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 本文1", name: "s2_p1", widget: "text" }
+          - { label: "セクション02 本文2", name: "s2_p2", widget: "text" }
+          - { label: "セクション02 本文3", name: "s2_p3", widget: "text" }
+          - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
+          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 本文1", name: "s3_p1", widget: "text" }
+          - { label: "セクション03 本文2", name: "s3_p2", widget: "text" }
+          - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
+          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
+          - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
+          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 本文1", name: "s5_p1", widget: "text" }
+          - { label: "セクション05 本文2", name: "s5_p2", widget: "text" }
+          - { label: "セクション05 本文3", name: "s5_p3", widget: "text" }
+          - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
+          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 本文1", name: "s6_p1", widget: "text" }
+          - { label: "セクション06 本文2", name: "s6_p2", widget: "text" }
+          - { label: "パトロンフレーム アイラベル", name: "patron_eye", widget: "string" }
+          - { label: "パトロンフレーム 本文（HTMLタグ含む）", name: "patron_text", widget: "text" }
+          - { label: "セクション07 ラベル", name: "s7_label", widget: "string" }
+          - { label: "セクション07 見出し（HTMLタグ含む）", name: "s7_heading", widget: "text" }
+          - { label: "セクション07 本文1", name: "s7_p1", widget: "text" }
+          - { label: "セクション07 本文2", name: "s7_p2", widget: "text" }
+          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
+          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_sub", widget: "text" }
+          - { label: "CTA ラベル", name: "cta_label", widget: "string" }
+          - { label: "CTA ボタンテキスト", name: "cta_btn", widget: "string" }
+          - { label: "CTA 注記", name: "cta_note", widget: "string" }
+
+      - name: "projects"
+        label: "Projects（プロジェクト一覧）"
+        file: "morio/data/projects.json"
+        format: json
+        fields:
+          - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
+          - { label: "Project 01 名称", name: "p01_name", widget: "string" }
+          - { label: "Project 01 ステータス", name: "p01_status", widget: "string" }
+          - { label: "Project 02 名称", name: "p02_name", widget: "string" }
+          - { label: "Project 02 ステータス", name: "p02_status", widget: "string" }
+          - { label: "Project 03 名称", name: "p03_name", widget: "string" }
+          - { label: "Project 03 ステータス", name: "p03_status", widget: "string" }
+          - { label: "Project 04 名称", name: "p04_name", widget: "string" }
+          - { label: "Project 04 ステータス", name: "p04_status", widget: "string" }
+          - { label: "Project 05 名称", name: "p05_name", widget: "string" }
+          - { label: "Project 05 ステータス", name: "p05_status", widget: "string" }
+          - { label: "Project 06 名称", name: "p06_name", widget: "string" }
+          - { label: "Project 06 ステータス", name: "p06_status", widget: "string" }
+          - { label: "Project 07 名称", name: "p07_name", widget: "string" }
+          - { label: "Project 07 ステータス", name: "p07_status", widget: "string" }
+          - { label: "Project 08 名称", name: "p08_name", widget: "string" }
+          - { label: "Project 08 ステータス", name: "p08_status", widget: "string" }
+          - { label: "Project 09 名称", name: "p09_name", widget: "string" }
+          - { label: "Project 09 ステータス", name: "p09_status", widget: "string" }
+          - { label: "Project 10 名称", name: "p10_name", widget: "string" }
+          - { label: "Project 10 ステータス", name: "p10_status", widget: "string" }
+          - { label: "Project 11 名称", name: "p11_name", widget: "string" }
+          - { label: "Project 11 ステータス", name: "p11_status", widget: "string" }
+          - { label: "Project 12 名称", name: "p12_name", widget: "string" }
+          - { label: "Project 12 ステータス", name: "p12_status", widget: "string" }
+          - { label: "Project 13 名称", name: "p13_name", widget: "string" }
+          - { label: "Project 13 ステータス", name: "p13_status", widget: "string" }
+          - { label: "Project 14 名称", name: "p14_name", widget: "string" }
+          - { label: "Project 14 ステータス", name: "p14_status", widget: "string" }
+          - { label: "Project 15 名称", name: "p15_name", widget: "string" }
+          - { label: "Project 15 ステータス", name: "p15_status", widget: "string" }
+          - { label: "Project 16 名称", name: "p16_name", widget: "string" }
+          - { label: "Project 16 ステータス", name: "p16_status", widget: "string" }
+          - { label: "Project 17 名称", name: "p17_name", widget: "string" }
+          - { label: "Project 17 ステータス", name: "p17_status", widget: "string" }
+          - { label: "Project 18 名称", name: "p18_name", widget: "string" }
+          - { label: "Project 18 ステータス", name: "p18_status", widget: "string" }
+
+      - name: "company"
+        label: "Company（会社概要）"
+        file: "morio/data/company.json"
+        format: json
+        fields:
+          - { label: "ヒーロー アイブロウ", name: "hero_eyebrow", widget: "string" }
+          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_title", widget: "text" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
+          - { label: "電話番号", name: "tel", widget: "string" }
+          - { label: "電話 受付時間", name: "tel_hours", widget: "string" }
+          - { label: "メールアドレス", name: "email", widget: "string" }
+          - { label: "Webサイト URL", name: "web_url", widget: "string" }
+          - { label: "会社名（日本語）", name: "company_name_ja", widget: "string" }
+          - { label: "会社名（英語）", name: "company_name_en", widget: "string" }
+          - { label: "代表者名（日本語）", name: "ceo_name_ja", widget: "string" }
+          - { label: "代表者名（英語・肩書）", name: "ceo_name_en", widget: "string" }
+          - { label: "設立年月", name: "established", widget: "string" }
+          - { label: "資本金", name: "capital", widget: "string" }
+          - { label: "住所 総合オフィス（ラベル）", name: "addr1_label", widget: "string" }
+          - { label: "住所 総合オフィス", name: "addr1", widget: "string" }
+          - { label: "住所 本社（ラベル）", name: "addr2_label", widget: "string" }
+          - { label: "住所 本社", name: "addr2", widget: "text" }
+          - { label: "事業内容1", name: "biz1", widget: "string" }
+          - { label: "事業内容2", name: "biz2", widget: "string" }
+          - { label: "事業内容3", name: "biz3", widget: "string" }
+          - { label: "取引銀行1", name: "bank1", widget: "string" }
+          - { label: "取引銀行2", name: "bank2", widget: "string" }
+          - { label: "取引銀行3", name: "bank3", widget: "string" }
+          - { label: "取引銀行4", name: "bank4", widget: "string" }
+          - { label: "取引銀行5", name: "bank5", widget: "string" }
+          - { label: "顧問弁護士 事務所名", name: "lawyer_firm", widget: "string" }
+          - { label: "顧問弁護士 氏名", name: "lawyer_name", widget: "string" }
+          - { label: "不動産免許番号", name: "license", widget: "string" }
+          - { label: "所属団体", name: "association", widget: "string" }
+          - { label: "保証協会", name: "guarantee", widget: "string" }

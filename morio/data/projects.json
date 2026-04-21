@@ -1,37 +1,41 @@
-[
-  {
-    "id": "nampeidai",
-    "location": "Nampeidai, Shibuya",
-    "name": "The Super Emotions House",
-    "tag": "Ultra-luxury Residence",
-    "image": "images/projects/nampeidai.jpg"
-  },
-  {
-    "id": "shirokanedai",
-    "location": "Shirokanedai, Minato",
-    "name": "The Graystone House",
-    "tag": "Private Residence",
-    "image": "images/projects/shirokanedai.jpg"
-  },
-  {
-    "id": "okamoto",
-    "location": "Okamoto, Kobe",
-    "name": "Okamoto House",
-    "tag": "Private Residence",
-    "image": "images/projects/okamoto.jpg"
-  },
-  {
-    "id": "aoyama",
-    "location": "Minami-Aoyama, Minato",
-    "name": "Aoyama Building",
-    "tag": "Mixed-Use / Boutique",
-    "image": "images/projects/aoyama.jpg"
-  },
-  {
-    "id": "roppongi",
-    "location": "Roppongi, Minato",
-    "name": "Roppongi Residence",
-    "tag": "Service Apartment",
-    "image": "images/projects/roppongi.jpg"
-  }
-]
+{
+  "hero_tag": "Projects — MORIO",
+  "hero_h1": "Properties that<br><em>Define</em> Their City.",
+  "hero_sub": "南青山、白金台、代官山——東京を定義する不動産プロダクト。",
+  "p01_name": "Project 01",
+  "p01_status": "Coming Soon",
+  "p02_name": "Project 02",
+  "p02_status": "Coming Soon",
+  "p03_name": "Project 03",
+  "p03_status": "Coming Soon",
+  "p04_name": "Project 04",
+  "p04_status": "Coming Soon",
+  "p05_name": "Project 05",
+  "p05_status": "Coming Soon",
+  "p06_name": "Project 06",
+  "p06_status": "Coming Soon",
+  "p07_name": "Project 07",
+  "p07_status": "Coming Soon",
+  "p08_name": "Project 08",
+  "p08_status": "Coming Soon",
+  "p09_name": "Project 09",
+  "p09_status": "Coming Soon",
+  "p10_name": "Project 10",
+  "p10_status": "Coming Soon",
+  "p11_name": "Project 11",
+  "p11_status": "Coming Soon",
+  "p12_name": "Project 12",
+  "p12_status": "Coming Soon",
+  "p13_name": "Project 13",
+  "p13_status": "Coming Soon",
+  "p14_name": "Project 14",
+  "p14_status": "Coming Soon",
+  "p15_name": "Project 15",
+  "p15_status": "Coming Soon",
+  "p16_name": "Project 16",
+  "p16_status": "Coming Soon",
+  "p17_name": "Project 17",
+  "p17_status": "Coming Soon",
+  "p18_name": "Project 18",
+  "p18_status": "Coming Soon"
+}
