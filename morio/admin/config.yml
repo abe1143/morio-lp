@@ -18,23 +18,23 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
-          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
-          - { label: "ステートメント 本文（HTMLタグ含む）", name: "statement_text", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_h1", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "ステートメント 本文", name: "statement_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
-          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 見出し", name: "s1_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
           - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
           - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
-          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 見出し", name: "s2_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
           - { label: "ポジションフレーム アイラベル", name: "pos_eye", widget: "string" }
-          - { label: "ポジションフレーム 本文（HTMLタグ含む）", name: "pos_text", widget: "text" }
+          - { label: "ポジションフレーム 本文", name: "pos_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
-          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 見出し", name: "s3_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
           - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
-          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 見出し", name: "s4_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "ケイパビリティ01 英語名", name: "cap1_en", widget: "string" }
           - { label: "ケイパビリティ01 日本語名", name: "cap1_jp", widget: "string" }
           - { label: "ケイパビリティ01 説明", name: "cap1_desc", widget: "text" }
@@ -54,7 +54,7 @@ collections:
           - { label: "ケイパビリティ06 日本語名", name: "cap6_jp", widget: "string" }
           - { label: "ケイパビリティ06 説明", name: "cap6_desc", widget: "text" }
           - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
-          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 見出し", name: "s5_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "トラック実績1 ラベル（英語）", name: "track1_eye", widget: "string" }
           - { label: "トラック実績1 タイトル", name: "track1_label", widget: "string" }
           - { label: "トラック実績1 数値", name: "track1_val", widget: "string" }
@@ -63,14 +63,14 @@ collections:
           - { label: "トラック実績2 タイトル", name: "track2_label", widget: "string" }
           - { label: "トラック実績2 数値", name: "track2_val", widget: "string" }
           - { label: "トラック実績2 補足", name: "track2_note", widget: "text" }
-          - { label: "引用文 本文（HTMLタグ含む）", name: "quote_body", widget: "text" }
+          - { label: "引用文 本文", name: "quote_body", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "引用文 クレジット", name: "quote_credit", widget: "string" }
           - { label: "プロデューサー 英語名", name: "producer_name", widget: "string" }
           - { label: "プロデューサー 肩書き", name: "producer_title", widget: "string" }
           - { label: "プロデューサー 本文1", name: "producer_p1", widget: "text" }
           - { label: "プロデューサー 本文2", name: "producer_p2", widget: "text" }
           - { label: "プロデューサー 署名", name: "producer_sig", widget: "string" }
-          - { label: "CTA 見出し（HTMLタグ含む）", name: "cta_heading", widget: "text" }
+          - { label: "CTA 見出し", name: "cta_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "CTA サブテキスト", name: "cta_sub", widget: "string" }
           - { label: "CTA ボタンテキスト", name: "cta_btn", widget: "string" }
           - { label: "CTA 住所・連絡先", name: "cta_info", widget: "text" }
@@ -81,29 +81,29 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
-          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_h1", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
-          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 見出し", name: "s1_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 本文", name: "s1_p1", widget: "text" }
           - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
-          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 見出し", name: "s2_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
           - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
-          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 見出し", name: "s3_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
           - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
-          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 見出し", name: "s4_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
           - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
-          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 見出し", name: "s5_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション05 本文", name: "s5_p1", widget: "text" }
           - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
-          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 見出し", name: "s6_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション06 本文1", name: "s6_p1", widget: "text" }
           - { label: "セクション06 本文2", name: "s6_p2", widget: "text" }
-          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
-          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_lines", widget: "text" }
+          - { label: "フィナーレ 本文", name: "final_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "フィナーレ サブ", name: "final_lines", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
 
       - name: "philosophy"
         label: "Design Philosophy（デザイン哲学）"
@@ -111,20 +111,20 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_h1", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
           - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
-          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 見出し", name: "s1_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
           - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
           - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
-          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 見出し", name: "s2_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
           - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
-          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 見出し", name: "s3_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
           - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
-          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 見出し", name: "s4_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "三要素01 英語名", name: "tri1_en", widget: "string" }
           - { label: "三要素01 日本語名", name: "tri1_jp", widget: "string" }
           - { label: "三要素01 説明", name: "tri1_desc", widget: "text" }
@@ -135,14 +135,14 @@ collections:
           - { label: "三要素03 日本語名", name: "tri3_jp", widget: "string" }
           - { label: "三要素03 説明", name: "tri3_desc", widget: "text" }
           - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
-          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 見出し", name: "s5_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション05 本文", name: "s5_p1", widget: "text" }
           - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
-          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 見出し", name: "s6_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション06 本文", name: "s6_p1", widget: "text" }
           - { label: "定義フレーム アイラベル", name: "def_eye", widget: "string" }
-          - { label: "定義フレーム 本文（HTMLタグ含む）", name: "def_text", widget: "text" }
-          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
+          - { label: "定義フレーム 本文", name: "def_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "フィナーレ 本文", name: "final_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
 
       - name: "producing"
         label: "Produce（不動産プロデュース）"
@@ -150,22 +150,22 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
-          - { label: "ヒーロー サブテキスト（HTMLタグ含む）", name: "hero_sub", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_h1", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
-          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 見出し", name: "s1_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 本文", name: "s1_p1", widget: "text" }
           - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
-          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 見出し", name: "s2_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション02 本文", name: "s2_p1", widget: "text" }
           - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
-          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 見出し", name: "s3_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 本文", name: "s3_p1", widget: "text" }
           - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
-          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 見出し", name: "s4_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
           - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
-          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 見出し", name: "s5_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "六本柱01 英語名", name: "pillar1_en", widget: "string" }
           - { label: "六本柱01 日本語名", name: "pillar1_jp", widget: "string" }
           - { label: "六本柱01 説明", name: "pillar1_desc", widget: "text" }
@@ -185,52 +185,52 @@ collections:
           - { label: "六本柱06 日本語名", name: "pillar6_jp", widget: "string" }
           - { label: "六本柱06 説明", name: "pillar6_desc", widget: "text" }
           - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
-          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
-          - { label: "引用文 本文（HTMLタグ含む）", name: "quote_body", widget: "text" }
+          - { label: "セクション06 見出し", name: "s6_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "引用文 本文", name: "quote_body", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "引用文 クレジット", name: "quote_credit", widget: "string" }
-          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
-          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_lines", widget: "text" }
+          - { label: "フィナーレ 本文", name: "final_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "フィナーレ サブ", name: "final_lines", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
 
       - name: "the-stump"
         label: "THE STUMP"
         file: "morio/data/the-stump.json"
         format: json
         fields:
-          - { label: "エピグラフ 本文（HTMLタグ含む）", name: "epi_text", widget: "text" }
+          - { label: "エピグラフ 本文", name: "epi_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 ラベル", name: "s1_label", widget: "string" }
-          - { label: "セクション01 見出し（HTMLタグ含む）", name: "s1_heading", widget: "text" }
+          - { label: "セクション01 見出し", name: "s1_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション01 本文1", name: "s1_p1", widget: "text" }
           - { label: "セクション01 本文2", name: "s1_p2", widget: "text" }
           - { label: "セクション01 本文3", name: "s1_p3", widget: "text" }
           - { label: "セクション02 ラベル", name: "s2_label", widget: "string" }
-          - { label: "セクション02 見出し（HTMLタグ含む）", name: "s2_heading", widget: "text" }
+          - { label: "セクション02 見出し", name: "s2_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション02 本文1", name: "s2_p1", widget: "text" }
           - { label: "セクション02 本文2", name: "s2_p2", widget: "text" }
           - { label: "セクション02 本文3", name: "s2_p3", widget: "text" }
           - { label: "セクション03 ラベル", name: "s3_label", widget: "string" }
-          - { label: "セクション03 見出し（HTMLタグ含む）", name: "s3_heading", widget: "text" }
+          - { label: "セクション03 見出し", name: "s3_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション03 本文1", name: "s3_p1", widget: "text" }
           - { label: "セクション03 本文2", name: "s3_p2", widget: "text" }
           - { label: "セクション04 ラベル", name: "s4_label", widget: "string" }
-          - { label: "セクション04 見出し（HTMLタグ含む）", name: "s4_heading", widget: "text" }
+          - { label: "セクション04 見出し", name: "s4_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション04 本文", name: "s4_p1", widget: "text" }
           - { label: "セクション05 ラベル", name: "s5_label", widget: "string" }
-          - { label: "セクション05 見出し（HTMLタグ含む）", name: "s5_heading", widget: "text" }
+          - { label: "セクション05 見出し", name: "s5_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション05 本文1", name: "s5_p1", widget: "text" }
           - { label: "セクション05 本文2", name: "s5_p2", widget: "text" }
           - { label: "セクション05 本文3", name: "s5_p3", widget: "text" }
           - { label: "セクション06 ラベル", name: "s6_label", widget: "string" }
-          - { label: "セクション06 見出し（HTMLタグ含む）", name: "s6_heading", widget: "text" }
+          - { label: "セクション06 見出し", name: "s6_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション06 本文1", name: "s6_p1", widget: "text" }
           - { label: "セクション06 本文2", name: "s6_p2", widget: "text" }
           - { label: "パトロンフレーム アイラベル", name: "patron_eye", widget: "string" }
-          - { label: "パトロンフレーム 本文（HTMLタグ含む）", name: "patron_text", widget: "text" }
+          - { label: "パトロンフレーム 本文", name: "patron_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション07 ラベル", name: "s7_label", widget: "string" }
-          - { label: "セクション07 見出し（HTMLタグ含む）", name: "s7_heading", widget: "text" }
+          - { label: "セクション07 見出し", name: "s7_heading", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "セクション07 本文1", name: "s7_p1", widget: "text" }
           - { label: "セクション07 本文2", name: "s7_p2", widget: "text" }
-          - { label: "フィナーレ 本文（HTMLタグ含む）", name: "final_text", widget: "text" }
-          - { label: "フィナーレ サブ（HTMLタグ含む）", name: "final_sub", widget: "text" }
+          - { label: "フィナーレ 本文", name: "final_text", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
+          - { label: "フィナーレ サブ", name: "final_sub", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "CTA ラベル", name: "cta_label", widget: "string" }
           - { label: "CTA ボタンテキスト", name: "cta_btn", widget: "string" }
           - { label: "CTA 注記", name: "cta_note", widget: "string" }
@@ -241,7 +241,7 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー タグライン", name: "hero_tag", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_h1", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_h1", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
           - { label: "Project 01 名称", name: "p01_name", widget: "string" }
           - { label: "Project 01 ステータス", name: "p01_status", widget: "string" }
@@ -286,7 +286,7 @@ collections:
         format: json
         fields:
           - { label: "ヒーロー アイブロウ", name: "hero_eyebrow", widget: "string" }
-          - { label: "ヒーロー 見出し（HTMLタグ含む）", name: "hero_title", widget: "text" }
+          - { label: "ヒーロー 見出し", name: "hero_title", widget: "text", hint: "⚠️ HTMLタグを含みます。例：改行＝<br>、斜体＝<em>文字</em>。タグは削除・変更しないでください。" }
           - { label: "ヒーロー サブテキスト", name: "hero_sub", widget: "string" }
           - { label: "電話番号", name: "tel", widget: "string" }
           - { label: "電話 受付時間", name: "tel_hours", widget: "string" }
