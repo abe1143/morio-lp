@@ -63,9 +63,39 @@
   .figure-fit .s{ font-family:var(--font-en); font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-top:.7em; }
   .figure-fit + .stump-feature, .stump-feature + .figure-fit,
   .figure-fit + .figure-fit, .figure.full + .figure-fit, .figure-fit + .figure.full{ margin-top:clamp(48px,6vw,88px); }
+  /* Featured · Declaration */
+  .decl-feature{ display:grid; grid-template-columns:1fr auto; align-items:center; gap:clamp(22px,4vw,64px);
+    margin-top:clamp(44px,6vw,76px); padding:clamp(30px,4vw,52px) clamp(28px,4vw,58px);
+    border:1px solid var(--line); background:var(--bg-2); position:relative; overflow:hidden;
+    transition:border-color .5s var(--ease), background .5s var(--ease), transform .5s var(--ease); }
+  .decl-feature::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--accent);
+    transform:scaleY(0); transform-origin:top; transition:transform .6s var(--ease); }
+  .decl-feature:hover{ border-color:var(--accent); background:var(--bg-3); }
+  .decl-feature:hover::before{ transform:scaleY(1); }
+  .decl-feature .d-eyebrow{ font-family:var(--font-en); font-size:.7rem; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--accent); display:inline-flex; align-items:center; gap:.85em; }
+  .decl-feature .d-eyebrow::before{ content:""; width:26px; height:1px; background:var(--accent); opacity:.85; }
+  .decl-feature .d-title{ font-family:var(--font-jp); font-weight:300; font-size:clamp(1.55rem,2.7vw,2.3rem);
+    letter-spacing:.06em; line-height:1.3; color:var(--ink); margin:.7em 0 .5em; transition:color .5s var(--ease); }
+  .decl-feature:hover .d-title{ color:var(--accent); }
+  .decl-feature .d-sub{ font-family:var(--font-en); font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); }
+  .decl-feature .d-go{ display:inline-flex; align-items:center; gap:.75em; font-family:var(--font-en); font-size:.74rem;
+    letter-spacing:.24em; text-transform:uppercase; color:var(--ink); white-space:nowrap; }
+  .decl-feature .d-go .arw{ color:var(--accent); transition:transform .5s var(--ease); }
+  .decl-feature:hover .d-go .arw{ transform:translateX(9px); }
+  @media (max-width:620px){ .decl-feature{ grid-template-columns:1fr; gap:1.6em; } }
 </style>
 </head>
 <body>
+
+<template id="__bundler_thumbnail" data-bg-color="#0b0b0c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0b0b0c"/>
+    <text x="600" y="430" text-anchor="middle" font-family="'Jost',sans-serif" font-weight="300" font-size="150" letter-spacing="56" fill="#ece7dd">MORIO</text>
+    <rect x="520" y="500" width="160" height="2" fill="#c2a25f"/>
+    <text x="600" y="560" text-anchor="middle" font-family="'Jost',sans-serif" font-weight="300" font-size="26" letter-spacing="14" fill="#c2a25f">REAL ESTATE PRODUCING</text>
+  </svg>
+</template>
 
 <!-- NAV -->
 <nav class="nav">
@@ -90,7 +120,7 @@
     <span class="eyebrow" data-cms-text="hero_tag">Real Estate Producing — Tokyo</span>
     <h1 data-cms-html="hero_h1">不動産の潜在価値を解放する。</h1>
     <p class="hero-sub">
-      設計事務所でも、デベロッパーでもありません。不動産プロデュース企業です。
+      設計事務所でも、デベロッパーでもない。国内唯一の不動産プロデュース企業。
       <span class="en">Releasing the latent value of real estate.</span>
     </p>
   </div>
@@ -262,7 +292,7 @@
   <figure class="figure full" data-reveal>
     <img src="assets/img/devils-tower.png" alt="THE STUMP — A Monument for Eternity">
     <figcaption class="cap">
-      <div class="s-eyebrow">Featured · 特設</div>
+      <div class="s-eyebrow">FEATURED · 特設ページ</div>
       <div class="s-title">THE STUMP</div>
       <div class="s-sub">A Monument for Eternity <span class="arw">→</span></div>
     </figcaption>
@@ -286,6 +316,15 @@
       <a href="#company" class="link" data-reveal data-delay="2">Company Profile <span class="arw">→</span></a>
     </div>
   </div>
+
+  <a class="decl-feature" href="不動産イノベーション宣言.html" data-reveal aria-label="不動産イノベーション宣言 — 特設ページ">
+    <div class="d-body">
+      <span class="d-eyebrow">特設ページ · Featured</span>
+      <div class="d-title">不動産イノベーション宣言</div>
+      <div class="d-sub">A Declaration of Real Estate Innovation · 2017 → 2026</div>
+    </div>
+    <span class="d-go">Read the Manifesto <span class="arw">→</span></span>
+  </a>
 </section>
 
 <!-- COMPANY PROFILE -->
