@@ -3,502 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MORIO — Real Estate Producing</title>
+<title>MORIO — Real Estate Producing · Tokyo</title>
+<meta name="description" content="不動産の潜在価値を、解放する。設計事務所でもデベロッパーでもない、不動産プロデュース企業。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/morio.css">
+<link rel="stylesheet" href="assets/motion.css">
 <style>
-:root {
-  --bg: #0a0a0a;
-  --surface: #111;
-  --border: rgba(255,255,255,0.06);
-  --cream: #e8e4df;
-  --silver: #b0b0b0;
-  --muted: #686868;
-  --white: #f5f3f0;
-  --gold: #c9a96e;
-  --gold-dim: rgba(201,169,110,0.12);
-  --ff-d: 'Cormorant Garamond', Georgia, serif;
-  --ff-b: 'Noto Serif JP', serif;
-  --ff-s: 'Outfit', sans-serif;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--bg);scroll-behavior:smooth;font-size:17px;scrollbar-gutter:stable}
-body{font-family:var(--ff-b);background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-
-/* ═══ NAV ═══ */
-.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:flex-start;padding:32px 48px;pointer-events:none;background:linear-gradient(to bottom,rgba(8,8,8,.9) 0%,transparent 100%)}
-.site-nav a{pointer-events:auto}
-.nav-logo{font-family:var(--ff-s);font-size:1.05rem;font-weight:300;letter-spacing:.5em;text-transform:uppercase;color:#f5f2ee;text-decoration:none;transition:opacity .4s}
-.nav-logo:hover{opacity:.6}
-.nav-links-sub{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
-.nav-links-sub a{font-family:var(--ff-s);font-size:.88rem;font-weight:300;letter-spacing:.18em;text-transform:lowercase;color:rgba(255,255,255,.65);text-decoration:none;pointer-events:auto;transition:color .3s}
-.nav-links-sub a:hover{color:#fff}
-.nav-links-sub a.current{color:var(--gold);pointer-events:none}
-
-/* ═══ FULL-SCREEN HERO ═══ */
-.hero{position:relative;height:100vh;overflow:hidden}
-@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
-.hero-img{width:100%;height:100%;object-fit:cover;filter:brightness(.68) contrast(1.08);animation:heroZoom 20s cubic-bezier(.22,1,.36,1) forwards}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.15) 0%,rgba(10,10,10,0) 35%,rgba(10,10,10,.2) 65%,rgba(10,10,10,.75) 100%)}
-.hero-content{position:absolute;bottom:6rem;left:3rem;right:3rem;z-index:2}
-.hero-tag{font-family:var(--ff-s);font-size:.85rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp .9s ease-out .5s forwards}
-.hero h1{font-family:var(--ff-d);font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.12;color:#fff;opacity:0;animation:fadeUp 1.1s ease-out .7s forwards}
-.hero h1 em{font-style:italic;font-weight:400}
-.hero-sub{font-family:var(--ff-b);font-size:clamp(.88rem,1.2vw,1.05rem);font-weight:300;line-height:1.9;letter-spacing:.06em;color:rgba(255,255,255,.72);max-width:600px;margin-top:1.5rem;opacity:0;animation:fadeUp 1s ease-out 1s forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-/* ═══ STATEMENT ═══ */
-.statement{padding:8rem 3rem;max-width:1100px;margin:0 auto;text-align:center}
-.statement-text{font-family:var(--ff-d);font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--white);max-width:820px;margin:0 auto}
-.statement-text em{color:var(--gold);font-weight:400}
-
-/* ═══ VISUAL BREAK ═══ */
-.vb{width:100%;overflow:hidden;position:relative}
-.vb img{width:100%;height:75vh;min-height:420px;object-fit:cover;filter:brightness(.72) contrast(1.06) saturate(.88);transition:transform 15s cubic-bezier(.22,1,.36,1)}
-.vb:hover img{transform:scale(1.04)}
-.vb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.2) 0%,transparent 40%,rgba(10,10,10,.55) 100%);pointer-events:none}
-.vb figcaption{position:absolute;bottom:2.2rem;left:3rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;letter-spacing:.04em;text-shadow:0 2px 15px rgba(0,0,0,.8)}
-.vb figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.78rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
-
-/* ═══ IMAGE PAIR ═══ */
-.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.img-pair figure{overflow:hidden;position:relative;height:55vh;min-height:320px}
-.img-pair img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) contrast(1.05);transition:transform 12s cubic-bezier(.22,1,.36,1)}
-.img-pair figure:hover img{transform:scale(1.03)}
-
-/* ═══ SECTION ═══ */
-.section{padding:7rem 3rem;max-width:1100px;margin:0 auto}
-.s-label{font-family:var(--ff-s);font-size:.9rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1.2rem}
-.s-label::after{content:'';width:60px;height:1px;background:var(--gold-dim)}
-.s-heading{font-family:var(--ff-d);font-size:clamp(1.9rem,3.6vw,3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:2.8rem}
-.s-heading em{font-style:italic;font-weight:400;color:var(--gold)}
-.s-prose{max-width:780px}
-.s-prose p{font-size:1.02rem;font-weight:300;line-height:2.15;letter-spacing:.03em;color:var(--cream);margin-bottom:1.8rem}
-.s-prose p:last-child{margin-bottom:0}
-.hl{display:inline-block;padding:0 .2em;background:linear-gradient(to top,rgba(201,169,110,.18) 45%,transparent 45%)}
-.ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
-
-.rule{max-width:1200px;margin:0 auto;padding:0 3rem}
-.rule-in{height:1px;background:var(--border)}
-
-/* ═══ POSITION FRAME ═══ */
-.pos-frame{max-width:900px;margin:3rem auto 0;border:1px solid var(--gold);padding:4rem 3.5rem;background:rgba(201,169,110,.02);text-align:center}
-.pos-eye{font-family:var(--ff-s);font-size:.85rem;font-weight:300;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
-.pos-text{font-family:var(--ff-b);font-size:clamp(1.15rem,2vw,1.5rem);font-weight:400;line-height:1.95;letter-spacing:.04em;color:var(--white)}
-.pos-text em{font-family:var(--ff-d);font-style:italic;color:var(--gold)}
-
-/* ═══ FORMULA ═══ */
-.formula{display:inline-flex;align-items:center;gap:1.8rem;font-family:var(--ff-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);padding:2.5rem 0;margin:3rem 0 2rem;border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);flex-wrap:wrap;justify-content:center;width:100%;text-align:center}
-.f-t{display:flex;flex-direction:column;align-items:center}
-.f-m{font-style:italic;color:var(--gold)}
-.f-s{font-family:var(--ff-s);font-size:.82rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-top:.6rem}
-.f-op{color:var(--silver);font-size:.8em}
-
-/* ═══ THREE-COL GRID ═══ */
-.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.5rem;background:var(--border)}
-.tri-card{background:var(--bg);padding:3rem 2.4rem;transition:background .5s}
-.tri-card:hover{background:var(--surface)}
-.tri-num{font-family:var(--ff-d);font-size:2.5rem;font-weight:300;color:rgba(201,169,110,.12);font-style:italic;line-height:1;margin-bottom:1.5rem}
-.tri-en{font-family:var(--ff-d);font-size:1.35rem;font-weight:400;font-style:italic;color:var(--gold);margin-bottom:.35rem}
-.tri-jp{font-family:var(--ff-b);font-size:.9rem;font-weight:400;color:var(--white);letter-spacing:.04em;margin-bottom:1.3rem}
-.tri-desc{font-size:1rem;font-weight:300;line-height:2;color:var(--cream)}
-
-/* ═══ TRACK RECORD ═══ */
-.track-pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:3rem;background:var(--border)}
-.track-card{background:var(--bg);padding:3.2rem;transition:background .5s}
-.track-card:hover{background:var(--surface)}
-.t-eye{font-family:var(--ff-s);font-size:.82rem;font-weight:300;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.t-label{font-family:var(--ff-b);font-size:.92rem;font-weight:400;color:var(--white);margin-bottom:1.8rem}
-.t-val{font-family:var(--ff-d);font-size:clamp(2.5rem,5vw,3.6rem);font-weight:300;color:var(--gold);line-height:1;margin-bottom:.5rem}
-.t-unit{font-family:var(--ff-d);font-size:1rem;font-style:italic;color:var(--silver)}
-.t-note{font-size:.95rem;font-weight:300;line-height:1.8;color:var(--cream);margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-
-/* ═══ SCOPE NAV (subpages) ═══ */
-.scope{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
-.scope-card{background:var(--bg);padding:2.8rem 2rem;display:flex;flex-direction:column;transition:background .5s}
-.scope-card:hover{background:var(--surface)}
-.scope-en{font-family:var(--ff-d);font-size:1.25rem;font-weight:400;font-style:italic;color:var(--gold);margin-bottom:.3rem}
-.scope-jp{font-family:var(--ff-b);font-size:.82rem;font-weight:300;color:var(--silver);margin-bottom:1.2rem;letter-spacing:.05em}
-.scope-desc{font-size:.88rem;font-weight:300;line-height:1.85;color:var(--cream);flex-grow:1}
-.scope-link{display:inline-block;margin-top:1.5rem;font-family:var(--ff-s);font-size:.75rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);transition:opacity .3s}
-.scope-link:hover{opacity:.5}
-
-/* ═══ QUOTE ═══ */
-.quote{padding:8rem 3rem;text-align:center;position:relative}
-.quote::before{content:'"';font-family:var(--ff-d);font-size:9rem;font-weight:300;color:rgba(201,169,110,.06);position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);line-height:1}
-.q-body{font-family:var(--ff-b);font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:300;line-height:2.15;letter-spacing:.06em;color:var(--cream);max-width:680px;margin:0 auto 2.5rem}
-.q-credit{font-family:var(--ff-d);font-size:.95rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-
-/* ═══ PRODUCER ═══ */
-.producer-row{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;margin-top:3rem}
-.p-name{font-family:var(--ff-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.2;margin-bottom:.5rem}
-.p-title{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
-.p-body p{font-size:1rem;font-weight:300;line-height:2.1;color:var(--cream);margin-bottom:1.5rem}
-.p-sig{font-family:var(--ff-d);font-size:1.15rem;font-style:italic;color:var(--gold);padding-top:1.5rem;border-top:1px solid var(--border)}
-
-/* ═══ CTA ═══ */
-.cta{padding:10rem 3rem 6rem;text-align:center;max-width:1200px;margin:0 auto}
-.cta h2{font-family:var(--ff-d);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--white);margin-bottom:2rem}
-.cta h2 em{font-style:italic;color:var(--gold)}
-.cta-sub{font-family:var(--ff-b);font-size:1rem;font-weight:300;color:var(--silver);margin-bottom:3rem}
-.cta-btn{display:inline-block;font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:1.1rem 3.5rem;border:1px solid rgba(201,169,110,.35);transition:all .5s}
-.cta-btn:hover{background:rgba(201,169,110,.08);border-color:var(--gold)}
-.cta-info{margin-top:4rem;font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.08em;color:var(--muted);line-height:2}
-
-/* ═══ FOOTER ═══ */
-.footer{padding:2.5rem 3rem;max-width:1200px;margin:0 auto}
-.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}
-.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
-.footer-links a{font-family:var(--ff-s);font-size:.82rem;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,242,238,.4);text-decoration:none;transition:color .3s}
-.footer-links a:hover{color:rgba(245,242,238,.8)}
-.footer-links a.current{color:var(--gold);pointer-events:none}
-.footer-copy{font-family:var(--ff-s);font-size:.75rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
-
-/* ═══ REVEAL ═══ */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
-.rv.vis{opacity:1;transform:translateY(0)}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:900px){
-  .tri,.track-pair{grid-template-columns:1fr}
-  .scope{grid-template-columns:1fr 1fr}
-  .producer-row{grid-template-columns:1fr;gap:2rem}
-  .img-pair{grid-template-columns:1fr}
-  .img-pair figure{height:45vh}
-}
-@media(max-width:768px){
-  html{font-size:16px}
-  .nav{padding:1.2rem 1.5rem}
-  .nav-links-sub{display:none}
-  .hero-content{bottom:4rem;left:1.6rem;right:1.6rem}
-  .section,.cta{padding-left:1.6rem;padding-right:1.6rem}
-  .tri-card,.track-card,.scope-card{padding:2.2rem 1.6rem}
-  .pos-frame{padding:2.5rem 1.6rem}
-  .quote{padding:5rem 1.6rem}
-  .rule{padding:0 1.6rem}
-  .vb img{height:55vh;min-height:300px}
-  .vb figcaption{left:1.6rem;bottom:1.8rem;font-size:.95rem}
-  .formula{gap:1rem;padding:1.8rem 0}
-  .scope{grid-template-columns:1fr}
-}
-
+  .lede{ max-width:var(--readw); }
+  .statement-jp{ font-family:var(--font-jp); font-weight:200; font-size:clamp(1.6rem,3vw,2.5rem); line-height:1.6; letter-spacing:.05em; text-wrap:balance; }
+  .statement-jp .accent{ color:var(--accent); }
+  .vc-fig{ aspect-ratio:4/5; }
+  @media (max-width:900px){ .vc-fig{ aspect-ratio:16/11; } }
+  .btitle .en, .hero h1, .quote, .footer .cta-h{ text-wrap:balance; }
+  .lead, .body, .cap-item .d, .stat .d, .trio-row .t-d{ text-wrap:pretty; }
+  @media (max-width:560px){ h1 br, .statement-jp br{ display:none; } }
+  .hero{ background:#0a0a0a; }
+  .hero-bg{ inset:0 !important; }
+  .hero-bg img{ height:100% !important; object-fit:contain !important; object-position:center !important; transform:none !important; }
+  .figure{ background:#0a0a0a; }
+  .figure img{ object-fit:contain !important; object-position:center !important; transform:none !important; }
+  .figure.full::after{ display:none; }
+  .bgm{ position:fixed; left:var(--gutter); bottom:24px; z-index:120; display:flex; align-items:center; gap:.75em;
+    background:rgba(11,11,12,.6); backdrop-filter:blur(12px); border:1px solid var(--line); color:var(--ink-soft);
+    padding:.62em 1.05em .62em .9em; border-radius:100px; cursor:pointer; font-family:var(--font-en); font-size:.64rem;
+    letter-spacing:.26em; text-transform:uppercase; opacity:0; transform:translateY(10px); pointer-events:none;
+    transition:opacity .6s var(--ease), transform .6s var(--ease), border-color .4s var(--ease), color .4s var(--ease); }
+  .bgm.show{ opacity:1; transform:none; pointer-events:auto; }
+  .bgm:hover{ border-color:var(--accent); color:var(--ink); }
+  .bgm .eq{ display:flex; align-items:flex-end; gap:2px; height:13px; }
+  .bgm .eq i{ width:2px; height:3px; background:var(--accent); display:block; border-radius:1px; transition:height .3s var(--ease); }
+  .bgm.playing .eq i{ animation:eq .9s var(--ease) infinite; }
+  .bgm.playing .eq i:nth-child(2){ animation-delay:.18s; }
+  .bgm.playing .eq i:nth-child(3){ animation-delay:.36s; }
+  .bgm.playing .eq i:nth-child(4){ animation-delay:.12s; }
+  @keyframes eq{ 0%,100%{ height:3px; } 50%{ height:13px; } }
+  @media (max-width:560px){ .bgm{ left:14px; bottom:14px; } }
+  @media (prefers-reduced-motion: reduce){ .bgm .eq i{ animation:none !important; } }
+  .nav-links .stump-link{ color:var(--accent); }
+  .nav-links .stump-link::after{ background:var(--accent); }
+  .stump-feature{ display:block; position:relative; }
+  .stump-feature .figure.full::after{ display:block !important; content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(to top, rgba(8,8,9,.82), rgba(8,8,9,.15) 55%, rgba(8,8,9,.35)); }
+  .stump-feature .cap{ z-index:3; max-width:none; }
+  .stump-feature .s-eyebrow{ font-family:var(--font-en); font-size:.72rem; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); }
+  .stump-feature .s-title{ font-family:var(--font-en); font-weight:200; letter-spacing:.14em; text-transform:uppercase;
+    font-size:clamp(2rem,5vw,4rem); line-height:1; color:var(--ink); margin:.4em 0 .55em; transition:color .5s var(--ease); }
+  .stump-feature .s-sub{ display:inline-flex; align-items:center; gap:.7em; font-family:var(--font-en); font-size:.78rem;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); }
+  .stump-feature .s-sub .arw{ color:var(--accent); transition:transform .5s var(--ease); }
+  .stump-feature:hover .s-title{ color:var(--accent); }
+  .stump-feature:hover .s-sub .arw{ transform:translateX(8px); }
+  .figure-fit{ position:relative; width:100%; display:block; overflow:hidden; background:#0a0a0a; }
+  .figure-fit img{ width:100%; height:auto; display:block; }
+  .figure-fit::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to top, rgba(8,8,9,.62), transparent 42%); }
+  .figure-fit figcaption{ position:absolute; left:clamp(20px,3vw,46px); bottom:clamp(20px,3vw,40px); z-index:2; max-width:32ch; }
+  .figure-fit .t{ font-family:var(--font-jp); font-weight:300; font-size:clamp(1.05rem,1.6vw,1.5rem); letter-spacing:.04em; color:var(--ink); text-shadow:0 2px 16px rgba(0,0,0,.75); }
+  .figure-fit .s{ font-family:var(--font-en); font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-top:.7em; }
+  .figure-fit + .stump-feature, .stump-feature + .figure-fit,
+  .figure-fit + .figure-fit, .figure.full + .figure-fit, .figure-fit + .figure.full{ margin-top:clamp(48px,6vw,88px); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="site-nav">
-  <a href="index.html" class="nav-logo">MORIO</a>
-  <div class="nav-links-sub">
-    <a href="index.html" class="current">home</a>
-    <a href="vision.html">vision</a>
-    <a href="design-philosophy.html">philosophy</a>
-    <a href="projects.html">projects</a>
-    <a href="producing.html">produce</a>
-    <a href="the-stump.html">the stump</a>
-    <a href="company.html">company</a>
+<nav class="nav">
+  <a href="index.html" class="brand">MORIO</a>
+  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="#position">Approach</a>
+    <a href="#value">Value</a>
+    <a href="the-stump.html" class="stump-link">THE STUMP</a>
+    <a href="#company">Company</a>
+    <a href="mailto:info@morio-realestate.com" class="nav-cta">Enquire</a>
   </div>
 </nav>
 
-<!-- ═══ HERO — full screen ═══ -->
-<section class="hero">
-  <img class="hero-img" alt="MORIO — Ultra Luxury Residence"><script>(function(){var a=['images/projects/ext-01.jpg','images/projects/int-02.jpg','images/projects/ext-03.jpg','images/projects/int-03.png','images/projects/int-04.jpg','images/projects/ext-02.jpg','images/projects/int-05.png','images/projects/int-06.jpg','images/projects/ext-04.jpg','images/projects/int-07.png','images/projects/int-08.jpg','images/projects/ext-05.jpg','images/projects/int-09.jpg','images/projects/ext-06.jpg','images/projects/int-10.jpg','images/projects/int-01.jpg','images/projects/int-11.jpg','images/projects/int-12.jpg'];document.querySelector('.hero-img').src=a[Math.floor(Math.random()*a.length)];})();</script>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-tag" data-cms="hero_tag">Real Estate Producing — Tokyo</div>
-    <h1 data-cms="hero_h1">不動産の<em>潜在価値</em>を、<br>解放する。</h1>
-    <p class="hero-sub" data-cms="hero_sub">設計事務所でもなく、デベロッパーでもない。<br>日本で唯一の、不動産プロデュース専門企業。</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" data-variant="facade" data-parallax="0.10"><img src="assets/img/v2-facade.jpg" alt="MORIO — 黒大理石のファサード、南青山" style="object-position:center 42%;"></div>
+  <div class="hero-bg" data-variant="penthouse" data-parallax="0.10"><img src="assets/img/v2-suite.jpg" alt="MORIO — スイートの室内" style="object-position:center;"></div>
+  <div class="hero-bg" data-variant="tower" data-parallax="0.10"><img src="assets/img/tower.jpg" alt="MORIO — 街区に建つ縦長レジデンス"></div>
+  <div class="hero-inner wrap">
+    <span class="eyebrow" data-cms-text="hero_tag">Real Estate Producing — Tokyo</span>
+    <h1 data-cms-html="hero_h1">不動産の潜在価値を解放する。</h1>
+    <p class="hero-sub">
+      設計事務所でも、デベロッパーでもありません。不動産プロデュース企業です。
+      <span class="en">Releasing the latent value of real estate.</span>
+    </p>
+  </div>
+  <div class="scrollcue"><span class="ln"></span> Scroll</div>
+</header>
+
+<!-- STATEMENT -->
+<section class="section wrap">
+  <div class="measure" style="margin-inline:auto; text-align:center;">
+    <span class="idx" data-reveal style="display:block; margin-bottom:1.6em;">Producing</span>
+    <p class="statement-jp" data-reveal data-cms-html="statement_text">
+      不動産が本来持っている価値を、<br>完全に引き出すこと。<br>
+      それが、<span class="accent">Real Estate Produce</span> です。
+    </p>
+    <p class="lead" data-reveal data-delay="1" style="margin-top:2.2em; max-width:52ch; margin-inline:auto;">
+      映画のプロデューサーが作品の価値を統べるように。MORIO は構想から完成、運用までを統べ、その不動産が成りうる最高の姿を引き出します。
+    </p>
   </div>
 </section>
 
-<!-- ═══ STATEMENT ═══ -->
-<section class="statement rv">
-  <p class="statement-text" data-cms="statement_text">
-    不動産が本来持っている価値を、<br>
-    完全に引き出す——<br>
-    それが、<em>Producing</em> である。
-  </p>
+<!-- 01 OUR POSITION -->
+<section class="section" id="position" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="stack" style="max-width:var(--readw);">
+      <span class="idx" data-reveal>01 — Our Position</span>
+      <div class="btitle" data-reveal data-delay="1">
+        <span class="en">Value, by Design</span>
+        <span class="jp">付加価値を、構造から創る</span>
+      </div>
+      <p class="lead" data-reveal data-delay="1" data-cms-html="s1_lead">
+        MORIO は、設計でも開発でも仲介でもありません。そのすべてを束ね、<span class="accent">何を・なぜ・どんな時間軸で創るか</span>を決める上位レイヤーに立ち、付加価値そのものを設計します。
+      </p>
+    </div>
+    <div class="layers" data-reveal style="margin-top:var(--space-block);">
+      <div class="layer is-lead">
+        <span class="role">Producer</span>
+        <span class="who">MORIO</span>
+        <span class="task">付加価値の設計・統合</span>
+      </div>
+      <div class="layer"><span class="role">Design</span><span class="who">設計事務所</span><span class="task">意匠・空間</span></div>
+      <div class="layer"><span class="role">Develop</span><span class="who">デベロッパー</span><span class="task">開発・分譲</span></div>
+      <div class="layer"><span class="role">Broker</span><span class="who">仲介</span><span class="task">取引・流通</span></div>
+    </div>
+    <p class="small" data-reveal style="margin-top:2em; letter-spacing:.06em;">自社にない付加価値創造の能力を、外注ではなく「機能」として導入します。</p>
+  </div>
 </section>
 
-<!-- ═══ VISUAL BREAK — Penthouse ═══ -->
-<figure class="vb rv">
-  <img src="images/projects/int-09.jpg" alt="MORIO — Penthouse with Tokyo skyline">
-  <figcaption>Spatial Design — Where silence becomes luxury.<span class="vb-s">Produced by MORIO</span></figcaption>
+<!-- full-bleed break -->
+<figure class="figure full parallax" data-parallax="0.14" data-reveal>
+  <img src="assets/img/v2-arches.jpg" alt="MORIO — アーチの集合住宅、南青山">
+  <figcaption class="cap"><div class="t"></div><div class="s"></div></figcaption>
 </figure>
 
-<!-- ═══ 01 — INDUSTRY PROBLEM ═══ -->
-<section class="section rv">
-  <div class="s-label" data-cms="s1_label">01 — Industry Challenge</div>
-  <h2 class="s-heading" data-cms="s1_heading">不動産開発が直面する、<br><em>構造的な課題</em>。</h2>
-  <div class="s-prose">
-    <p data-cms="s1_p1">土地は高騰し、建築コストは上昇し続けています。従来の「床面積を消化して売る」モデルでは、もはや差別化ができません。<span class="hl">付加価値を創出したいが、その方法論を持っていない</span>——すべてのデベロッパーが同じ課題に直面しています。</p>
-    <p data-cms="s1_p2">設計事務所に依頼すれば「見た目」は変わります。しかし「事業構造」は変わりません。アセットタイプの選定、運用戦略、素材選定、出口設計——これらを一気通貫で最適化する機能が、日本の不動産業界には構造的に欠落しています。</p>
-  </div>
-</section>
-
-<!-- ═══ IMAGE PAIR — Exterior works ═══ -->
-<div class="img-pair rv">
-  <figure><img src="images/projects/ext-02.jpg" alt="Brick Facade with Arches"></figure>
-  <figure><img src="images/projects/ext-03.jpg" alt="Angular Facade Design"></figure>
-</div>
-
-<!-- ═══ 02 — POSITION ═══ -->
-<section class="section rv">
-  <div class="s-label" data-cms="s2_label">02 — Our Position</div>
-  <h2 class="s-heading" data-cms="s2_heading">MORIOは、その<em>回答</em>である。</h2>
-  <div class="s-prose">
-    <p data-cms="s2_p1">MORIOは、不動産の「プロデュース」に特化した、日本で唯一の企業です。設計でも施工でも仲介でもない——プロジェクト全体を俯瞰し、その不動産が持ちうる最高の姿を引き出す。映画で言えばプロデューサー、オーケストラで言えば指揮者。既存の業界カテゴリには存在しない、全く新しいポジションです。</p>
-  </div>
-
-  <div class="pos-frame">
-    <div class="pos-eye" data-cms="pos_eye">The Only Real Estate Producer in Japan</div>
-    <div class="pos-text" data-cms="pos_text">
-      不動産プロデュースとは、<br>
-      <em>不動産潜在価値の、完全な解放</em>。<br>
-      設計でもなく、施工でもなく、仲介でもない。<br>
-      その上位レイヤーに位置する、唯一の視座。
+<!-- 02 VALUE CREATION -->
+<section class="section wrap" id="value">
+  <div class="split">
+    <figure class="figure vc-fig" data-reveal>
+      <img src="assets/img/v2-suite.jpg" alt="MORIO — 本物の素材でつくる室内">
+    </figure>
+    <div class="stack">
+      <span class="idx" data-reveal>02 — Value Creation</span>
+      <div class="btitle" data-reveal data-delay="1">
+        <span class="en">Aging into<br>Beauty</span>
+        <span class="jp">不動産のLTVを最大化する、経年優化の三要素</span>
+      </div>
+      <p class="body" data-reveal data-delay="1" data-cms-text="s2_body">
+        付加価値は偶然ではなく、再現性のある仕組みから生まれます。三つの要素を統合し、市場価格を超えるプレミアムへと変換します。
+      </p>
+      <div class="trio" data-reveal data-delay="2">
+        <div class="trio-row">
+          <span class="t-en">Real Material</span>
+          <span class="t-jp">本物の素材</span>
+          <span class="t-d">時間を吸い込み、味わいを増す素材。</span>
+        </div>
+        <div class="trio-row">
+          <span class="t-en">Timeless Design</span>
+          <span class="t-jp">普遍のデザイン</span>
+          <span class="t-d">流行に左右されない意匠。</span>
+        </div>
+        <div class="trio-row">
+          <span class="t-en">Narrative</span>
+          <span class="t-jp">語られる物語</span>
+          <span class="t-d">価格を超えて選ばれる理由。</span>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="ltv-band" data-reveal style="margin-top:var(--space-block); border-top:1px solid var(--line-soft); padding-top:clamp(30px,4.5vw,56px); text-align:center;">
+    <span class="idx" style="display:block; margin-bottom:1.5em;">The Engine — Value × Time</span>
+    <div class="equation" style="justify-content:center;">
+      <span class="term"><span class="v accent">LTV</span><span class="l">Lifetime Value</span></span>
+      <span class="op">=</span>
+      <span class="term"><span class="v">Revenue</span><span class="l">収益</span></span>
+      <span class="op">×</span>
+      <span class="term"><span class="v">Time</span><span class="l">時間</span></span>
+    </div>
+    <p class="lead" style="max-width:62ch; margin:2.2em auto 0;">
+      不動産の価値は、収益と時間の積——<span class="accent">LTV（ライフタイムバリュー）</span>で決まります。竣工後に減衰させるのではなく、本物の素材と普遍のデザインによって、経年とともに上昇する資産へと設計します。時間を味方につけるほど、LTV は積み上がっていきます。
+    </p>
+  </div>
 </section>
 
-<!-- ═══ VISUAL BREAK — Grand Living ═══ -->
-<figure class="vb rv">
-  <img src="images/projects/int-01.jpg" alt="Grand Living — Produced by MORIO">
-  <figcaption>Living produced to surpass any luxury hotel.<span class="vb-s">Concept · Material · Craft</span></figcaption>
+<!-- full-width interior -->
+<figure class="figure-fit" data-reveal>
+  <img src="assets/img/interior-gallery.png" alt="MORIO — ギャラリーのようなリビング">
 </figure>
 
-<!-- ═══ 03 — LTV METHODOLOGY ═══ -->
-<section class="section rv">
-  <div class="s-label" data-cms="s3_label">03 — Methodology</div>
-  <h2 class="s-heading" data-cms="s3_heading">プロデュースの本質——<br><em>LTV</em>の最大化。</h2>
-
-  <div class="formula">
-    <div class="f-t"><span class="f-m">LTV</span><span class="f-s">Lifetime Value</span></div>
-    <span class="f-op">=</span>
-    <div class="f-t"><span class="f-m">Revenue</span><span class="f-s">収益</span></div>
-    <span class="f-op">×</span>
-    <div class="f-t"><span class="f-m">Time</span><span class="f-s">時間</span></div>
-  </div>
-
-  <div class="s-prose">
-    <p data-cms="s3_p1">収益と時間——この二軸を同時に最大化することが、すべての判断基準です。現代のデベロッパーは「短期の収益」しか見ていません。MORIOのプロデュースは<span class="hl">時間軸を味方につけるOS</span>。デザイン、素材、運用——すべてを「30年後、100年後にどう価値を増すか」という問いの下に再設計します。</p>
-  </div>
-</section>
-
-<!-- ═══ IMAGE PAIR — Interior depth ═══ -->
-<div class="img-pair rv">
-  <figure><img src="images/projects/int-08.jpg" alt="Grand Dining — Material & Light"></figure>
-  <figure><img src="images/projects/int-10.jpg" alt="Master Suite — Immersive Space"></figure>
-</div>
-
-<!-- ═══ 04 — CAPABILITIES ═══ -->
-<section class="section rv">
-  <div class="s-label" data-cms="s4_label">04 — Capabilities</div>
-  <h2 class="s-heading" data-cms="s4_heading">プロデュースを構成する、<br><em>6つの専門領域</em>。</h2>
-
-  <div class="tri">
-    <div class="tri-card">
-      <div class="tri-num">01</div>
-      <div class="tri-en" data-cms="cap1_en">Concept Design</div>
-      <div class="tri-jp" data-cms="cap1_jp">企画・コンセプト設計</div>
-      <p class="tri-desc" data-cms="cap1_desc">「何を建てるべきか」を見極め、立地のポテンシャルを最大化するアセットタイプと需要構造を設計。</p>
+<!-- 03 CAPABILITIES -->
+<section class="section" id="capabilities" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="stack" style="max-width:var(--readw);">
+      <span class="idx" data-reveal>03 — Capabilities</span>
+      <div class="btitle" data-reveal data-delay="1">
+        <span class="en">What We Bring</span>
+        <span class="jp">提供する、六つのバリュー</span>
+      </div>
+      <p class="lead" data-reveal data-delay="1">
+        付加価値を生む六つの機能を、外注ではなく一つのチームとして提供します。
+      </p>
     </div>
-    <div class="tri-card">
-      <div class="tri-num">02</div>
-      <div class="tri-en" data-cms="cap2_en">Financial Architecture</div>
-      <div class="tri-jp" data-cms="cap2_jp">収益構造の設計</div>
-      <p class="tri-desc" data-cms="cap2_desc">運用期間全体を通じた価値のストラクチャーを設計。IRR、NOI、LTV——数字の美学がプロジェクトの骨格を決定。</p>
-    </div>
-    <div class="tri-card">
-      <div class="tri-num">03</div>
-      <div class="tri-en" data-cms="cap3_en">Spatial Design</div>
-      <div class="tri-jp" data-cms="cap3_jp">空間デザイン</div>
-      <p class="tri-desc" data-cms="cap3_desc">天井高、開口、動線、素材、光——空間の情報量を最大化しながら、圧倒的な体験を実現。</p>
-    </div>
-    <div class="tri-card">
-      <div class="tri-num">04</div>
-      <div class="tri-en" data-cms="cap4_en">Asset Strategy</div>
-      <div class="tri-jp" data-cms="cap4_jp">アセット戦略・運用設計</div>
-      <p class="tri-desc" data-cms="cap4_desc">賃貸、売却、ホテル運用、サービスアパートメント——出口戦略を開発段階から織り込む。</p>
-    </div>
-    <div class="tri-card">
-      <div class="tri-num">05</div>
-      <div class="tri-en" data-cms="cap5_en">Craftsmanship</div>
-      <div class="tri-jp" data-cms="cap5_jp">クラフトマンシップ</div>
-      <p class="tri-desc" data-cms="cap5_desc">左官、木工、石工、鉄工——量産品では到達できない深度を、建築とインテリアに実装。</p>
-    </div>
-    <div class="tri-card">
-      <div class="tri-num">06</div>
-      <div class="tri-en" data-cms="cap6_en">Orchestration</div>
-      <div class="tri-jp" data-cms="cap6_jp">全体統合</div>
-      <p class="tri-desc" data-cms="cap6_desc">設計・施工・法務・金融・マーケティング。すべてをひとつのビジョンの下に統合。</p>
+    <div class="caps" data-reveal style="margin-top:var(--space-block);">
+      <div class="cap-item"><span class="no">01</span><div class="en" data-cms-text="cap1_en">Concept Design</div><div class="jp" data-cms-text="cap1_jp">企画・コンセプト設計</div><p class="d" data-cms-text="cap1_desc">立地のポテンシャルを最大化するアセットタイプと需要構造を設計します。</p></div>
+      <div class="cap-item"><span class="no">02</span><div class="en" data-cms-text="cap2_en">Financial Architecture</div><div class="jp" data-cms-text="cap2_jp">収益構造の設計</div><p class="d" data-cms-text="cap2_desc">運用期間全体の価値構造を設計します。IRR・NOI・LTV が骨格を決めます。</p></div>
+      <div class="cap-item"><span class="no">03</span><div class="en" data-cms-text="cap3_en">Spatial Design</div><div class="jp" data-cms-text="cap3_jp">空間デザイン</div><p class="d" data-cms-text="cap3_desc">天井高・開口・動線・素材・光。空間の情報量を最大化します。</p></div>
+      <div class="cap-item"><span class="no">04</span><div class="en" data-cms-text="cap4_en">Asset Strategy</div><div class="jp" data-cms-text="cap4_jp">アセット戦略・運用</div><p class="d" data-cms-text="cap4_desc">賃貸・売却・ホテル運用。出口戦略を開発段階から織り込みます。</p></div>
+      <div class="cap-item"><span class="no">05</span><div class="en" data-cms-text="cap5_en">Craftsmanship</div><div class="jp" data-cms-text="cap5_jp">クラフトマンシップ</div><p class="d" data-cms-text="cap5_desc">左官・木工・石工・鉄工。量産品では届かない深度を実装します。</p></div>
+      <div class="cap-item"><span class="no">06</span><div class="en" data-cms-text="cap6_en">Orchestration</div><div class="jp" data-cms-text="cap6_jp">全体統合</div><p class="d" data-cms-text="cap6_desc">設計・施工・法務・金融・販売を、一つのビジョンへ統合します。</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ VISUAL BREAK — Office ═══ -->
-<figure class="vb rv">
-  <img src="images/projects/int-06.jpg" alt="Executive Office — Green Wall">
-  <figcaption>Every space becomes a statement.<span class="vb-s">Orchestrated by MORIO</span></figcaption>
+<!-- 04 EVIDENCE -->
+<section class="section" id="evidence">
+  <div class="wrap">
+    <div class="stack" style="max-width:var(--readw);">
+      <span class="idx" data-reveal>04 — Evidence</span>
+      <div class="btitle" data-reveal data-delay="1">
+        <span class="en">Proven in Numbers</span>
+        <span class="jp">数字が示す、収益性</span>
+      </div>
+    </div>
+    <div class="stats" data-reveal style="margin-top:var(--space-block);">
+      <div class="stat">
+        <div class="n tnum" data-cms-html="stat1_n">65,000<span class="u">円/坪</span></div>
+        <div class="k" data-cms-text="stat1_k">自社ビル実現坪単価</div>
+        <div class="d" data-cms-text="stat1_d">近隣相場（¥20,000台）の約3倍を達成しました。</div>
+      </div>
+      <div class="stat">
+        <div class="n tnum" data-cms-html="stat2_n">&gt;70,000<span class="u">円/坪</span></div>
+        <div class="k" data-cms-text="stat2_k">超富裕層賃料水準</div>
+        <div class="d" data-cms-text="stat2_d">東京の超高級不動産賃料が、新たなステージへ移行しています。</div>
+      </div>
+      <div class="stat">
+        <div class="n tnum" data-cms-html="stat3_n">×3<span class="u">相場比</span></div>
+        <div class="k" data-cms-text="stat3_k">相場を超えるプレミアム</div>
+        <div class="d" data-cms-text="stat3_d">付加価値を設計し、相場を超えていきます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- full-width interior -->
+<figure class="figure-fit" data-reveal>
+  <img src="assets/img/interior-living.jpg" alt="MORIO — トラバーチンの大空間リビング">
 </figure>
 
-<!-- ═══ 05 — TRACK RECORD ═══ -->
-<section class="section rv">
-  <div class="s-label" data-cms="s5_label">05 — Evidence</div>
-  <h2 class="s-heading" data-cms="s5_heading">プロデュースが生む、<br><em>実証された価値</em>。</h2>
+<!-- FEATURED · THE STUMP -->
+<a class="stump-feature" href="the-stump.html" aria-label="THE STUMP — 特設ページ">
+  <figure class="figure full" data-reveal>
+    <img src="assets/img/devils-tower.png" alt="THE STUMP — A Monument for Eternity">
+    <figcaption class="cap">
+      <div class="s-eyebrow">Featured · 特設</div>
+      <div class="s-title">THE STUMP</div>
+      <div class="s-sub">A Monument for Eternity <span class="arw">→</span></div>
+    </figcaption>
+  </figure>
+</a>
 
-  <div class="track-pair">
-    <div class="track-card">
-      <div class="t-eye" data-cms="track1_eye">Track Record</div>
-      <div class="t-label" data-cms="track1_label">自社ビルプロデュース実績</div>
-      <div class="t-val" data-cms="track1_val">¥65,000<span class="t-unit"> / 坪</span></div>
-      <p class="t-note" data-cms="track1_note">近隣相場（¥20,000台）の約3倍を達成。階高を高く取った一棟貸しコンセプト。</p>
-    </div>
-    <div class="track-card">
-      <div class="t-eye" data-cms="track2_eye">Market Evidence</div>
-      <div class="t-label" data-cms="track2_label">超富裕層賃料のネクストステージ</div>
-      <div class="t-val" data-cms="track2_val">>¥70,000<span class="t-unit"> / 坪</span></div>
-      <p class="t-note" data-cms="track2_note">東京市場における超高級不動産賃料が新たな水準に移行した証拠。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ QUOTE ═══ -->
-<div class="quote rv">
-  <p class="q-body" data-cms="quote_body">時代を超えて価値を持つ、<br>工芸品やアートのような不動産を創る。</p>
-  <span class="q-credit" data-cms="quote_credit">Morio the Mann — Producer</span>
-</div>
-
-<!-- ═══ IMAGE PAIR — Facades ═══ -->
-<div class="img-pair rv">
-  <figure><img src="images/projects/ext-04.jpg" alt="THE VERTICAL — Minami-Aoyama"></figure>
-  <figure><img src="images/projects/ext-05.jpg" alt="Brick & Green — Architectural Identity"></figure>
-</div>
-
-<!-- ═══ 06 — PRODUCER ═══ -->
-<div class="rule"><div class="rule-in"></div></div>
-<section class="section rv">
-  <div class="s-label">06 — The Producer</div>
-
-  <div class="producer-row">
-    <div>
-      <div class="p-name" data-cms="producer_name">Natsuhiko Morita</div>
-      <div class="p-title" data-cms="producer_title">Morio the Mann</div>
-    </div>
-    <div class="p-body">
-      <p data-cms="producer_p1">不動産イノベーションを実現し、日本を真に豊かにすることを使命とする。日本の職人の技術と独自の美意識を世界最高峰の舞台へ——タイムレスなマスターピースの創造を通じ、日本不動産のパラダイムシフトを牽引する。</p>
-      <p data-cms="producer_p2">業界に存在しなかったポジション——不動産プロデューサーという概念そのものを定義し、その方法論を実装する、日本で唯一の存在。</p>
-      <div class="p-sig" data-cms="producer_sig">"時を超える究極のマスターピース創造に向けて、励み続ける。"</div>
+<!-- PRODUCER -->
+<section class="section wrap" id="producer">
+  <div class="split narrow-left">
+    <figure class="figure" data-reveal style="aspect-ratio:3/4;">
+      <img src="assets/img/producer-bw.jpg" alt="森田 夏光 — Founder &amp; CEO" style="object-position:32% 50%;">
+    </figure>
+    <div class="stack">
+      <span class="idx" data-reveal>The Producer</span>
+      <p class="quote" data-reveal data-delay="1" data-cms-html="producer_quote"><span class="mk"></span>時を超える究極のマスターピース創造に向けて、励み続ける。<span class="mk"></span></p>
+      <p class="body" data-reveal data-delay="1" data-cms-text="producer_body">日本の職人の技術と独自の美意識を、世界最高峰の舞台へ。タイムレスなマスターピースの創造を通じ、不動産のパラダイムシフトを牽引します。業界に存在しなかったポジションそのものを定義します。</p>
+      <div data-reveal data-delay="2">
+        <div class="h3" style="font-family:var(--font-en); letter-spacing:.08em;" data-cms-text="producer_name">Natsuhiko Morita</div>
+        <div class="small" style="margin-top:.3em;" data-cms-html="producer_title">森田 夏光 — Founder &amp; CEO · Real Estate Producer</div>
+      </div>
+      <a href="#company" class="link" data-reveal data-delay="2">Company Profile <span class="arw">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ═══ VISUAL BREAK — Devils Tower (vision tease) ═══ -->
-<figure class="vb rv">
-  <img src="images/projects/ext-06.jpg" alt="Devils Tower — A Vision for Eternity">
-  <figcaption>A Vision for Eternity — 魂の痕跡を万年先へ。<span class="vb-s">Discover the Vision</span></figcaption>
-</figure>
-
-<!-- ═══ 07 — EXPLORE (subpage nav) ═══ -->
-<section class="section rv">
-  <div class="s-label">07 — Explore</div>
-  <h2 class="s-heading">MORIOを、<em>深く</em>知る。</h2>
-
-  <div class="scope">
-    <a href="vision.html" class="scope-card">
-      <div class="scope-en">Vision</div>
-      <div class="scope-jp">ビジョン</div>
-      <p class="scope-desc">刹那から永遠へ。千年単位のLTV、日本再興計画、THE STUMP。</p>
-      <span class="scope-link">discover →</span>
-    </a>
-    <a href="producing.html" class="scope-card">
-      <div class="scope-en">Produce</div>
-      <div class="scope-jp">不動産プロデュース</div>
-      <p class="scope-desc">LTV = 収益 × 時間。エントロピー収斂、天文学的LTVの実証。</p>
-      <span class="scope-link">discover →</span>
-    </a>
-    <a href="design-philosophy.html" class="scope-card">
-      <div class="scope-en">Design</div>
-      <div class="scope-jp">デザイン哲学</div>
-      <p class="scope-desc">究極のモダンにして、究極のクラシック。経年優化の三要素。</p>
-      <span class="scope-link">discover →</span>
-    </a>
-    <a href="projects.html" class="scope-card">
-      <div class="scope-en">Projects</div>
-      <div class="scope-jp">プロジェクト</div>
-      <p class="scope-desc">南青山、白金台、代官山——東京を定義する不動産プロダクト。</p>
-      <span class="scope-link">discover →</span>
-    </a>
-    <a href="company.html" class="scope-card">
-      <div class="scope-en">Company</div>
-      <div class="scope-jp">会社概要</div>
-      <p class="scope-desc">株式会社MORIO。南青山5丁目を拠点に、新しいパラダイムを築く。</p>
-      <span class="scope-link">discover →</span>
-    </a>
-  </div>
-</section>
-
-<div class="rule"><div class="rule-in"></div></div>
-
-<!-- ═══ CTA ═══ -->
-<section class="cta rv">
-  <h2 data-cms="cta_heading">Begin a <em>Conversation.</em></h2>
-  <p class="cta-sub" data-cms="cta_sub">不動産プロデュースについてのご相談、プロジェクトのご依頼。</p>
-  <a href="mailto:info@morio-realestate.com" class="cta-btn" data-cms="cta_btn">Enquire Now</a>
-  <div class="cta-info" data-cms="cta_info">
-    5-11-23 Minami-Aoyama, Minato-ku, Tokyo 107-0062<br>
-    Tel: 03-6427-9185 ｜ 平日 10:30–18:00
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-in">
-    <div class="footer-links">
-      <a href="index.html" class="current">Home</a>
-      <a href="vision.html">Vision</a>
-      <a href="design-philosophy.html">Philosophy</a>
-      <a href="projects.html">Projects</a>
-      <a href="producing.html">Produce</a>
-      <a href="the-stump.html">The Stump</a>
-      <a href="company.html">Company</a>
+<!-- COMPANY PROFILE -->
+<section class="section" id="company" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="stack" style="max-width:var(--readw);">
+      <span class="idx" data-reveal>Company</span>
+      <div class="btitle" data-reveal data-delay="1">
+        <span class="en">Company Profile</span>
+        <span class="jp">会社概要</span>
+      </div>
     </div>
-    <div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div>
+    <div class="profile" data-reveal style="margin-top:var(--space-block); max-width:940px;">
+      <div class="prow"><span class="k">名称 <em>Name</em></span><span class="v" data-cms-text="co_name">株式会社MORIO／MORIO Co., Ltd.</span></div>
+      <div class="prow"><span class="k">代表者 <em>Representative</em></span><span class="v" data-cms-text="co_ceo">森田 夏光（Natsuhiko Morita）— Founder &amp; CEO</span></div>
+      <div class="prow"><span class="k">設立 <em>Established</em></span><span class="v" data-cms-text="co_established">2011年 1月</span></div>
+      <div class="prow"><span class="k">資本金 <em>Capital</em></span><span class="v" data-cms-text="co_capital">5,000万円</span></div>
+      <div class="prow"><span class="k">事業内容 <em>Business</em></span><span class="v" data-cms-text="co_business">不動産プロデュース事業</span></div>
+      <div class="prow"><span class="k">免許 <em>License</em></span><span class="v" data-cms-text="co_license">宅地建物取引業 東京都知事 (3) 第93117号</span></div>
+      <div class="prow"><span class="k">総合オフィス <em>Administrative HQ</em></span><span class="v" data-cms-text="co_addr_main">〒107-0062 東京都港区南青山 5-11-23 STUMP ANNEX</span></div>
+      <div class="prow"><span class="k">本社 <em>Registered HQ</em></span><span class="v" data-cms-text="co_addr_hq">〒107-0062 東京都港区南青山 6-8-6 テロワール南青山 103</span></div>
+      <div class="prow"><span class="k">オフィス <em>Office</em></span><span class="v" data-cms-text="co_addr_office">〒107-0062 東京都港区南青山 5-10-6 テラアシオス表参道ビル 9階</span></div>
+      <div class="prow"><span class="k">連絡先 <em>Contact</em></span><span class="v" data-cms-text="co_contact">Tel 03-6427-9185 ／ info@morio-realestate.com</span></div>
+      <div class="prow"><span class="k">営業時間 <em>Hours</em></span><span class="v" data-cms-text="co_hours">平日 10:30–18:00（土日祝定休）</span></div>
+      <div class="prow"><span class="k">Web <em>Website</em></span><span class="v" data-cms-text="co_web">www.morio-realestate.com</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <p class="cta-h" data-reveal data-cms-html="cta_heading">不動産価値を最大化する。<br>Begin a conversation.</p>
+    <div data-reveal data-delay="1" style="margin-top:2em;">
+      <a href="mailto:info@morio-realestate.com" class="bigmail">info@morio-realestate.com <span class="arw">→</span></a>
+    </div>
+    <div class="foot-grid">
+      <div class="col">
+        <h4>MORIO</h4>
+        <p>株式会社MORIO / Morio Co., Ltd.</p>
+        <p>不動産プロデュース事業</p>
+        <p class="small" style="margin-top:1em;">宅地建物取引業 東京都知事 (3) 第93117号</p>
+      </div>
+      <div class="col">
+        <h4>Office</h4>
+        <p>総合オフィス 〒107-0062<br>東京都港区南青山 5-11-23 STUMP ANNEX</p>
+        <p style="margin-top:1em;">Tel 03-6427-9185</p>
+        <p class="small">平日 10:30–18:00（土日祝定休）</p>
+      </div>
+      <div class="col">
+        <h4>Explore</h4>
+        <a href="#position">Approach</a>
+        <a href="#value">Value</a>
+        <a href="#company">Company</a>
+        <a href="mailto:info@morio-realestate.com">Enquire</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="brand" style="font-size:.95rem;">MORIO</span>
+      <span class="small">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</span>
+    </div>
   </div>
 </footer>
 
-<script>
-fetch('/data/home.json').then(r=>r.json()).then(d=>{
-  document.querySelectorAll('[data-cms]').forEach(el=>{
-    var key=el.getAttribute('data-cms');
-    if(d[key]!==undefined) el.innerHTML=d[key];
-  });
-}).catch(function(){});
-</script>
+<!-- BGM -->
+<button id="bgm" class="bgm" aria-label="背景音楽 再生／停止" aria-pressed="false">
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="bgm-lab">Sound</span>
+</button>
+<audio id="bgm-audio" src="assets/audio/morio-theme.mp3" loop preload="auto"></audio>
 
+<script src="assets/morio.js"></script>
+<script src="assets/motion.js"></script>
 <script>
-// ── SCROLL REVEAL ──
-document.addEventListener('DOMContentLoaded',function(){
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});
-  },{threshold:.06,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-});
+(function(){
+  var btn = document.getElementById('bgm');
+  var audio = document.getElementById('bgm-audio');
+  if(!btn || !audio) return;
+  var KEY = 'morio-bgm';
+  var TARGET = 0.5;
+  var fadeTimer = null;
+  function fade(to, done){
+    if(fadeTimer) clearInterval(fadeTimer);
+    var step = (to - audio.volume) / 18;
+    fadeTimer = setInterval(function(){
+      var v = audio.volume + step;
+      if((step > 0 && v >= to) || (step < 0 && v <= to) || step === 0){
+        audio.volume = Math.max(0, Math.min(1, to)); clearInterval(fadeTimer); fadeTimer = null;
+        if(done) done();
+      } else { audio.volume = Math.max(0, Math.min(1, v)); }
+    }, 40);
+  }
+  function setUI(p){ btn.classList.toggle('playing', p); btn.setAttribute('aria-pressed', p ? 'true' : 'false'); }
+  function play(){
+    audio.volume = 0;
+    var pr = audio.play();
+    if(pr && pr.then){
+      pr.then(function(){ setUI(true); fade(TARGET); try{ localStorage.setItem(KEY,'on'); }catch(e){} })
+        .catch(function(){ setUI(false); });
+    } else { setUI(true); fade(TARGET); }
+  }
+  function pause(){
+    try{ localStorage.setItem(KEY,'off'); }catch(e){}
+    fade(0, function(){ audio.pause(); }); setUI(false);
+  }
+  btn.addEventListener('click', function(){ if(audio.paused) play(); else pause(); });
+  function onScroll(){ if(window.scrollY > 120) btn.classList.add('show'); else btn.classList.remove('show'); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  var wasOn = false;
+  try{ wasOn = localStorage.getItem(KEY) === 'on'; }catch(e){}
+  if(wasOn){
+    play();
+    var resume = function(){ if(audio.paused) play(); window.removeEventListener('pointerdown', resume); window.removeEventListener('keydown', resume); };
+    window.addEventListener('pointerdown', resume);
+    window.addEventListener('keydown', resume);
+  }
+})();
 </script>
-
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", function(user) {
-    if (!user) {
-      window.netlifyIdentity.on("login", function() {
-        document.location.href = "/admin/";
-      });
-    }
-  });
-}
+(function(){
+  fetch('/data/home.json').then(function(r){ return r.json(); }).then(function(d){
+    document.querySelectorAll('[data-cms-text]').forEach(function(el){
+      var k = el.getAttribute('data-cms-text');
+      if(d[k] != null) el.textContent = d[k];
+    });
+    document.querySelectorAll('[data-cms-html]').forEach(function(el){
+      var k = el.getAttribute('data-cms-html');
+      if(d[k] != null) el.innerHTML = d[k];
+    });
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>
