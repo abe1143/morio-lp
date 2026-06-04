@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+ window.__pageLang='en';
+ window.__langMap={ja:'the-stump.html',en:'the-stump.en.html',zh:'the-stump.zh.html'};
+ (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
+</script>
+<title>THE STUMP — A Monument for Eternity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070707;--surface:#0e0e0e;--border:rgba(255,255,255,.05);--cream:#e5e1dc;--silver:#a8a8a8;--muted:#606060;--white:#f4f2ef;--gold:#c9a96e;--gold-dim:rgba(201,169,110,.1);--ff-d:'Cormorant Garamond',Georgia,serif;--ff-b:'Noto Serif JP',serif;--ff-s:'Outfit',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;font-size:17px}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 2.8rem;pointer-events:none;mix-blend-mode:difference}
+.nav a{pointer-events:auto}.nav-logo{font-family:var(--ff-s);font-size:1.4rem;font-weight:200;letter-spacing:.55em;text-transform:uppercase;color:#fff;transition:opacity .4s}.nav-logo:hover{opacity:.6}
+.nav-back{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.6);transition:opacity .4s}.nav-back:hover{opacity:.5}
+
+/* HERO — The Elevation Drawing (maximal mass) */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;padding:3vh 1rem;overflow:hidden}
+.hero::before{content:'';position:absolute;left:50%;top:50%;width:78vh;height:78vh;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,169,110,.08),rgba(201,169,110,.025) 42%,transparent 70%);pointer-events:none;z-index:0}
+.hero-frame{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.hero-frame img{max-height:94vh;width:auto;max-width:96vw;object-fit:contain;transition:opacity 2.8s .15s cubic-bezier(.19,1,.22,1),transform 2.8s .15s cubic-bezier(.19,1,.22,1),filter 2.8s .15s cubic-bezier(.19,1,.22,1)}
+.hero-scroll{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;transition:opacity 1.6s 1.8s cubic-bezier(.22,1,.36,1)}
+.hero-scroll span{font-family:var(--ff-s);font-size:.56rem;font-weight:300;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.hero-scroll i{display:block;width:1px;height:42px;background:linear-gradient(to bottom,var(--gold),transparent);transform-origin:top;animation:scrollLine 2.8s 2.6s ease-in-out infinite}
+/* pre-entrance hidden state (added by JS only; no-JS shows everything) */
+.hero.pre .hero-frame img{opacity:0;transform:scale(1.04);filter:blur(8px)}
+.hero.pre .hero-scroll{opacity:0}
+@keyframes scrollLine{0%{transform:scaleY(0);opacity:0}25%{opacity:1}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hero.pre .hero-frame img,.hero.pre .hero-scroll{opacity:1;transform:none;filter:none}.hero-scroll i{animation:none;opacity:.5}}
+@media(max-width:768px){.hero-frame img{max-height:86vh}.hero::before{width:90vw;height:90vw}}
+
+/* Drawing credit plate */
+.credit{text-align:center;padding:3.4rem 1.5rem 0;background:#000}
+.credit-line{display:inline-flex;align-items:center;gap:1.4rem;font-family:var(--ff-s);font-size:.62rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.credit-line::before,.credit-line::after{content:'';width:46px;height:1px;background:rgba(201,169,110,.3)}
+.credit-name{font-family:var(--ff-d);font-style:italic;font-size:1rem;letter-spacing:.04em;text-transform:none;color:var(--gold)}
+
+/* Sections */
+.sec{padding:7rem 3rem;max-width:1000px;margin:0 auto}
+.sec-wide{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+.s-label{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.s-heading{font-family:var(--ff-d);font-size:clamp(1.9rem,3.6vw,3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:2.8rem}.s-heading em{font-style:italic;font-weight:400;color:var(--gold)}
+.prose{max-width:760px}.prose p{font-size:1.05rem;font-weight:300;line-height:2.2;letter-spacing:.03em;color:var(--cream);margin-bottom:2rem}.prose p:last-child{margin-bottom:0}
+.hl{display:inline-block;padding:0 .2em;background:linear-gradient(to top,rgba(201,169,110,.18) 45%,transparent 45%)}
+.ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
+.rule{max-width:1200px;margin:0 auto;padding:0 3rem}.rule-in{height:1px;background:var(--border)}
+
+/* Epigraph — large italic statement */
+.epigraph{padding:10rem 3rem;text-align:center;max-width:960px;margin:0 auto}
+.epi-text{font-family:var(--ff-d);font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--white)}
+.epi-text em{color:var(--gold);font-weight:400}
+
+/* Monument specs */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.spec{background:var(--bg);padding:3rem 2rem;text-align:center}
+.spec-val{font-family:var(--ff-d);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--white);line-height:1;margin-bottom:.4rem}
+.spec-unit{font-family:var(--ff-d);font-size:.95rem;font-style:italic;color:var(--gold);margin-bottom:1rem}
+.spec-desc{font-family:var(--ff-b);font-size:.82rem;font-weight:300;line-height:1.8;color:var(--silver)}
+
+/* Comparison table */
+.compare{margin-top:3rem;border:1px solid var(--border);overflow:hidden}
+.cmp-header{display:grid;grid-template-columns:1.5fr repeat(4,1fr);border-bottom:1px solid var(--border)}
+.cmp-header div{padding:1.5rem 1.2rem;font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cmp-header div:last-child{color:var(--gold);background:rgba(201,169,110,.03)}
+.cmp-row{display:grid;grid-template-columns:1.5fr repeat(4,1fr);border-bottom:1px solid var(--border)}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row div{padding:1.2rem;font-size:.88rem;font-weight:300;color:var(--silver);border-right:1px solid var(--border)}
+.cmp-row div:first-child{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center}
+.cmp-row div:last-child{border-right:none;color:var(--gold);font-weight:400;background:rgba(201,169,110,.02)}
+
+/* Visual break */
+.vb{width:100%;overflow:hidden;position:relative}.vb img{width:100%;height:70vh;min-height:380px;object-fit:cover;filter:brightness(.68) contrast(1.08) saturate(.85);transition:transform 15s cubic-bezier(.22,1,.36,1)}.vb:hover img{transform:scale(1.04)}.vb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.3) 0%,transparent 35%,rgba(7,7,7,.6) 100%);pointer-events:none}
+.vb figcaption{position:absolute;bottom:2.2rem;left:3rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;text-shadow:0 2px 15px rgba(0,0,0,.8)}
+.vb figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.62rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
+
+/* Patron section */
+.patron-frame{max-width:860px;margin:3rem auto 0;border:1px solid var(--gold);padding:4.5rem 3.5rem;background:rgba(201,169,110,.015);text-align:center}
+.patron-eye{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem}
+.patron-text{font-family:var(--ff-b);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;line-height:2;letter-spacing:.04em;color:var(--white)}
+.patron-text em{font-family:var(--ff-d);font-style:italic;color:var(--gold)}
+
+/* Roadmap */
+.roadmap{max-width:800px;margin:4rem auto 0;border-left:1px solid var(--gold-dim);padding-left:2.5rem}
+.rm{position:relative;padding:1.6rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:110px 1fr;gap:2rem;align-items:baseline}
+.rm:last-child{border-bottom:none}
+.rm::before{content:'';position:absolute;left:-2.85rem;top:2.2rem;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--gold-dim)}
+.rm-yr{font-family:var(--ff-d);font-size:1.5rem;font-weight:400;font-style:italic;color:var(--gold)}
+.rm-en{font-family:var(--ff-d);font-size:1.05rem;font-style:italic;color:var(--white);margin-bottom:.3rem}
+.rm-jp{font-size:.85rem;font-weight:300;color:var(--silver);line-height:1.7}
+
+/* Final */
+.final{padding:12rem 3rem 8rem;text-align:center;max-width:960px;margin:0 auto}
+.final-text{font-family:var(--ff-d);font-size:clamp(2rem,4.2vw,3.4rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--white);padding:3.5rem 2rem;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);margin-bottom:3.5rem}
+.final-text em{color:var(--gold);font-weight:400}
+.final-sub{font-family:var(--ff-b);font-size:1.05rem;font-weight:300;line-height:2.5;letter-spacing:.1em;color:var(--cream)}
+.final-sub strong{font-weight:400;color:var(--white)}
+
+/* CTA */
+.cta{padding:4rem 3rem 6rem;text-align:center}
+.cta-label{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.cta-btn{display:inline-block;font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);padding:1.2rem 4rem;border:1px solid rgba(201,169,110,.3);transition:all .5s}
+.cta-btn:hover{background:rgba(201,169,110,.06);border-color:var(--gold)}
+.cta-note{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.1em;color:var(--muted);margin-top:2.5rem}
+
+.footer{padding:3rem;max-width:1200px;margin:0 auto}.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}.footer-links{display:flex;gap:2rem}.footer-links a{font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.1em;color:var(--muted);transition:color .3s}.footer-links a:hover{color:var(--silver)}.footer-home{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:1rem 2.6rem;border:1px solid rgba(201,169,110,.4);transition:background .4s,border-color .4s}.footer-home:hover{background:rgba(201,169,110,.06);border-color:var(--gold)}.footer-copy{font-family:var(--ff-s);font-size:.58rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}.rv.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.specs{grid-template-columns:repeat(2,1fr)}.cmp-header,.cmp-row{grid-template-columns:1fr 1fr}.cmp-header div:nth-child(2),.cmp-header div:nth-child(3),.cmp-row div:nth-child(2),.cmp-row div:nth-child(3){display:none}}
+@media(max-width:768px){html{font-size:16px}.nav{padding:1.2rem 1.5rem}.sec,.sec-wide,.epigraph,.final,.cta{padding-left:1.6rem;padding-right:1.6rem}.spec{padding:2rem 1.2rem}.patron-frame{padding:2.8rem 1.6rem}.rule{padding:0 1.6rem}.vb img{height:55vh;min-height:280px}.vb figcaption{left:1.6rem;bottom:1.6rem;font-size:.95rem}.roadmap{padding-left:2rem}.rm{grid-template-columns:1fr;gap:.4rem}.rm::before{left:-2.3rem}.final-text{padding:2.5rem 1rem}.specs{grid-template-columns:1fr 1fr}}
+/* Monuments triptych */
+.monuments{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%}
+.mon{position:relative;overflow:hidden;height:60vh;min-height:360px}
+.mon img{width:100%;height:100%;object-fit:cover;filter:brightness(.68) contrast(1.06) saturate(.9);transition:transform 12s cubic-bezier(.22,1,.36,1)}
+.mon:hover img{transform:scale(1.05)}
+.mon::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,.88),transparent 52%);pointer-events:none}
+.mon figcaption{position:absolute;left:1.4rem;right:1.4rem;bottom:1.5rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.05rem;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+.mon figcaption span{display:block;font-family:var(--ff-s);font-style:normal;font-size:.58rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
+@media(max-width:900px){.monuments{grid-template-columns:1fr}.mon{height:46vh;min-height:300px}}
+
+/* ── motion layer ── */
+@media (prefers-reduced-motion:no-preference){
+  .rv{transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1),filter 1.05s cubic-bezier(.22,1,.36,1);filter:blur(7px)}
+  .rv.vis{filter:blur(0)}
+  .vb:not(.vb-contain) img,.mon img{opacity:.4;transform:scale(1.07);transition:opacity 1.5s cubic-bezier(.22,1,.36,1),transform 1.5s cubic-bezier(.22,1,.36,1)}
+  .vb.vis:not(.vb-contain) img,.monuments.vis .mon img{opacity:1;transform:scale(1)}
+  .vb:not(.vb-contain):hover img,.mon:hover img{transform:scale(1.04)}
+  .vb-contain img{opacity:.4;transition:opacity 1.5s cubic-bezier(.22,1,.36,1)}
+  .vb-contain.vis img{opacity:1}
+  @keyframes m-fade{from{opacity:0}to{opacity:1}}
+}
+.scroll-prog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--gold),#e3c590);z-index:300;box-shadow:0 0 12px rgba(201,169,110,.45);pointer-events:none}
+/* stump shown in full (no crop) */
+.vb-contain{background:#070707}
+.vb-contain img{object-fit:contain !important;height:80vh;min-height:420px}
+.vb-contain::after{display:none}
+@media(max-width:768px){.vb-contain img{height:60vh;min-height:320px}}
+/* wide interior — shown in full (natural ratio, no crop) */
+.vb-fit{position:relative;width:100%;background:#070707;overflow:hidden}
+.vb-fit img{width:100%;height:auto;display:block}
+.vb-fit::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.22),transparent 32%,rgba(7,7,7,.5));pointer-events:none}
+.vb-fit figcaption{position:absolute;left:3rem;bottom:1.8rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.vb-fit figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.6rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
+@media(max-width:768px){.vb-fit figcaption{left:1.6rem;bottom:1.4rem;font-size:.95rem}}
+/* language switch */
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.lang-switch{display:inline-flex;align-items:center;gap:.1em;pointer-events:auto}
+.lang-switch a{font-family:'Noto Serif JP',var(--ff-s),sans-serif;font-size:.72rem;letter-spacing:.1em;color:rgba(255,255,255,.55);padding:.25em .4em;transition:color .35s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a.is-active{color:var(--gold)}
+.lang-switch .sep{color:rgba(255,255,255,.28);font-size:.6rem}
+</style>
+</head>
+<body>
+
+<nav class="nav"><a href="index.en.html" class="nav-logo">MORIO</a><div class="nav-right"><a href="index.en.html" class="nav-back">← Back</a><div class="lang-switch"><a href="the-stump.html" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="the-stump.en.html" class="is-active" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="the-stump.zh.html" data-lang="zh" hreflang="zh">中</a></div></div></nav>
+
+<!-- ═══ HERO — The Elevation Drawing ═══ -->
+<section class="hero">
+  <div class="hero-frame">
+    <img src="assets/img/stump-elevation.png" alt="THE STUMP — elevation drawing. 300m tall, 30 floors. A study by Morio the Mann.">
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><i></i></div>
+</section>
+<script>(function(){var h=document.currentScript.previousElementSibling;h.classList.add('pre');function go(){h.classList.remove('pre');}requestAnimationFrame(function(){requestAnimationFrame(go);});setTimeout(go,120);})();</script>
+
+<!-- drawing credit -->
+<div class="credit">
+  <span class="credit-line">Opus 1 · Tokyo — Elevation Study <span class="credit-name">Morio the Mann</span> Anno 2026</span>
+</div>
+
+<!-- ═══ EPIGRAPH ═══ -->
+<section class="epigraph rv">
+  <p class="epi-text">
+    For five thousand years, humankind<br>
+    has built <em>things made to last forever</em>.<br><br>
+    Only in the last fifty years have we forgotten.
+  </p>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 01 — THE VOID ═══ -->
+<section class="sec rv">
+  <div class="s-label">01 — The Void</div>
+  <h2 class="s-heading">What a fleeting gaze<br><em>stole from humankind</em>.</h2>
+  <div class="prose">
+    <p>Pharaohs built the pyramids. The Catholic Church built Notre-Dame. The Tokugawa shogunate built Nikkō Tōshō-gū. In every age, humanity has given its wealthiest and most powerful the same impulse: <span class="hl">to carve one’s existence into the far reaches of time</span>.</p>
+    <p>This is not vanity. It is a fundamental structure of human consciousness — the drive, even while knowing one’s own finitude, to create something beyond it. An existential need itself.</p>
+    <p>Yet over the past fifty years, humanity has lost the means to satisfy this need. The world’s UHNWIs hold more wealth than they could ever spend, yet possess no device to convert it into a permanent form. Yachts, jets, luxury residences — all consumables obsolete within a decade. A person with hundreds of billions in assets <span class="hl">cannot own a single thing that will last a thousand years</span>.</p>
+  </div>
+</section>
+
+
+<div class="monuments rv">
+  <figure class="mon"><img src="assets/img/pyramid-giza.png" alt="The Great Pyramid of Giza"><figcaption>Pyramid of Giza<span>c. 2560 BC · 4,600 years</span></figcaption></figure>
+  <figure class="mon"><img src="assets/img/notredame.png" alt="Notre-Dame de Paris"><figcaption>Notre-Dame de Paris<span>1163–1345 · eight centuries</span></figcaption></figure>
+  <figure class="mon"><img src="assets/img/temple-kiyomizu.png" alt="Japanese timber temple"><figcaption>Japanese Temple<span>Timber that outlives dynasties</span></figcaption></figure>
+</div>
+
+<!-- ═══ 02 — THE ANSWER ═══ -->
+<section class="sec rv">
+  <div class="s-label">02 — The Answer</div>
+  <h2 class="s-heading">THE STUMP is<br>the <em>answer to that hunger</em>.</h2>
+  <div class="prose">
+    <p>THE STUMP is a project that revives, in our own age, an act humanity pursued for five thousand years and abandoned only in the last fifty — <span class="hl">the act of making something eternal</span>.</p>
+    <p>And it does so not through religion or the state, but through individual will and capital. Pharaohs built with the power of the state; the Church, with the power of faith. THE STUMP functions as a device through which a single UHNWI, by their own will, carves a “thousand-year trace.”</p>
+    <p><span class="ei">To own Notre-Dame Cathedral</span> — what THE STUMP offers is an experience synonymous with that.</p>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 03 — THE MONUMENT ═══ -->
+<section class="sec-wide rv">
+  <div class="s-label">03 — The Monument</div>
+  <h2 class="s-heading">An overwhelming <em>solemnity</em>.</h2>
+  <div class="prose">
+    <p>10m per floor, 9m ceilings. Spaces on the scale of Notre-Dame’s aisle, stacked across all 30 floors. 2,000㎡ per floor — five times the area of a typical ultra-prime residence — configured as a single residence per floor.</p>
+    <p>This is not a dwelling. It is a <span class="hl">palazzo in the sky</span> — the most sublime habitable space on Earth.</p>
+  </div>
+
+  <div class="specs">
+    <div class="spec"><div class="spec-val">300</div><div class="spec-unit">meters</div><p class="spec-desc">300m tall. 30 storeys.<br>A monument that defines<br>the Tokyo skyline.</p></div>
+    <div class="spec"><div class="spec-val">10</div><div class="spec-unit">m / floor</div><p class="spec-desc">10m floors, 9m ceilings.<br>About 3× a normal home.<br>On par with Notre-Dame’s aisle.</p></div>
+    <div class="spec"><div class="spec-val">2,000</div><div class="spec-unit">㎡ / unit</div><p class="spec-desc">One residence per floor.<br>Pool, gallery and tea room,<br>all on a single level.</p></div>
+    <div class="spec"><div class="spec-val">30</div><div class="spec-unit">residences</div><p class="spec-desc">Only 30 on Earth.<br>Each a wholly independent<br>palazzo in the sky.</p></div>
+  </div>
+</section>
+
+
+<!-- ═══ 04 — BEYOND COMPARISON ═══ -->
+<section class="sec-wide rv">
+  <div class="s-label">04 — Beyond Comparison</div>
+  <h2 class="s-heading">A <em>comparison</em> with the world’s finest residences.</h2>
+  <div class="prose"><p>THE STUMP has no true peer. Yet placing it alongside others throws the difference in dimension into sharp relief.</p></div>
+
+  <div class="compare">
+    <div class="cmp-header">
+      <div></div>
+      <div>Aman NY</div>
+      <div>One Hyde Park</div>
+      <div>Tour Odeon</div>
+      <div>THE STUMP</div>
+    </div>
+    <div class="cmp-row"><div>Ceiling Height</div><div>3.5m</div><div>3.2m</div><div>3.5m</div><div>9m</div></div>
+    <div class="cmp-row"><div>Unit Size</div><div>~400㎡</div><div>~600㎡</div><div>~800㎡</div><div>2,000㎡</div></div>
+    <div class="cmp-row"><div>Units / Floor</div><div>2–4</div><div>2–4</div><div>2–3</div><div>1</div></div>
+    <div class="cmp-row"><div>Arch Opening</div><div>—</div><div>—</div><div>—</div><div>8m Gothic</div></div>
+    <div class="cmp-row"><div>Design Lifespan</div><div>50 yrs</div><div>50 yrs</div><div>50 yrs</div><div>1,000 yrs</div></div>
+    <div class="cmp-row"><div>Construction / tsubo</div><div>~¥5M</div><div>~¥8M</div><div>~¥6M</div><div>¥100M</div></div>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 05 — THE ECONOMICS ═══ -->
+<section class="sec rv">
+  <div class="s-label">05 — The Economics</div>
+  <h2 class="s-heading">A millennium of LTV,<br>an <em>astronomical return</em>.</h2>
+  <div class="prose">
+    <p>¥200 billion per residence. ¥300 million per tsubo. Construction at ¥100 million per tsubo — built on a budget twenty times the highest standard of any structure now in existence.</p>
+    <p>But to read these numbers as “cost” is the trap of a short-term gaze. That €850 million (about ¥140 billion) in donations for Notre-Dame’s restoration was gathered within 72 hours shows that <span class="hl">the value of millennial architecture exceeds its construction cost by orders of magnitude</span>.</p>
+    <p>THE STUMP is not a consumable to be demolished in 30 years. Its ¥100-million-per-tsubo cost is not an expense but <span class="hl">insurance that physically guarantees a thousand years of LTV</span>. Still standing a millennium from now, still generating value — at which point ¥200 billion becomes the highest-yielding investment in history.</p>
+  </div>
+</section>
+
+
+<!-- ═══ 06 — THE PATRON ═══ -->
+<section class="sec rv">
+  <div class="s-label">06 — The Patron</div>
+  <h2 class="s-heading">Not an owner, but a <em>patron</em>.</h2>
+  <div class="prose">
+    <p>A resident of THE STUMP is not a “buyer” but a <span class="ei">Patron</span>. As the Medici sustained the Renaissance, the patrons of THE STUMP inscribe their names into the architectural history of humanity.</p>
+    <p>A thousand years from now, just as the names of the pyramids’ pharaohs are still recounted, the names of THE STUMP’s patrons will endure, together with the architecture, forever.</p>
+  </div>
+
+  <div class="patron-frame">
+    <div class="patron-eye">By Invitation Only</div>
+    <div class="patron-text">
+      THE STUMP is <em>not for sale</em>.<br>
+      Only those <em>chosen</em> as patrons<br>
+      will receive an invitation.
+    </div>
+  </div>
+</section>
+
+<div class="rule"><div class="rule-in"></div></div>
+
+<!-- ═══ 07 — OPUS 1 ═══ -->
+<section class="sec rv">
+  <div class="s-label">07 — OPUS 1 : Tokyo</div>
+  <h2 class="s-heading">OPUS 1 —<br>from <em>Tokyo</em>, to the world.</h2>
+  <div class="prose">
+    <p>THE STUMP OPUS 1 will rise in Tokyo — the safest, most culturally profound, and most underestimated city in the world. The very existence of OPUS 1 becomes the proof; its expansion to London, Dubai, Singapore and New York will come not from us, but at the request of patrons in each country.</p>
+    <p>In each city, THE STUMP will stand upon the earth like an ancient obelisk — a testament to civilisation.</p>
+  </div>
+</section>
+
+
+<figure class="vb vb-contain rv"><img src="assets/img/devils-tower.png" alt="Devils Tower — Origin of the Name"><figcaption>Devils Tower — the trace of a 3,000m ancient tree. The origin of our name.<span class="vb-s">THE STUMP</span></figcaption></figure>
+
+<!-- ═══ FINAL ═══ -->
+<section class="final rv">
+  <div class="final-text">
+    Our creation becomes<br>
+    a <em>trace of the soul, measured in millennia</em>.
+  </div>
+  <div class="final-sub">
+    <strong>From the fleeting, to the eternal.</strong><br>
+    To the acceleration of a fleeting gaze, we land the ultimate counterpunch.<br>
+    To return to a gaze that transcends time<br>
+    is what humankind has, in essence, always sought.
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta rv">
+  <div class="cta-label">Begin a Conversation</div>
+  <a href="mailto:info@morio-realestate.com" class="cta-btn">Private Enquiry</a>
+  <div class="cta-note">Morio the Mann Group ｜ Minami-Aoyama, Tokyo</div>
+</section>
+
+<footer class="footer"><div class="footer-in"><a href="index.en.html" class="footer-home">← Back to Home</a><div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
+
+<!-- ═══ REVEAL OBSERVER ═══ -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+  },{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+});
+</script>
+<script>
+/* motion: scroll progress + spec count-up */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var bar=document.createElement('div');bar.className='scroll-prog';document.body.appendChild(bar);
+  function prog(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?h.scrollTop/m:0).toFixed(4)+')';}
+  addEventListener('scroll',prog,{passive:true});addEventListener('resize',prog);prog();
+  function countUp(){document.querySelectorAll('.spec-val').forEach(function(n){
+    var raw=n.textContent.trim(),m=raw.match(/^([^\d]*)([\d,]+)(.*)$/);if(!m)return;
+    var pre=m[1],suf=m[3],t=parseInt(m[2].replace(/,/g,''),10);if(isNaN(t))return;
+    var comma=m[2].indexOf(',')>=0||t>=1000,dur=1500,st=null;
+    function f(v){return comma?v.toLocaleString('en-US'):''+v;}
+    function tick(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);
+      n.textContent=pre+f(Math.round(t*e))+suf;
+      if(p<1)requestAnimationFrame(tick);else n.textContent=pre+f(t)+suf;}
+    n.textContent=pre+f(0)+suf;requestAnimationFrame(tick);
+  });}
+  var specs=document.querySelector('.specs');
+  if(specs&&!reduce&&'IntersectionObserver'in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){countUp();io.disconnect();}});},{threshold:.35});
+    io.observe(specs);
+  }
+})();
+</script>
+<script>document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});</script>
+</body>
+</html>

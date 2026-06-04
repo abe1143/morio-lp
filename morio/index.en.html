@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
- window.__pageLang='ja';
+ window.__pageLang='en';
  window.__langMap={ja:'index.html',en:'index.en.html',zh:'index.zh.html'};
  (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
 </script>
 <title>MORIO — Real Estate Producing · Tokyo</title>
-<meta name="description" content="不動産の潜在価値を、解放する。設計事務所でもデベロッパーでもない、不動産プロデュース企業。">
+<meta name="description" content="Releasing the latent value of real estate. Neither an architecture firm nor a developer — a real estate producing company.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/morio.css">
 <link rel="stylesheet" href="assets/motion.css">
 <style>
+  /* compact home — local refinements */
   .lede{ max-width:var(--readw); }
   .statement-jp{ font-family:var(--font-jp); font-weight:200; font-size:clamp(1.6rem,3vw,2.5rem); line-height:1.6; letter-spacing:.05em; text-wrap:balance; }
   .statement-jp .accent{ color:var(--accent); }
   .vc-fig{ aspect-ratio:4/5; }
   @media (max-width:900px){ .vc-fig{ aspect-ratio:16/11; } }
+  /* clean line-breaks: balance headings, avoid orphans in body copy */
   .btitle .en, .hero h1, .quote, .footer .cta-h{ text-wrap:balance; }
   .lead, .body, .cap-item .d, .stat .d, .trio-row .t-d{ text-wrap:pretty; }
+  /* keep intentional hard breaks only on wider screens */
   @media (max-width:560px){ h1 br, .statement-jp br{ display:none; } }
+  /* images: show fully — no crop, keep aspect ratio (letterbox on dark) */
   .hero{ background:#0a0a0a; }
   .hero-bg{ inset:0 !important; }
   .hero-bg img{ height:100% !important; object-fit:contain !important; object-position:center !important; transform:none !important; }
   .figure{ background:#0a0a0a; }
   .figure img{ object-fit:contain !important; object-position:center !important; transform:none !important; }
   .figure.full::after{ display:none; }
+  /* BGM toggle */
   .bgm{ position:fixed; left:var(--gutter); bottom:24px; z-index:120; display:flex; align-items:center; gap:.75em;
     background:rgba(11,11,12,.6); backdrop-filter:blur(12px); border:1px solid var(--line); color:var(--ink-soft);
     padding:.62em 1.05em .62em .9em; border-radius:100px; cursor:pointer; font-family:var(--font-en); font-size:.64rem;
@@ -45,6 +50,7 @@
   @keyframes eq{ 0%,100%{ height:3px; } 50%{ height:13px; } }
   @media (max-width:560px){ .bgm{ left:14px; bottom:14px; } }
   @media (prefers-reduced-motion: reduce){ .bgm .eq i{ animation:none !important; } }
+  /* THE STUMP feature banner + nav link */
   .nav-links .stump-link{ color:var(--accent); }
   .nav-links .stump-link::after{ background:var(--accent); }
   .stump-feature{ display:block; position:relative; }
@@ -59,6 +65,7 @@
   .stump-feature .s-sub .arw{ color:var(--accent); transition:transform .5s var(--ease); }
   .stump-feature:hover .s-title{ color:var(--accent); }
   .stump-feature:hover .s-sub .arw{ transform:translateX(8px); }
+  /* full-width interior images (natural ratio, no crop) */
   .figure-fit{ position:relative; width:100%; display:block; overflow:hidden; background:#0a0a0a; }
   .figure-fit img{ width:100%; height:auto; display:block; }
   .figure-fit::after{ content:""; position:absolute; inset:0; pointer-events:none;
@@ -66,8 +73,10 @@
   .figure-fit figcaption{ position:absolute; left:clamp(20px,3vw,46px); bottom:clamp(20px,3vw,40px); z-index:2; max-width:32ch; }
   .figure-fit .t{ font-family:var(--font-jp); font-weight:300; font-size:clamp(1.05rem,1.6vw,1.5rem); letter-spacing:.04em; color:var(--ink); text-shadow:0 2px 16px rgba(0,0,0,.75); }
   .figure-fit .s{ font-family:var(--font-en); font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-top:.7em; }
+  /* separate adjacent full-bleed images so they don't touch */
   .figure-fit + .stump-feature, .stump-feature + .figure-fit,
   .figure-fit + .figure-fit, .figure.full + .figure-fit, .figure-fit + .figure.full{ margin-top:clamp(48px,6vw,88px); }
+  /* Featured · Declaration (manifesto) — invites the click */
   .decl-feature{ display:grid; grid-template-columns:1fr auto; align-items:center; gap:clamp(22px,4vw,64px);
     margin-top:clamp(44px,6vw,76px); padding:clamp(30px,4vw,52px) clamp(28px,4vw,58px);
     border:1px solid var(--line); background:var(--bg-2); position:relative; overflow:hidden;
@@ -108,87 +117,92 @@
   </svg>
 </template>
 
-<!-- NAV -->
+<!-- ===================== NAV ===================== -->
 <nav class="nav">
-  <a href="index.html" class="brand">MORIO</a>
+  <a href="index.en.html" class="brand">MORIO</a>
   <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
+    <a href="index.en.html" class="active">Home</a>
     <a href="#position">Approach</a>
     <a href="#value">Value</a>
-    <a href="the-stump.html" class="stump-link">THE STUMP</a>
+    <a href="the-stump.en.html" class="stump-link">THE STUMP</a>
     <a href="#company">Company</a>
     <a href="mailto:info@morio-realestate.com" class="nav-cta">Enquire</a>
     <div class="lang-switch">
-      <a href="index.html" class="is-active" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="index.en.html" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="index.zh.html" data-lang="zh" hreflang="zh">中</a>
+      <a href="index.html" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="index.en.html" class="is-active" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="index.zh.html" data-lang="zh" hreflang="zh">中</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ===================== HERO ===================== -->
 <header class="hero">
   <div class="hero-bg" data-variant="facade" data-parallax="0.10"><img src="assets/img/v2-facade.jpg" alt="MORIO — 黒大理石のファサード、南青山" style="object-position:center 42%;"></div>
   <div class="hero-bg" data-variant="penthouse" data-parallax="0.10"><img src="assets/img/v2-suite.jpg" alt="MORIO — スイートの室内" style="object-position:center;"></div>
   <div class="hero-bg" data-variant="tower" data-parallax="0.10"><img src="assets/img/tower.jpg" alt="MORIO — 街区に建つ縦長レジデンス"></div>
   <div class="hero-inner wrap">
-    <span class="eyebrow" data-cms-text="hero_tag">Real Estate Producing — Tokyo</span>
-    <h1 data-cms-html="hero_h1">不動産の潜在価値を解放する。</h1>
+    <span class="eyebrow">Real Estate Producing — Tokyo</span>
+    <h1>Releasing the latent value<br>of real estate.</h1>
     <p class="hero-sub">
-      設計事務所でも、デベロッパーでもない。国内唯一の不動産プロデュース企業。
+      Neither an architecture firm nor a developer — Japan’s only real estate producing company.
       <span class="en">Releasing the latent value of real estate.</span>
     </p>
   </div>
   <div class="scrollcue"><span class="ln"></span> Scroll</div>
 </header>
 
-<!-- STATEMENT -->
+<!-- ===================== STATEMENT ===================== -->
 <section class="section wrap">
   <div class="measure" style="margin-inline:auto; text-align:center;">
     <span class="idx" data-reveal style="display:block; margin-bottom:1.6em;">Producing</span>
-    <p class="statement-jp" data-reveal data-cms-html="statement_text">
-      不動産が本来持っている価値を、<br>完全に引き出すこと。<br>
-      それが、<span class="accent">Real Estate Produce</span> です。
+    <p class="statement-jp" data-reveal>
+      Drawing out, in full, the value <br>a property was always meant to hold.<br>
+      That is <span class="accent">Real Estate Produce</span>.
     </p>
     <p class="lead" data-reveal data-delay="1" style="margin-top:2.2em; max-width:52ch; margin-inline:auto;">
-      映画のプロデューサーが作品の価値を統べるように。MORIO は構想から完成、運用までを統べ、その不動産が成りうる最高の姿を引き出します。
+      As a film producer governs the worth of a work, MORIO governs everything from concept to completion to operation — drawing out the finest form a property can become.
     </p>
   </div>
 </section>
 
-<!-- 01 OUR POSITION -->
+<!-- ===================== 01 OUR POSITION ===================== -->
 <section class="section" id="position" style="background:var(--bg-2);">
   <div class="wrap">
     <div class="stack" style="max-width:var(--readw);">
       <span class="idx" data-reveal>01 — Our Position</span>
       <div class="btitle" data-reveal data-delay="1">
         <span class="en">Value, by Design</span>
-        <span class="jp">付加価値を、構造から創る</span>
+        <span class="jp">Value, created from the structure</span>
       </div>
-      <p class="lead" data-reveal data-delay="1" data-cms-html="s1_lead">
-        MORIO は、設計でも開発でも仲介でもありません。そのすべてを束ね、<span class="accent">何を・なぜ・どんな時間軸で創るか</span>を決める上位レイヤーに立ち、付加価値そのものを設計します。
+      <p class="lead" data-reveal data-delay="1">
+        MORIO is neither designer, developer, nor broker. We stand at the layer above — uniting them all and deciding <span class="accent">what to create, why, and over what horizon of time</span> — designing added value itself.
       </p>
     </div>
     <div class="layers" data-reveal style="margin-top:var(--space-block);">
       <div class="layer is-lead">
         <span class="role">Producer</span>
         <span class="who">MORIO</span>
-        <span class="task">付加価値の設計・統合</span>
+        <span class="task">Designing &amp; integrating value</span>
       </div>
-      <div class="layer"><span class="role">Design</span><span class="who">設計事務所</span><span class="task">意匠・空間</span></div>
-      <div class="layer"><span class="role">Develop</span><span class="who">デベロッパー</span><span class="task">開発・分譲</span></div>
-      <div class="layer"><span class="role">Broker</span><span class="who">仲介</span><span class="task">取引・流通</span></div>
+      <div class="layer"><span class="role">Design</span><span class="who">Architecture Firm</span><span class="task">Form &amp; space</span></div>
+      <div class="layer"><span class="role">Develop</span><span class="who">Developer</span><span class="task">Development &amp; sales</span></div>
+      <div class="layer"><span class="role">Broker</span><span class="who">Brokerage</span><span class="task">Transaction &amp; flow</span></div>
     </div>
-    <p class="small" data-reveal style="margin-top:2em; letter-spacing:.06em;">自社にない付加価値創造の能力を、外注ではなく「機能」として導入します。</p>
+    <p class="small" data-reveal style="margin-top:2em; letter-spacing:.06em;">We install the capacity to create added value not as an outsourced service, but as a built-in function.</p>
   </div>
 </section>
 
-<!-- full-bleed break -->
+<!-- ===================== full-bleed break ===================== -->
 <figure class="figure full parallax" data-parallax="0.14" data-reveal>
   <img src="assets/img/v2-arches.jpg" alt="MORIO — アーチの集合住宅、南青山">
-  <figcaption class="cap"><div class="t"></div><div class="s"></div></figcaption>
+  <figcaption class="cap">
+    <div class="t">
+</div>
+    <div class="s">
+</div>
+  </figcaption>
 </figure>
 
-<!-- 02 VALUE CREATION -->
+<!-- ===================== 02 VALUE CREATION ===================== -->
 <section class="section wrap" id="value">
   <div class="split">
     <figure class="figure vc-fig" data-reveal>
@@ -198,26 +212,26 @@
       <span class="idx" data-reveal>02 — Value Creation</span>
       <div class="btitle" data-reveal data-delay="1">
         <span class="en">Aging into<br>Beauty</span>
-        <span class="jp">不動産のLTVを最大化する、経年優化の三要素</span>
+        <span class="jp">Three elements that maximise a property’s LTV — improving with age</span>
       </div>
-      <p class="body" data-reveal data-delay="1" data-cms-text="s2_body">
-        付加価値は偶然ではなく、再現性のある仕組みから生まれます。三つの要素を統合し、市場価格を超えるプレミアムへと変換します。
+      <p class="body" data-reveal data-delay="1">
+        Added value is no accident; it arises from a repeatable system. We integrate three elements and convert them into a premium beyond market price.
       </p>
       <div class="trio" data-reveal data-delay="2">
         <div class="trio-row">
           <span class="t-en">Real Material</span>
-          <span class="t-jp">本物の素材</span>
-          <span class="t-d">時間を吸い込み、味わいを増す素材。</span>
+          <span class="t-jp">Authentic Materials</span>
+          <span class="t-d">Materials that drink in time and deepen in character.</span>
         </div>
         <div class="trio-row">
           <span class="t-en">Timeless Design</span>
-          <span class="t-jp">普遍のデザイン</span>
-          <span class="t-d">流行に左右されない意匠。</span>
+          <span class="t-jp">Untouched by Trend</span>
+          <span class="t-d">A design that owes nothing to fashion.</span>
         </div>
         <div class="trio-row">
           <span class="t-en">Narrative</span>
-          <span class="t-jp">語られる物語</span>
-          <span class="t-d">価格を超えて選ばれる理由。</span>
+          <span class="t-jp">A Story Worth Telling</span>
+          <span class="t-d">The reason it is chosen beyond price.</span>
         </div>
       </div>
     </div>
@@ -227,93 +241,93 @@
     <div class="equation" style="justify-content:center;">
       <span class="term"><span class="v accent">LTV</span><span class="l">Lifetime Value</span></span>
       <span class="op">=</span>
-      <span class="term"><span class="v">Revenue</span><span class="l">収益</span></span>
+      <span class="term"><span class="v">Revenue</span><span class="l">Revenue</span></span>
       <span class="op">×</span>
-      <span class="term"><span class="v">Time</span><span class="l">時間</span></span>
+      <span class="term"><span class="v">Time</span><span class="l">Time</span></span>
     </div>
     <p class="lead" style="max-width:62ch; margin:2.2em auto 0;">
-      不動産の価値は、収益と時間の積——<span class="accent">LTV（ライフタイムバリュー）</span>で決まります。竣工後に減衰させるのではなく、本物の素材と普遍のデザインによって、経年とともに上昇する資産へと設計します。時間を味方につけるほど、LTV は積み上がっていきます。
+      A property’s value is the product of revenue and time — its <span class="accent">LTV (Lifetime Value)</span>. Rather than letting it decay after completion, we design assets that rise with age through authentic materials and timeless design. The more time becomes an ally, the higher the LTV climbs.
     </p>
   </div>
 </section>
 
-<!-- full-width interior -->
+<!-- ===================== full-width interior ===================== -->
 <figure class="figure-fit" data-reveal>
   <img src="assets/img/interior-gallery.png" alt="MORIO — ギャラリーのようなリビング">
 </figure>
 
-<!-- 03 CAPABILITIES -->
+<!-- ===================== 03 CAPABILITIES ===================== -->
 <section class="section" id="capabilities" style="background:var(--bg-2);">
   <div class="wrap">
     <div class="stack" style="max-width:var(--readw);">
       <span class="idx" data-reveal>03 — Capabilities</span>
       <div class="btitle" data-reveal data-delay="1">
         <span class="en">What We Bring</span>
-        <span class="jp">提供する、六つのバリュー</span>
+        <span class="jp">Six forms of value we bring</span>
       </div>
       <p class="lead" data-reveal data-delay="1">
-        付加価値を生む六つの機能を、外注ではなく一つのチームとして提供します。
+        Six value-creating functions, delivered as a single team rather than outsourced parts.
       </p>
     </div>
     <div class="caps" data-reveal style="margin-top:var(--space-block);">
-      <div class="cap-item"><span class="no">01</span><div class="en" data-cms-text="cap1_en">Concept Design</div><div class="jp" data-cms-text="cap1_jp">企画・コンセプト設計</div><p class="d" data-cms-text="cap1_desc">立地のポテンシャルを最大化するアセットタイプと需要構造を設計します。</p></div>
-      <div class="cap-item"><span class="no">02</span><div class="en" data-cms-text="cap2_en">Financial Architecture</div><div class="jp" data-cms-text="cap2_jp">収益構造の設計</div><p class="d" data-cms-text="cap2_desc">運用期間全体の価値構造を設計します。IRR・NOI・LTV が骨格を決めます。</p></div>
-      <div class="cap-item"><span class="no">03</span><div class="en" data-cms-text="cap3_en">Spatial Design</div><div class="jp" data-cms-text="cap3_jp">空間デザイン</div><p class="d" data-cms-text="cap3_desc">天井高・開口・動線・素材・光。空間の情報量を最大化します。</p></div>
-      <div class="cap-item"><span class="no">04</span><div class="en" data-cms-text="cap4_en">Asset Strategy</div><div class="jp" data-cms-text="cap4_jp">アセット戦略・運用</div><p class="d" data-cms-text="cap4_desc">賃貸・売却・ホテル運用。出口戦略を開発段階から織り込みます。</p></div>
-      <div class="cap-item"><span class="no">05</span><div class="en" data-cms-text="cap5_en">Craftsmanship</div><div class="jp" data-cms-text="cap5_jp">クラフトマンシップ</div><p class="d" data-cms-text="cap5_desc">左官・木工・石工・鉄工。量産品では届かない深度を実装します。</p></div>
-      <div class="cap-item"><span class="no">06</span><div class="en" data-cms-text="cap6_en">Orchestration</div><div class="jp" data-cms-text="cap6_jp">全体統合</div><p class="d" data-cms-text="cap6_desc">設計・施工・法務・金融・販売を、一つのビジョンへ統合します。</p></div>
+      <div class="cap-item"><span class="no">01</span><div class="en">Concept Design</div><div class="jp">Planning &amp; Concept</div><p class="d">We design the asset type and demand structure that maximise a site’s potential.</p></div>
+      <div class="cap-item"><span class="no">02</span><div class="en">Financial Architecture</div><div class="jp">Revenue Architecture</div><p class="d">We design the value structure across the entire holding period; IRR, NOI and LTV form the skeleton.</p></div>
+      <div class="cap-item"><span class="no">03</span><div class="en">Spatial Design</div><div class="jp">Spatial Design</div><p class="d">Ceiling height, openings, circulation, material, light — maximising the density of a space.</p></div>
+      <div class="cap-item"><span class="no">04</span><div class="en">Asset Strategy</div><div class="jp">Asset Strategy &amp; Operation</div><p class="d">Lease, sale, hotel operation — the exit strategy woven in from the development stage.</p></div>
+      <div class="cap-item"><span class="no">05</span><div class="en">Craftsmanship</div><div class="jp">Craftsmanship</div><p class="d">Plaster, joinery, stonework, ironwork — a depth no mass production can reach.</p></div>
+      <div class="cap-item"><span class="no">06</span><div class="en">Orchestration</div><div class="jp">Orchestration</div><p class="d">Design, construction, law, finance and sales, integrated into one vision.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 04 EVIDENCE -->
+<!-- ===================== 04 EVIDENCE ===================== -->
 <section class="section" id="evidence">
   <div class="wrap">
     <div class="stack" style="max-width:var(--readw);">
       <span class="idx" data-reveal>04 — Evidence</span>
       <div class="btitle" data-reveal data-delay="1">
         <span class="en">Proven in Numbers</span>
-        <span class="jp">数字が示す、収益性</span>
+        <span class="jp">Profitability, shown in numbers</span>
       </div>
     </div>
     <div class="stats" data-reveal style="margin-top:var(--space-block);">
       <div class="stat">
-        <div class="n tnum" data-cms-html="stat1_n">65,000<span class="u">円/坪</span></div>
-        <div class="k" data-cms-text="stat1_k">自社ビル実現坪単価</div>
-        <div class="d" data-cms-text="stat1_d">近隣相場（¥20,000台）の約3倍を達成しました。</div>
+        <div class="n tnum">65,000<span class="u">JPY/tsubo</span></div>
+        <div class="k">Achieved rate, own building</div>
+        <div class="d">About 3× the local market (the ¥20,000s).</div>
       </div>
       <div class="stat">
-        <div class="n tnum" data-cms-html="stat2_n">&gt;70,000<span class="u">円/坪</span></div>
-        <div class="k" data-cms-text="stat2_k">超富裕層賃料水準</div>
-        <div class="d" data-cms-text="stat2_d">東京の超高級不動産賃料が、新たなステージへ移行しています。</div>
+        <div class="n tnum">&gt;70,000<span class="u">JPY/tsubo</span></div>
+        <div class="k">UHNW rental tier</div>
+        <div class="d">Tokyo’s ultra-prime rents are entering a new stage.</div>
       </div>
       <div class="stat">
-        <div class="n tnum" data-cms-html="stat3_n">×3<span class="u">相場比</span></div>
-        <div class="k" data-cms-text="stat3_k">相場を超えるプレミアム</div>
-        <div class="d" data-cms-text="stat3_d">付加価値を設計し、相場を超えていきます。</div>
+        <div class="n tnum">×3<span class="u">vs market</span></div>
+        <div class="k">Premium beyond market</div>
+        <div class="d">We design added value, and rise beyond the market.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- full-width interior -->
+<!-- ===================== full-width interior ===================== -->
 <figure class="figure-fit" data-reveal>
   <img src="assets/img/interior-living.jpg" alt="MORIO — トラバーチンの大空間リビング">
 </figure>
 
-<!-- FEATURED · THE STUMP -->
-<a class="stump-feature" href="the-stump.html" aria-label="THE STUMP — 特設ページ">
+<!-- ===================== FEATURED · THE STUMP ===================== -->
+<a class="stump-feature" href="the-stump.en.html" aria-label="THE STUMP — 特設ページ">
   <figure class="figure full" data-reveal>
     <img src="assets/img/devils-tower.png" alt="THE STUMP — A Monument for Eternity">
     <figcaption class="cap">
-      <div class="s-eyebrow">FEATURED · 特設ページ</div>
+      <div class="s-eyebrow">FEATURED · Special Page</div>
       <div class="s-title">THE STUMP</div>
       <div class="s-sub">A Monument for Eternity <span class="arw">→</span></div>
     </figcaption>
   </figure>
 </a>
 
-<!-- PRODUCER -->
+<!-- ===================== PRODUCER ===================== -->
 <section class="section wrap" id="producer">
   <div class="split narrow-left">
     <figure class="figure" data-reveal style="aspect-ratio:3/4;">
@@ -321,57 +335,58 @@
     </figure>
     <div class="stack">
       <span class="idx" data-reveal>The Producer</span>
-      <p class="quote" data-reveal data-delay="1" data-cms-html="producer_quote"><span class="mk"></span>時を超える究極のマスターピース創造に向けて、励み続ける。<span class="mk"></span></p>
-      <p class="body" data-reveal data-delay="1" data-cms-text="producer_body">日本の職人が幾世代にもわたり継いできた技術と、私たちだけが描ける美意識を、世界最高峰の舞台へ。早く・安く・それなりに——その論理が支配してきた不動産の世界に、私は真っ向から抗います。百年先も色褪せないタイムレスなマスターピースを創造し、不動産そのもののパラダイムを書き換える。設計事務所でもデベロッパーでもない『不動産プロデューサー』という、これまで業界に存在しなかったポジションを定義し、文化として残る不動産を、この国から世界へ送り出します。</p>
+      <p class="quote" data-reveal data-delay="1"><span class="mk"></span>Striving, without pause, toward an ultimate masterpiece that outlasts time.<span class="mk"></span></p>
+      <p class="body" data-reveal data-delay="1">Carrying the techniques Japanese artisans have handed down across generations, and an aesthetic only we can draw, onto the world’s highest stage. Against a real estate world long ruled by the logic of faster, cheaper, good-enough, I stand in direct opposition. I create timeless masterpieces that will not fade a century from now, and rewrite the very paradigm of real estate. Neither architect nor developer, I define a position the industry never had — the “real estate producer” — and send forth, from this country to the world, real estate that endures as culture.</p>
       <div data-reveal data-delay="2">
-        <div class="h3" style="font-family:var(--font-en); letter-spacing:.08em;" data-cms-text="producer_name">Natsuhiko Morita</div>
-        <div class="small" style="margin-top:.3em;" data-cms-html="producer_title">森田 夏光 — Founder &amp; CEO · Real Estate Producer</div>
+        <div class="h3" style="font-family:var(--font-en); letter-spacing:.08em;">Natsuhiko Morita</div>
+        <div class="small" style="margin-top:.3em;">Natsuhiko Morita — Founder &amp; CEO · Real Estate Producer</div>
       </div>
       <a href="#company" class="link" data-reveal data-delay="2">Company Profile <span class="arw">→</span></a>
     </div>
   </div>
 
-  <a class="decl-feature" href="不動産イノベーション宣言.html" data-reveal aria-label="不動産イノベーション宣言 — 特設ページ">
+  <a class="decl-feature" href="manifesto.en.html" data-reveal aria-label="不動産イノベーション宣言 — 特設ページ">
     <div class="d-body">
-      <span class="d-eyebrow">特設ページ · Featured</span>
-      <div class="d-title">不動産イノベーション宣言</div>
+      <span class="d-eyebrow">Special Page · Featured</span>
+      <div class="d-title">A Declaration of Real Estate Innovation</div>
       <div class="d-sub">A Declaration of Real Estate Innovation · 2017 → 2026</div>
     </div>
     <span class="d-go">Read the Manifesto <span class="arw">→</span></span>
   </a>
 </section>
 
-<!-- COMPANY PROFILE -->
+<!-- ===================== COMPANY PROFILE ===================== -->
 <section class="section" id="company" style="background:var(--bg-2);">
   <div class="wrap">
     <div class="stack" style="max-width:var(--readw);">
       <span class="idx" data-reveal>Company</span>
       <div class="btitle" data-reveal data-delay="1">
         <span class="en">Company Profile</span>
-        <span class="jp">会社概要</span>
+        <span class="jp">Company Profile</span>
       </div>
     </div>
     <div class="profile" data-reveal style="margin-top:var(--space-block); max-width:940px;">
-      <div class="prow"><span class="k">名称 <em>Name</em></span><span class="v" data-cms-text="co_name">株式会社MORIO／MORIO Co., Ltd.</span></div>
-      <div class="prow"><span class="k">代表者 <em>Representative</em></span><span class="v" data-cms-text="co_ceo">森田 夏光（Natsuhiko Morita）— Founder &amp; CEO</span></div>
-      <div class="prow"><span class="k">設立 <em>Established</em></span><span class="v" data-cms-text="co_established">2011年 1月</span></div>
-      <div class="prow"><span class="k">資本金 <em>Capital</em></span><span class="v" data-cms-text="co_capital">5,000万円</span></div>
-      <div class="prow"><span class="k">事業内容 <em>Business</em></span><span class="v" data-cms-text="co_business">不動産プロデュース事業</span></div>
-      <div class="prow"><span class="k">免許 <em>License</em></span><span class="v" data-cms-text="co_license">宅地建物取引業 東京都知事 (3) 第93117号</span></div>
-      <div class="prow"><span class="k">総合オフィス <em>Administrative HQ</em></span><span class="v" data-cms-text="co_addr_main">〒107-0062 東京都港区南青山 5-11-23 STUMP ANNEX</span></div>
-      <div class="prow"><span class="k">本社 <em>Registered HQ</em></span><span class="v" data-cms-text="co_addr_hq">〒107-0062 東京都港区南青山 6-8-6 テロワール南青山 103</span></div>
-      <div class="prow"><span class="k">オフィス <em>Office</em></span><span class="v" data-cms-text="co_addr_office">〒107-0062 東京都港区南青山 5-10-6 テラアシオス表参道ビル 9階</span></div>
-      <div class="prow"><span class="k">連絡先 <em>Contact</em></span><span class="v" data-cms-text="co_contact">Tel 03-6427-9185 ／ info@morio-realestate.com</span></div>
-      <div class="prow"><span class="k">営業時間 <em>Hours</em></span><span class="v" data-cms-text="co_hours">平日 10:30–18:00（土日祝定休）</span></div>
-      <div class="prow"><span class="k">Web <em>Website</em></span><span class="v" data-cms-text="co_web">www.morio-realestate.com</span></div>
+      <div class="prow"><span class="k">Name</span><span class="v">株式会社MORIO／MORIO Co., Ltd.</span></div>
+      <div class="prow"><span class="k">Representative</span><span class="v">Natsuhiko Morita — Founder &amp; CEO</span></div>
+      <div class="prow"><span class="k">Established</span><span class="v">January 2011</span></div>
+      <div class="prow"><span class="k">Capital</span><span class="v">JPY 50 million</span></div>
+      <div class="prow"><span class="k">Business</span><span class="v">Real estate producing</span></div>
+      <div class="prow"><span class="k">License</span><span class="v">Real Estate Brokerage License, Governor of Tokyo (3) No. 93117</span></div>
+      <div class="prow"><span class="k">Administrative HQ</span><span class="v">STUMP ANNEX, 5-11-23 Minami-Aoyama, Minato-ku, Tokyo 107-0062</span></div>
+      <div class="prow"><span class="k">Registered HQ</span><span class="v">Terroir Minami-Aoyama 103, 6-8-6 Minami-Aoyama, Minato-ku, Tokyo 107-0062</span></div>
+      <div class="prow"><span class="k">Office</span><span class="v">Terra Asios Omotesando Bldg. 9F, 5-10-6 Minami-Aoyama, Minato-ku, Tokyo 107-0062</span></div>
+      <div class="prow"><span class="k">Contact</span><span class="v">Tel +81-3-6427-9185 / info@morio-realestate.com</span></div>
+      <div class="prow"><span class="k">Hours</span><span class="v">Weekdays 10:30–18:00 (closed weekends &amp; holidays)</span></div>
+      <div class="prow"><span class="k">Website</span><span class="v">www.morio-realestate.com</span></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER / CONTACT -->
+<!-- ===================== FOOTER / CONTACT ===================== -->
 <footer class="footer" id="contact">
   <div class="wrap">
-    <p class="cta-h" data-reveal data-cms-html="cta_heading">不動産価値を最大化する。<br>Begin a conversation.</p>
+    <p class="cta-h" data-reveal>Maximise the value of real estate.
+Begin a conversation.</p>
     <div data-reveal data-delay="1" style="margin-top:2em;">
       <a href="mailto:info@morio-realestate.com" class="bigmail">info@morio-realestate.com <span class="arw">→</span></a>
     </div>
@@ -379,14 +394,14 @@
       <div class="col">
         <h4>MORIO</h4>
         <p>株式会社MORIO / Morio Co., Ltd.</p>
-        <p>不動産プロデュース事業</p>
-        <p class="small" style="margin-top:1em;">宅地建物取引業 東京都知事 (3) 第93117号</p>
+        <p>Real estate producing</p>
+        <p class="small" style="margin-top:1em;">Real Estate Brokerage License, Governor of Tokyo (3) No. 93117</p>
       </div>
       <div class="col">
         <h4>Office</h4>
-        <p>総合オフィス 〒107-0062<br>東京都港区南青山 5-11-23 STUMP ANNEX</p>
+        <p>Administrative HQ 107-0062<br>STUMP ANNEX, 5-11-23 Minami-Aoyama, Minato-ku, Tokyo</p>
         <p style="margin-top:1em;">Tel 03-6427-9185</p>
-        <p class="small">平日 10:30–18:00（土日祝定休）</p>
+        <p class="small">Weekdays 10:30–18:00 (closed weekends &amp; holidays)</p>
       </div>
       <div class="col">
         <h4>Explore</h4>
@@ -403,8 +418,8 @@
   </div>
 </footer>
 
-<!-- BGM -->
-<button id="bgm" class="bgm" aria-label="背景音楽 再生／停止" aria-pressed="false">
+<!-- ===================== BGM ===================== -->
+<button id="bgm" class="bgm" aria-label="Background music play/pause" aria-pressed="false">
   <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   <span class="bgm-lab">Sound</span>
 </button>
@@ -419,8 +434,9 @@
   var audio = document.getElementById('bgm-audio');
   if(!btn || !audio) return;
   var KEY = 'morio-bgm';
-  var TARGET = 0.5;
+  var TARGET = 0.5;       // playback volume
   var fadeTimer = null;
+
   function fade(to, done){
     if(fadeTimer) clearInterval(fadeTimer);
     var step = (to - audio.volume) / 18;
@@ -433,6 +449,7 @@
     }, 40);
   }
   function setUI(p){ btn.classList.toggle('playing', p); btn.setAttribute('aria-pressed', p ? 'true' : 'false'); }
+
   function play(){
     audio.volume = 0;
     var pr = audio.play();
@@ -446,31 +463,21 @@
     fade(0, function(){ audio.pause(); }); setUI(false);
   }
   btn.addEventListener('click', function(){ if(audio.paused) play(); else pause(); });
+
+  // reveal the control once past the hero
   function onScroll(){ if(window.scrollY > 120) btn.classList.add('show'); else btn.classList.remove('show'); }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  // resume across reloads if previously on (after first user gesture, per autoplay policy)
   var wasOn = false;
   try{ wasOn = localStorage.getItem(KEY) === 'on'; }catch(e){}
   if(wasOn){
-    play();
+    play(); // try immediately (may be blocked)
     var resume = function(){ if(audio.paused) play(); window.removeEventListener('pointerdown', resume); window.removeEventListener('keydown', resume); };
     window.addEventListener('pointerdown', resume);
     window.addEventListener('keydown', resume);
   }
-})();
-</script>
-<script>
-(function(){
-  fetch('/data/home.json').then(function(r){ return r.json(); }).then(function(d){
-    document.querySelectorAll('[data-cms-text]').forEach(function(el){
-      var k = el.getAttribute('data-cms-text');
-      if(d[k] != null) el.textContent = d[k];
-    });
-    document.querySelectorAll('[data-cms-html]').forEach(function(el){
-      var k = el.getAttribute('data-cms-html');
-      if(d[k] != null) el.innerHTML = d[k];
-    });
-  }).catch(function(){});
 })();
 </script>
 </body>
