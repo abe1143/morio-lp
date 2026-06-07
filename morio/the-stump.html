@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+ window.__pageLang='ja';
+ window.__langMap={ja:'the-stump.html',en:'the-stump.en.html',zh:'the-stump.zh.html'};
+ (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
+</script>
 <title>THE STUMP — A Monument for Eternity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -17,16 +22,32 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .nav a{pointer-events:auto}.nav-logo{font-family:var(--ff-s);font-size:1.4rem;font-weight:200;letter-spacing:.55em;text-transform:uppercase;color:#fff;transition:opacity .4s}.nav-logo:hover{opacity:.6}
 .nav-back{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.6);transition:opacity .4s}.nav-back:hover{opacity:.5}
 
-.hero-canvas{position:relative;width:100%;height:100vh;background:#070707}
-.hero-canvas canvas{position:absolute;inset:0;width:100%;height:100%}
-.hero-after{position:absolute;bottom:0;left:0;right:0;height:30vh;background:linear-gradient(to bottom,transparent,var(--bg));z-index:2;pointer-events:none}
+/* HERO — The Elevation Drawing */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;padding:3vh 1rem;overflow:hidden}
+.hero::before{content:'';position:absolute;left:50%;top:50%;width:78vh;height:78vh;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,169,110,.08),rgba(201,169,110,.025) 42%,transparent 70%);pointer-events:none;z-index:0}
+.hero-frame{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.hero-frame img{max-height:94vh;width:auto;max-width:96vw;object-fit:contain;transition:opacity 2.8s .15s cubic-bezier(.19,1,.22,1),transform 2.8s .15s cubic-bezier(.19,1,.22,1),filter 2.8s .15s cubic-bezier(.19,1,.22,1)}
+.hero-scroll{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;transition:opacity 1.6s 1.8s cubic-bezier(.22,1,.36,1)}
+.hero-scroll span{font-family:var(--ff-s);font-size:.56rem;font-weight:300;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.hero-scroll i{display:block;width:1px;height:42px;background:linear-gradient(to bottom,var(--gold),transparent);transform-origin:top;animation:scrollLine 2.8s 2.6s ease-in-out infinite}
+.hero.pre .hero-frame img{opacity:0;transform:scale(1.04);filter:blur(8px)}
+.hero.pre .hero-scroll{opacity:0}
+@keyframes scrollLine{0%{transform:scaleY(0);opacity:0}25%{opacity:1}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hero.pre .hero-frame img,.hero.pre .hero-scroll{opacity:1;transform:none;filter:none}.hero-scroll i{animation:none;opacity:.5}}
+@media(max-width:768px){.hero-frame img{max-height:86vh}.hero::before{width:90vw;height:90vw}}
+
+/* Drawing credit plate */
+.credit{text-align:center;padding:3.4rem 1.5rem 0;background:#000}
+.credit-line{display:inline-flex;align-items:center;gap:1.4rem;font-family:var(--ff-s);font-size:.62rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.credit-line::before,.credit-line::after{content:'';width:46px;height:1px;background:rgba(201,169,110,.3)}
+.credit-name{font-family:var(--ff-d);font-style:italic;font-size:1rem;letter-spacing:.04em;text-transform:none;color:var(--gold)}
 
 .sec{padding:7rem 3rem;max-width:1000px;margin:0 auto}
 .sec-wide{padding:7rem 3rem;max-width:1200px;margin:0 auto}
 .s-label{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
 .s-heading{font-family:var(--ff-d);font-size:clamp(1.9rem,3.6vw,3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:2.8rem}.s-heading em{font-style:italic;font-weight:400;color:var(--gold)}
 .prose{max-width:760px}.prose p{font-size:1.05rem;font-weight:300;line-height:2.2;letter-spacing:.03em;color:var(--cream);margin-bottom:2rem}.prose p:last-child{margin-bottom:0}
-.hl{display:inline-block;padding:0 .2em;background:linear-gradient(to top,rgba(201,169,110,.18) 45%,transparent 45%)}
+.hl{background:none;padding:0}
 .ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
 .rule{max-width:1200px;margin:0 auto;padding:0 3rem}.rule-in{height:1px;background:var(--border)}
 
@@ -79,7 +100,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .cta-btn:hover{background:rgba(201,169,110,.06);border-color:var(--gold)}
 .cta-note{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.1em;color:var(--muted);margin-top:2.5rem}
 
-.footer{padding:3rem;max-width:1200px;margin:0 auto}.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}.footer-links{display:flex;gap:2rem}.footer-links a{font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.1em;color:var(--muted);transition:color .3s}.footer-links a:hover{color:var(--silver)}.footer-copy{font-family:var(--ff-s);font-size:.58rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
+.footer{padding:3rem;max-width:1200px;margin:0 auto}.footer-in{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}.footer-links{display:flex;gap:2rem}.footer-links a{font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.1em;color:var(--muted);transition:color .3s}.footer-links a:hover{color:var(--silver)}.footer-home{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding:1rem 2.6rem;border:1px solid rgba(201,169,110,.4);transition:background .4s,border-color .4s}.footer-home:hover{background:rgba(201,169,110,.06);border-color:var(--gold)}.footer-copy{font-family:var(--ff-s);font-size:.58rem;font-weight:300;letter-spacing:.1em;color:var(--muted)}
 
 .rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}.rv.vis{opacity:1;transform:translateY(0)}
 
@@ -97,13 +118,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 @media (prefers-reduced-motion:no-preference){
   .rv{transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1),filter 1.05s cubic-bezier(.22,1,.36,1);filter:blur(7px)}
   .rv.vis{filter:blur(0)}
-  .hero-canvas canvas{animation:m-fade 2.2s ease both}
   .vb:not(.vb-contain) img,.mon img{opacity:.4;transform:scale(1.07);transition:opacity 1.5s cubic-bezier(.22,1,.36,1),transform 1.5s cubic-bezier(.22,1,.36,1)}
   .vb.vis:not(.vb-contain) img,.monuments.vis .mon img{opacity:1;transform:scale(1)}
   .vb:not(.vb-contain):hover img,.mon:hover img{transform:scale(1.04)}
   .vb-contain img{opacity:.4;transition:opacity 1.5s cubic-bezier(.22,1,.36,1)}
   .vb-contain.vis img{opacity:1}
-  @keyframes m-fade{from{opacity:0}to{opacity:1}}
 }
 .scroll-prog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--gold),#e3c590);z-index:300;box-shadow:0 0 12px rgba(201,169,110,.45);pointer-events:none}
 .vb-contain{background:#070707}
@@ -113,27 +132,39 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .vb-fit{position:relative;width:100%;background:#070707;overflow:hidden}
 .vb-fit img{width:100%;height:auto;display:block}
 .vb-fit::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.22),transparent 32%,rgba(7,7,7,.5));pointer-events:none}
-.vb-fit figcaption{position:absolute;left:3rem;bottom:1.8rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.8)}
-.vb-fit figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.6rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
-@media(max-width:768px){.vb-fit figcaption{left:1.6rem;bottom:1.4rem;font-size:.95rem}}
+/* language switch */
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.lang-switch{display:inline-flex;align-items:center;gap:.1em;pointer-events:auto}
+.lang-switch a{font-family:'Noto Serif JP',var(--ff-s),sans-serif;font-size:.72rem;letter-spacing:.1em;color:rgba(255,255,255,.55);padding:.25em .4em;transition:color .35s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a.is-active{color:var(--gold)}
+.lang-switch .sep{color:rgba(255,255,255,.28);font-size:.6rem}
 </style>
 </head>
 <body>
 
-<nav class="nav"><a href="index.html" class="nav-logo">MORIO</a><a href="index.html" class="nav-back">← Back</a></nav>
+<nav class="nav"><a href="index.html" class="nav-logo">MORIO</a><div class="nav-right"><a href="index.html" class="nav-back">← Back</a><div class="lang-switch"><a href="the-stump.html" class="is-active" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="the-stump.en.html" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="the-stump.zh.html" data-lang="zh" hreflang="zh">中</a></div></div></nav>
 
-<!-- HERO — Canvas Rendering -->
-<section class="hero-canvas">
-<canvas id="c"></canvas>
-<div class="hero-after"></div>
+<!-- HERO — The Elevation Drawing -->
+<section class="hero">
+  <div class="hero-frame">
+    <img src="assets/img/stump-elevation.png" alt="THE STUMP — 立面図。全高300m、30フロア。Morio the Mannによる習作。">
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><i></i></div>
 </section>
+<script>(function(){var h=document.currentScript.previousElementSibling;h.classList.add('pre');function go(){h.classList.remove('pre');}requestAnimationFrame(function(){requestAnimationFrame(go);});setTimeout(go,120);})();</script>
+
+<!-- drawing credit -->
+<div class="credit">
+  <span class="credit-line">Opus 1 · Tokyo — Elevation Study <span class="credit-name">Morio the Mann</span> Anno 2026</span>
+</div>
 
 <!-- EPIGRAPH -->
 <section class="epigraph rv">
   <p class="epi-text" data-cms-html="epi_text">
     人類は5,000年間、<br>
-    <em>永遠に残るもの</em>を作り続けてきた。<br><br>
-    この50年間だけ、それを忘れている。
+    <em>永遠に残るもの</em>を作り続けてきた<br><br>
+    この50年間だけ、それを忘れている
   </p>
 </section>
 
@@ -142,7 +173,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 01 — THE VOID -->
 <section class="sec rv">
   <div class="s-label" data-cms-text="s1_label">01 — The Void</div>
-  <h2 class="s-heading" data-cms-html="s1_heading">刹那的視座が、<br><em>人類から奪ったもの</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s1_heading">刹那的視座が、<br><em>人類から奪ったもの</em></h2>
   <div class="prose">
     <p data-cms-html="s1_p1">ファラオはピラミッドを建てた。カトリック教会はノートルダムを建てた。徳川幕府は日光東照宮を建てた。人類はあらゆる時代において、最も裕福で、最も権力を持つ人間に、同じ衝動を与えてきました。<span class="hl">自分の存在を、時間の彼方まで刻みたい</span>。</p>
     <p data-cms-html="s1_p2">これは虚栄心ではありません。人間の意識が持つ根源的な構造——自分の有限性を知りながら、有限を超えたものを創ろうとする衝動。実存的な欲求そのものです。</p>
@@ -153,13 +184,13 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <div class="monuments rv">
   <figure class="mon"><img src="assets/img/pyramid-giza.png" alt="The Great Pyramid of Giza"><figcaption>Pyramid of Giza<span>c. 2560 BC · 4,600 years</span></figcaption></figure>
   <figure class="mon"><img src="assets/img/notredame.png" alt="Notre-Dame de Paris"><figcaption>Notre-Dame de Paris<span>1163–1345 · eight centuries</span></figcaption></figure>
-  <figure class="mon"><img src="assets/img/temple-kiyomizu.png" alt="Japanese timber temple"><figcaption>Japanese Temple<span>Timber that outlives dynasties</span></figcaption></figure>
+  <figure class="mon"><img src="assets/img/temple-kiyomizu.png" alt="清水寺（京都）"><figcaption>清水寺<span>Timber that outlives dynasties</span></figcaption></figure>
 </div>
 
 <!-- 02 — THE ANSWER -->
 <section class="sec rv">
   <div class="s-label" data-cms-text="s2_label">02 — The Answer</div>
-  <h2 class="s-heading" data-cms-html="s2_heading">THE STUMPは、<br>その<em>飢餓への回答</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s2_heading">THE STUMPは、<br>その<em>飢餓への回答</em></h2>
   <div class="prose">
     <p data-cms-html="s2_p1">THE STUMPは、人類が5,000年間やり続けてきたのに、この50年間だけ途絶えてしまった行為——<span class="hl">「永遠を作る」という行為</span>——を、現代に復活させるプロジェクトです。</p>
     <p data-cms-html="s2_p2">しかもそれを、宗教でも国家でもなく、個人の意志と資本で実現する。ファラオは国家権力で、カトリック教会は信仰の力でピラミッドとノートルダムを建てた。THE STUMPは、一人のUHNWが自らの意志で「千年の痕跡」を刻む装置として機能します。</p>
@@ -172,7 +203,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 03 — THE MONUMENT -->
 <section class="sec-wide rv">
   <div class="s-label" data-cms-text="s3_label">03 — The Monument</div>
-  <h2 class="s-heading" data-cms-html="s3_heading">圧倒的な<em>荘厳</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s3_heading">圧倒的な<em>荘厳</em></h2>
   <div class="prose">
     <p data-cms-html="s3_p1">階高10m。天井高9m。ノートルダム大聖堂の側廊と同じスケールの空間が、全30フロアにわたって積み重なる。1フロア2,000㎡。通常の超高級レジデンスの5倍の広さが、ワンフロア1住戸として構成される。</p>
     <p data-cms-html="s3_p2">これは住居ではない。<span class="hl">空中のパラッツォ</span>——人間が居住できる、地球上で最も崇高な空間です。</p>
@@ -188,7 +219,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 04 — BEYOND COMPARISON -->
 <section class="sec-wide rv">
   <div class="s-label" data-cms-text="s4_label">04 — Beyond Comparison</div>
-  <h2 class="s-heading" data-cms-html="s4_heading">世界最高級レジデンスとの<em>比較</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s4_heading">世界最高級レジデンスとの<em>比較</em></h2>
   <div class="prose"><p data-cms-html="s4_p1">THE STUMPは比較対象が存在しません。しかしあえて並べることで、その次元の違いが浮き彫りになります。</p></div>
   <div class="compare">
     <div class="cmp-header">
@@ -208,7 +239,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 05 — THE ECONOMICS -->
 <section class="sec rv">
   <div class="s-label" data-cms-text="s5_label">05 — The Economics</div>
-  <h2 class="s-heading" data-cms-html="s5_heading">千年のLTVが示す、<br><em>天文学的リターン</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s5_heading">千年のLTVが示す、<br><em>天文学的リターン</em></h2>
   <div class="prose">
     <p data-cms-html="s5_p1">1邸2,000億円。坪単価3億円。建築費は坪1億——現存するあらゆる建築の最高水準の20倍の予算を投じて建てられます。</p>
     <p data-cms-html="s5_p2">しかしこの数字を「コスト」として見るのは、短期的視座の罠です。ノートルダム大聖堂の修復に€8.5億（約1,400億円）の寄付が72時間で集まった事実が示しているのは、<span class="hl">千年建築の価値は、建築費を桁違いに超える</span>ということです。</p>
@@ -219,7 +250,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 06 — THE PATRON -->
 <section class="sec rv">
   <div class="s-label" data-cms-text="s6_label">06 — The Patron</div>
-  <h2 class="s-heading" data-cms-html="s6_heading">オーナーではなく、<br><em>パトロン</em>。</h2>
+  <h2 class="s-heading" data-cms-html="s6_heading">オーナーではなく、<br><em>パトロン</em></h2>
   <div class="prose">
     <p data-cms-html="s6_p1">THE STUMPの住人は「購入者」ではありません。<span class="ei">Patron</span>——パトロンです。メディチ家がルネサンスを支えたように、THE STUMPのパトロンは人類の建築史に名を刻みます。</p>
     <p data-cms-html="s6_p2">1,000年後、ピラミッドのファラオの名が語り継がれているように、THE STUMPのパトロンの名もまた、建築と共に永遠に残ります。</p>
@@ -239,7 +270,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 <!-- 07 — OPUS 1 -->
 <section class="sec rv">
   <div class="s-label" data-cms-text="s7_label">07 — OPUS 1 : Tokyo</div>
-  <h2 class="s-heading" data-cms-html="s7_heading">OPUS 1——<br><em>東京</em>から、世界へ。</h2>
+  <h2 class="s-heading" data-cms-html="s7_heading">OPUS 1——<br><em>東京</em>から、世界へ</h2>
   <div class="prose">
     <p data-cms-html="s7_p1">THE STUMP OPUS 1は東京に建ちます。世界で最も安全で、最も文化的深度を持ち、最も過小評価されている都市に。OPUS 1の実在そのものが証拠となり、ロンドン、ドバイ、シンガポール、ニューヨークへの展開は、こちらからではなく、各国のパトロンから依頼される形で実現していきます。</p>
     <p data-cms-html="s7_p2">各都市のTHE STUMPは、古代のオベリスクのように——文明の証として、大地に立ちます。</p>
@@ -269,51 +300,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
   <div class="cta-note" data-cms-text="cta_note">Morio the Mann Group ｜ Minami-Aoyama, Tokyo</div>
 </section>
 
-<footer class="footer"><div class="footer-in"><div class="footer-links"><a href="index.html">Home</a><a href="index.html#position">Vision</a><a href="index.html#value">Produce</a><a href="index.html#capabilities">Design</a></div><div class="footer-copy">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
+<footer class="footer"><div class="footer-in"><a href="index.html" class="footer-home">← ホームに戻る</a><div class="footer-copy">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
 
-<!-- CANVAS RENDERER -->
-<script>
-const CV=document.getElementById('c'),X=CV.getContext('2d');let W,H;
-function resize(){W=CV.width=window.innerWidth;H=CV.height=window.innerHeight;render()}
-function render(){
-const gY=H*.88,mPx=.55,sH=300/mPx,sW=sH*.32,sX=W/2,sT=gY-sH,nFH=3.3/mPx,hH=1.7/mPx;
-X.fillStyle='#070707';X.fillRect(0,0,W,H);
-const sk=X.createLinearGradient(0,0,0,H);sk.addColorStop(0,'#080a0f');sk.addColorStop(.3,'#0d1320');sk.addColorStop(.55,'#141c28');sk.addColorStop(.75,'#121520');sk.addColorStop(1,'#0a0a0a');X.fillStyle=sk;X.fillRect(0,0,W,H);
-const gl=X.createRadialGradient(sX,sT+sH*.4,0,sX,sT+sH*.4,sH*.7);gl.addColorStop(0,'rgba(201,169,110,.06)');gl.addColorStop(.5,'rgba(201,169,110,.02)');gl.addColorStop(1,'transparent');X.fillStyle=gl;X.fillRect(0,0,W,H);
-function nb(cx,fl,w,op){const bh=fl*nFH,bx=cx-w/2,by=gY-bh;X.fillStyle=`rgba(18,20,24,${op})`;X.fillRect(bx,by,w,bh);for(let f=0;f<fl;f++){const fy=gY-(f+1)*nFH;X.strokeStyle=`rgba(80,80,90,${op*.15})`;X.lineWidth=.5;X.beginPath();X.moveTo(bx,fy+nFH);X.lineTo(bx+w,fy+nFH);X.stroke();const wH=nFH*.65,wW=w*.12,wG=w*.06,wC=Math.floor((w-wG*2)/(wW+wG));for(let i=0;i<wC;i++){const wx=bx+wG+i*(wW+wG),wy=fy+(nFH-wH)*.6;if(Math.random()>.4){X.fillStyle=`rgba(180,170,140,${op*(.03+Math.random()*.04)})`;X.fillRect(wx,wy,wW,wH)}}}X.fillStyle=`rgba(25,28,32,${op})`;X.fillRect(bx-2,by-3,w+4,4)}
-nb(sX-sW*.65-sW*.2,12,sW*.35,.9);nb(sX-sW*.65-sW*.55,8,sW*.28,.75);nb(sX-sW*.65-sW*.85,15,sW*.32,.6);nb(sX-sW*.65-sW*1.2,6,sW*.25,.45);nb(sX-sW*.65-sW*1.45,10,sW*.3,.35);
-nb(sX+sW*.65+sW*.22,10,sW*.32,.9);nb(sX+sW*.65+sW*.55,14,sW*.35,.7);nb(sX+sW*.65+sW*.9,7,sW*.26,.55);nb(sX+sW*.65+sW*1.15,18,sW*.38,.4);nb(sX+sW*.65+sW*1.55,9,sW*.28,.3);
-const tp=.035,oF=sH/30;X.beginPath();X.moveTo(sX-sW/2,gY);X.lineTo(sX-sW/2*(1-tp),sT+sH*.02);X.lineTo(sX-sW/2*(1-tp)-sW*.025,sT+sH*.01);X.lineTo(sX-sW/2*(1-tp)-sW*.025,sT-sH*.005);X.lineTo(sX+sW/2*(1-tp)+sW*.025,sT-sH*.005);X.lineTo(sX+sW/2*(1-tp)+sW*.025,sT+sH*.01);X.lineTo(sX+sW/2*(1-tp),sT+sH*.02);X.lineTo(sX+sW/2,gY);X.closePath();
-const sg=X.createLinearGradient(sX-sW/2,0,sX+sW/2,0);sg.addColorStop(0,'#10120f');sg.addColorStop(.15,'#1a1c18');sg.addColorStop(.35,'#1e201c');sg.addColorStop(.5,'#22241f');sg.addColorStop(.65,'#1e201c');sg.addColorStop(.85,'#1a1c18');sg.addColorStop(1,'#10120f');X.fillStyle=sg;X.fill();
-for(let p=0;p<=8;p++){const px=sX-sW/2+p*(sW/8);X.strokeStyle='rgba(100,95,80,.06)';X.lineWidth=1.5;X.beginPath();X.moveTo(px,gY);X.lineTo(px+(sW*tp/8*p/8-sW*tp/2),sT);X.stroke()}
-const aH=8/mPx,aW=sW*.24,aG=sW*.04;
-for(let f=0;f<30;f++){const fB=gY-f*oF,fT=1-tp*(f/30),fW=sW*fT,tAW=3*aW+2*aG,aSX=sX-tAW/2;
-for(let a=0;a<3;a++){const ax=aSX+a*(aW+aG)+aW/2,aB=fB-(oF-aH)*.55,aT_=aB-aH,aR=aW/2;
-X.save();X.beginPath();X.moveTo(ax-aR,aB);X.lineTo(ax-aR,aT_+aR);X.quadraticCurveTo(ax-aR,aT_,ax,aT_-aR*.18);X.quadraticCurveTo(ax+aR,aT_,ax+aR,aT_+aR);X.lineTo(ax+aR,aB);X.closePath();
-if(Math.random()>.2){const iG=X.createRadialGradient(ax,aB-aH*.45,0,ax,aB-aH*.45,aW*.9);const int=.08+Math.random()*.07;iG.addColorStop(0,`rgba(225,190,125,${int*1.3})`);iG.addColorStop(.5,`rgba(200,170,110,${int*.5})`);iG.addColorStop(1,'transparent');X.fillStyle=iG;X.fill()}
-X.strokeStyle=`rgba(140,130,110,${.04+Math.random()*.03})`;X.lineWidth=1;X.stroke();X.restore()}
-X.fillStyle='rgba(90,85,70,.04)';X.fillRect(sX-fW/2,fB,fW,2)}
-X.fillStyle='#0e120e';const gW_=sW*(1-tp)*1.02;for(let i=0;i<50;i++){const gx=sX-gW_/2+(i/50)*gW_,gs=gW_/50*(.7+Math.random()*.6),gh=oF*(.25+Math.random()*.45);X.beginPath();X.ellipse(gx+gs/2,sT-2,gs/2,gh,0,Math.PI,0);X.fill()}
-X.fillStyle='#0a0a0a';X.fillRect(0,gY,W,H-gY);X.fillStyle='rgba(20,20,22,.8)';X.fillRect(0,gY,W,hH*1.5);
-function dH(hx){X.fillStyle='rgba(30,30,35,.9)';X.beginPath();X.arc(hx,gY-hH+hH*.08,hH*.08,0,Math.PI*2);X.fill();X.fillRect(hx-hH*.06,gY-hH+hH*.16,hH*.12,hH*.4);X.fillRect(hx-hH*.06,gY-hH*.44,hH*.05,hH*.44);X.fillRect(hx+.01*hH,gY-hH*.44,hH*.05,hH*.44)}
-dH(sX-sW/2-hH*1.5);dH(sX-sW/2-hH*3);dH(sX+sW/2+hH*2);
-const aX=sX-sW/2-hH*6,aC='rgba(201,169,110,.35)',aT='rgba(201,169,110,.55)';
-X.strokeStyle=aC;X.lineWidth=.8;X.setLineDash([3,3]);X.beginPath();X.moveTo(aX+15,gY);X.lineTo(aX,gY);X.lineTo(aX,gY-oF);X.lineTo(aX+15,gY-oF);X.stroke();X.setLineDash([]);
-X.font=`italic 300 ${Math.max(11,W*.01)}px "Cormorant Garamond",serif`;X.fillStyle=aT;X.textAlign='right';X.fillText('10m',aX-5,(gY+gY-oF)/2+4);
-X.font=`300 ${Math.max(8,W*.006)}px Outfit,sans-serif`;X.fillStyle='rgba(176,176,176,.35)';X.fillText('1 Floor',aX-5,(gY+gY-oF)/2+18);
-const rX=sX+sW/2+hH*5;X.strokeStyle=aC;X.setLineDash([4,6]);X.lineWidth=.6;X.beginPath();X.moveTo(rX-15,gY);X.lineTo(rX,gY);X.lineTo(rX,sT);X.lineTo(rX-15,sT);X.stroke();X.setLineDash([]);
-X.font=`italic 400 ${Math.max(14,W*.013)}px "Cormorant Garamond",serif`;X.fillStyle=aT;X.textAlign='left';X.fillText('300m',rX+8,(gY+sT)/2+5);
-X.font=`300 ${Math.max(8,W*.006)}px Outfit,sans-serif`;X.fillStyle='rgba(176,176,176,.35)';X.fillText('30 Floors × 10m',rX+8,(gY+sT)/2+22);
-X.font=`300 ${Math.max(7,W*.005)}px Outfit,sans-serif`;X.fillStyle='rgba(160,160,170,.3)';X.textAlign='center';X.fillText('1.7m',sX-sW/2-hH*1.5,gY-hH-5);
-const fg=X.createLinearGradient(0,gY-sH*.12,0,gY+20);fg.addColorStop(0,'transparent');fg.addColorStop(.6,'rgba(10,12,16,.4)');fg.addColorStop(1,'rgba(7,7,7,.75)');X.fillStyle=fg;X.fillRect(0,gY-sH*.12,W,sH*.12+H*.15);
-const hz=X.createLinearGradient(0,sT-oF*2,0,sT+sH*.25);hz.addColorStop(0,'rgba(10,12,18,.5)');hz.addColorStop(.4,'rgba(10,12,18,.15)');hz.addColorStop(1,'transparent');X.fillStyle=hz;X.fillRect(0,sT-oF*2,W,sH*.35);
-X.textAlign='center';
-X.font=`300 ${Math.max(9,W*.007)}px Outfit,sans-serif`;X.fillStyle='rgba(201,169,110,.45)';X.fillText('M O R I O  T H E  M A N N  G R O U P',W/2,H*.04);
-X.font=`300 ${Math.max(32,W*.042)}px "Cormorant Garamond",serif`;X.fillStyle='rgba(245,243,240,.88)';X.fillText('THE STUMP',W/2,H*.1);
-X.font=`italic 300 ${Math.max(13,W*.012)}px "Cormorant Garamond",serif`;X.fillStyle='rgba(201,169,110,.6)';X.fillText('A Monument for Eternity',W/2,H*.14);
-}
-window.addEventListener('resize',resize);resize();
-</script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const io=new IntersectionObserver(es=>{
@@ -345,6 +333,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 })();
 </script>
+<script>document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});</script>
 <script>
 (function(){
   fetch('/data/the-stump.json').then(function(r){ return r.json(); }).then(function(d){
