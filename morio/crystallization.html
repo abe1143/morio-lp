@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MORIO — カオスから、結晶へ · Real Estate Producing</title>
+<meta name="description" content="不動産プロデュースの本質——あらゆる要素をカオスから美しい結晶へと結ぶプロセスのアニメーション。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap">
+<style>
+  :root{
+    --bg:#0b0b0c; --bg-2:#121214;
+    --ink:#ece7dd; --ink-soft:#b8b2a7; --muted:#898376; --faint:#5d584f;
+    --line:rgba(236,231,221,0.13); --line-soft:rgba(236,231,221,0.06);
+    --accent:#c2a25f; --accent-2:#d9be84; --accent-ink:#0b0b0c;
+    --font-en:'Jost',system-ui,sans-serif;
+    --font-jp:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--font-jp);
+    overflow:hidden; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--accent);color:var(--accent-ink);}
+
+  /* ===== Stage ===== */
+  #stage{ position:fixed; inset:0; overflow:hidden; }
+  #scene{ position:absolute; inset:0; display:block; }
+
+  /* radial vignette over everything */
+  #stage::after{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:5;
+    background:radial-gradient(120% 90% at 50% 46%, transparent 52%, rgba(6,6,7,.55) 100%);
+  }
+
+  /* ===== Brand mark ===== */
+  .mark{
+    position:absolute; left:clamp(22px,4vw,54px); top:clamp(20px,3.4vw,40px); z-index:8;
+    font-family:var(--font-en); font-weight:400; font-size:clamp(.92rem,1.4vw,1.12rem);
+    letter-spacing:.46em; text-indent:.46em; color:var(--ink);
+  }
+  .mark .tag{
+    display:block; margin-top:.9em; font-size:.5rem; letter-spacing:.34em; text-indent:.34em;
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  /* ===== Phase caption (lower third) ===== */
+  .caps{ position:absolute; left:0; right:0; bottom:clamp(92px,13vh,150px); z-index:8;
+    height:0; pointer-events:none; }
+  .cap{
+    position:absolute; left:50%; bottom:0; text-align:center; opacity:0; width:min(86vw,720px);
+    transform:translate(-50%,8px); transition:none;
+  }
+  .cap .ord{
+    font-family:var(--font-en); font-size:clamp(.62rem,1vw,.72rem); letter-spacing:.5em;
+    text-transform:uppercase; color:var(--accent);
+    display:inline-flex; align-items:center; gap:1em; margin-bottom:1.25em;
+  }
+  .cap .ord::before, .cap .ord::after{ content:""; width:30px; height:1px; background:var(--accent); opacity:.7; }
+  .cap .jp{
+    font-family:var(--font-jp); font-weight:200; letter-spacing:.12em; line-height:1.5;
+    font-size:clamp(1.5rem,3.6vw,2.7rem);
+  }
+  .cap .jp em{ font-style:normal; color:var(--accent); }
+  .cap .sub{
+    margin-top:1.1em; font-family:var(--font-jp); font-weight:300; letter-spacing:.08em;
+    font-size:clamp(.85rem,1.25vw,1.02rem); color:var(--ink-soft); line-height:1.9;
+  }
+
+  /* ===== Resolved center label ===== */
+  .resolve{
+    position:absolute; left:0; right:0; top:clamp(40px,6.5vh,80px); z-index:8;
+    text-align:center; opacity:0; pointer-events:none;
+  }
+  @media (max-height:640px){
+    .cap .sub{ display:none; }
+    .cap .jp{ font-size:clamp(1.25rem,3.2vw,1.9rem); }
+    .cap .ord{ margin-bottom:.9em; }
+  }
+  .resolve .en{
+    font-family:var(--font-en); font-weight:200; text-transform:uppercase;
+    letter-spacing:.34em; text-indent:.34em; font-size:clamp(1.1rem,2.4vw,1.9rem); color:var(--ink);
+  }
+  .resolve .jp{
+    margin-top:.85em; font-family:var(--font-jp); font-weight:300; letter-spacing:.14em;
+    font-size:clamp(.82rem,1.2vw,1rem); color:var(--accent-2);
+  }
+  @media (max-height:640px){
+    .resolve .jp{ display:none; }
+    .resolve .en{ font-size:clamp(1rem,2.2vw,1.45rem); }
+  }
+
+  /* ===== Controls ===== */
+  .controls{
+    position:absolute; left:50%; bottom:clamp(22px,3.4vh,40px); transform:translateX(-50%);
+    z-index:9; display:flex; align-items:center; gap:clamp(14px,2vw,22px);
+    background:rgba(14,14,16,.62); backdrop-filter:blur(14px);
+    border:1px solid var(--line); border-radius:100px;
+    padding:.6em 1.15em; opacity:.92; transition:opacity .4s var(--ease);
+  }
+  .controls:hover{ opacity:1; }
+  .controls button{
+    background:none; border:0; color:var(--ink-soft); cursor:pointer; line-height:0;
+    display:flex; align-items:center; justify-content:center; padding:.3em;
+    transition:color .3s var(--ease);
+  }
+  .controls button:hover{ color:var(--ink); }
+  .controls button svg{ width:16px; height:16px; fill:currentColor; }
+  .ctrl-sep{ width:1px; height:18px; background:var(--line); }
+  .track{
+    position:relative; width:clamp(130px,22vw,260px); height:30px; display:flex; align-items:center; cursor:pointer;
+  }
+  .track .rail{ position:absolute; left:0; right:0; height:1px; background:var(--line); }
+  .track .fill{ position:absolute; left:0; height:1px; background:var(--accent); width:0%; }
+  .track .knob{
+    position:absolute; width:7px; height:7px; border-radius:50%; background:var(--accent);
+    left:0; transform:translateX(-50%); box-shadow:0 0 0 4px rgba(194,162,95,.14);
+  }
+  .phase-name{
+    font-family:var(--font-en); font-size:.6rem; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--muted); min-width:7.5em; text-align:right; user-select:none;
+  }
+  .speed{
+    font-family:var(--font-en); font-size:.64rem; letter-spacing:.12em; color:var(--ink-soft);
+    min-width:2.6em; text-align:center;
+  }
+
+  .hint{
+    position:absolute; right:clamp(22px,4vw,54px); top:clamp(22px,3.4vw,42px); z-index:8;
+    font-family:var(--font-en); font-size:.58rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--faint);
+  }
+
+  @media (max-width:560px){
+    .phase-name{ display:none; }
+    .hint{ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cap{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#0b0b0c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0b0b0c"/>
+    <path d="M600 250 L720 360 L720 520 L600 600 L480 520 L480 360 Z" fill="none" stroke="#c2a25f" stroke-width="3"/>
+    <path d="M600 250 L600 600 M480 360 L720 360 M480 520 L720 520" stroke="#c2a25f" stroke-width="2" opacity=".5"/>
+    <circle cx="600" cy="250" r="6" fill="#c2a25f"/>
+    <text x="600" y="700" text-anchor="middle" font-family="'Jost',sans-serif" font-weight="300" font-size="34" letter-spacing="16" fill="#ece7dd">CRYSTALLIZE</text>
+  </svg>
+</template>
+
+<div id="stage">
+  <canvas id="scene"></canvas>
+
+  <div class="mark">MORIO<span class="tag">Real Estate Producing</span></div>
+  <div class="hint">Entropy → Crystal</div>
+
+  <div class="resolve" id="resolve">
+    <div class="en">Real Estate Produce</div>
+    <div class="jp">カオスを収斂させ、ひとつの結晶へ</div>
+  </div>
+
+  <div class="caps">
+    <div class="cap" data-cap="0">
+      <span class="ord">01 · Entropy</span>
+      <div class="jp">価値の要素は、高エントロピーの<em>カオス</em>に散らばる</div>
+      <div class="sub">立地・権利・構造・素材・収益・運用・時間——本来ひとつの不動産を成す七つの変数が、無秩序のまま漂う。</div>
+    </div>
+    <div class="cap" data-cap="1">
+      <span class="ord">02 · Convergence</span>
+      <div class="jp">ひとつの意思へ、すべてが<em>収斂</em>する</div>
+      <div class="sub">プロデューサーが作品を統べるように。散乱した変数を、MORIO がひとつの引力で束ね、エントロピーを下げていく。</div>
+    </div>
+    <div class="cap" data-cap="2">
+      <span class="ord">03 · Crystallization</span>
+      <div class="jp">無秩序が秩序へ——<em>結晶化</em>のとき</div>
+      <div class="sub">変数が然るべき格子に収まり、面と稜線が立ち上がる。乱れが整い、価値が構造として結晶する。</div>
+    </div>
+    <div class="cap" data-cap="3">
+      <span class="ord">04 · Order</span>
+      <div class="jp">不動産が、成りうる<em>最高の結晶</em>へ</div>
+      <div class="sub">七つの変数が一体の秩序となり、時を超えて輝く。カオスを美しい結晶へ収斂させる——それが、不動産プロデュースの本質。</div>
+    </div>
+  </div>
+
+  <div class="controls" id="controls">
+    <button id="playBtn" aria-label="再生／一時停止"></button>
+    <button id="replayBtn" aria-label="最初から">
+      <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+    </button>
+    <div class="ctrl-sep"></div>
+    <div class="track" id="track">
+      <div class="rail"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div>
+    </div>
+    <button id="speedBtn" aria-label="速度"><span class="speed" id="speedLab">1×</span></button>
+    <div class="ctrl-sep"></div>
+    <div class="phase-name" id="phaseName">Chaos</div>
+  </div>
+</div>
+
+<script src="crystallization.js"></script>
+</body>
+</html>

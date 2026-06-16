@@ -22,7 +22,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .nav a{pointer-events:auto}.nav-logo{font-family:var(--ff-s);font-size:1.4rem;font-weight:200;letter-spacing:.55em;text-transform:uppercase;color:#fff;transition:opacity .4s}.nav-logo:hover{opacity:.6}
 .nav-back{font-family:var(--ff-s);font-size:.78rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.6);transition:opacity .4s}.nav-back:hover{opacity:.5}
 
-/* HERO — The Elevation Drawing */
+/* HERO — The Elevation Drawing (maximal mass) */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;padding:3vh 1rem;overflow:hidden}
 .hero::before{content:'';position:absolute;left:50%;top:50%;width:78vh;height:78vh;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,169,110,.08),rgba(201,169,110,.025) 42%,transparent 70%);pointer-events:none;z-index:0}
 .hero-frame{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
@@ -30,6 +30,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .hero-scroll{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;transition:opacity 1.6s 1.8s cubic-bezier(.22,1,.36,1)}
 .hero-scroll span{font-family:var(--ff-s);font-size:.56rem;font-weight:300;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
 .hero-scroll i{display:block;width:1px;height:42px;background:linear-gradient(to bottom,var(--gold),transparent);transform-origin:top;animation:scrollLine 2.8s 2.6s ease-in-out infinite}
+/* pre-entrance hidden state (added by JS only; no-JS shows everything) */
 .hero.pre .hero-frame img{opacity:0;transform:scale(1.04);filter:blur(8px)}
 .hero.pre .hero-scroll{opacity:0}
 @keyframes scrollLine{0%{transform:scaleY(0);opacity:0}25%{opacity:1}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
@@ -42,6 +43,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .credit-line::before,.credit-line::after{content:'';width:46px;height:1px;background:rgba(201,169,110,.3)}
 .credit-name{font-family:var(--ff-d);font-style:italic;font-size:1rem;letter-spacing:.04em;text-transform:none;color:var(--gold)}
 
+/* Sections */
 .sec{padding:7rem 3rem;max-width:1000px;margin:0 auto}
 .sec-wide{padding:7rem 3rem;max-width:1200px;margin:0 auto}
 .s-label{font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
@@ -51,16 +53,19 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .ei{font-family:var(--ff-d);font-style:italic;font-size:1.05em;color:var(--gold)}
 .rule{max-width:1200px;margin:0 auto;padding:0 3rem}.rule-in{height:1px;background:var(--border)}
 
+/* Epigraph — large italic statement */
 .epigraph{padding:10rem 3rem;text-align:center;max-width:960px;margin:0 auto}
 .epi-text{font-family:var(--ff-d);font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--white)}
 .epi-text em{color:var(--gold);font-weight:400}
 
+/* Monument specs */
 .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem}
 .spec{background:var(--bg);padding:3rem 2rem;text-align:center}
 .spec-val{font-family:var(--ff-d);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--white);line-height:1;margin-bottom:.4rem}
 .spec-unit{font-family:var(--ff-d);font-size:.95rem;font-style:italic;color:var(--gold);margin-bottom:1rem}
 .spec-desc{font-family:var(--ff-b);font-size:.82rem;font-weight:300;line-height:1.8;color:var(--silver)}
 
+/* Comparison table */
 .compare{margin-top:3rem;border:1px solid var(--border);overflow:hidden}
 .cmp-header{display:grid;grid-template-columns:1.5fr repeat(4,1fr);border-bottom:1px solid var(--border)}
 .cmp-header div{padding:1.5rem 1.2rem;font-family:var(--ff-s);font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
@@ -71,15 +76,18 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .cmp-row div:first-child{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center}
 .cmp-row div:last-child{border-right:none;color:var(--gold);font-weight:400;background:rgba(201,169,110,.02)}
 
+/* Visual break */
 .vb{width:100%;overflow:hidden;position:relative}.vb img{width:100%;height:70vh;min-height:380px;object-fit:cover;filter:brightness(.68) contrast(1.08) saturate(.85);transition:transform 15s cubic-bezier(.22,1,.36,1)}.vb:hover img{transform:scale(1.04)}.vb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.3) 0%,transparent 35%,rgba(7,7,7,.6) 100%);pointer-events:none}
 .vb figcaption{position:absolute;bottom:2.2rem;left:3rem;z-index:2;font-family:var(--ff-d);font-style:italic;font-size:1.1rem;color:#fff;text-shadow:0 2px 15px rgba(0,0,0,.8)}
 .vb figcaption .vb-s{display:block;font-family:var(--ff-s);font-style:normal;font-size:.62rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
 
+/* Patron section */
 .patron-frame{max-width:860px;margin:3rem auto 0;border:1px solid var(--gold);padding:4.5rem 3.5rem;background:rgba(201,169,110,.015);text-align:center}
 .patron-eye{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem}
 .patron-text{font-family:var(--ff-b);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;line-height:2;letter-spacing:.04em;color:var(--white)}
 .patron-text em{font-family:var(--ff-d);font-style:italic;color:var(--gold)}
 
+/* Roadmap */
 .roadmap{max-width:800px;margin:4rem auto 0;border-left:1px solid var(--gold-dim);padding-left:2.5rem}
 .rm{position:relative;padding:1.6rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:110px 1fr;gap:2rem;align-items:baseline}
 .rm:last-child{border-bottom:none}
@@ -88,12 +96,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .rm-en{font-family:var(--ff-d);font-size:1.05rem;font-style:italic;color:var(--white);margin-bottom:.3rem}
 .rm-jp{font-size:.85rem;font-weight:300;color:var(--silver);line-height:1.7}
 
+/* Final */
 .final{padding:12rem 3rem 8rem;text-align:center;max-width:960px;margin:0 auto}
 .final-text{font-family:var(--ff-d);font-size:clamp(2rem,4.2vw,3.4rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--white);padding:3.5rem 2rem;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);margin-bottom:3.5rem}
 .final-text em{color:var(--gold);font-weight:400}
 .final-sub{font-family:var(--ff-b);font-size:1.05rem;font-weight:300;line-height:2.5;letter-spacing:.1em;color:var(--cream)}
 .final-sub strong{font-weight:400;color:var(--white)}
 
+/* CTA */
 .cta{padding:4rem 3rem 6rem;text-align:center}
 .cta-label{font-family:var(--ff-s);font-size:.68rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
 .cta-btn{display:inline-block;font-family:var(--ff-s);font-size:.72rem;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);padding:1.2rem 4rem;border:1px solid rgba(201,169,110,.3);transition:all .5s}
@@ -106,6 +116,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 @media(max-width:900px){.specs{grid-template-columns:repeat(2,1fr)}.cmp-header,.cmp-row{grid-template-columns:1fr 1fr}.cmp-header div:nth-child(2),.cmp-header div:nth-child(3),.cmp-row div:nth-child(2),.cmp-row div:nth-child(3){display:none}}
 @media(max-width:768px){html{font-size:16px}.nav{padding:1.2rem 1.5rem}.sec,.sec-wide,.epigraph,.final,.cta{padding-left:1.6rem;padding-right:1.6rem}.spec{padding:2rem 1.2rem}.patron-frame{padding:2.8rem 1.6rem}.rule{padding:0 1.6rem}.vb img{height:55vh;min-height:280px}.vb figcaption{left:1.6rem;bottom:1.6rem;font-size:.95rem}.roadmap{padding-left:2rem}.rm{grid-template-columns:1fr;gap:.4rem}.rm::before{left:-2.3rem}.final-text{padding:2.5rem 1rem}.specs{grid-template-columns:1fr 1fr}}
+/* Monuments triptych */
 .monuments{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%}
 .mon{position:relative;overflow:hidden;height:60vh;min-height:360px}
 .mon img{width:100%;height:100%;object-fit:cover;filter:brightness(.68) contrast(1.06) saturate(.9);transition:transform 12s cubic-bezier(.22,1,.36,1)}
@@ -115,6 +126,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .mon figcaption span{display:block;font-family:var(--ff-s);font-style:normal;font-size:.58rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:.5rem}
 @media(max-width:900px){.monuments{grid-template-columns:1fr}.mon{height:46vh;min-height:300px}}
 
+/* ── motion layer ── */
 @media (prefers-reduced-motion:no-preference){
   .rv{transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1),filter 1.05s cubic-bezier(.22,1,.36,1);filter:blur(7px)}
   .rv.vis{filter:blur(0)}
@@ -126,10 +138,12 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
   @keyframes m-fade{from{opacity:0}to{opacity:1}}
 }
 .scroll-prog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--gold),#e3c590);z-index:300;box-shadow:0 0 12px rgba(201,169,110,.45);pointer-events:none}
+/* stump shown in full (no crop) */
 .vb-contain{background:#070707}
 .vb-contain img{object-fit:contain !important;height:80vh;min-height:420px}
 .vb-contain::after{display:none}
 @media(max-width:768px){.vb-contain img{height:60vh;min-height:320px}}
+/* wide interior — shown in full (natural ratio, no crop) */
 .vb-fit{position:relative;width:100%;background:#070707;overflow:hidden}
 .vb-fit img{width:100%;height:auto;display:block}
 .vb-fit::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,7,7,.22),transparent 32%,rgba(7,7,7,.5));pointer-events:none}
@@ -149,7 +163,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 <nav class="nav"><a href="index.html" class="nav-logo">MORIO</a><div class="nav-right"><a href="index.html" class="nav-back">← Back</a><div class="lang-switch"><a href="the-stump.html" class="is-active" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="the-stump.en.html" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="the-stump.zh.html" data-lang="zh" hreflang="zh">中</a></div></div></nav>
 
-<!-- HERO — The Elevation Drawing -->
+<!-- ═══ HERO — The Elevation Drawing ═══ -->
 <section class="hero">
   <div class="hero-frame">
     <img src="assets/img/stump-elevation.png" alt="THE STUMP — 立面図。全高300m、30フロア。Morio the Mannによる習作。">
@@ -163,9 +177,9 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
   <span class="credit-line">Opus 1 · Tokyo — Elevation Study <span class="credit-name">Morio the Mann</span> Anno 2026</span>
 </div>
 
-<!-- EPIGRAPH -->
+<!-- ═══ EPIGRAPH ═══ -->
 <section class="epigraph rv">
-  <p class="epi-text" data-cms-html="epi_text">
+  <p class="epi-text">
     人類は5,000年間、<br>
     <em>永遠に残るもの</em>を作り続けてきた<br><br>
     この50年間だけ、それを忘れている
@@ -174,63 +188,72 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 <div class="rule"><div class="rule-in"></div></div>
 
-<!-- 01 — THE VOID -->
+<!-- ═══ 01 — THE VOID ═══ -->
 <section class="sec rv">
-  <div class="s-label" data-cms-text="s1_label">01 — The Void</div>
-  <h2 class="s-heading" data-cms-html="s1_heading">刹那的視座が、<br><em>人類から奪ったもの</em></h2>
+  <div class="s-label">01 — The Void</div>
+  <h2 class="s-heading">刹那的視座が、<br><em>人類から奪ったもの</em></h2>
   <div class="prose">
-    <p data-cms-html="s1_p1">ファラオはピラミッドを建てた。カトリック教会はノートルダムを建てた。徳川幕府は日光東照宮を建てた。人類はあらゆる時代において、最も裕福で、最も権力を持つ人間に、同じ衝動を与えてきました。<span class="hl">自分の存在を、時間の彼方まで刻みたい</span>。</p>
-    <p data-cms-html="s1_p2">これは虚栄心ではありません。人間の意識が持つ根源的な構造——自分の有限性を知りながら、有限を超えたものを創ろうとする衝動。実存的な欲求そのものです。</p>
-    <p data-cms-html="s1_p3">しかし過去50年間、人類はこの欲求を満たす手段を失いました。世界のUHNWは、使いきれない富を持ちながら、それを永続的な形に変換する装置を持っていません。ヨット、ジェット、ラグジュアリーレジデンス——すべて10年で陳腐化する消耗品。数千億円の資産を持つ人間が、<span class="hl">1,000年残るものを一つも所有できない</span>。</p>
+    <p>ファラオはピラミッドを建てた。カトリック教会はノートルダムを建てた。徳川幕府は日光東照宮を建てた。人類はあらゆる時代において、最も裕福で、最も権力を持つ人間に、同じ衝動を与えてきました。<span class="hl">自分の存在を、時間の彼方まで刻みたい</span>。</p>
+    <p>これは虚栄心ではありません。人間の意識が持つ根源的な構造——自分の有限性を知りながら、有限を超えたものを創ろうとする衝動。実存的な欲求そのものです。</p>
+    <p>しかし過去50年間、人類はこの欲求を満たす手段を失いました。世界のUHNWは、使いきれない富を持ちながら、それを永続的な形に変換する装置を持っていません。ヨット、ジェット、ラグジュアリーレジデンス——すべて10年で陳腐化する消耗品。数千億円の資産を持つ人間が、<span class="hl">1,000年残るものを一つも所有できない</span>。</p>
   </div>
 </section>
+
 
 <div class="monuments rv">
   <figure class="mon"><img src="assets/img/pyramid-giza.png" alt="The Great Pyramid of Giza"><figcaption>Pyramid of Giza<span>c. 2560 BC · 4,600 years</span></figcaption></figure>
   <figure class="mon"><img src="assets/img/notredame.png" alt="Notre-Dame de Paris"><figcaption>Notre-Dame de Paris<span>1163–1345 · eight centuries</span></figcaption></figure>
-  <figure class="mon"><img src="assets/img/temple-kiyomizu.png" alt="清水寺（京都）"><figcaption>清水寺<span>Timber that outlives dynasties</span></figcaption></figure>
+  <figure class="mon"><img src="assets/img/temple-kiyomizu.png" alt="清水寺（京都）"><figcaption>清水寺<span>AD 778 · Timber that outlives dynasties</span></figcaption></figure>
 </div>
 
-<!-- 02 — THE ANSWER -->
+<!-- ═══ 02 — THE ANSWER ═══ -->
 <section class="sec rv">
-  <div class="s-label" data-cms-text="s2_label">02 — The Answer</div>
-  <h2 class="s-heading" data-cms-html="s2_heading">THE STUMPは、<br>その<em>飢餓への回答</em></h2>
+  <div class="s-label">02 — The Answer</div>
+  <h2 class="s-heading">THE STUMPは、<br>その<em>飢餓への回答</em></h2>
   <div class="prose">
-    <p data-cms-html="s2_p1">THE STUMPは、人類が5,000年間やり続けてきたのに、この50年間だけ途絶えてしまった行為——<span class="hl">「永遠を作る」という行為</span>——を、現代に復活させるプロジェクトです。</p>
-    <p data-cms-html="s2_p2">しかもそれを、宗教でも国家でもなく、個人の意志と資本で実現する。ファラオは国家権力で、カトリック教会は信仰の力でピラミッドとノートルダムを建てた。THE STUMPは、一人のUHNWが自らの意志で「千年の痕跡」を刻む装置として機能します。</p>
-    <p data-cms-html="s2_p3"><span class="ei">ノートルダム大聖堂を所有すること</span>——THE STUMPが提供するのは、それと同義の体験です。</p>
+    <p>THE STUMPは、人類が5,000年間やり続けてきたのに、この50年間だけ途絶えてしまった行為——<span class="hl">「永遠を作る」という行為</span>——を、現代に復活させるプロジェクトです。</p>
+    <p>しかもそれを、宗教でも国家でもなく、個人の意志と資本で実現する。ファラオは国家権力で、カトリック教会は信仰の力でピラミッドとノートルダムを建てた。THE STUMPは、一人のUHNWが自らの意志で「千年の痕跡」を刻む装置として機能します。</p>
+    <p><span class="ei">ノートルダム大聖堂を所有すること</span>——THE STUMPが提供するのは、それと同義の体験です。</p>
   </div>
 </section>
 
 <div class="rule"><div class="rule-in"></div></div>
 
-<!-- 03 — THE MONUMENT -->
+<!-- ═══ 03 — THE MONUMENT ═══ -->
 <section class="sec-wide rv">
-  <div class="s-label" data-cms-text="s3_label">03 — The Monument</div>
-  <h2 class="s-heading" data-cms-html="s3_heading">圧倒的な<em>荘厳</em></h2>
+  <div class="s-label">03 — The Monument</div>
+  <h2 class="s-heading">圧倒的な<em>荘厳</em></h2>
   <div class="prose">
-    <p data-cms-html="s3_p1">階高10m。天井高9m。ノートルダム大聖堂の側廊と同じスケールの空間が、全30フロアにわたって積み重なる。1フロア2,000㎡。通常の超高級レジデンスの5倍の広さが、ワンフロア1住戸として構成される。</p>
-    <p data-cms-html="s3_p2">これは住居ではない。<span class="hl">空中のパラッツォ</span>——人間が居住できる、地球上で最も崇高な空間です。</p>
+    <p>階高10m。天井高9m。ノートルダム大聖堂の側廊と同じスケールの空間が、全30フロアにわたって積み重なる。1フロア3,000㎡。通常の超高級レジデンスの5倍の床面積。さらに階高は約3倍——<span class="hl">体積では約15倍</span>の空間が、ワンフロア1住戸として構成される。</p>
+    <p>これは住居ではない。<span class="hl">空中のパラッツォ</span>——人間が居住できる、地球上で最も崇高な空間です。</p>
   </div>
+
   <div class="specs">
     <div class="spec"><div class="spec-val">300</div><div class="spec-unit">meters</div><p class="spec-desc">全高300m。30階建て。<br>東京のスカイラインを定義する<br>モニュメント。</p></div>
     <div class="spec"><div class="spec-val">10</div><div class="spec-unit">m / floor</div><p class="spec-desc">階高10m。天井高9m。<br>通常の住宅の約3倍。<br>ノートルダム側廊に匹敵。</p></div>
-    <div class="spec"><div class="spec-val">2,000</div><div class="spec-unit">㎡ / unit</div><p class="spec-desc">ワンフロア1住戸。<br>プール、ギャラリー、茶房を<br>すべて一つのフロアに。</p></div>
+    <div class="spec"><div class="spec-val">3,000</div><div class="spec-unit">㎡ / unit</div><p class="spec-desc">ワンフロア1住戸。<br>プール、ギャラリー、茶房を<br>すべて一つのフロアに。</p></div>
     <div class="spec"><div class="spec-val">30</div><div class="spec-unit">residences</div><p class="spec-desc">地球上に30邸のみ。<br>各住戸が完全に独立した<br>空中のパラッツォ。</p></div>
   </div>
 </section>
 
-<!-- 04 — BEYOND COMPARISON -->
+
+<!-- ═══ 04 — BEYOND COMPARISON ═══ -->
 <section class="sec-wide rv">
-  <div class="s-label" data-cms-text="s4_label">04 — Beyond Comparison</div>
-  <h2 class="s-heading" data-cms-html="s4_heading">世界最高級レジデンスとの<em>比較</em></h2>
-  <div class="prose"><p data-cms-html="s4_p1">THE STUMPは比較対象が存在しません。しかしあえて並べることで、その次元の違いが浮き彫りになります。</p></div>
+  <div class="s-label">04 — Beyond Comparison</div>
+  <h2 class="s-heading">世界最高級レジデンスとの<em>比較</em></h2>
+  <div class="prose"><p>THE STUMPは比較対象が存在しません。しかしあえて並べることで、その次元の違いが浮き彫りになります。</p></div>
+
   <div class="compare">
     <div class="cmp-header">
-      <div></div><div>Aman NY</div><div>One Hyde Park</div><div>Tour Odeon</div><div>THE STUMP</div>
+      <div></div>
+      <div>Aman NY</div>
+      <div>One Hyde Park</div>
+      <div>Tour Odeon</div>
+      <div>THE STUMP</div>
     </div>
     <div class="cmp-row"><div>Ceiling Height</div><div>3.5m</div><div>3.2m</div><div>3.5m</div><div>9m</div></div>
-    <div class="cmp-row"><div>Unit Size</div><div>~400㎡</div><div>~600㎡</div><div>~800㎡</div><div>2,000㎡</div></div>
+    <div class="cmp-row"><div>Unit Size</div><div>~400㎡</div><div>~600㎡</div><div>~800㎡</div><div>3,000㎡</div></div>
+    <div class="cmp-row"><div>Spatial Volume</div><div>~1,400㎥</div><div>~1,920㎥</div><div>~2,800㎥</div><div>27,000㎥</div></div>
     <div class="cmp-row"><div>Units / Floor</div><div>2–4</div><div>2–4</div><div>2–3</div><div>1</div></div>
     <div class="cmp-row"><div>Arch Opening</div><div>—</div><div>—</div><div>—</div><div>8m Gothic</div></div>
     <div class="cmp-row"><div>Design Lifespan</div><div>50 yrs</div><div>50 yrs</div><div>50 yrs</div><div>1,000 yrs</div></div>
@@ -240,28 +263,30 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 <div class="rule"><div class="rule-in"></div></div>
 
-<!-- 05 — THE ECONOMICS -->
+<!-- ═══ 05 — THE ECONOMICS ═══ -->
 <section class="sec rv">
-  <div class="s-label" data-cms-text="s5_label">05 — The Economics</div>
-  <h2 class="s-heading" data-cms-html="s5_heading">千年のLTVが示す、<br><em>天文学的リターン</em></h2>
+  <div class="s-label">05 — The Economics</div>
+  <h2 class="s-heading">千年のLTVが示す、<br><em>天文学的リターン</em></h2>
   <div class="prose">
-    <p data-cms-html="s5_p1">1邸2,000億円。坪単価3億円。建築費は坪1億——現存するあらゆる建築の最高水準の20倍の予算を投じて建てられます。</p>
-    <p data-cms-html="s5_p2">しかしこの数字を「コスト」として見るのは、短期的視座の罠です。ノートルダム大聖堂の修復に€8.5億（約1,400億円）の寄付が72時間で集まった事実が示しているのは、<span class="hl">千年建築の価値は、建築費を桁違いに超える</span>ということです。</p>
-    <p data-cms-html="s5_p3">THE STUMPは30年で壊される消耗品ではありません。坪1億の建築費は「コスト」ではなく、<span class="hl">1,000年のLTVを物理的に保証する保険</span>として機能します。千年後もそこに立ち、価値を生み続ける。そのとき、2,000億円は歴史上最も利回りの高い投資となります。</p>
+    <p>1邸3,000億円。坪単価3億円。建築費は坪1億——現存するあらゆる建築の最高水準の20倍の予算を投じて建てられます。</p>
+    <p>しかしこの数字を「コスト」として見るのは、短期的視座の罠です。ノートルダム大聖堂の修復に€8.5億（約1,400億円）の寄付が72時間で集まった事実が示しているのは、<span class="hl">千年建築の価値は、建築費を桁違いに超える</span>ということです。</p>
+    <p>THE STUMPは30年で壊される消耗品ではありません。坪1億の建築費は「コスト」ではなく、<span class="hl">1,000年のLTVを物理的に保証する保険</span>として機能します。千年後もそこに立ち、価値を生み続ける。そのとき、3,000億円は歴史上最も利回りの高い投資となります。</p>
   </div>
 </section>
 
-<!-- 06 — THE PATRON -->
+
+<!-- ═══ 06 — THE PATRON ═══ -->
 <section class="sec rv">
-  <div class="s-label" data-cms-text="s6_label">06 — The Patron</div>
-  <h2 class="s-heading" data-cms-html="s6_heading">オーナーではなく、<br><em>パトロン</em></h2>
+  <div class="s-label">06 — The Patron</div>
+  <h2 class="s-heading">オーナーではなく、<br><em>パトロン</em></h2>
   <div class="prose">
-    <p data-cms-html="s6_p1">THE STUMPの住人は「購入者」ではありません。<span class="ei">Patron</span>——パトロンです。メディチ家がルネサンスを支えたように、THE STUMPのパトロンは人類の建築史に名を刻みます。</p>
-    <p data-cms-html="s6_p2">1,000年後、ピラミッドのファラオの名が語り継がれているように、THE STUMPのパトロンの名もまた、建築と共に永遠に残ります。</p>
+    <p>THE STUMPの住人は「購入者」ではありません。<span class="ei">Patron</span>——パトロンです。メディチ家がルネサンスを支えたように、THE STUMPのパトロンは人類の建築史に名を刻みます。</p>
+    <p>1,000年後、ピラミッドのファラオの名が語り継がれているように、THE STUMPのパトロンの名もまた、建築と共に永遠に残ります。</p>
   </div>
+
   <div class="patron-frame">
-    <div class="patron-eye" data-cms-text="patron_eye">By Invitation Only</div>
-    <div class="patron-text" data-cms-html="patron_text">
+    <div class="patron-eye">By Invitation Only</div>
+    <div class="patron-text">
       THE STUMPは、<em>販売</em>されません。<br>
       パトロンとして<em>選ばれた方</em>にのみ、<br>
       ご案内いたします。
@@ -271,25 +296,26 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 <div class="rule"><div class="rule-in"></div></div>
 
-<!-- 07 — OPUS 1 -->
+<!-- ═══ 07 — OPUS 1 ═══ -->
 <section class="sec rv">
-  <div class="s-label" data-cms-text="s7_label">07 — OPUS 1 : Tokyo</div>
-  <h2 class="s-heading" data-cms-html="s7_heading">OPUS 1——<br><em>東京</em>から、世界へ</h2>
+  <div class="s-label">07 — OPUS 1 : Tokyo</div>
+  <h2 class="s-heading">OPUS 1——<br><em>東京</em>から、世界へ</h2>
   <div class="prose">
-    <p data-cms-html="s7_p1">THE STUMP OPUS 1は東京に建ちます。世界で最も安全で、最も文化的深度を持ち、最も過小評価されている都市に。OPUS 1の実在そのものが証拠となり、ロンドン、ドバイ、シンガポール、ニューヨークへの展開は、こちらからではなく、各国のパトロンから依頼される形で実現していきます。</p>
-    <p data-cms-html="s7_p2">各都市のTHE STUMPは、古代のオベリスクのように——文明の証として、大地に立ちます。</p>
+    <p>THE STUMP OPUS 1は東京に建ちます。世界で最も安全で、最も文化的深度を持ち、最も過小評価されている都市に。OPUS 1の実在そのものが証拠となり、ロンドン、ドバイ、シンガポール、ニューヨークへの展開は、こちらからではなく、各国のパトロンから依頼される形で実現していきます。</p>
+    <p>各都市のTHE STUMPは、古代のオベリスクのように——文明の証として、大地に立ちます。</p>
   </div>
 </section>
 
+
 <figure class="vb vb-contain rv"><img src="assets/img/devils-tower.png" alt="Devils Tower — Origin of the Name"><figcaption>Devils Tower — the trace of a 3,000m ancient tree. The origin of our name.<span class="vb-s">THE STUMP</span></figcaption></figure>
 
-<!-- FINAL -->
+<!-- ═══ FINAL ═══ -->
 <section class="final rv">
-  <div class="final-text" data-cms-html="final_text">
+  <div class="final-text">
     我々の創造は、<br>
     魂の<em>万年単位の痕跡</em>となる。
   </div>
-  <div class="final-sub" data-cms-html="final_sub">
+  <div class="final-sub">
     <strong>刹那から、永遠へ。</strong><br>
     刹那的視座の加速に、究極のカウンターパンチを喰らわせる。<br>
     時を超越した視座に回帰することこそが、<br>
@@ -299,13 +325,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 <!-- CTA -->
 <section class="cta rv">
-  <div class="cta-label" data-cms-text="cta_label">Begin a Conversation</div>
-  <a href="mailto:info@morio-realestate.com" class="cta-btn" data-cms-text="cta_btn">Private Enquiry</a>
-  <div class="cta-note" data-cms-text="cta_note">Morio the Mann Group ｜ Minami-Aoyama, Tokyo</div>
+  <div class="cta-label">Begin a Conversation</div>
+  <a href="mailto:info@morio-realestate.com" class="cta-btn">Private Enquiry</a>
+  <div class="cta-note">Morio the Mann Group ｜ Minami-Aoyama, Tokyo</div>
 </section>
 
-<footer class="footer"><div class="footer-in"><a href="index.html" class="footer-home">← ホームに戻る</a><div class="footer-copy">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
+<footer class="footer"><div class="footer-in"><a href="index.html" class="footer-home">← ホームに戻る</a><div class="footer-copy">© 2025 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div></div></footer>
 
+<!-- ═══ REVEAL OBSERVER ═══ -->
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const io=new IntersectionObserver(es=>{
@@ -315,6 +342,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <script>
+/* motion: scroll progress + spec count-up */
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var bar=document.createElement('div');bar.className='scroll-prog';document.body.appendChild(bar);
@@ -338,19 +366,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 })();
 </script>
 <script>document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});</script>
-<script>
-(function(){
-  fetch('/data/the-stump.json').then(function(r){ return r.json(); }).then(function(d){
-    document.querySelectorAll('[data-cms-text]').forEach(function(el){
-      var k = el.getAttribute('data-cms-text');
-      if(d[k] != null) el.textContent = d[k];
-    });
-    document.querySelectorAll('[data-cms-html]').forEach(function(el){
-      var k = el.getAttribute('data-cms-html');
-      if(d[k] != null) el.innerHTML = d[k];
-    });
-  }).catch(function(){});
-})();
-</script>
 </body>
 </html>
