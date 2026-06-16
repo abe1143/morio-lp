@@ -145,8 +145,8 @@
   /* ---- timeline ---- */
   var DUR = 16;                 // seconds per loop
   var SPEEDS = [0.5, 1, 1.5];
-  var si = EMBED ? 0 : 1;                 // embedded section plays at 0.5× by default
-  var clock = 0, playing = true, speed = SPEEDS[si], last = 0, scrub = false;
+  var si = EMBED ? 0 : 1;                 // embedded section plays slower by default
+  var clock = 0, playing = true, speed = EMBED ? 0.6 : SPEEDS[si], last = 0, scrub = false;
   var KEY = "morio-crystal-t";
   if (!EMBED) { try { var sv = parseFloat(localStorage.getItem(KEY)); if (sv >= 0 && sv < DUR) clock = sv; } catch (e) {} }
 
