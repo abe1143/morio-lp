@@ -51,7 +51,7 @@
   var LABELS = [
     { n:0, jp:"時間",  en:"TIME",      side:"up"   },
     { n:1, jp:"権利",  en:"RIGHTS",    side:"right"},
-    { n:2, jp:"素材",  en:"MATERIAL",  side:"right"},
+    { n:2, jp:"意匠",  en:"DESIGN",    side:"right"},
     { n:3, jp:"運用",  en:"OPERATION", side:"right"},
     { n:5, jp:"収益",  en:"REVENUE",   side:"left" },
     { n:6, jp:"構造",  en:"STRUCTURE", side:"left" },

@@ -210,6 +210,55 @@
     color:var(--muted); min-width:8.5em; text-align:right; user-select:none; }
   .crystal-stage .speed{ font-family:var(--font-en); font-size:.62rem; letter-spacing:.12em; color:var(--ink-soft); min-width:2.6em; text-align:center; }
   @media (max-width:680px){ .crystal-stage .phase-name{ display:none; } }
+
+  /* ===== Orchestration diagram (MORIO as the upper layer) ===== */
+  .orchestra{ position:relative; width:100%; min-height:clamp(420px,52vh,560px);
+    margin-top:1.5em; border:1px solid var(--line-soft); background:var(--bg-2);
+    overflow:hidden; border-radius:2px; }
+  .orchestra .orc-svg{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+  .orchestra .orc-grid{ position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(194,162,95,.05), transparent 60%); }
+  /* MORIO hub — the upper orchestration layer */
+  .orchestra .orc-hub{ position:absolute; left:50%; top:clamp(26px,5%,46px); transform:translateX(-50%);
+    z-index:3; text-align:center; min-width:min(64%,440px);
+    padding:clamp(16px,2.4vw,26px) clamp(24px,4vw,52px);
+    border:1px solid var(--line); background:var(--bg-3);
+    box-shadow:0 0 0 0 rgba(194,162,95,0); transition:box-shadow .6s var(--ease), border-color .6s var(--ease); }
+  .orchestra .orc-hub .role{ display:block; font-family:var(--font-en); text-transform:uppercase;
+    letter-spacing:.34em; text-indent:.34em; font-size:.66rem; color:var(--accent); }
+  .orchestra .orc-hub .who{ display:block; margin-top:.5em; font-family:var(--font-en); font-weight:300;
+    letter-spacing:.24em; text-indent:.24em; font-size:clamp(1.5rem,3vw,2.1rem); color:var(--ink); }
+  .orchestra .orc-hub .task{ display:block; margin-top:.7em; font-family:var(--font-jp); font-weight:300;
+    letter-spacing:.08em; font-size:clamp(.78rem,1.1vw,.92rem); color:var(--ink-soft); }
+  .orchestra .orc-hub .layer-tag{ display:inline-block; margin-top:1em; font-family:var(--font-en);
+    font-size:.54rem; letter-spacing:.32em; text-indent:.32em; text-transform:uppercase; color:var(--muted); }
+  /* players — the separate hands the work was traditionally split across */
+  .orchestra .orc-players{ position:absolute; left:0; right:0; bottom:clamp(26px,5%,46px);
+    z-index:3; display:flex; justify-content:space-around; align-items:flex-end;
+    gap:clamp(10px,2vw,28px); padding-inline:clamp(20px,4vw,56px); }
+  .orchestra .orc-player{ position:relative; flex:1 1 0; max-width:230px; text-align:center;
+    padding:clamp(14px,1.8vw,22px) clamp(12px,1.6vw,20px); border:1px solid var(--line-soft);
+    background:var(--bg); transition:border-color .6s var(--ease), background .6s var(--ease), opacity .6s var(--ease); }
+  .orchestra .orc-player .role{ display:block; font-family:var(--font-en); text-transform:uppercase;
+    letter-spacing:.22em; font-size:.6rem; color:var(--muted); transition:color .6s var(--ease); }
+  .orchestra .orc-player .who{ display:block; margin-top:.45em; font-family:var(--font-jp); font-weight:400;
+    font-size:clamp(.95rem,1.4vw,1.08rem); color:var(--ink-soft); letter-spacing:.04em; }
+  .orchestra .orc-player .task{ display:block; margin-top:.4em; font-family:var(--font-jp); font-weight:300;
+    font-size:.78rem; color:var(--muted); }
+  .orchestra .orc-player.lit{ border-color:var(--line); background:var(--bg-2); }
+  .orchestra .orc-player.lit .role{ color:var(--accent); }
+  /* fragments — scattered pieces each hand holds before MORIO ties them together */
+  .orchestra .frags{ position:absolute; left:0; right:0; top:-30px; height:26px; pointer-events:none; }
+  .orchestra .frag{ position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--muted); opacity:.5; }
+  @media (max-width:600px){
+    .orchestra{ min-height:560px; }
+    .orchestra .orc-players{ flex-direction:column; align-items:stretch; gap:10px; bottom:auto; top:auto; position:static; padding:0 16px 22px; }
+    .orchestra .orc-player{ max-width:none; }
+    .orchestra .orc-svg, .orchestra .frags{ display:none; }
+    .orchestra .orc-hub{ position:static; transform:none; margin:22px 16px 16px; min-width:0; }
+  }
 </style>
 </head>
 <body>
@@ -288,7 +337,7 @@
       <div class="cap" data-cap="0">
         <span class="ord">01 · Entropy</span>
         <div class="jp">価値の要素は、高エントロピーの<em>カオス</em>に散らばる</div>
-        <div class="sub">立地・権利・構造・素材・収益・運用・時間——本来ひとつの不動産を成す七つの変数が、無秩序のまま漂う。</div>
+        <div class="sub">立地・権利・構造・意匠・収益・運用・時間——本来ひとつの不動産を成す七つの変数が、無秩序のまま漂う。</div>
       </div>
       <div class="cap" data-cap="1">
         <span class="ord">02 · Convergence</span>
@@ -341,22 +390,27 @@
       <div class="var-row"><span class="v-no">01</span><div class="v-label"><span class="v-en">Location</span><span class="v-jp">立地と環境</span></div><p class="v-d">街区の格、交通、眺望、そして街そのものの伸びしろ。価値の上限を決める前提条件。</p></div>
       <div class="var-row"><span class="v-no">02</span><div class="v-label"><span class="v-en">Rights &amp; Code</span><span class="v-jp">権利と法規</span></div><p class="v-d">用途・容積、権利関係、遵法性。創り得るものの可能性の枠を規定する。</p></div>
       <div class="var-row"><span class="v-no">03</span><div class="v-label"><span class="v-en">Structure</span><span class="v-jp">構造と性能</span></div><p class="v-d">耐震・スパン・更新余地。建築の寿命と自由度を支える骨格。</p></div>
-      <div class="var-row"><span class="v-no">04</span><div class="v-label"><span class="v-en">Material &amp; Form</span><span class="v-jp">素材と意匠</span></div><p class="v-d">経年で味わいを増す本物の素材と、流行に左右されない普遍の形。</p></div>
+      <div class="var-row"><span class="v-no">04</span><div class="v-label"><span class="v-en">Material &amp; Design</span><span class="v-jp">素材と意匠</span></div><p class="v-d">経年で味わいを増す本物の素材と、流行に左右されない普遍の形。</p></div>
       <div class="var-row"><span class="v-no">05</span><div class="v-label"><span class="v-en">Revenue</span><span class="v-jp">収益構造</span></div><p class="v-d">NOI・IRR・LTV。運用期間の全体を貫く、価値の設計図。</p></div>
       <div class="var-row"><span class="v-no">06</span><div class="v-label"><span class="v-en">Operation &amp; Narrative</span><span class="v-jp">運用と物語</span></div><p class="v-d">管理の質、テナント構成、そして価格を超えて選ばれる理由。</p></div>
       <div class="var-row is-time"><span class="v-no">07</span><div class="v-label"><span class="v-en">Time</span><span class="v-jp">時間</span></div><p class="v-d">価値を減衰させるか、優化させるか。すべての変数に掛かる、ただ一つの係数。</p></div>
     </div>
 
-    <p class="small" data-reveal style="margin-top:var(--space-block); letter-spacing:.06em; max-width:var(--readw);">従来、これらの変数は別々の担い手に委ねられ、断片のまま放置されてきました。MORIO は、その全体を束ねる上位レイヤーとして機能します。</p>
-    <div class="layers" data-reveal style="margin-top:1.5em;">
-      <div class="layer is-lead">
+    <p class="small" data-reveal style="margin-top:var(--space-block); letter-spacing:.06em; max-width:var(--readw);">従来、これらの変数は別々の担い手に委ねられ、断片のまま進行されてきました。MORIO は、その全体を束ねる上位レイヤーとして機能します。</p>
+    <div class="orchestra" id="orchestra" data-reveal>
+      <div class="orc-grid"></div>
+      <svg class="orc-svg" aria-hidden="true"></svg>
+      <div class="orc-hub">
         <span class="role">Producer</span>
         <span class="who">MORIO</span>
         <span class="task">全変数の統合・付加価値の設計</span>
+        <span class="layer-tag">Orchestration Layer</span>
       </div>
-      <div class="layer"><span class="role">Design</span><span class="who">設計事務所</span><span class="task">建築</span></div>
-      <div class="layer"><span class="role">Develop</span><span class="who">デベロッパー</span><span class="task">開発</span></div>
-      <div class="layer"><span class="role">Management</span><span class="who">管理</span><span class="task">運営・管理</span></div>
+      <div class="orc-players">
+        <div class="orc-player"><div class="frags"></div><span class="role">CONSTRUCTION</span><span class="who">設計・施工</span><span class="task">建築</span></div>
+        <div class="orc-player"><div class="frags"></div><span class="role">Develop</span><span class="who">デベロッパー</span><span class="task">開発</span></div>
+        <div class="orc-player"><div class="frags"></div><span class="role">Management</span><span class="who">管理・運営</span><span class="task">AM・PM</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -641,6 +695,7 @@
 <script src="assets/morio.js"></script>
 <script src="assets/motion.js"></script>
 <script src="crystallization.js"></script>
+<script src="orchestration.js"></script>
 <script>document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});</script>
 <script>
 (function(){
