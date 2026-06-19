@@ -9,11 +9,12 @@
  (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
 </script>
 <title>MORIO — Real Estate Producing · Tokyo</title>
-<meta name="description" content="不動産の潜在価値を、解放する。設計事務所でもデベロッパーでもない、不動産プロデュース企業。">
+<meta name="description" content="不動産が本来持つ価値を、引き出す。設計事務所でもデベロッパーでもない、不動産プロデュース企業。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/morio.css">
 <link rel="stylesheet" href="assets/motion.css">
+<link rel="stylesheet" href="assets/ltv-sim.css">
 <style>
   /* compact home — local refinements */
   .lede{ max-width:var(--readw); }
@@ -41,6 +42,9 @@
     transition:opacity .6s var(--ease), transform .6s var(--ease), border-color .4s var(--ease), color .4s var(--ease); }
   .bgm.show{ opacity:1; transform:none; pointer-events:auto; }
   .bgm:hover{ border-color:var(--accent); color:var(--ink); }
+  /* clear ON state: gold border + label */
+  .bgm.playing{ border-color:var(--accent); color:var(--ink); }
+  .bgm:not(.playing) .eq i{ opacity:.45; }
   .bgm .eq{ display:flex; align-items:flex-end; gap:2px; height:13px; }
   .bgm .eq i{ width:2px; height:3px; background:var(--accent); display:block; border-radius:1px; transition:height .3s var(--ease); }
   .bgm.playing .eq i{ animation:eq .9s var(--ease) infinite; }
@@ -161,6 +165,33 @@
   .ltv-gap line{ stroke:var(--accent); stroke-width:1; stroke-dasharray:3 3; opacity:.7; }
   .ltv-gap text{ font-family:var(--font-jp); font-size:13px; letter-spacing:.1em; fill:var(--accent); }
   @media (max-width:600px){ .ltv-tick{ font-size:11px; } .ltv-tag{ font-size:12px; } .ltv-tag.delta{ font-size:13px; } }
+
+  /* ===== accumulated-LTV totals (area = lifetime value) ===== */
+  .ltv-sum{ max-width:620px; margin:2.4em auto 0; text-align:left; }
+  .ltv-sum .row{ display:grid; grid-template-columns:9.5em 1fr 3.6em; align-items:center; gap:1em; margin-bottom:.9em; }
+  .ltv-sum .lab{ font-family:var(--font-jp); font-size:.86rem; letter-spacing:.04em; color:var(--ink-soft); }
+  .ltv-sum .barwrap{ position:relative; height:13px; background:var(--bg-3); border:1px solid var(--line-soft); }
+  .ltv-sum .bar{ position:absolute; left:0; top:0; bottom:0; width:0; }
+  .ltv-sum .bar.morio{ background:var(--accent); }
+  .ltv-sum .bar.conv{ background:var(--muted); }
+  .ltv-sum .mult{ font-family:var(--font-en); font-size:.9rem; letter-spacing:.06em; color:var(--muted); font-feature-settings:"tnum"; text-align:right; }
+  .ltv-sum .mult.morio{ color:var(--accent); }
+  .ltv-sum .note{ font-size:.84rem; line-height:1.9; color:var(--muted); letter-spacing:.04em; margin-top:1.5em; text-wrap:pretty; }
+  @media (prefers-reduced-motion: no-preference){ .ltv-sum .bar{ transition:width 1.5s var(--ease) 2.2s; } }
+  .ltv-chart.play ~ .ltv-sum .bar.morio{ width:100%; }
+  .ltv-chart.play ~ .ltv-sum .bar.conv{ width:50%; }
+
+  /* ===== hero H1 — per-line stagger: slide in 2ch from the right, quick, settle ===== */
+  @media (prefers-reduced-motion: no-preference){
+    .hero h1{ animation:none !important; }
+    /* base = fully visible (failsafe): the slide-in only applies once JS marks the hero ready,
+       so the title can never get stuck invisible if the animation timeline doesn't advance */
+    .hero.h1-ready h1 span{ opacity:0; animation:h1-slide 1s var(--ease) both; will-change:transform,opacity,filter; }
+    .hero.h1-ready h1 span:nth-child(1){ animation-delay:.45s; }
+    .hero.h1-ready h1 span:nth-child(2){ animation-delay:.70s; }
+    .hero.h1-ready h1 span:nth-child(3){ animation-delay:.95s; }
+  }
+  @keyframes h1-slide{ from{ opacity:0; transform:translateX(2ch); filter:blur(6px); } to{ opacity:1; transform:none; filter:blur(0); } }
 
   /* ===== Embedded crystallization animation (Chaos → Crystal) ===== */
   .crystal-section{ background:var(--bg); }
@@ -296,22 +327,34 @@
   <div class="hero-bg" data-variant="penthouse" data-parallax="0.10"><img src="assets/img/v2-suite.jpg" alt="MORIO — スイートの室内" style="object-position:center;"></div>
   <div class="hero-bg" data-variant="tower" data-parallax="0.10"><img src="assets/img/tower.jpg" alt="MORIO — 街区に建つ縦長レジデンス"></div>
   <div class="hero-inner wrap">
-    <h1 style="font-family:var(--font-en); font-weight:200; text-transform:uppercase; letter-spacing:.14em; line-height:1.3;"><span style="display:block;">TIMELESS</span><span style="display:block; margin-left:2ch;">BEAUTY</span><span style="display:block; margin-left:4ch;">ABUNDANCE</span></h1>
-    <p class="hero-sub">設計でも、デベロッパーでもない。国内唯一の不動産プロデュース企業。</p>
+    <h1 style="font-family:var(--font-en); font-weight:200; text-transform:uppercase; letter-spacing:.14em; line-height:1.3;"><span style="display:block;">TIMELESS</span><span style="display:block;">BEAUTY</span><span style="display:block;">ABUNDANCE</span></h1>
+    <p class="hero-sub">設計でも、デベロッパーでもない。不動産をアートに昇華させる、プロデュースレーベル。</p>
   </div>
   <div class="scrollcue"><span class="ln"></span> Scroll</div>
 </header>
+<script>
+  /* Reliably start the hero title slide-in: add the trigger class on the next frame
+     after load, so the animation timeline is live and the keyframes run from the top. */
+  (function(){
+    var hero = document.querySelector('.hero');
+    if(!hero) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var go = function(){ requestAnimationFrame(function(){ hero.classList.add('h1-ready'); }); };
+    if(document.readyState === 'complete') go();
+    else window.addEventListener('load', go);
+  })();
+</script>
 
 <!-- ===================== STATEMENT ===================== -->
 <section class="section wrap">
   <div class="measure" style="margin-inline:auto; text-align:center;">
     <span class="idx" data-reveal style="display:block; margin-bottom:1.6em;">Producing</span>
-    <p class="statement-jp" data-reveal style="font-size: 36px">
-      不動産が本来持っている価値を、<br>完全に引き出すこと。<br>
+    <p class="statement-jp" data-reveal>
+      不動産が本来持っている価値を、<br>引き出すこと。<br>
       それが、<span class="accent">Real Estate Produce</span> です。
     </p>
     <p class="lead" data-reveal data-delay="1" style="margin-top:2.2em; max-width:52ch; margin-inline:auto;">
-      映画のプロデューサーが作品の価値を統べるように。MORIO は構想から完成、運用までを統べ、その不動産が成りうる最高の姿を引き出します。
+      映画のプロデューサーが作品の価値を統べるように。MORIO は構想から完成、運用までを統べ、その不動産が成りうる姿を引き出します。
     </p>
   </div>
 </section>
@@ -351,7 +394,7 @@
       </div>
       <div class="cap" data-cap="3">
         <span class="ord">04 · Order</span>
-        <div class="jp">不動産が、成りうる<em>最高の結晶</em>へ</div>
+        <div class="jp">不動産が、成りうる<em>結晶</em>へ</div>
         <div class="sub">七つの変数が一体の秩序となり、時を超えて輝く。カオスを美しい結晶へ収斂させる——それが、不動産プロデュースの本質。</div>
       </div>
     </div>
@@ -380,7 +423,7 @@
         <span class="en">Value, by Design</span>
         <span class="jp">付加価値を、構造から創る</span>
       </div>
-      <p class="lead" data-reveal data-delay="1">不動産の価値は、ひとつの数字ではありません。立地・権利・構造・素材・収益・運用、そして時間——無数の変数の積として立ち現れます。従来はこの変数群は設計・開発・管理へと分断されていました。MORIO は、そのすべてを一つの意思で束ねる上位レイヤーに立ち、付加価値そのものを構造から設計します。</p>
+      <p class="lead" data-reveal data-delay="1">不動産の価値は、ひとつの数字ではありません。立地・権利・構造・素材・収益・運用、そして時間——無数の変数の積として立ち現れます。MORIO は、その付加価値そのものを構造から設計します。</p>
     </div>
 
     <div class="stack" style="max-width:var(--readw); margin-top:var(--space-block);">
@@ -396,7 +439,7 @@
       <div class="var-row is-time"><span class="v-no">07</span><div class="v-label"><span class="v-en">Time</span><span class="v-jp">時間</span></div><p class="v-d">価値を減衰させるか、優化させるか。すべての変数に掛かる、ただ一つの係数。</p></div>
     </div>
 
-    <p class="small" data-reveal style="margin-top:var(--space-block); letter-spacing:.06em; max-width:var(--readw);">従来、これらの変数は別々の担い手に委ねられ、断片のまま進行されてきました。MORIO は、その全体を束ねる上位レイヤーとして機能します。</p>
+    <p class="small" data-reveal style="margin-top:var(--space-block); letter-spacing:.06em; max-width:var(--readw);">従来、これらの変数は設計・開発・管理へと別々の担い手に分かれ、断片のまま進行してきました。MORIO は、その全体をひとつの意志へ束ねる上位レイヤーとして機能します。</p>
     <div class="orchestra" id="orchestra" data-reveal>
       <div class="orc-grid"></div>
       <svg class="orc-svg" aria-hidden="true"></svg>
@@ -438,61 +481,39 @@
         <span class="en">Aging into<br>Beauty</span>
         <span class="jp">時間を味方につけ、豊かになる資産</span>
       </div>
-      <p class="body" data-reveal data-delay="1">
-        通常の不動産は、約30年で役目を終え、建て替えられます。価値が積み上がる前に、何度もゼロへ戻される。一方タイムレスな不動産は、100年を超えて生き続け、価値を積み上げ続けます。時が経つほど、両者のLTVには——<span class="accent">圧倒的な差</span>——が生まれます。
-      </p>
+      <p class="body" data-reveal data-delay="1">通常の不動産は、約30～50年で役目を終え、建て替えられます。価値が積み上がる前に、何度もゼロへ戻される。一方タイムレスな不動産は、100年を超えて生き続け、価値を積み上げ続けます。時が経つほど、両者のLTVの差は、開いていきます。</p>
       <div class="ltv-legend" data-reveal data-delay="2">
         <span class="lg lg-morio">タイムレスな不動産 ／ 100年以上、LTVを積層</span>
-        <span class="lg lg-conv">通常の不動産 ／ 約30年でゼロから建替</span>
+        <span class="lg lg-conv">通常の不動産 ／ 約30～50年でゼロから建替</span>
       </div>
     </div>
   </div>
   <div class="ltv-band" data-reveal style="margin-top:var(--space-block); border-top:1px solid var(--line-soft); padding-top:clamp(30px,4.5vw,56px); text-align:center;">
     <span class="idx" style="display:block; margin-bottom:1.8em;">The Engine — A Century of LTV</span>
     <div class="ltv-chart" id="ltvChart">
-      <svg viewBox="0 0 840 400" role="img" aria-label="LTV比較：30年で建て替える通常の不動産と、100年以上生き続けるタイムレスな不動産">
+      <svg viewBox="0 0 840 400" role="img" aria-label="LTV比較：50年で建て替える通常の不動産と、100年以上生き続けるタイムレスな不動産">
         <defs>
           <linearGradient id="ltvGold" x1="0" y1="1" x2="0" y2="0">
             <stop offset="0" stop-color="rgba(194,162,95,0.04)"/>
             <stop offset="1" stop-color="rgba(194,162,95,0.42)"/>
           </linearGradient>
-          <clipPath id="ltvTimeless"><path d="M64,360 L64,195 L152,182 L240,168 L328,153 L416,138 L504,123 L592,108 L680,92 L768,75 L768,360 Z"/></clipPath>
         </defs>
         <line class="ltv-axis" x1="64" y1="40" x2="64" y2="360"/>
         <line class="ltv-axis" x1="64" y1="360" x2="792" y2="360"/>
-        <path class="ltv-area-delta" d="M64,360 L64,195 L152,182 L240,168 L328,153 L416,138 L504,123 L592,108 L680,92 L768,75 L768,360 Z"/>
-        <g class="ltv-strata-g" clip-path="url(#ltvTimeless)">
-          <line x1="64" y1="100" x2="768" y2="100"/>
-          <line x1="64" y1="128" x2="768" y2="128"/>
-          <line x1="64" y1="156" x2="768" y2="156"/>
-          <line x1="64" y1="184" x2="768" y2="184"/>
-          <line x1="64" y1="212" x2="768" y2="212"/>
-          <line x1="64" y1="240" x2="768" y2="240"/>
-          <line x1="64" y1="268" x2="768" y2="268"/>
-          <line x1="64" y1="296" x2="768" y2="296"/>
-          <line x1="64" y1="324" x2="768" y2="324"/>
-        </g>
-        <path class="ltv-teeth" d="M64,360 L64,195 L275,336 L275,195 L486,336 L486,195 L697,336 L697,195 L768,242 L768,360 Z"/>
-        <g class="ltv-demo ltv-late">
-          <text x="275" y="353" text-anchor="middle">建替</text>
-          <text x="486" y="353" text-anchor="middle">建替</text>
-          <text x="697" y="353" text-anchor="middle">建替</text>
-        </g>
-        <path class="ltv-line conv" d="M64,195 L275,336 L275,195 L486,336 L486,195 L697,336 L697,195 L768,242"/>
-        <path class="ltv-line morio" d="M64,195 L152,182 L240,168 L328,153 L416,138 L504,123 L592,108 L680,92 L768,75"/>
-        <g class="ltv-gap ltv-late">
-          <line x1="726" y1="82" x2="726" y2="238"/>
-          <text x="718" y="158" text-anchor="end">圧倒的な差</text>
-        </g>
-        <circle class="dot conv ltv-late" cx="768" cy="242" r="4"/>
-        <circle class="dot morio ltv-late" cx="768" cy="75" r="5"/>
-        <text class="ltv-tag delta ltv-late" x="408" y="208" text-anchor="middle">タイムレスな不動産のLTV</text>
-        <text class="ltv-tag delta-sub ltv-late" x="408" y="230" text-anchor="middle">100+ years, compounding</text>
-        <text class="ltv-tag conv ltv-late" x="158" y="324" text-anchor="middle">通常の不動産</text>
+        <path class="ltv-area-delta" d="M64,360 L768,60 L768,360 Z"/>
+        <path class="ltv-teeth" d="M64,360 L416,210 L416,360 L768,210 L768,360 Z"/>
+        <path class="ltv-line conv" d="M64,360 L416,210 L416,360 L768,210"/>
+        <path class="ltv-line morio" d="M64,360 L768,60"/>
+        <circle class="dot conv ltv-late" cx="768" cy="210" r="4"/>
+        <circle class="dot morio ltv-late" cx="768" cy="60" r="5"/>
+        <text class="ltv-tag morio ltv-late" x="250" y="118" text-anchor="middle">タイムレスな不動産</text>
+        <text class="ltv-tag delta-sub ltv-late" x="250" y="138" text-anchor="middle">ACCUMULATED LTV</text>
+        <text class="ltv-tag conv ltv-late" x="250" y="170" text-anchor="middle">通常の不動産</text>
+        <text class="ltv-tag conv ltv-late" x="250" y="188" text-anchor="middle" style="font-size:11px;">50年ごとに建替＝0</text>
+        <text class="ltv-tag delta ltv-late" x="426" y="248" text-anchor="middle">この面積の差</text>
+        <text class="ltv-tag delta-sub ltv-late" x="426" y="268" text-anchor="middle">＝ 50年ごとに失う蓄積</text>
         <text class="ltv-tick" x="64" y="382" text-anchor="middle">竣工</text>
-        <text class="ltv-tick" x="275" y="382" text-anchor="middle">30yr</text>
-        <text class="ltv-tick" x="486" y="382" text-anchor="middle">60yr</text>
-        <text class="ltv-tick" x="697" y="382" text-anchor="middle">90yr</text>
+        <text class="ltv-tick" x="416" y="382" text-anchor="middle">50yr</text>
         <text class="ltv-tick" x="768" y="382" text-anchor="middle">100+</text>
         <text class="ltv-tick" x="56" y="44" text-anchor="end">価値</text>
         <rect class="ltv-cover" x="64" y="34" width="704" height="334"/>
@@ -507,7 +528,19 @@
       <span class="op">×</span>
       <span class="term"><span class="v">Time</span><span class="l">時間</span></span>
     </div>
-    <p class="lead" style="max-width:62ch; margin:2.2em auto 0;">通常の不動産は約30年でその役目を終え、建て替えのたびに価値はゼロへ戻ります。タイムレスな不動産は積み上がり続ける——LTV（ライフタイムバリュー）の差は、時とともに圧倒的に開いていきます。</p>
+    <div class="ltv-sum" data-reveal>
+      <div class="row"><span class="lab">タイムレスな不動産</span><span class="barwrap"><span class="bar morio"></span></span><span class="mult morio">×2.0</span></div>
+      <div class="row"><span class="lab">通常の不動産</span><span class="barwrap"><span class="bar conv"></span></span><span class="mult">×1.0</span></div>
+      <p class="note">100年間に握る累積LTV＝曲線の下の面積。価値の傾きは両者とも同じ——違いは、通常の不動産が約50年ごとに蓄積をゼロへ戻すことだけ。それだけで、握る面積は2倍に開く。しかも差は固定ではない。横軸を伸ばすほど開き続ける——150年で3倍へ。時間を味方にできるのは、壊さずに済む資産だけ。</p>
+    </div>
+  </div>
+  <!-- ===== LTV Simulator — interactive companion to the chart above ===== -->
+  <div class="ltvsim-cta" id="ls_cta" role="button" tabindex="0" data-reveal>
+    <div class="ls-cta-l">
+      <span class="ls-cta-k" data-ls="cta_k">LTV Simulator</span>
+      <span class="ls-cta-t" data-ls="cta_t"></span>
+    </div>
+    <div class="ls-cta-r"><span data-ls="cta_run"></span><span class="ls-arw" aria-hidden="true">→</span></div>
   </div>
 </section>
 
@@ -525,9 +558,7 @@
         <span class="en">What We Bring</span>
         <span class="jp">提供する、六つのバリュー</span>
       </div>
-      <p class="lead" data-reveal data-delay="1">
-        付加価値を生む六つの機能を、外注ではなく一つのチームとして提供します。
-      </p>
+      <p class="lead" data-reveal data-delay="1">付加価値を生む六つの機能を、一つのclusterとして提供します。</p>
     </div>
     <div class="caps" data-reveal style="margin-top:var(--space-block);">
       <div class="cap-item"><span class="no">01</span><div class="en">Concept Design</div><div class="jp">企画・コンセプト設計</div><p class="d">立地のポテンシャルを最大化するアセットタイプと需要構造を設計します。</p></div>
@@ -553,18 +584,18 @@
     <div class="stats" data-reveal style="margin-top:var(--space-block);">
       <div class="stat">
         <div class="n tnum">65,000<span class="u">円/坪</span></div>
-        <div class="k">自社ビル実現坪単価</div>
-        <div class="d">近隣相場（¥20,000台）の約3倍を達成しました。</div>
+        <div class="k">自社ビル坪単価</div>
+        <div class="d">近隣相場（¥20,000台）の約3倍。</div>
       </div>
       <div class="stat">
-        <div class="n tnum">&gt;70,000<span class="u">円/坪</span></div>
-        <div class="k">超富裕層賃料水準</div>
-        <div class="d">東京の超高級不動産賃料が、新たなステージへ移行しています。</div>
+        <div class="n tnum">70,000<span class="u">円/坪</span></div>
+        <div class="k">賃料水準</div>
+        <div class="d">既存賃料の概念を新しい次元へ。</div>
       </div>
       <div class="stat">
         <div class="n tnum">×3<span class="u">相場比</span></div>
-        <div class="k">相場を超えるプレミアム</div>
-        <div class="d">付加価値を設計し、相場を超えていきます。</div>
+        <div class="k">対近隣相場</div>
+        <div class="d">坪単価の、相場に対する倍率。</div>
       </div>
     </div>
   </div>
@@ -595,13 +626,11 @@
     </figure>
     <div class="stack">
       <span class="idx" data-reveal>The Producer</span>
-      <p class="quote" data-reveal data-delay="1"><span class="mk"></span>時を超える、究極のマスターピース創造へ<span class="mk"></span></p>
+      <p class="quote" data-reveal data-delay="1"><span class="mk"></span>時を超える、マスターピースの創造へ<span class="mk"></span></p>
       <div class="pmsg" data-reveal data-delay="1">
         <p class="body">人類は文明の発祥以来、ピラミッドや万里の長城、ノートルダム大聖堂、法隆寺といった、時を超えて輝き続ける金字塔を生み出してきました。<br class="bp">その荘厳な存在の前に立つとき、私たちは言葉を失い、畏敬の念を抱かずにはいられません。<br class="bp">それらは国家や民族のアイデンティティ、文化、思想——あらゆるものの土台となってきました。</p>
-        <p class="body">けれど二十世紀以降の、スクラップ＆ビルドを前提とした刹那的な視座のなかで、後世に残る創造は、いったいどれほど生まれたでしょうか。
-その多くは、時代の変遷とともに消費され、消えていきます。</p>
-        <p class="body">では、真にサステナブルな創造とは何か。
-私は、遥かな未来にも魂の痕跡が残るものにこそ、その答えがあると確信しています。それは、エモーショナルでタイムレスな、唯一無二のアートとなるでしょう。</p>
+        <p class="body">翻って、二十世紀以降のスクラップ＆ビルドを前提とした刹那的な視座のなかで、後世に残る創造はいったいどれほど生まれたでしょうか。 その多くは、時代の変遷とともに消費され、消えてしまいます。</p>
+        <p class="body">では、真にサステナブルな創造とは何か。 私は、遥かな未来にも魂の痕跡が残るものにこそ、その答えがあると確信しています。それは、エモーショナルでタイムレスな、唯一のアートであるはずです。</p>
         <p class="body">私たちは感性の深淵へと向かい、時を超えるマスターピースを創造します。</p>
       </div>
       <div data-reveal data-delay="2">
@@ -652,9 +681,9 @@
 <!-- ===================== FOOTER / CONTACT ===================== -->
 <footer class="footer" id="contact">
   <div class="wrap">
-    <p class="cta-h" data-reveal style="font-size: 25px;">Begin a conversation.</p>
+    <p class="cta-h" data-reveal>Begin a conversation.</p>
     <div data-reveal data-delay="1" style="margin-top:2em;">
-      <a href="mailto:info@morio-realestate.com" class="bigmail" style="font-size: 25px;">info@morio-realestate.com <span class="arw">→</span></a>
+      <a href="mailto:info@morio-realestate.com" class="bigmail">info@morio-realestate.com <span class="arw">→</span></a>
     </div>
     <div class="foot-grid">
       <div class="col">
@@ -688,7 +717,7 @@
 <!-- ===================== BGM ===================== -->
 <button id="bgm" class="bgm" aria-label="背景音楽 再生／停止" aria-pressed="false">
   <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <span class="bgm-lab">Sound</span>
+  <span class="bgm-lab">Sound Off</span>
 </button>
 <audio id="bgm-audio" src="assets/audio/morio-theme.mp3" loop preload="none"></audio>
 
@@ -717,7 +746,7 @@
       } else { audio.volume = Math.max(0, Math.min(1, v)); }
     }, 40);
   }
-  function setUI(p){ btn.classList.toggle('playing', p); btn.setAttribute('aria-pressed', p ? 'true' : 'false'); }
+  function setUI(p){ btn.classList.toggle('playing', p); btn.setAttribute('aria-pressed', p ? 'true' : 'false'); var lab=btn.querySelector('.bgm-lab'); if(lab) lab.textContent = p ? 'Sound On' : 'Sound Off'; }
 
   function play(){
     audio.volume = 0;
@@ -733,8 +762,8 @@
   }
   btn.addEventListener('click', function(){ if(audio.paused) play(); else pause(); });
 
-  // reveal the control once past the hero
-  function onScroll(){ if(window.scrollY > 120) btn.classList.add('show'); else btn.classList.remove('show'); }
+  // always visible, including the top of the page
+  function onScroll(){ btn.classList.add('show'); }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 
@@ -749,5 +778,102 @@
   }
 })();
 </script>
+<!-- ===================== LTV SIMULATOR — modal (fixed; kept outside any transformed section) ===================== -->
+<div class="ltvsim-overlay" id="ls_overlay" aria-hidden="true">
+  <div class="ltvsim-modal" role="dialog" aria-modal="true">
+    <button class="ltvsim-close" id="ls_close" type="button" aria-label="Close">×</button>
+    <div class="ls-pad">
+      <div class="ls-eyebrow" data-ls="m_eyebrow">賃料LTV積算シミュレーター ｜ 本質比較</div>
+      <div class="ls-title" data-ls-html="m_title"></div>
+      <div class="ls-doctrine" data-ls="doctrine">タイムレスな不動産 ―― 高付加価値（賃料プレミアム）× サスティナブル（経年優化）。100年、性能は新築のまま。</div>
+      <p class="ls-sub" data-ls="m_sub"></p>
+
+      <div class="ls-block"><span class="ls-bk" data-ls="bl_cond"></span><span class="ls-bn" data-ls="bl_cond_n"></span></div>
+      <div class="ls-front">
+        <div class="ls-fld">
+          <div class="ls-row"><label data-ls="f_area"></label><span class="ls-v"><span id="ls_v_area">100</span><small data-ls="u_tsubo"></small></span></div>
+          <input type="range" id="ls_area" min="30" max="500" step="5" value="100">
+        </div>
+        <div class="ls-fld">
+          <div class="ls-row"><label data-ls="f_unit"></label><span class="ls-v"><span id="ls_v_unit">400</span><small data-ls="u_unit"></small></span></div>
+          <input type="range" id="ls_unit" min="200" max="800" step="10" value="400">
+        </div>
+        <div class="ls-fld">
+          <div class="ls-row"><label data-ls="f_H"></label><span class="ls-v"><span id="ls_v_H">100</span><small data-ls="u_year"></small></span></div>
+          <input type="range" id="ls_H" min="50" max="100" step="5" value="100">
+        </div>
+      </div>
+
+      <div class="ls-buildcost">
+        <span data-ls="bc_label"></span>
+        <span><span data-ls="bc_conv"></span> <b id="ls_bc_t">4.0</b> <span data-ls="u_oku"></span> ／ <span data-ls="bc_tl"></span> <b id="ls_bc_m">6.0</b> <span data-ls="u_oku"></span></span>
+      </div>
+
+      <div class="ls-block"><span class="ls-bk" data-ls="bl_fixed"></span><span class="ls-bn" data-ls="bl_fixed_n"></span></div>
+      <div class="ls-fixed">
+        <div class="ls-fx"><span class="ls-fl" data-ls="fx1_l"></span><span class="ls-fv" data-ls-html="fx1_v"></span></div>
+        <div class="ls-fx"><span class="ls-fl" data-ls="fx2_l"></span><span class="ls-fv" data-ls-html="fx2_v"></span></div>
+        <div class="ls-fx"><span class="ls-fl" data-ls="fx3_l"></span><span class="ls-fv" data-ls-html="fx3_v"></span></div>
+        <div class="ls-fx"><span class="ls-fl" data-ls="fx4_l"></span><span class="ls-fv" data-ls-html="fx4_v"></span></div>
+      </div>
+      <p class="ls-fxnote" data-ls="fx_note"></p>
+
+      <div class="ls-verdict">
+        <div class="ls-vcols">
+          <div class="ls-vcol">
+            <div class="ls-lab" data-ls="v_conv"></div>
+            <div class="ls-big"><span id="ls_ver_t">11.4</span><small data-ls="u_oku"></small></div>
+          </div>
+          <div class="ls-vdivide"></div>
+          <div class="ls-vcol ls-gain">
+            <div class="ls-lab" data-ls="v_tl"></div>
+            <div class="ls-big"><span id="ls_ver_m">37.6</span><small data-ls="u_oku"></small></div>
+          </div>
+          <div class="ls-vdivide"></div>
+          <div class="ls-vcol">
+            <div class="ls-lab" data-ls="v_mult"></div>
+            <div class="ls-big"><span id="ls_ver_mult">3.3</span><small data-ls="u_mult"></small></div>
+          </div>
+        </div>
+        <div class="ls-line" id="ls_ver_line"></div>
+      </div>
+
+      <div class="ls-block"><span class="ls-bk" data-ls="bl_yield"></span><span class="ls-bn" data-ls="bl_yield_n"></span></div>
+      <table class="ls-yt">
+        <thead><tr><th></th><th data-ls="th_conv"></th><th data-ls="th_tl"></th></tr></thead>
+        <tbody>
+          <tr><td data-ls="y1"></td><td class="ls-vt" id="ls_y_initt">6.0%</td><td class="ls-vm" id="ls_y_initm">8.0%</td></tr>
+          <tr><td data-ls="y2"></td><td class="ls-vt" id="ls_y_buildt"></td><td class="ls-vm" id="ls_y_buildm"></td></tr>
+          <tr><td data-ls="y3"></td><td class="ls-vt" id="ls_y_invt"></td><td class="ls-vm" id="ls_y_invm"></td></tr>
+          <tr class="ls-hl"><td data-ls="y4"></td><td class="ls-vt ls-mincho" id="ls_y_rect">2.4x</td><td class="ls-vm ls-mincho" id="ls_y_recm">7.3x</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ls-chartwrap">
+        <div class="ls-chartcap" id="ls_chartcap"></div>
+        <div class="ls-chartbox"><canvas id="ls_chart"></canvas></div>
+        <div class="ls-legend">
+          <span><i style="background:var(--accent)"></i><span data-ls="leg_tl"></span></span>
+          <span><i style="background:var(--muted)"></i><span data-ls="leg_conv"></span></span>
+          <span><i class="dash"></i><span data-ls="leg_rb"></span></span>
+        </div>
+      </div>
+
+      <details class="ls-details">
+        <summary data-ls="d_summary"></summary>
+        <div class="ls-detgrid">
+          <div class="ls-dfld"><label data-ls="d_floor"></label><input type="number" id="ls_floorT" value="0.80" step="0.01"></div>
+          <div class="ls-dfld"><label data-ls="d_tau"></label><input type="number" id="ls_tau" value="8" step="1"></div>
+          <div class="ls-dfld"><label data-ls="d_cycle"></label><input type="number" id="ls_cycle" value="50" step="1"></div>
+          <div class="ls-dfld"><label data-ls="d_dt"></label><input type="number" id="ls_dt" value="2" step="1"></div>
+        </div>
+      </details>
+
+      <p class="ls-foot" data-ls="foot"></p>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/ltv-sim.js"></script>
 </body>
 </html>
