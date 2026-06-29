@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+ window.__pageLang='zh';
+ window.__langMap={ja:'the-stump-column-kiyomizu.html',en:'the-stump-column-kiyomizu.en.html',zh:'the-stump-column-kiyomizu.zh.html'};
+ (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
+</script>
+<title>清水寺，已经赚了一千年的房租 — Special Column｜MORIO</title>
+<meta name="description" content="清水寺——一台运转千年的经济装置。从建筑的LTV，到城市的LTV。MORIO・森田夏光的特别专栏。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* aligned to the MORIO HP dark-noir editorial system */
+    --bg:#0b0b0c;
+    --paper:#121214;
+    --ink:#ece7dd;
+    --soft:#b8b2a7;
+    --faint:#5d584f;
+    --bronze:#c2a25f;
+    --bronze-deep:#9c7d44;
+    --line:rgba(236,231,221,0.13);
+    --line-2:rgba(236,231,221,0.22);
+    --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+    --en:"Jost",system-ui,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--serif);font-weight:400;
+    font-size:17px;line-height:1.96;letter-spacing:.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--bronze);color:#0b0b0c}
+  img{display:block;max-width:100%}
+
+  .col{max-width:680px;margin:0 auto;padding:0 22px}
+  .wide{max-width:880px;margin:0 auto;padding:0 22px}
+
+  /* top bar */
+  .topbar{display:flex;justify-content:space-between;align-items:center;
+    max-width:1100px;margin:0 auto;padding:22px 24px}
+  .topbar .mark{font-family:var(--en);font-weight:400;letter-spacing:.46em;text-indent:.46em;
+    font-size:1.18rem;color:var(--ink);text-decoration:none}
+  .topbar .nav{font-family:var(--en);font-weight:500;letter-spacing:.2em;
+    font-size:.78rem;color:var(--soft);text-decoration:none;text-transform:uppercase;
+    transition:color .4s var(--ease)}
+  .topbar .nav:hover,.topbar .nav:focus-visible{color:var(--bronze)}
+  .topbar-right{display:flex;align-items:center;gap:1.4rem}
+  .lang-switch{display:inline-flex;align-items:center;gap:.1em}
+  .lang-switch a{font-family:var(--serif);font-size:.72rem;letter-spacing:.1em;color:var(--faint);padding:.25em .4em;transition:color .35s var(--ease)}
+  .lang-switch a:hover{color:var(--ink)}
+  .lang-switch a.is-active{color:var(--bronze)}
+  .lang-switch .sep{color:var(--line-2);font-size:.6rem}
+
+  /* special tag above title */
+  .special-tag{max-width:880px;margin:0 auto;padding:0 24px}
+  .special-tag span{display:inline-flex;align-items:center;gap:.85em;
+    font-family:var(--en);font-weight:600;letter-spacing:.34em;text-transform:uppercase;
+    font-size:.7rem;color:var(--bronze)}
+  .special-tag span::before{content:"";width:30px;height:1px;background:var(--bronze);opacity:.8}
+
+  /* cover */
+  .cover{margin-top:18px}
+  .cover img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 38%;border-radius:10px}
+
+  /* article head */
+  .head{padding-top:40px}
+  .eyebrow{font-family:var(--en);font-weight:600;letter-spacing:.3em;
+    font-size:.74rem;text-transform:uppercase;color:var(--bronze)}
+  h1{font-family:var(--serif);font-weight:600;letter-spacing:.02em;
+    font-size:clamp(1.7rem,4.6vw,2.15rem);line-height:1.5;margin:18px 0 22px}
+  h1 em{font-style:normal;color:var(--bronze)}
+  .byline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding-bottom:26px;border-bottom:1px solid var(--line)}
+  .byline .nm{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink)}
+  .byline .meta{font-family:var(--en);letter-spacing:.12em;font-size:.84rem;color:var(--faint)}
+  .byline .dot{color:var(--line-2)}
+
+  /* body */
+  p{margin:0 0 1.5em}
+  .lede{padding-top:34px}
+  .lede p{font-size:1.12rem;line-height:1.95;color:var(--ink)}
+  section.block{padding-top:18px}
+  .kicker{font-family:var(--en);font-weight:600;letter-spacing:.14em;
+    font-size:.78rem;color:var(--bronze);margin:40px 0 12px}
+  .kicker .jp{font-family:var(--serif);font-weight:500;letter-spacing:.04em;color:var(--soft)}
+  h2{font-family:var(--serif);font-weight:600;letter-spacing:.02em;
+    font-size:clamp(1.3rem,3.4vw,1.55rem);line-height:1.62;margin-bottom:1.1em}
+  h2 em{font-style:normal;color:var(--bronze);
+    background:linear-gradient(transparent 66%, rgba(194,162,95,.30) 66%)}
+  .body p{color:var(--ink)}
+  .body strong{font-weight:700;color:var(--ink);
+    background:linear-gradient(transparent 64%, rgba(194,162,95,.28) 64%)}
+
+  /* figures */
+  figure{margin:34px 0}
+  figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;
+    border-radius:8px}
+  figure.tall img{aspect-ratio:3/4}
+  figcaption{font-size:.83rem;line-height:1.7;color:var(--faint);
+    margin-top:10px;padding-left:14px;border-left:2px solid var(--line-2)}
+
+  /* stats */
+  .stats{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin:30px 0 6px}
+  .stats div{flex:1;text-align:center;padding:20px 6px;border-right:1px solid var(--line)}
+  .stats div:last-child{border-right:none}
+  .stats .v{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink)}
+  .stats .v .s{font-size:.62em;font-weight:500}
+  .stats .k{font-size:.72rem;color:var(--faint);margin-top:5px;letter-spacing:.04em}
+
+  /* ladder */
+  .ladder{margin:34px 0 8px;padding:30px 24px;background:var(--paper);
+    border:1px solid var(--line);border-radius:12px}
+  .ladder-label{font-family:var(--en);font-weight:600;letter-spacing:.26em;
+    font-size:.72rem;text-transform:uppercase;color:var(--bronze);
+    text-align:center;margin-bottom:26px}
+  .rung{position:relative;padding-left:26px;margin-bottom:20px}
+  .rung:last-child{margin-bottom:0}
+  .rung::before{content:"";position:absolute;left:5px;top:1.4em;bottom:-20px;
+    width:1px;background:var(--line-2)}
+  .rung:last-child::before{display:none}
+  .rung::after{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;
+    border-radius:50%;background:var(--bg);border:1.5px solid var(--bronze)}
+  .rung.lit::after{background:var(--bronze)}
+  .rung .tier{font-family:var(--en);font-weight:600;letter-spacing:.16em;
+    font-size:.72rem;text-transform:uppercase;color:var(--bronze-deep)}
+  .rung .name{font-family:var(--serif);font-weight:600;color:var(--ink);line-height:1.4;margin:.1em 0}
+  .rung.r1 .name{font-size:1.02rem}
+  .rung.r2 .name{font-size:1.1rem}
+  .rung.r3 .name{font-size:1.2rem}
+  .rung.r4 .name{font-size:1.34rem;color:var(--bronze)}
+  .rung .val{font-size:.84rem;color:var(--soft)}
+  .ladder-cap{text-align:center;font-family:var(--serif);font-weight:600;
+    color:var(--ink);font-size:1.04rem;margin-top:26px;padding-top:22px;
+    border-top:1px solid var(--line)}
+
+  /* dual */
+  .dual{display:flex;gap:14px;margin:30px 0 6px}
+  .dual div{flex:1;text-align:center;padding:26px 14px;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px}
+  .dual .k{font-size:.8rem;color:var(--soft);margin-bottom:.8em}
+  .dual .v{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--ink)}
+  .dual .v .s{font-size:.55em}
+  .dual div:last-child .v{color:var(--bronze)}
+
+  /* pullquote */
+  .pull{text-align:center;margin:54px 0;padding:34px 0;
+    border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+  .pull p{margin:0;font-family:var(--serif);font-weight:600;
+    font-size:clamp(1.35rem,3.6vw,1.6rem);line-height:1.7;letter-spacing:.02em}
+  .pull .b{color:var(--bronze)}
+
+  /* outro */
+  .sig-line{font-family:var(--serif);font-weight:600;text-align:center;
+    font-size:1.18rem;line-height:1.8;color:var(--ink);
+    margin:40px 0;padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .signoff{text-align:right;margin-top:24px}
+  .signoff .nm{font-family:var(--serif);font-weight:600;font-size:1.05rem}
+  .signoff .ttl{font-family:var(--en);letter-spacing:.16em;font-size:.78rem;
+    text-transform:uppercase;color:var(--faint);margin-top:.4em}
+  .back{margin:44px 0 0}
+  .back a{font-family:var(--en);font-weight:600;letter-spacing:.16em;font-size:.86rem;
+    text-transform:uppercase;color:var(--bronze);text-decoration:none;
+    border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:color .4s var(--ease),border-color .4s var(--ease)}
+  .back a:hover,.back a:focus-visible{color:var(--bronze-deep);border-color:var(--bronze)}
+
+  footer{margin-top:70px;padding:34px 22px 50px;border-top:1px solid var(--line);text-align:center}
+  footer .l{font-size:.8rem;color:var(--soft);letter-spacing:.04em}
+  footer .c{font-family:var(--en);font-size:.74rem;color:var(--faint);margin-top:.8em;letter-spacing:.06em}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:560px){
+    body{font-size:16px}
+    .dual{flex-direction:column}
+    .stats{flex-wrap:wrap}
+    .stats div{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--line)}
+    .stats div:last-child{border-bottom:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="mark" href="index.html">MORIO</a>
+  <div class="topbar-right">
+    <a class="nav" href="the-stump.html">THE STUMP →</a>
+    <div class="lang-switch"><a href="the-stump-column-kiyomizu.html" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="the-stump-column-kiyomizu.en.html" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="the-stump-column-kiyomizu.zh.html" class="is-active" data-lang="zh" hreflang="zh">中</a></div>
+  </div>
+</div>
+
+<div class="special-tag"><span>Special Column</span></div>
+
+<div class="wide cover">
+  <img src="assets/hero.webp" alt="暮色中的清水寺——聚集在本堂舞台上的参拜者">
+</div>
+
+<div class="col head">
+  <div class="eyebrow">专栏 · 不动产策划</div>
+  <h1>清水寺，已经赚了<em>一千年的房租</em>。</h1>
+  <div class="byline">
+    <span class="meta">不动产策划人 · 2026</span>
+  </div>
+</div>
+
+<div class="col lede">
+  <p>在我看来，清水寺这座建筑真正了不起的地方，既不是舞台的高度，也不是不用一根钉子的构法。它创建于公元778年，如今的伽蓝重建于1633年。从那以后它一刻也没有停下，直到今天仍在持续创收——一千多年来，它始终是一台运转中的经济装置。真正吸引我的，正是这一点。</p>
+  <p>所以，对于THE STUMP，我设定的标准也不是设计，更不是高度。建成之后，它能否持续创造价值一千年——只有这一点。清水寺正是少数真正做到了这一点的实例。那么，清水寺究竟赚了多少钱？让我从最直观的地方算起——门票收入。</p>
+</div>
+
+<!-- 01 -->
+<section class="col block">
+  <div class="kicker">01 <span class="jp">· 门票的错觉</span></div>
+  <h2>门票，并<em>不是</em>清水寺的价值</h2>
+  <div class="body">
+    <p>我想，大概很少有人认真算过清水寺的门票收入。真算一遍，会有些扫兴。</p>
+    <figure class="reveal">
+      <img src="assets/s01-townscape.webp" alt="暮色中，清水寺门前铺展开的东山街町与现代建筑">
+      <figcaption>暮色中的门前町。清水寺的「价值」，在门票之外——就在这一整片景象里。</figcaption>
+    </figure>
+    <p>每年的参拜者大约500万人。成人500日元，相乘也不过25亿日元。把护身符、御朱印、香火钱、特别拜观全加上，寺院的年收入顶多也就<strong>30亿～45亿日元</strong>（并没有公开的财报，这里是推算）。要是交给地产商来评估，数字会更冷清。这里是山、是斜坡、又是一堆文物保护限制，根本算不出像样的坪单价。在评估书上，清水寺最终只落得一个「还过得去的收益型不动产」。</p>
+    <p>——可是，这个数字关于清水寺什么也没说中。这篇专栏，正是从这里开始。</p>
+  </div>
+  <div class="stats">
+    <div><div class="v">500<span class="s">万人+</span></div><div class="k">年间来访者</div></div>
+    <div><div class="v">25<span class="s">亿日元</span></div><div class="k">门票收入 · 估算</div></div>
+    <div><div class="v">AD 778</div><div class="k">创建</div></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="col block">
+  <div class="kicker">02 <span class="jp">· 让周围赚钱</span></div>
+  <h2>它不是自己赚钱，而是<em>让周围赚钱</em></h2>
+  <div class="body">
+    <p>清水寺的主业并不是门票，那更像是副业。它真正的主业，是不断把客流引向整个东山一带。</p>
+    <figure class="reveal">
+      <img src="assets/s02-machiya.webp" alt="挤满参拝者的二年坂门前町，和服与人力车">
+      <figcaption>二年坂上的人潮。支撑起这份热闹的，大半就系于清水寺这一个点。</figcaption>
+    </figure>
+    <p>清水坂、二年坂、三年坂、祇园。那一带的饭馆、土特产店、旅馆、出租车、和服租赁，在那里工作的人的工资，租户缴的房租——几乎全都系于「清水寺就在那里」这一个点上。把一位参拝者因清水寺而在周边花掉的钱保守地放在1～2万日元，乘以500万人，每年就是<strong>500亿～1000亿日元</strong>，是门票收入的20到40倍。2024年京都市整体的旅游消费约为1.9万亿日元，人均3.4万日元。在这之中，把1～2万日元归到清水寺名下，绝不是夸大，反倒我觉得偏保守。</p>
+    <p>换句话说，清水寺充实的不是自己的钱包，而是整座城的钱包。好的建筑，大体都在做这件事——它不会把账算在自家地块之内，而是把经济撒到围墙之外。</p>
+  </div>
+
+  <div class="ladder">
+    <div class="ladder-label">The Scale of Value</div>
+    <div class="rung r1"><div class="tier">Building LTV — 物业</div><div class="name">门票 · 授与品</div><div class="val">≈ 30～45亿日元／年</div></div>
+    <div class="rung r2"><div class="tier">Area LTV — 区域</div><div class="name">东山的商业 · 住宿 · 租金</div><div class="val">≈ 500～1000亿日元／年</div></div>
+    <div class="rung r3"><div class="tier">City LTV — 城市</div><div class="name">对京都品牌的贡献</div><div class="val">作为1.9万亿日元旅游消费的一极</div></div>
+    <div class="rung r4 lit"><div class="tier">National LTV — 国家</div><div class="name">无可替代的文化资本</div><div class="val">一旦失去，损失逾5万亿日元</div></div>
+    <div class="ladder-cap">从单体建筑的LTV，到城市的LTV。</div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="col block">
+  <div class="kicker">03 <span class="jp">· 两个价格</span></div>
+  <h2>同一座建筑，挂着<em>两个价格</em></h2>
+  <div class="body">
+    <p>于是，清水寺挂着两张截然不同的价签。若当作待售的不动产贱卖，大约700亿日元；若看作支撑京都运转的文化基础设施，则是3万亿日元。两者都不是谎言，只是观察的角度不同而已。</p>
+    <figure class="reveal">
+      <img src="assets/s03-two-values.webp" alt="左：无人而失色的清水寺；右：暮色中熙攘的清水寺">
+      <figcaption>同一座建筑上的两个截然不同的价格。左边是土地与建筑，右边是城市装置。</figcaption>
+    </figure>
+    <p>寺域约13万平方米，折合约3.9万坪。把3万亿日元摊到上面，每坪7600万日元。京都的一片山坡，竟被评出与银座比肩的坪单价。听起来也许荒唐。但这并不是土地本身的禀赋算出来的数字，而是历史、信仰、故事与时间，把原本的地价膨胀了数百倍的结果。土地，不过是个引子。</p>
+  </div>
+  <div class="dual">
+    <div><div class="k">作为经营性不动产</div><div class="v">700<span class="s">亿日元</span></div></div>
+    <div><div class="k">作为文化基础设施</div><div class="v">3<span class="s">万亿日元</span></div></div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="col block">
+  <div class="kicker">04 <span class="jp">· 走到行情之外</span></div>
+  <h2>它不是建在黄金地段，而是<em>把那里变成了黄金地段</em></h2>
+  <div class="body">
+    <p>这是最关键的一点，所以我直说。清水寺并不是因为建在京都的黄金地段才有价值，而是因为清水寺建了起来，周围才变成了黄金地段——顺序，是反过来的。把这件事弄反的人，即便在业内也多得惊人。</p>
+    <figure class="reveal">
+      <img src="assets/s04-town-vs-barren.webp" alt="右：清水寺的门前町；左：未经开发的斜坡">
+      <figcaption>右边是门前町，左边是未经开发的斜坡。比街市更早存在的，是建筑。</figcaption>
+    </figure>
+    <p>普通的不动产，价格由「地价＋建造费＋收益率」决定。所以无论怎么算，周边的行情都会成为天花板。清水寺的价格，则由「去那里的理由 × 集客力 × 时间 × 对街区的外溢」决定。所以它能一举冲破行情。这不是异常值，只是<strong>走到了行情之外</strong>而已。</p>
+    <p>不动产策划的终极形态，不是把好地段卖出高价的把戏，而是事后让那块土地凭空生出它原本没有的价值。不是顺从行情，而是去画行情——站到往地图上添一笔的那一边。</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="col block">
+  <div class="kicker">05 <span class="jp">· 如今，市中心正在造的东西</span></div>
+  <h2>越是看起来豪华的开发，<em>越没有创造丰盛</em></h2>
+  <div class="body">
+    <p>话说回来，如今在市中心黄金地段接连拔地而起的大规模再开发——把办公、商业、住宅叠进一栋楼里的那些综合塔群，做的恰恰是与上文相反的事。最新设备、海外一流品牌、当代艺术、做得很好的康养。开业当天的照片，无一不光鲜亮丽。可只要把两三个并排一看，立刻就会发现——上面排着的面孔，几乎一模一样。</p>
+    <figure class="reveal">
+      <img src="assets/s05-redevelopment.webp" alt="在市中心黄金地段层层叠起的办公·商业·住宅综合塔群" style="aspect-ratio:3/2">
+      <figcaption>在市中心黄金地段层层叠起的综合塔群。开业当天的照片，每一张都光鲜亮丽。</figcaption>
+    </figure>
+    <p>原因很清楚。新建楼面的建造成本很高。付得起那份租金的，只有全世界哪里都有的奢侈品牌，和全国连锁。所以每一个再开发，都被同样的面孔填满。并不是开发商讨厌个性——是租金的算式本身，把个性赶了出去。然而，能孕育文化的街区，无一例外都是只属于那片土地的个人小店的集合。连锁效率很高，却没有参差。在出不了惊喜的地方，让人特意前往的理由，很难生长出来。</p>
+    <p>在这里，回到LTV的视角。开业当天最光鲜的开发，未必就是百年之后创造最多价值的那一个。恰恰相反的情况，反而更多。哪里都有的面孔，只会产生哪里都有的价值，于是迟早被拉回行情，并随着设备的老化而一路掉价。而在清水寺周围用一千年堆积起来的个人小店的集合，至今仍在把人引向东山。<strong>豪华，与丰盛，是两回事。</strong>豪华在开业当天达到顶点，丰盛则随时间不断累积。自己究竟在造哪一种街区，不是竣工典礼的排场说了算，而是由一百年后的LTV来对答案。</p>
+  </div>
+</section>
+
+<!-- climax -->
+<div class="col">
+  <div class="pull">
+    <p>建筑，创造收益。<br><span class="b">而杰作，创造城市。</span></p>
+  </div>
+</div>
+
+<!-- outro -->
+<section class="col block">
+  <div class="kicker">于是 <span class="jp">· THE STUMP</span></div>
+  <div class="body">
+    <p>我想用THE STUMP造的，说到底，是<strong>一座当代的清水寺</strong>。至于「超高层住宅」这层外壳，老实说，我毫不在意。</p>
+    <p>公元778年的京都能做到的事，我想不出任何一条理由，说2020年代的东京做不到。建筑，不必是30年就拆掉的消耗品。建一次，长久地创收，即便业主几度易手，意义仍不断被刷新，向周围撒下经济与文化——在这个时代，把这样一台装置再立起来一次。要做的，仅此而已。</p>
+    <p>清水寺，早已证明了这一点。最顶级的不动产，是拥有「直到永远，人们都会前往那里的理由」。不是木材，也不是土地，而在于你是否握有那个理由。</p>
+  </div>
+  <div class="sig-line">直到永远，人们都会前往那里的理由，<br>我们把它设计进建筑之中。</div>
+  <div class="signoff">
+    <div class="nm">Natsuhiko Morita</div>
+    <div class="ttl">Founder &amp; CEO · Real Estate Producer</div>
+  </div>
+  <div class="back"><a href="the-stump.html">← 返回 THE STUMP</a></div>
+</section>
+
+<footer>
+  <div class="c">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.18});
+  document.querySelectorAll('.reveal').forEach(function(n){io.observe(n);});
+})();
+document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});
+</script>
+</body>
+</html>

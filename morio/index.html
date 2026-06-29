@@ -14,7 +14,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/morio.css">
 <link rel="stylesheet" href="assets/motion.css">
-<link rel="stylesheet" href="assets/ltv-sim.css">
 <style>
   /* compact home — local refinements */
   .lede{ max-width:var(--readw); }
@@ -101,6 +100,13 @@
   .decl-feature .d-go .arw{ color:var(--accent); transition:transform .5s var(--ease); }
   .decl-feature:hover .d-go .arw{ transform:translateX(9px); }
   @media (max-width:620px){ .decl-feature{ grid-template-columns:1fr; gap:1.6em; } }
+  /* discreet Special Column link (footer Explore) */
+  .footer .special-col{ display:inline-flex; align-items:center; gap:.5em; font-family:var(--font-en);
+    font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; color:var(--faint);
+    transition:color .45s var(--ease); }
+  .footer .special-col .sc-dot{ color:var(--accent); opacity:.55; transition:opacity .45s var(--ease); }
+  .footer .special-col:hover{ color:var(--accent); }
+  .footer .special-col:hover .sc-dot{ opacity:1; }
   /* language switch */
   .lang-switch{ display:inline-flex; align-items:center; gap:.1em; margin-left:.2em; }
   .lang-switch a{ font-family:var(--font-jp); font-size:.7rem; letter-spacing:.14em; color:var(--ink-soft); padding:.35em .5em; transition:color .35s var(--ease); }
@@ -534,14 +540,6 @@
       <p class="note">100年間に握る累積LTV＝曲線の下の面積。価値の傾きは両者とも同じ——違いは、通常の不動産が約50年ごとに蓄積をゼロへ戻すことだけ。それだけで、握る面積は2倍に開く。しかも差は固定ではない。横軸を伸ばすほど開き続ける——150年で3倍へ。時間を味方にできるのは、壊さずに済む資産だけ。</p>
     </div>
   </div>
-  <!-- ===== LTV Simulator — interactive companion to the chart above ===== -->
-  <div class="ltvsim-cta" id="ls_cta" role="button" tabindex="0" data-reveal>
-    <div class="ls-cta-l">
-      <span class="ls-cta-k" data-ls="cta_k">LTV Simulator</span>
-      <span class="ls-cta-t" data-ls="cta_t"></span>
-    </div>
-    <div class="ls-cta-r"><span data-ls="cta_run"></span><span class="ls-arw" aria-hidden="true">→</span></div>
-  </div>
 </section>
 
 <!-- ===================== full-width interior ===================== -->
@@ -611,7 +609,7 @@
   <figure class="figure full" data-reveal>
     <img src="assets/img/devils-tower.webp" alt="THE STUMP — A Monument for Eternity">
     <figcaption class="cap">
-      <div class="s-eyebrow">THE VISION · 特設ページ</div>
+      <div class="s-eyebrow">THE VISION · SPECIAL CONTENTS</div>
       <div class="s-title">THE STUMP</div>
       <div class="s-sub">A Monument for Eternity <span class="arw">→</span></div>
     </figcaption>
@@ -621,7 +619,7 @@
 <!-- ===================== PRODUCER ===================== -->
 <section class="section wrap" id="producer">
   <div class="split narrow-left">
-    <figure class="figure" data-reveal style="aspect-ratio:3/4;">
+    <figure class="figure" data-reveal style="aspect-ratio:3/4; max-width:clamp(190px,24vw,290px); margin-right:auto;">
       <img src="assets/img/producer-bw.jpg" alt="森田 夏光 — Founder &amp; CEO" style="object-position:32% 50%;">
     </figure>
     <div class="stack">
@@ -778,102 +776,6 @@
   }
 })();
 </script>
-<!-- ===================== LTV SIMULATOR — modal (fixed; kept outside any transformed section) ===================== -->
-<div class="ltvsim-overlay" id="ls_overlay" aria-hidden="true">
-  <div class="ltvsim-modal" role="dialog" aria-modal="true">
-    <button class="ltvsim-close" id="ls_close" type="button" aria-label="Close">×</button>
-    <div class="ls-pad">
-      <div class="ls-eyebrow" data-ls="m_eyebrow">賃料LTV積算シミュレーター ｜ 本質比較</div>
-      <div class="ls-title" data-ls-html="m_title"></div>
-      <div class="ls-doctrine" data-ls="doctrine">タイムレスな不動産 ―― 高付加価値（賃料プレミアム）× サスティナブル（経年優化）。100年、性能は新築のまま。</div>
-      <p class="ls-sub" data-ls="m_sub"></p>
 
-      <div class="ls-block"><span class="ls-bk" data-ls="bl_cond"></span><span class="ls-bn" data-ls="bl_cond_n"></span></div>
-      <div class="ls-front">
-        <div class="ls-fld">
-          <div class="ls-row"><label data-ls="f_area"></label><span class="ls-v"><span id="ls_v_area">100</span><small data-ls="u_tsubo"></small></span></div>
-          <input type="range" id="ls_area" min="30" max="500" step="5" value="100">
-        </div>
-        <div class="ls-fld">
-          <div class="ls-row"><label data-ls="f_unit"></label><span class="ls-v"><span id="ls_v_unit">400</span><small data-ls="u_unit"></small></span></div>
-          <input type="range" id="ls_unit" min="200" max="800" step="10" value="400">
-        </div>
-        <div class="ls-fld">
-          <div class="ls-row"><label data-ls="f_H"></label><span class="ls-v"><span id="ls_v_H">100</span><small data-ls="u_year"></small></span></div>
-          <input type="range" id="ls_H" min="50" max="100" step="5" value="100">
-        </div>
-      </div>
-
-      <div class="ls-buildcost">
-        <span data-ls="bc_label"></span>
-        <span><span data-ls="bc_conv"></span> <b id="ls_bc_t">4.0</b> <span data-ls="u_oku"></span> ／ <span data-ls="bc_tl"></span> <b id="ls_bc_m">6.0</b> <span data-ls="u_oku"></span></span>
-      </div>
-
-      <div class="ls-block"><span class="ls-bk" data-ls="bl_fixed"></span><span class="ls-bn" data-ls="bl_fixed_n"></span></div>
-      <div class="ls-fixed">
-        <div class="ls-fx"><span class="ls-fl" data-ls="fx1_l"></span><span class="ls-fv" data-ls-html="fx1_v"></span></div>
-        <div class="ls-fx"><span class="ls-fl" data-ls="fx2_l"></span><span class="ls-fv" data-ls-html="fx2_v"></span></div>
-        <div class="ls-fx"><span class="ls-fl" data-ls="fx3_l"></span><span class="ls-fv" data-ls-html="fx3_v"></span></div>
-        <div class="ls-fx"><span class="ls-fl" data-ls="fx4_l"></span><span class="ls-fv" data-ls-html="fx4_v"></span></div>
-      </div>
-      <p class="ls-fxnote" data-ls="fx_note"></p>
-
-      <div class="ls-verdict">
-        <div class="ls-vcols">
-          <div class="ls-vcol">
-            <div class="ls-lab" data-ls="v_conv"></div>
-            <div class="ls-big"><span id="ls_ver_t">11.4</span><small data-ls="u_oku"></small></div>
-          </div>
-          <div class="ls-vdivide"></div>
-          <div class="ls-vcol ls-gain">
-            <div class="ls-lab" data-ls="v_tl"></div>
-            <div class="ls-big"><span id="ls_ver_m">37.6</span><small data-ls="u_oku"></small></div>
-          </div>
-          <div class="ls-vdivide"></div>
-          <div class="ls-vcol">
-            <div class="ls-lab" data-ls="v_mult"></div>
-            <div class="ls-big"><span id="ls_ver_mult">3.3</span><small data-ls="u_mult"></small></div>
-          </div>
-        </div>
-        <div class="ls-line" id="ls_ver_line"></div>
-      </div>
-
-      <div class="ls-block"><span class="ls-bk" data-ls="bl_yield"></span><span class="ls-bn" data-ls="bl_yield_n"></span></div>
-      <table class="ls-yt">
-        <thead><tr><th></th><th data-ls="th_conv"></th><th data-ls="th_tl"></th></tr></thead>
-        <tbody>
-          <tr><td data-ls="y1"></td><td class="ls-vt" id="ls_y_initt">6.0%</td><td class="ls-vm" id="ls_y_initm">8.0%</td></tr>
-          <tr><td data-ls="y2"></td><td class="ls-vt" id="ls_y_buildt"></td><td class="ls-vm" id="ls_y_buildm"></td></tr>
-          <tr><td data-ls="y3"></td><td class="ls-vt" id="ls_y_invt"></td><td class="ls-vm" id="ls_y_invm"></td></tr>
-          <tr class="ls-hl"><td data-ls="y4"></td><td class="ls-vt ls-mincho" id="ls_y_rect">2.4x</td><td class="ls-vm ls-mincho" id="ls_y_recm">7.3x</td></tr>
-        </tbody>
-      </table>
-
-      <div class="ls-chartwrap">
-        <div class="ls-chartcap" id="ls_chartcap"></div>
-        <div class="ls-chartbox"><canvas id="ls_chart"></canvas></div>
-        <div class="ls-legend">
-          <span><i style="background:var(--accent)"></i><span data-ls="leg_tl"></span></span>
-          <span><i style="background:var(--muted)"></i><span data-ls="leg_conv"></span></span>
-          <span><i class="dash"></i><span data-ls="leg_rb"></span></span>
-        </div>
-      </div>
-
-      <details class="ls-details">
-        <summary data-ls="d_summary"></summary>
-        <div class="ls-detgrid">
-          <div class="ls-dfld"><label data-ls="d_floor"></label><input type="number" id="ls_floorT" value="0.80" step="0.01"></div>
-          <div class="ls-dfld"><label data-ls="d_tau"></label><input type="number" id="ls_tau" value="8" step="1"></div>
-          <div class="ls-dfld"><label data-ls="d_cycle"></label><input type="number" id="ls_cycle" value="50" step="1"></div>
-          <div class="ls-dfld"><label data-ls="d_dt"></label><input type="number" id="ls_dt" value="2" step="1"></div>
-        </div>
-      </details>
-
-      <p class="ls-foot" data-ls="foot"></p>
-    </div>
-  </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="assets/ltv-sim.js"></script>
 </body>
 </html>

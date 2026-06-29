@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+ window.__pageLang='en';
+ window.__langMap={ja:'the-stump-column-kiyomizu.html',en:'the-stump-column-kiyomizu.en.html',zh:'the-stump-column-kiyomizu.zh.html'};
+ (function(){try{var s=localStorage.getItem('morio_lang');if(s&&s!==window.__pageLang&&window.__langMap[s]){location.replace(window.__langMap[s]);}}catch(e){}})();
+</script>
+<title>Kiyomizu-dera has been earning a thousand years of rent — Special Column｜MORIO</title>
+<meta name="description" content="Kiyomizu-dera: a thousand-year working economic engine. From the LTV of a building to the LTV of a city. A Special Column by Natsuhiko Morita, MORIO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* aligned to the MORIO HP dark-noir editorial system */
+    --bg:#0b0b0c;
+    --paper:#121214;
+    --ink:#ece7dd;
+    --soft:#b8b2a7;
+    --faint:#5d584f;
+    --bronze:#c2a25f;
+    --bronze-deep:#9c7d44;
+    --line:rgba(236,231,221,0.13);
+    --line-2:rgba(236,231,221,0.22);
+    --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+    --en:"Jost",system-ui,sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--serif);font-weight:400;
+    font-size:17px;line-height:1.96;letter-spacing:.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--bronze);color:#0b0b0c}
+  img{display:block;max-width:100%}
+
+  .col{max-width:680px;margin:0 auto;padding:0 22px}
+  .wide{max-width:880px;margin:0 auto;padding:0 22px}
+
+  /* top bar */
+  .topbar{display:flex;justify-content:space-between;align-items:center;
+    max-width:1100px;margin:0 auto;padding:22px 24px}
+  .topbar .mark{font-family:var(--en);font-weight:400;letter-spacing:.46em;text-indent:.46em;
+    font-size:1.18rem;color:var(--ink);text-decoration:none}
+  .topbar .nav{font-family:var(--en);font-weight:500;letter-spacing:.2em;
+    font-size:.78rem;color:var(--soft);text-decoration:none;text-transform:uppercase;
+    transition:color .4s var(--ease)}
+  .topbar .nav:hover,.topbar .nav:focus-visible{color:var(--bronze)}
+  .topbar-right{display:flex;align-items:center;gap:1.4rem}
+  .lang-switch{display:inline-flex;align-items:center;gap:.1em}
+  .lang-switch a{font-family:var(--serif);font-size:.72rem;letter-spacing:.1em;color:var(--faint);padding:.25em .4em;transition:color .35s var(--ease)}
+  .lang-switch a:hover{color:var(--ink)}
+  .lang-switch a.is-active{color:var(--bronze)}
+  .lang-switch .sep{color:var(--line-2);font-size:.6rem}
+
+  /* special tag above title */
+  .special-tag{max-width:880px;margin:0 auto;padding:0 24px}
+  .special-tag span{display:inline-flex;align-items:center;gap:.85em;
+    font-family:var(--en);font-weight:600;letter-spacing:.34em;text-transform:uppercase;
+    font-size:.7rem;color:var(--bronze)}
+  .special-tag span::before{content:"";width:30px;height:1px;background:var(--bronze);opacity:.8}
+
+  /* cover */
+  .cover{margin-top:18px}
+  .cover img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 38%;border-radius:10px}
+
+  /* article head */
+  .head{padding-top:40px}
+  .eyebrow{font-family:var(--en);font-weight:600;letter-spacing:.3em;
+    font-size:.74rem;text-transform:uppercase;color:var(--bronze)}
+  h1{font-family:var(--serif);font-weight:600;letter-spacing:.02em;
+    font-size:clamp(1.7rem,4.6vw,2.15rem);line-height:1.5;margin:18px 0 22px}
+  h1 em{font-style:normal;color:var(--bronze)}
+  .byline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding-bottom:26px;border-bottom:1px solid var(--line)}
+  .byline .nm{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink)}
+  .byline .meta{font-family:var(--en);letter-spacing:.12em;font-size:.84rem;color:var(--faint)}
+  .byline .dot{color:var(--line-2)}
+
+  /* body */
+  p{margin:0 0 1.5em}
+  .lede{padding-top:34px}
+  .lede p{font-size:1.12rem;line-height:1.95;color:var(--ink)}
+  section.block{padding-top:18px}
+  .kicker{font-family:var(--en);font-weight:600;letter-spacing:.14em;
+    font-size:.78rem;color:var(--bronze);margin:40px 0 12px}
+  .kicker .jp{font-family:var(--serif);font-weight:500;letter-spacing:.04em;color:var(--soft)}
+  h2{font-family:var(--serif);font-weight:600;letter-spacing:.02em;
+    font-size:clamp(1.3rem,3.4vw,1.55rem);line-height:1.62;margin-bottom:1.1em}
+  h2 em{font-style:normal;color:var(--bronze);
+    background:linear-gradient(transparent 66%, rgba(194,162,95,.30) 66%)}
+  .body p{color:var(--ink)}
+  .body strong{font-weight:700;color:var(--ink);
+    background:linear-gradient(transparent 64%, rgba(194,162,95,.28) 64%)}
+
+  /* figures */
+  figure{margin:34px 0}
+  figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;
+    border-radius:8px}
+  figure.tall img{aspect-ratio:3/4}
+  figcaption{font-size:.83rem;line-height:1.7;color:var(--faint);
+    margin-top:10px;padding-left:14px;border-left:2px solid var(--line-2)}
+
+  /* stats */
+  .stats{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin:30px 0 6px}
+  .stats div{flex:1;text-align:center;padding:20px 6px;border-right:1px solid var(--line)}
+  .stats div:last-child{border-right:none}
+  .stats .v{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--ink)}
+  .stats .v .s{font-size:.62em;font-weight:500}
+  .stats .k{font-size:.72rem;color:var(--faint);margin-top:5px;letter-spacing:.04em}
+
+  /* ladder */
+  .ladder{margin:34px 0 8px;padding:30px 24px;background:var(--paper);
+    border:1px solid var(--line);border-radius:12px}
+  .ladder-label{font-family:var(--en);font-weight:600;letter-spacing:.26em;
+    font-size:.72rem;text-transform:uppercase;color:var(--bronze);
+    text-align:center;margin-bottom:26px}
+  .rung{position:relative;padding-left:26px;margin-bottom:20px}
+  .rung:last-child{margin-bottom:0}
+  .rung::before{content:"";position:absolute;left:5px;top:1.4em;bottom:-20px;
+    width:1px;background:var(--line-2)}
+  .rung:last-child::before{display:none}
+  .rung::after{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;
+    border-radius:50%;background:var(--bg);border:1.5px solid var(--bronze)}
+  .rung.lit::after{background:var(--bronze)}
+  .rung .tier{font-family:var(--en);font-weight:600;letter-spacing:.16em;
+    font-size:.72rem;text-transform:uppercase;color:var(--bronze-deep)}
+  .rung .name{font-family:var(--serif);font-weight:600;color:var(--ink);line-height:1.4;margin:.1em 0}
+  .rung.r1 .name{font-size:1.02rem}
+  .rung.r2 .name{font-size:1.1rem}
+  .rung.r3 .name{font-size:1.2rem}
+  .rung.r4 .name{font-size:1.34rem;color:var(--bronze)}
+  .rung .val{font-size:.84rem;color:var(--soft)}
+  .ladder-cap{text-align:center;font-family:var(--serif);font-weight:600;
+    color:var(--ink);font-size:1.04rem;margin-top:26px;padding-top:22px;
+    border-top:1px solid var(--line)}
+
+  /* dual */
+  .dual{display:flex;gap:14px;margin:30px 0 6px}
+  .dual div{flex:1;text-align:center;padding:26px 14px;background:var(--paper);
+    border:1px solid var(--line);border-radius:10px}
+  .dual .k{font-size:.8rem;color:var(--soft);margin-bottom:.8em}
+  .dual .v{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--ink)}
+  .dual .v .s{font-size:.55em}
+  .dual div:last-child .v{color:var(--bronze)}
+
+  /* pullquote */
+  .pull{text-align:center;margin:54px 0;padding:34px 0;
+    border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+  .pull p{margin:0;font-family:var(--serif);font-weight:600;
+    font-size:clamp(1.35rem,3.6vw,1.6rem);line-height:1.7;letter-spacing:.02em}
+  .pull .b{color:var(--bronze)}
+
+  /* outro */
+  .sig-line{font-family:var(--serif);font-weight:600;text-align:center;
+    font-size:1.18rem;line-height:1.8;color:var(--ink);
+    margin:40px 0;padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .signoff{text-align:right;margin-top:24px}
+  .signoff .nm{font-family:var(--serif);font-weight:600;font-size:1.05rem}
+  .signoff .ttl{font-family:var(--en);letter-spacing:.16em;font-size:.78rem;
+    text-transform:uppercase;color:var(--faint);margin-top:.4em}
+  .back{margin:44px 0 0}
+  .back a{font-family:var(--en);font-weight:600;letter-spacing:.16em;font-size:.86rem;
+    text-transform:uppercase;color:var(--bronze);text-decoration:none;
+    border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:color .4s var(--ease),border-color .4s var(--ease)}
+  .back a:hover,.back a:focus-visible{color:var(--bronze-deep);border-color:var(--bronze)}
+
+  footer{margin-top:70px;padding:34px 22px 50px;border-top:1px solid var(--line);text-align:center}
+  footer .l{font-size:.8rem;color:var(--soft);letter-spacing:.04em}
+  footer .c{font-family:var(--en);font-size:.74rem;color:var(--faint);margin-top:.8em;letter-spacing:.06em}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:560px){
+    body{font-size:16px}
+    .dual{flex-direction:column}
+    .stats{flex-wrap:wrap}
+    .stats div{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--line)}
+    .stats div:last-child{border-bottom:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="mark" href="index.html">MORIO</a>
+  <div class="topbar-right">
+    <a class="nav" href="the-stump.html">THE STUMP →</a>
+    <div class="lang-switch"><a href="the-stump-column-kiyomizu.html" data-lang="ja" hreflang="ja">日</a><span class="sep">/</span><a href="the-stump-column-kiyomizu.en.html" class="is-active" data-lang="en" hreflang="en">EN</a><span class="sep">/</span><a href="the-stump-column-kiyomizu.zh.html" data-lang="zh" hreflang="zh">中</a></div>
+  </div>
+</div>
+
+<div class="special-tag"><span>Special Column</span></div>
+
+<div class="wide cover">
+  <img src="assets/hero.webp" alt="Kiyomizu-dera at dusk — visitors gathered on the stage of the Main Hall">
+</div>
+
+<div class="col head">
+  <div class="eyebrow">Column · Real Estate Producing</div>
+  <h1>Kiyomizu-dera has been earning <em>a thousand years of rent</em>.</h1>
+  <div class="byline">
+    <span class="meta">Real Estate Producer · 2026</span>
+  </div>
+</div>
+
+<div class="col lede">
+  <p>The truly remarkable thing about Kiyomizu-dera, I think, is neither the height of its famous stage nor the nail-free joinery. Founded in 778, with the present halls rebuilt in 1633, it has never once stopped — it is still earning today. For more than a thousand years it has remained a working economic engine. That is what draws me to it.</p>
+  <p>So with THE STUMP, too, my benchmark is neither design nor height. Can it keep generating value for a thousand years after it is built? That is the only question. Kiyomizu-dera is one of the very few examples that has actually pulled this off. So — how much does Kiyomizu-dera actually earn? Let me start with the most obvious place: the admission fee.</p>
+</div>
+
+<!-- 01 -->
+<section class="col block">
+  <div class="kicker">01 <span class="jp">· The illusion of the ticket</span></div>
+  <h2>The ticket is <em>not</em> what Kiyomizu-dera is worth</h2>
+  <div class="body">
+    <p>Few people, I suspect, have ever seriously added up the admission revenue of Kiyomizu-dera. Do the math, and it is faintly anticlimactic.</p>
+    <figure class="reveal">
+      <img src="assets/s01-townscape.webp" alt="The Higashiyama townscape and modern architecture spreading below Kiyomizu-dera at dusk">
+      <figcaption>The gate-town at dusk. Kiyomizu-dera’s "value" lies outside the ticket — across the whole of this view.</figcaption>
+    </figure>
+    <p>Annual visitors come to roughly five million. At ¥500 per adult, that is only ¥2.5 billion. Add up the charms, the goshuin stamps, the offerings and the special viewings, and the temple’s yearly income is at most <strong>¥3– 4.5 billion</strong> (no financial statements are published, so this is an estimate). Hand it to a real-estate appraiser and the number gets colder still. It is a mass of mountain, slope and heritage restrictions, so no sane price-per-tsubo applies. On paper, Kiyomizu-dera ends up as nothing more than a "decent income property."</p>
+    <p>— But that number says nothing true about Kiyomizu-dera at all. This column begins right there.</p>
+  </div>
+  <div class="stats">
+    <div><div class="v">5<span class="s">M+</span></div><div class="k">Annual visitors</div></div>
+    <div><div class="v">¥2.5<span class="s">B</span></div><div class="k">Admission revenue · est.</div></div>
+    <div><div class="v">AD 778</div><div class="k">Founded</div></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="col block">
+  <div class="kicker">02 <span class="jp">· Making the surroundings rich</span></div>
+  <h2>It does not earn for itself. <em>It makes its surroundings earn</em></h2>
+  <div class="body">
+    <p>Kiyomizu-dera’s real business is not the admission fee — that is more of a side gig. Its true business is keeping a constant flow of people pouring through the whole Higashiyama district.</p>
+    <figure class="reveal">
+      <img src="assets/s02-machiya.webp" alt="Ninenzaka gate-town packed with visitors, kimono and rickshaws">
+      <figcaption>The crowds on Ninenzaka. Almost all of this bustle hangs on a single point: Kiyomizu-dera.</figcaption>
+    </figure>
+    <p>Kiyomizuzaka, Ninenzaka, Sannenzaka, Gion — the restaurants, souvenir shops, inns, taxis and kimono rentals of that quarter, the wages of the people who work there, the rents the tenants pay — almost all of it hangs on the single fact that "Kiyomizu-dera is there." Put what one visitor spends nearby because of Kiyomizu-dera conservatively at ¥10,000– 20,000. Multiply by five million and you get <strong>¥50– 100 billion</strong> a year — twenty to forty times the admission revenue. Kyoto’s total tourism spending in 2024 was about ¥1.9 trillion, or ¥34,000 per head. Against that, ¥10,000– 20,000 traceable to Kiyomizu-dera is hardly an inflated figure. If anything, I think it is conservative.</p>
+    <p>In other words, Kiyomizu-dera fills not its own purse but the town’s. Good architecture, as a rule, does exactly this. It does not close its accounts within its own lot. It scatters economy beyond its own walls.</p>
+  </div>
+
+  <div class="ladder">
+    <div class="ladder-label">The Scale of Value</div>
+    <div class="rung r1"><div class="tier">Building LTV — Asset</div><div class="name">Admission · charms</div><div class="val">≈ ¥3– 4.5B / yr</div></div>
+    <div class="rung r2"><div class="tier">Area LTV — District</div><div class="name">Higashiyama retail · lodging · rent</div><div class="val">≈ ¥50– 100B / yr</div></div>
+    <div class="rung r3"><div class="tier">City LTV — City</div><div class="name">Contribution to the Kyoto brand</div><div class="val">As one pole of ¥1.9T tourism spend</div></div>
+    <div class="rung r4 lit"><div class="tier">National LTV — Nation</div><div class="name">Irreplaceable cultural capital</div><div class="val">Over ¥5T lost if it were gone</div></div>
+    <div class="ladder-cap">From the LTV of a single building to the LTV of a city.</div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="col block">
+  <div class="kicker">03 <span class="jp">· Two price tags</span></div>
+  <h2>One building, <em>two price tags</em></h2>
+  <div class="body">
+    <p>So Kiyomizu-dera carries two utterly different price tags. Dumped on the market as a property, perhaps ¥70 billion. Seen as the cultural infrastructure that keeps Kyoto turning, ¥3 trillion. Neither is a lie. They simply look at it from different angles.</p>
+    <figure class="reveal">
+      <img src="assets/s03-two-values.webp" alt="Left: an empty, colourless Kiyomizu-dera; right: a bustling Kiyomizu-dera at dusk">
+      <figcaption>Two utterly different prices on one and the same building. Left: land and structure. Right: an urban engine.</figcaption>
+    </figure>
+    <p>The precincts cover about 130,000 m² — roughly 39,000 tsubo. Spread ¥3 trillion across that and you get ¥76 million per tsubo. A mountain slope in Kyoto, valued at a price-per-tsubo on par with Ginza. It may sound absurd. But this is not a number produced by the land’s own nature. History, faith, story and time have swollen the original land value hundreds of times over. The land itself is merely the trigger.</p>
+  </div>
+  <div class="dual">
+    <div><div class="k">As an income property</div><div class="v">¥70<span class="s">B</span></div></div>
+    <div><div class="k">As cultural infrastructure</div><div class="v">¥3<span class="s">T</span></div></div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="col block">
+  <div class="kicker">04 <span class="jp">· Beyond the market rate</span></div>
+  <h2>It was not built on prime land. <em>It turned the land prime</em></h2>
+  <div class="body">
+    <p>This is the most important point, so let me be blunt. Kiyomizu-dera is not valuable because it was built on prime Kyoto land. The land around it became prime because Kiyomizu-dera was built — the order is reversed. Astonishingly many people, even in the industry, get this backwards.</p>
+    <figure class="reveal">
+      <img src="assets/s04-town-vs-barren.webp" alt="Right: the gate-town of Kiyomizu-dera; left: an untouched slope">
+      <figcaption>Right: the gate-town. Left: an untouched slope. What came before the town was the architecture.</figcaption>
+    </figure>
+    <p>Ordinary real estate is priced as "land cost + construction cost + yield." So, however you slice it, the local market rate becomes the ceiling. Kiyomizu-dera is priced as "a reason to go there × drawing power × time × ripple into the town." So it blows straight through the market rate. This is not an outlier. It simply <strong>stepped outside the market</strong>.</p>
+    <p>The ultimate form of real-estate producing is not the trick of making good land look expensive. It is generating, after the fact, value the land never originally had. You do not follow the market rate. You draw it — you move to the side that adds a line to the map.</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="col block">
+  <div class="kicker">05 <span class="jp">· What the city centre is building now</span></div>
+  <h2>The more lavish the development looks, <em>the less richness it creates</em></h2>
+  <div class="body">
+    <p>Now, the large-scale redevelopments rising one after another on prime city-centre land — those mixed-use tower clusters stacking office, retail and residence into a single building — are doing the exact opposite of everything I have described. State-of-the-art facilities, top overseas brands, contemporary art, a well-made wellness floor. The opening-day photos are, without exception, dazzling. But line up two or three of them and you notice it at once: the lineup of names is almost identical.</p>
+    <figure class="reveal">
+      <img src="assets/s05-redevelopment.webp" alt="A cluster of mixed-use towers stacking up on prime city-centre land" style="aspect-ratio:3/2">
+      <figcaption>Mixed-use towers rising on prime city-centre land. The opening-day photos are, every one, dazzling.</figcaption>
+    </figure>
+    <p>The reason is plain. New-build floor space is expensive to construct. The only tenants who can pay that rent are the luxury labels found in every city on earth, and the national chains. So every redevelopment fills up with the same faces. It is not that developers dislike character — the rent arithmetic itself drives character out. Yet a town where culture grows is, without exception, a cluster of one-of-a-kind independent shops. Chains are highly efficient, but they have no variance. Where there are no surprises, a reason to make the trip rarely takes root.</p>
+    <p>Here, return to the LTV lens. The development most dazzling on opening day is not necessarily the one creating the most value a century later. More often, the opposite is true. A lineup found everywhere produces only value found everywhere, so it is eventually dragged back to the market rate and slides downward as its fixtures age. The cluster of independent shops accreted around Kiyomizu-dera over a thousand years, meanwhile, still draws people to Higashiyama today. <strong>Lavishness and richness are different.</strong> Lavishness peaks on opening day; richness accumulates over time. Which kind of town you are building is something the opening ceremony cannot answer — the LTV a hundred years out grades the paper.</p>
+  </div>
+</section>
+
+<!-- climax -->
+<div class="col">
+  <div class="pull">
+    <p>A building generates revenue.<br><span class="b">A masterpiece generates a city.</span></p>
+  </div>
+</div>
+
+<!-- outro -->
+<section class="col block">
+  <div class="kicker">And so <span class="jp">· THE STUMP</span></div>
+  <div class="body">
+    <p>What I am trying to build with THE STUMP is, in short, <strong>a modern Kiyomizu-dera</strong>. The supertall-residence shell, frankly, I could not care less about.</p>
+    <p>I cannot think of a single reason why what 778 Kyoto could do, 2020s Tokyo cannot. Architecture need not be a 30-year disposable. Built once, earning for a long time, its meaning renewed as owners change hands, scattering economy and culture around it — to raise such an engine once more, in this age. That is all there is to do.</p>
+    <p>Kiyomizu-dera has already proved it. The finest real estate is the ownership of "a reason people will go there, forever." Not the timber, not the land. Whether or not you hold that reason.</p>
+  </div>
+  <div class="sig-line">A reason people will go there forever —<br>we design it into the architecture.</div>
+  <div class="signoff">
+    <div class="nm">Natsuhiko Morita</div>
+    <div class="ttl">Founder &amp; CEO · Real Estate Producer</div>
+  </div>
+  <div class="back"><a href="the-stump.html">← Back to THE STUMP</a></div>
+</section>
+
+<footer>
+  <div class="c">© 2026 株式会社MORIO / Morio Co., Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.18});
+  document.querySelectorAll('.reveal').forEach(function(n){io.observe(n);});
+})();
+document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('morio_lang',a.getAttribute('data-lang'));}catch(e){}});});
+</script>
+</body>
+</html>
